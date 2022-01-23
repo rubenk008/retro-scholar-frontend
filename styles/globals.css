@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;900&display=swap");
+
+@font-face {
+  font-family: "Rift Soft Bold";
+  src: url("/fonts/RiftSoft/RiftSoft-Bold.woff") format("woff"),
+    url("/fonts/RiftSoft/RiftSoft-Bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --bay-of-many: #283086;
+  --gigas: #424aa4;
+  --chetwode-blue: #757dd8;
+  --moody-blue: #727ad2;
+  --perano: #b6bbf0;
+  --fog: #dde0ff;
+  --slight-titan-white: #ecedff;
+  --titan-white: #f3f4ff;
+  --cranberry: #db5493;
+  --azalea: #f2b4ce;
+  --lavender-blush: #ffe9f2;
+  --tutu: #fffbfd;
+  --white: #ffffff;
+
+  --font-rift-soft-bold: "Rift Soft Bold", sans-serif;
+  --font-nunito-sans: "Nunito Sans", sans-serif;
+
+  --timing-short: 100ms;
+  --timing-medium: 180ms;
+  --timing-long: 500ms;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-nunito-sans);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
