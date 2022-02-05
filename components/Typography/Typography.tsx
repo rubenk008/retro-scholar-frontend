@@ -171,32 +171,38 @@ const defaultVariantMapping = {
   inherit: "p",
 };
 
-const Typography = ({
-  variant = "body1",
-  color = "primary",
-  children,
-  className = "",
-  component = null,
-}: Props) => {
-  const [componentType, setComponentType] = useState<React.ElementType>();
+const Typography = React.forwardRef(
+  (
+    {
+      variant = "body1",
+      color = "primary",
+      children,
+      className = "",
+      component = null,
+    }: Props,
+    ref
+  ) => {
+    const [componentType, setComponentType] = useState<React.ElementType>();
 
-  useEffect(() => {
-    if (component !== null) {
-      setComponentType(component);
-    } else {
-      setComponentType(defaultVariantMapping[variant]);
-    }
-  }, [component]);
+    useEffect(() => {
+      if (component !== null) {
+        setComponentType(component);
+      } else {
+        setComponentType(defaultVariantMapping[variant]);
+      }
+    }, [component]);
 
-  return (
-    <TypographyRoot
-      variant={variant}
-      className={clsx(className, color)}
-      as={componentType}
-    >
-      {children}
-    </TypographyRoot>
-  );
-};
+    return (
+      <TypographyRoot
+        variant={variant}
+        className={clsx(className, color)}
+        as={componentType}
+        ref={ref}
+      >
+        {children}
+      </TypographyRoot>
+    );
+  }
+);
 
 export default Typography;
