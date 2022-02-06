@@ -181,26 +181,40 @@ const CardRoot = styled("div")<Props>(
     border: "none",
     display: "grid",
     boxSizing: "border-box",
+    position: "relative",
     padding: 0,
   },
   variant({
     variants: {
       elevated: {
         "&.regular": {
-          height: ["430px", "448px"],
-          width: ["276px", "288px"],
+          paddingBottom: [
+            "calc(100% / (276 / 430))",
+            "calc(100% / (288 / 448))",
+          ],
+          height: 0,
+          maxHeight: "448px",
+          maxWidth: "288px",
         },
         "&.small": {
-          height: ["258px", "448px"],
-          width: ["165px", "276px"],
+          paddingBottom: [
+            "calc(100% / (165 / 257.07))",
+            "calc(100% / (276 / 448))",
+          ],
+          height: 0,
+          width: "100%",
+          maxHeight: "448px",
+          maxWidth: "276px",
         },
       },
       outlined: {
         borderColor: "var(--slight-titan-white)",
         borderStyle: "solid",
         borderWidth: ["4px", "6px"],
-        height: ["288px", "496px"],
-        width: ["288px", "496px"],
+        height: ["calc((288/414) * 100vw)", "calc((496/1440) * 100vw)"],
+        width: ["calc((288/414) * 100vw)", "calc((496/1440) * 100vw)"],
+        maxHeight: "496px",
+        maxWidth: "496px",
 
         "&.hasDropShadow": {
           boxShadow: "0px 8px 27px 4px rgba(9,25,189,0.2)",
@@ -208,8 +222,10 @@ const CardRoot = styled("div")<Props>(
       },
       quiz: {
         background: "var(--slight-titan-white)",
-        height: ["336px", "486px"],
-        width: ["520px", "900px"],
+        height: ["calc((336/414) * 100vw)", "calc((486/1440) * 100vw)"],
+        width: ["calc((520/414) * 100vw)", "calc((900/1440) * 100vw)"],
+        maxHeight: "486px",
+        maxWidth: "900px",
         boxShadow: "0px 8px 27px 4px rgba(9,25,189,0.2)",
       },
     },
@@ -230,7 +246,14 @@ const Card = ({
     >
       {variant === "elevated" && (
         <motion.div
-          style={{ display: "grid", width: "100%", height: "100%" }}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            display: "grid",
+            width: "100%",
+            height: "100%",
+          }}
           whileHover="hover"
           initial="hidden"
           animate="visible"
