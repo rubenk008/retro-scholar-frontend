@@ -2,9 +2,9 @@ import React from "react";
 
 import ArticleCollapsed from "./ArticleCollapsed";
 
-import Props from "./Article.types";
+import ArticleProps from "./Article.types";
 
-const Article = ({ cardData }: Props) => {
+const Article = ({ cardData }: ArticleProps) => {
   return (
     <ArticleCollapsed
       tags={cardData.tags}

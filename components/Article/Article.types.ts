@@ -1,5 +1,5 @@
 import ArticleCollapsedProps from "./ArticleCollapsed/ArticleCollapsed.types";
 
-export default interface Props {
+export default interface ArticleProps {
   cardData: ArticleCollapsedProps;
 }
