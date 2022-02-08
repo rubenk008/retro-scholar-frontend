@@ -2,11 +2,11 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-import Typography from "../Typography";
+import Typography from "../../Typography";
 
 import Props from "./Footer.types";
 
-import Logo from "../icons/Logo";
+import Logo from "../../icons/Logo";
 
 const StyledFooter = styled.footer`
   width: 100vw;

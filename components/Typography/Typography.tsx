@@ -26,6 +26,9 @@ const TypographyRoot = styled("span")<Props>(
     appearance: "none",
     padding: "0",
     margin: "0",
+    display: "flex",
+    marginBlockStart: 0,
+    marginBlockEnd: 0,
 
     "&.primary": {
       color: "var(--cranberry)",
@@ -103,7 +106,7 @@ const TypographyRoot = styled("span")<Props>(
         fontFamily: "var(--font-rift-soft-bold)",
         fontSize: [pxToRem(14), pxToRem(20)],
         letterSpacing: [letterSpacing(14, 0.252), letterSpacing(20, 0.4)],
-        lineHeight: [1, 1],
+        lineHeight: [1.625, 1.3],
       },
       subtitle1: {
         fontFamily: "var(--font-nunito-sans)",
