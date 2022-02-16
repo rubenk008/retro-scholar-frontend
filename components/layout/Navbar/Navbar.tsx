@@ -6,8 +6,9 @@ import Typography from "../../Typography";
 
 import Props from "./Navbar.types";
 
-import Logo from "../../icons/Logo";
+import LogoWithName from "../../icons/LogoWithName";
 import SearchIcon from "../../icons/Search";
+import DonerMenu from "../../icons/DonerMenu";
 
 const Nav = styled.nav`
   width: 100vw;
@@ -17,6 +18,7 @@ const Nav = styled.nav`
 
   @media screen and (min-width: 768px) {
     height: 128px;
+    padding-top: 26px;
   }
 `;
 
@@ -29,7 +31,7 @@ const Container = styled.div`
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
-    padding: 60px 52px 0;
+    padding: 0px 52px 0;
     flex-direction: row;
   }
 `;
@@ -38,6 +40,7 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   @media screen and (min-width: 768px) {
     justify-content: center;
@@ -45,36 +48,50 @@ const Column = styled.div`
   }
 `;
 
-const StyledLogo = styled(Logo)`
+const StyledLogo = styled(LogoWithName)`
   transform: rotate(-2deg) scale(0.7);
-  position: absolute;
-  right: -8px;
-  top: -58px;
 
   @media screen and (min-width: 768px) {
     transform: rotate(-2deg) scale(1);
-    left: -64px;
-    top: -26px;
   }
 `;
 
-const LinkList = styled.ul`
+const LinkListDesktop = styled.ul`
   list-style-type: none;
-  display: flex;
   align-self: flex-start;
   margin: 0;
   padding: 0;
   flex-direction: row;
   align-items: center;
+  display: none;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 920px) {
     height: 40px;
+    display: flex;
   }
 `;
+
+const LinkListMobile = styled.ul`
+  list-style-type: none;
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  align-items: center;
+  display: none;
+
+  @media screen and (min-width: 920px) {
+    height: 40px;
+    display: flex;
+  }
+`;
+
 const LinkListItem = styled.li`
   margin: 0 0 16px;
   height: 26px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   position: relative;
   cursor: pointer;
 
@@ -89,7 +106,7 @@ const LinkListItem = styled.li`
     height: 6px;
     position: absolute;
     left: 50%;
-    bottom: -12px;
+    bottom: -10px;
     transform-origin: center;
     transform: translateX(-50%) scale(0);
     background: var(--fog);
@@ -97,11 +114,23 @@ const LinkListItem = styled.li`
     transition: transform 250ms ease-in-out;
   }
 
+  &.more-menu-link {
+    &:after {
+      display: none;
+    }
+    & > svg {
+      margin-top: -4px;
+      margin-left: 2px;
+      transition: opacity 250ms ease-in-out;
+    }
+  }
+
   &:hover {
     &:after {
       transform: translateX(-50%) scale(1);
     }
-    & > h6 {
+    & > h6,
+    svg {
       opacity: 0.8;
     }
   }
@@ -128,9 +157,11 @@ const Navbar = ({ links }: Props) => {
   return (
     <Nav>
       <Container>
-        <Column>{/* <StyledLogo /> */}</Column>
         <Column>
-          <LinkList>
+          <StyledLogo />
+        </Column>
+        <Column style={{ height: "40px", marginTop: "28px" }}>
+          <LinkListDesktop>
             {links &&
               links.map((link, index) => (
                 <LinkListItem key={`key-${index}`}>
@@ -141,7 +172,13 @@ const Navbar = ({ links }: Props) => {
                   </Link>
                 </LinkListItem>
               ))}
-          </LinkList>
+            <LinkListItem className="more-menu-link">
+              <Typography variant="h6Alt" color="off-white">
+                More
+              </Typography>
+              <DonerMenu color="#DDE0FF" />
+            </LinkListItem>
+          </LinkListDesktop>
           <Search>
             <SearchIcon color="#DDE0FF" />
           </Search>

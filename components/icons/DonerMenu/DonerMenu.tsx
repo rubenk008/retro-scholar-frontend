@@ -19,14 +19,14 @@ const DonerMenu = React.forwardRef(
         fill="none"
       >
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M30 18H10V16H30V18Z"
           fill={color}
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M30 24L16 24V22L30 22V24Z"
           fill={color}
         />
