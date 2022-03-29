@@ -8,9 +8,7 @@ export default {
 
 const footerTempData = {
   links: [
-    { name: "retro tech", href: "https://www.google.com" },
-    { name: "renowned people", href: "https://www.google.com" },
-    { name: "architecture", href: "https://www.google.com" },
+    { name: "topics", href: "https://www.google.com" },
     { name: "quizes", href: "https://www.google.com" },
   ],
 };

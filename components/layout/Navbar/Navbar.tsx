@@ -148,7 +148,7 @@ const Search = styled.button`
   outline: none;
   border: none;
   padding: 0;
-  margin: 0 0 0 20px;
+  margin: 1px 0 0 20px;
   cursor: pointer;
   position: relative;
 `;
@@ -172,12 +172,6 @@ const Navbar = ({ links }: Props) => {
                   </Link>
                 </LinkListItem>
               ))}
-            <LinkListItem className="more-menu-link">
-              <Typography variant="h6Alt" color="off-white">
-                More
-              </Typography>
-              <DonerMenu color="#DDE0FF" />
-            </LinkListItem>
           </LinkListDesktop>
           <Search>
             <SearchIcon color="#DDE0FF" />
