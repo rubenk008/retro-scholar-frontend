@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { addDecorator } from "@storybook/react";
 import { withThemes } from "@react-theming/storybook-addon";
-import { RouterContext } from "next/dist/next-server/lib/router-context";
+// import { RouterContext } from "next/dist/next-server/lib/router-context";
 
 import theme from "../styles/theme";
 
@@ -9,8 +9,8 @@ import theme from "../styles/theme";
 addDecorator(withThemes(ThemeProvider, [theme]));
 
 export const parameters = {
-  nextRouter: {
-    Provider: RouterContext.Provider,
-  },
+  // nextRouter: {
+  //   Provider: RouterContext.Provider,
+  // },
   layout: "fullscreen",
 };

@@ -12,7 +12,7 @@
     "export": "next export",
     "prepublishOnly": "node ./node_modules/sm-commons/scripts/bundle",
     "slicemachine": "start-slicemachine --port 9999",
-    "storybook": "start-storybook -s ./public -p 8888",
+    "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s ./public -p 8888",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
