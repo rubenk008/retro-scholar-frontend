@@ -19,7 +19,7 @@ module.exports = {
   addons: [
     "@react-theming/storybook-addon",
     "@storybook/addon-essentials",
-    "storybook-addon-next-router",
+    // "storybook-addon-next-router",
   ],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

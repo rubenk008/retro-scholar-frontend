@@ -3,7 +3,7 @@ import React from "react";
 import ArticleGrid from ".";
 
 export default {
-  title: "Article Grid",
+  title: "Layout/Article Grid",
   component: ArticleGrid,
 };
 

@@ -1,11 +1,11 @@
 import React from "react";
 import FooterStyled from "./index";
 
-import InstagramIcon from "../icons/Instagram";
-import FacebookIcon from "../icons/Facebook";
+import InstagramIcon from "../../icons/Instagram";
+import FacebookIcon from "../../icons/Facebook";
 
 export default {
-  title: "Footer",
+  title: "Layout/Footer",
   component: FooterStyled,
 };
 

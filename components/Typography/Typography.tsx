@@ -26,6 +26,9 @@ const TypographyRoot = styled("span")<Props>(
     appearance: "none",
     padding: "0",
     margin: "0",
+    display: "flex",
+    marginBlockStart: 0,
+    marginBlockEnd: 0,
 
     "&.primary": {
       color: "var(--cranberry)",
@@ -103,7 +106,13 @@ const TypographyRoot = styled("span")<Props>(
         fontFamily: "var(--font-rift-soft-bold)",
         fontSize: [pxToRem(14), pxToRem(20)],
         letterSpacing: [letterSpacing(14, 0.252), letterSpacing(20, 0.4)],
-        lineHeight: [1, 1],
+        lineHeight: [1.625, 1.3],
+      },
+      h6Small: {
+        fontFamily: "var(--font-rift-soft-bold)",
+        fontSize: [pxToRem(14), pxToRem(16)],
+        letterSpacing: [letterSpacing(14, 0.18), letterSpacing(16, 0.2)],
+        lineHeight: [1.625, 1.4],
       },
       subtitle1: {
         fontFamily: "var(--font-nunito-sans)",
@@ -124,7 +133,7 @@ const TypographyRoot = styled("span")<Props>(
         fontWeight: 600,
         fontSize: [pxToRem(14), pxToRem(16)],
         letterSpacing: [letterSpacing(14, 0.28), letterSpacing(16, 0.32)],
-        lineHeight: [1, 1],
+        lineHeight: ["calc(22 / 14)", "calc(24 / 16)"],
       },
       intro: {
         fontFamily: "var(--font-nunito-sans)",
