@@ -19,4 +19,6 @@ export default interface Props {
 
   // Has drop-shadow
   hasDropShadow?: boolean;
+
+  withMargin?: boolean;
 }

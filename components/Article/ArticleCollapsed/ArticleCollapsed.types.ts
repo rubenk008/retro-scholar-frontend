@@ -6,4 +6,6 @@ export default interface ArticleCollapsedProps {
   tags?: Array<String>;
   title?: string;
   media?: MediaProps;
+  variant?: string;
+  withMargin?: boolean;
 }

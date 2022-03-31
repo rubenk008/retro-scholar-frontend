@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  z-index: 1;
 `;
 
 const Media = ({ type = "image", image, video, className }: MediaProps) => {

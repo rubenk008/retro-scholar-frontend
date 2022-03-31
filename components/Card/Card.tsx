@@ -188,13 +188,10 @@ const CardRoot = styled("div")<Props>(
     variants: {
       elevated: {
         "&.regular": {
-          paddingBottom: [
-            "calc(100% / (276 / 430))",
-            "calc(100% / (288 / 448))",
-          ],
-          height: 0,
-          maxHeight: "448px",
-          maxWidth: "288px",
+          height: ["430px", "448px"],
+          minWidth: ["276px", "288px"],
+          marginRight: (props: { withMargin: boolean }) =>
+            props.withMargin ? ["0", "0"] : ["24px", "32px"],
         },
         "&.small": {
           paddingBottom: [
@@ -235,6 +232,7 @@ const CardRoot = styled("div")<Props>(
 const Card = ({
   variant = "elevated",
   size = "regular",
+  withMargin = false,
   className,
   children,
   hasDropShadow = false,
@@ -242,6 +240,7 @@ const Card = ({
   return (
     <CardRoot
       variant={variant}
+      withMargin={withMargin}
       className={clsx(className, hasDropShadow ? "hasDropShadow" : "", size)}
     >
       {variant === "elevated" && (
