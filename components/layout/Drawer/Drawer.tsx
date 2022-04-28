@@ -73,7 +73,7 @@ const MenuBackdrop = styled.div`
         ? "cubic-bezier(0.55, 0.47, 0.11, 0.94)"
         : "cubic-bezier(0.89, 0.06, 0.45, 0.53)"};
   transition-delay: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "0ms" : "150ms"};
+    props.menuIsOpen ? "0ms" : "200ms"};
 `;
 
 const CloseButton = styled.div`
@@ -267,7 +267,7 @@ const Drawer = ({
     },
     show: {
       transition: {
-        delayChildren: 0.16,
+        delayChildren: 0.2,
         staggerChildren: 0.05,
       },
     },

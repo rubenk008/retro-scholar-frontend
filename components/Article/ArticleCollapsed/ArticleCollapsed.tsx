@@ -37,15 +37,27 @@ const getIcon = (value) => {
 };
 
 const ArticleCollapsed = ({
+  id,
   tags,
   title,
   media,
   variant = "small",
   withMargin = false,
+  onClick,
 }: Props) => {
   return (
-    <Card variant="elevated" size={variant} withMargin={withMargin}>
-      <Media type={media.type} video={media.video} image={media.image} />
+    <Card
+      variant="elevated"
+      size={variant}
+      withMargin={withMargin}
+      onClick={onClick}
+    >
+      <Media
+        type={media.type}
+        video={media.video}
+        image={media.image}
+        layoutId={`card-media-${id}`}
+      />
       <TagContainter>
         {tags.map((tag, index) => (
           <Chip key={index} Icon={getIcon(tag)} variant="filled">

@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import Image from "./Image";
 import Video from "./Video";
 
 import { MediaProps } from "./Media.types";
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -14,9 +15,15 @@ const Wrapper = styled.div`
   z-index: 1;
 `;
 
-const Media = ({ type = "image", image, video, className }: MediaProps) => {
+const Media = ({
+  type = "image",
+  image,
+  video,
+  className,
+  ...props
+}: MediaProps) => {
   return (
-    <Wrapper className={className}>
+    <Wrapper className={className} {...props}>
       {type === "image" && <Image image={image} />}
       {type === "video" && (
         <Video url={video.url} playState={video.playState} />

@@ -1,13 +1,14 @@
 import React from "react";
 
-import Article from ".";
+import StyledArticle from ".";
 
 export default {
   title: "Article",
-  component: Article,
+  component: StyledArticle,
 };
 
 const articleData = {
+  id: 1,
   tags: ["story", "people"],
   title: "Lorem ipsum dolor?",
   media: {
@@ -19,4 +20,6 @@ const articleData = {
   },
 };
 
-export const ArticleInGrid = () => <Article cardData={articleData} />;
+export const Article = () => (
+  <StyledArticle cardData={articleData} variant="regular" />
+);

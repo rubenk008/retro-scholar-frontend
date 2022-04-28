@@ -1,6 +1,7 @@
-import React from "react";
+import React, { ComponentProps } from "react";
+import { motion } from "framer-motion";
 
-export default interface Props {
+export default interface Props extends ComponentProps<typeof motion.div> {
   /**
    * Determine card variant
    */

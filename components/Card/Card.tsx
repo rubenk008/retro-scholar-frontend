@@ -175,7 +175,7 @@ const ContentWrapper = styled(motion.div)`
   transform-origin: center;
 `;
 
-const CardRoot = styled("div")<Props>(
+const CardRoot = styled(motion.div)<Props>(
   {
     cursor: "pointer",
     border: "none",
@@ -190,6 +190,7 @@ const CardRoot = styled("div")<Props>(
         "&.regular": {
           height: ["430px", "448px"],
           minWidth: ["276px", "288px"],
+          maxWidth: ["276px", "288px"],
           marginRight: (props: { withMargin: boolean }) =>
             props.withMargin ? ["0", "0"] : ["24px", "32px"],
         },
@@ -236,12 +237,14 @@ const Card = ({
   className,
   children,
   hasDropShadow = false,
+  ...props
 }: Props) => {
   return (
     <CardRoot
       variant={variant}
       withMargin={withMargin}
       className={clsx(className, hasDropShadow ? "hasDropShadow" : "", size)}
+      {...props}
     >
       {variant === "elevated" && (
         <motion.div
