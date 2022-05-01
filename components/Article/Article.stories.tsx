@@ -1,6 +1,8 @@
 import React from "react";
+import useState from "storybook-addon-state";
 
 import StyledArticle from ".";
+import ArticleExpanded from "./ArticleExpanded";
 
 export default {
   title: "Article",
@@ -20,6 +22,26 @@ const articleData = {
   },
 };
 
-export const Article = () => (
-  <StyledArticle cardData={articleData} variant="regular" />
-);
+export const Article = () => {
+  const [activeArticleId, setActiveArticleId] = useState("activeArticleId", 0);
+
+  return (
+    <>
+      <StyledArticle
+        cardData={articleData}
+        variant="regular"
+        onClick={() => setActiveArticleId(1)}
+      />
+      {activeArticleId === 1 && (
+        <ArticleExpanded
+          id={1}
+          media={articleData.media}
+          onClick={() => {
+            console.log(activeArticleId);
+            setActiveArticleId(0);
+          }}
+        />
+      )}
+    </>
+  );
+};

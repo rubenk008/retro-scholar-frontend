@@ -16132,6 +16132,11 @@ storybook-addon-next-router@^3.1.1:
   dependencies:
     tslib "^2.3.0"
 
+storybook-addon-state@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/storybook-addon-state/-/storybook-addon-state-1.0.3.tgz#f7657c7acfb2ac2adcbdccdd2ba6d95ebddd90a7"
+  integrity sha512-0lpedSYu2xIlq4QK/8YH4Cuj6vt2p8iRCcJBb4JFxyLZ6RAMHFFkf072BKl4WrU1LfLq3/7SD4snvxRoTjvsvw==
+
 storybook@^6.4.9:
   version "6.4.9"
   resolved "https://registry.yarnpkg.com/storybook/-/storybook-6.4.9.tgz#79cfa4537c9d7bcd75fab83b69ee7f5e27cbedb6"

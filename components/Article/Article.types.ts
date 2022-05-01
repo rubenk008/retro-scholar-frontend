@@ -4,4 +4,5 @@ export default interface ArticleProps {
   cardData: ArticleCollapsedProps;
   variant?: string;
   withMargin?: boolean;
+  onClick?: () => void;
 }

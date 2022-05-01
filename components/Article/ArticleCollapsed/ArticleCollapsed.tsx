@@ -51,6 +51,7 @@ const ArticleCollapsed = ({
       size={variant}
       withMargin={withMargin}
       onClick={onClick}
+      cardArticleId={id}
     >
       <Media
         type={media.type}

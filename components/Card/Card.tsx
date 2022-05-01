@@ -173,6 +173,7 @@ const ContentWrapper = styled(motion.div)`
   grid-column: 1;
   line-height: 0;
   transform-origin: center;
+  background: #fff;
 `;
 
 const CardRoot = styled(motion.div)<Props>(
@@ -234,6 +235,7 @@ const Card = ({
   variant = "elevated",
   size = "regular",
   withMargin = false,
+  cardArticleId = 0,
   className,
   children,
   hasDropShadow = false,
@@ -266,7 +268,12 @@ const Card = ({
             <BackdropRightEdge variants={RightEdgeAnim} />
             <BackdropTopEdge variants={TopEdgeAnim} />
           </Backdrop>
-          <ContentWrapper variants={ContentAnim}>{children}</ContentWrapper>
+          <ContentWrapper
+            layoutId={`card-container-${cardArticleId}`}
+            variants={ContentAnim}
+          >
+            {children}
+          </ContentWrapper>
         </motion.div>
       )}
       {variant === "outlined" && <>{children}</>}

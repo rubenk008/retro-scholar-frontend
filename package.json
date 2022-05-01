@@ -34,6 +34,7 @@
     "react-remove-scroll": "^2.4.4",
     "react-scripts": "5.0.0",
     "storybook": "^6.4.9",
+    "storybook-addon-state": "^1.0.3",
     "styled-components": "^5.3.3",
     "styled-system": "^5.1.5",
     "tslib": "2.1.0"
