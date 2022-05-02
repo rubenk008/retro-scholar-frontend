@@ -173,9 +173,10 @@ const ContentWrapper = styled(motion.div)`
   grid-column: 1;
   line-height: 0;
   transform-origin: center;
+  background: #fff;
 `;
 
-const CardRoot = styled("div")<Props>(
+const CardRoot = styled(motion.div)<Props>(
   {
     cursor: "pointer",
     border: "none",
@@ -188,13 +189,11 @@ const CardRoot = styled("div")<Props>(
     variants: {
       elevated: {
         "&.regular": {
-          paddingBottom: [
-            "calc(100% / (276 / 430))",
-            "calc(100% / (288 / 448))",
-          ],
-          height: 0,
-          maxHeight: "448px",
-          maxWidth: "288px",
+          height: ["430px", "448px"],
+          minWidth: ["276px", "288px"],
+          maxWidth: ["276px", "288px"],
+          marginRight: (props: { withMargin: boolean }) =>
+            props.withMargin ? ["0", "0"] : ["24px", "32px"],
         },
         "&.small": {
           paddingBottom: [
@@ -235,14 +234,19 @@ const CardRoot = styled("div")<Props>(
 const Card = ({
   variant = "elevated",
   size = "regular",
+  withMargin = false,
+  cardArticleId = 0,
   className,
   children,
   hasDropShadow = false,
+  ...props
 }: Props) => {
   return (
     <CardRoot
       variant={variant}
+      withMargin={withMargin}
       className={clsx(className, hasDropShadow ? "hasDropShadow" : "", size)}
+      {...props}
     >
       {variant === "elevated" && (
         <motion.div
@@ -264,7 +268,12 @@ const Card = ({
             <BackdropRightEdge variants={RightEdgeAnim} />
             <BackdropTopEdge variants={TopEdgeAnim} />
           </Backdrop>
-          <ContentWrapper variants={ContentAnim}>{children}</ContentWrapper>
+          <ContentWrapper
+            layoutId={`card-container-${cardArticleId}`}
+            variants={ContentAnim}
+          >
+            {children}
+          </ContentWrapper>
         </motion.div>
       )}
       {variant === "outlined" && <>{children}</>}

@@ -4,12 +4,21 @@ import ArticleCollapsed from "./ArticleCollapsed";
 
 import ArticleProps from "./Article.types";
 
-const Article = ({ cardData }: ArticleProps) => {
+const Article = ({
+  cardData,
+  variant = "small",
+  withMargin = false,
+  onClick,
+}: ArticleProps) => {
   return (
     <ArticleCollapsed
+      id={1}
       tags={cardData.tags}
       title={cardData.title}
       media={cardData.media}
+      variant={variant}
+      withMargin={withMargin}
+      onClick={onClick}
     />
   );
 };

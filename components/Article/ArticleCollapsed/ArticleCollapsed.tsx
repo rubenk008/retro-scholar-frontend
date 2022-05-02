@@ -18,6 +18,7 @@ const TagContainter = styled.div`
   top: 12px;
   left: 12px;
   right: 12px;
+  z-index: 2;
 
   @media screen and (min-width: 768px) {
     top: 20px;
@@ -35,10 +36,29 @@ const getIcon = (value) => {
   }
 };
 
-const ArticleCollapsed = ({ tags, title, media }: Props) => {
+const ArticleCollapsed = ({
+  id,
+  tags,
+  title,
+  media,
+  variant = "small",
+  withMargin = false,
+  onClick,
+}: Props) => {
   return (
-    <Card variant="elevated" size="small">
-      <Media type={media.type} video={media.video} image={media.image} />
+    <Card
+      variant="elevated"
+      size={variant}
+      withMargin={withMargin}
+      onClick={onClick}
+      cardArticleId={id}
+    >
+      <Media
+        type={media.type}
+        video={media.video}
+        image={media.image}
+        layoutId={`card-media-${id}`}
+      />
       <TagContainter>
         {tags.map((tag, index) => (
           <Chip key={index} Icon={getIcon(tag)} variant="filled">
@@ -46,7 +66,9 @@ const ArticleCollapsed = ({ tags, title, media }: Props) => {
           </Chip>
         ))}
       </TagContainter>
-      <ArticleHeading variant="small">{title}</ArticleHeading>
+      <ArticleHeading variant={variant === "small" ? "small" : "regular"}>
+        {title}
+      </ArticleHeading>
     </Card>
   );
 };

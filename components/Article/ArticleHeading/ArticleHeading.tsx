@@ -14,6 +14,7 @@ const ArticleHeadingRoot = styled("div")<Props>(
   {
     background: "var(--white)",
     position: "absolute",
+    zIndex: 2,
 
     "&::before": {
       content: " ",
@@ -48,8 +49,10 @@ const ArticleHeadingRoot = styled("div")<Props>(
 );
 
 const CustomTypography = styled(Typography)`
-  font-size: 16px;
-  line-height: 14px;
+  font-size: ${(props: { size: string }) =>
+    props.size === "small" ? "16px" : "24px"};
+  line-height: ${(props: { size: string }) =>
+    props.size === "small" ? "14px" : "auto"};
   letter-spacing: 1%;
 
   @media screen and (min-width: 768px) {
@@ -61,7 +64,11 @@ const CustomTypography = styled(Typography)`
 const ArticleHeading = ({ variant = "regular", children }: Props) => {
   return (
     <ArticleHeadingRoot variant={variant}>
-      <CustomTypography variant="h3" color="secondary">
+      <CustomTypography
+        variant="h3"
+        color="secondary"
+        size={variant === "small" ? "small" : "regular"}
+      >
         {children}
       </CustomTypography>
     </ArticleHeadingRoot>

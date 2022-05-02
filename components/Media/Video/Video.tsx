@@ -24,6 +24,7 @@ const Video = ({ url, playState }: VideoProps) => {
       playing={playState}
       volume={0}
       loop
+      playsinline
     />
   );
 };
