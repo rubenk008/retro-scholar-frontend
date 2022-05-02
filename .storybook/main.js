@@ -1,4 +1,12 @@
-const { getStoriesPaths } = require("slice-machine-ui/helpers/storybook");
+const glob = require("glob");
+
+const getStoriesPaths = () => {
+  return [
+    ".slicemachine/assets/**/*.stories.@(js|jsx|ts|tsx|svelte)",
+    "customtypes/**/*.stories.@(js|jsx|ts|tsx|svelte)",
+  ].reduce((acc, p) => (glob.sync(p).length ? [...acc, `../${p}`] : acc), []);
+};
+
 module.exports = {
   stories: [
     ...getStoriesPaths(),
@@ -16,11 +24,8 @@ module.exports = {
     // },
     reactDocgen: "none",
   },
-  addons: [
-    "@react-theming/storybook-addon",
-    "@storybook/addon-essentials",
-    // "storybook-addon-next-router",
-  ],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+  framework: "@storybook/react",
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
