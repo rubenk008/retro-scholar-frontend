@@ -3,9 +3,7 @@ import { PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
 import { linkResolver, repositoryName } from "../prismicio";
 
-import "../styles/globals.css";
-
-function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   return (
     <PrismicProvider
       linkResolver={linkResolver}
@@ -21,5 +19,3 @@ function App({ Component, pageProps }) {
     </PrismicProvider>
   );
 }
-
-export default App;

@@ -1,8 +1,20 @@
 {
-  "presets": [["next/babel"]],
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {},
+        "transform-runtime": {},
+        "styled-jsx": {},
+        "class-properties": {}
+      }
+    ]
+  ],
   "plugins": [
     "react-require",
     ["styled-components", { "ssr": false }],
-    ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-private-methods"
+    // ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]
   ]
 }
