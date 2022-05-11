@@ -3,6 +3,8 @@ import { PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
 import { linkResolver, repositoryName } from "../prismicio";
 
+import "../styles/globals.css";
+
 export default function App({ Component, pageProps }) {
   return (
     <PrismicProvider

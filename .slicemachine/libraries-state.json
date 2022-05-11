@@ -18,25 +18,33 @@
               "docURL": "...",
               "version": "sktwi1xtmkfgx8626",
               "description": "HomepageHero",
-              "primary": {
+              "primary": {},
+              "items": {
+                "category": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Category",
+                    "placeholder": "Renowed People"
+                  }
+                },
                 "title": {
                   "type": "StructuredText",
                   "config": {
-                    "single": "heading1",
                     "label": "Title",
-                    "placeholder": "This is where it all begins..."
+                    "placeholder": "Hema MElani: Actress, writer, Dancer and Politician",
+                    "allowTargetBlank": true,
+                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
                   }
                 },
-                "description": {
-                  "type": "StructuredText",
+                "thumbnail": {
+                  "type": "Image",
                   "config": {
-                    "single": "paragraph",
-                    "label": "Description",
-                    "placeholder": "A nice description of your feature"
+                    "label": "Thumbnail",
+                    "constraint": {},
+                    "thumbnails": []
                   }
                 }
               },
-              "items": {},
               "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
@@ -46,30 +54,60 @@
             "variation": "default",
             "name": "Default",
             "slice_type": "homepage_hero",
-            "items": [],
-            "primary": {
-              "title": [
-                {
-                  "type": "heading1",
-                  "text": "E-enable B2B web services",
-                  "spans": []
+            "items": [
+              {
+                "category": "disintermediate turn-key portals",
+                "title": [
+                  {
+                    "type": "paragraph",
+                    "text": "Adipisicing voluptate nostrud in sit est consectetur quis. Qui incididunt cillum aute. Quis magna et nisi fugiat ut minim nulla.",
+                    "spans": []
+                  }
+                ],
+                "thumbnail": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=900&h=500&fit=crop"
                 }
-              ],
-              "description": [
-                {
-                  "type": "paragraph",
-                  "text": "Incididunt non sunt officia sint irure labore fugiat commodo velit laboris adipisicing adipisicing ad enim officia. Consequat amet amet labore sit pariatur irure aliqua Lorem sunt non qui est. Labore quis esse ullamco veniam ipsum deserunt elit est.",
-                  "spans": []
+              },
+              {
+                "category": "syndicate killer niches",
+                "title": [
+                  {
+                    "type": "paragraph",
+                    "text": "Nostrud voluptate quis dolore incididunt incididunt non tempor et do sint cupidatat. Laborum consequat commodo velit aute reprehenderit esse velit mollit. Ad dolore mollit nisi in reprehenderit reprehenderit fugiat.",
+                    "spans": []
+                  }
+                ],
+                "thumbnail": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869?w=900&h=500&fit=crop"
                 }
-              ]
-            }
+              }
+            ],
+            "primary": {}
           }
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/rubenkuiper/Documents/retro-scholar/retro-scholar/.slicemachine/assets/slices/HomepageHero/default/preview.png",
+            "width": 800,
+            "height": 600
+          }
+        }
       },
       "single_highlighted_category_section": {
         "library": "slices",
@@ -137,7 +175,7 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {}
       },
@@ -207,7 +245,7 @@
         },
         "meta": {
           "fileName": "index",
-          "extension": "js"
+          "extension": "tsx"
         },
         "screenshotPaths": {}
       }
