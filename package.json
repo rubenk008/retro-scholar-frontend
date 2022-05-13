@@ -11,7 +11,7 @@
     "start": "next start",
     "export": "next export",
     "prepublishOnly": "node ./node_modules/sm-commons/scripts/bundle",
-    "slicemachine": "start-slicemachine --port 9999",
+    "slicemachine": "start-slicemachine --port 9997",
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s ./public -p 8888",
     "build-storybook": "build-storybook -s public"
   },

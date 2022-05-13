@@ -21,6 +21,9 @@ export default interface Props extends ComponentProps<typeof motion.div> {
   // Has drop-shadow
   hasDropShadow?: boolean;
 
+  // Has random rotation
+  hasRandomRotation?: boolean;
+
   withMargin?: boolean;
 
   cardArticleId?: number;

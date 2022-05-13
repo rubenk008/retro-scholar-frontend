@@ -6,6 +6,7 @@ import pxToRem from "../../utils/pxToRem";
 import { RichText } from "prismic-reactjs";
 
 import Card from "../../components/Card";
+import CardStack from "../../components/CardStack";
 import Media from "../../components/Media";
 import Typography from "../../components/Typography";
 
@@ -14,17 +15,18 @@ const Section = styled.section`
   width: 100vw;
   background: var(--bay-of-many);
   padding: ${pxToRem(188)} ${pxToRem(120)} ${pxToRem(60)};
+  position: relative;
 `;
 
 const SwiperSlide = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: calc(1180//1440 * 100vw);
+  max-width: calc(1800//1440 * 100vw);
   margin: 0 auto;
 
   @media screen and (min-width: 1440px) {
-    max-width: 1180px;
+    max-width: 1800px;
   }
 `;
 
@@ -32,6 +34,7 @@ const SwiperContentHeading = styled.div`
   padding-top: ${pxToRem(55)};
   max-width: calc(540 / 1440 * 100vw);
   min-width: 540px;
+  max-width: 540px;
 `;
 
 const slideCountIndicator = styled.div``;
@@ -51,15 +54,36 @@ const HomepageHero = ({ slice }) => {
             )}
           </Typography>
         </SwiperContentHeading>
-        <Card variant="outlined" hasDropShadow={true}>
-          <Media
-            type="image"
-            image={{
-              url: slice.items[0].thumbnail.url,
-              alt: slice.items[0].thumbnail.alt,
-            }}
-          />
-        </Card>
+        <CardStack onVote={(item, vote) => console.log(item.props, vote)}>
+          <Card
+            variant="outlined"
+            hasDropShadow={true}
+            hasRandomRotation={true}
+            whileTap={{ scale: 1.15 }}
+          >
+            <Media
+              type="image"
+              image={{
+                url: slice.items[0].thumbnail.url,
+                alt: slice.items[0].thumbnail.alt,
+              }}
+            />
+          </Card>
+          <Card
+            variant="outlined"
+            hasDropShadow={true}
+            hasRandomRotation={true}
+            whileTap={{ scale: 1.15 }}
+          >
+            <Media
+              type="image"
+              image={{
+                url: slice.items[1].thumbnail.url,
+                alt: slice.items[1].thumbnail.alt,
+              }}
+            />
+          </Card>
+        </CardStack>
       </SwiperSlide>
     </Section>
   );
