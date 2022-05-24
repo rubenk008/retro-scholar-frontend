@@ -146,6 +146,12 @@ const HomepageHero = ({ slice }) => {
     });
   };
 
+  // initial slide duration animation
+  useEffect(() => {
+    restartSlideDurationAnimation();
+  }, []);
+
+  // reset slide duration animation
   useEffect(() => {
     restartSlideDurationAnimation();
   }, [activeSlide]);
