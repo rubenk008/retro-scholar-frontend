@@ -21,12 +21,6 @@
         "items": {
           "category": {
             "content": "Renowed People"
-          },
-          "title": {
-            "config": {
-              "patternType": "HEADING",
-              "blocks": 1
-            }
           }
         }
       }

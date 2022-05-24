@@ -28,12 +28,10 @@
                   }
                 },
                 "title": {
-                  "type": "StructuredText",
+                  "type": "Text",
                   "config": {
                     "label": "Title",
-                    "placeholder": "Hema MElani: Actress, writer, Dancer and Politician",
-                    "allowTargetBlank": true,
-                    "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                    "placeholder": ""
                   }
                 },
                 "thumbnail": {
@@ -56,14 +54,8 @@
             "slice_type": "homepage_hero",
             "items": [
               {
-                "category": "disintermediate turn-key portals",
-                "title": [
-                  {
-                    "type": "paragraph",
-                    "text": "Adipisicing voluptate nostrud in sit est consectetur quis. Qui incididunt cillum aute. Quis magna et nisi fugiat ut minim nulla.",
-                    "spans": []
-                  }
-                ],
+                "category": "extend magnetic synergies",
+                "title": "unleash customized paradigms",
                 "thumbnail": {
                   "dimensions": {
                     "width": 900,
@@ -71,18 +63,12 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?w=900&h=500&fit=crop"
                 }
               },
               {
-                "category": "syndicate killer niches",
-                "title": [
-                  {
-                    "type": "paragraph",
-                    "text": "Nostrud voluptate quis dolore incididunt incididunt non tempor et do sint cupidatat. Laborum consequat commodo velit aute reprehenderit esse velit mollit. Ad dolore mollit nisi in reprehenderit reprehenderit fugiat.",
-                    "spans": []
-                  }
-                ],
+                "category": "syndicate synergistic eyeballs",
+                "title": "leverage user-centric communities",
                 "thumbnail": {
                   "dimensions": {
                     "width": 900,
@@ -90,7 +76,20 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=900&h=500&fit=crop"
+                }
+              },
+              {
+                "category": "synthesize out-of-the-box niches",
+                "title": "whiteboard interactive eyeballs",
+                "thumbnail": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?w=900&h=500&fit=crop"
                 }
               }
             ],

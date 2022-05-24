@@ -210,20 +210,15 @@ const CardRoot = styled(motion.div)<Props>(
         borderColor: "var(--slight-titan-white)",
         borderStyle: "solid",
         borderWidth: ["4px", "6px"],
-        width: "calc(85vmin - 3rem)",
-        height: "calc(85vmin - 3rem)",
-
-        "@media screen and (min-width: 600px)": {
-          width: "calc(22rem + 12vmin)",
-          height: "calc(22rem + 12vmin)",
-        },
+        width: "calc(288 / 414 * 100vw)",
+        height: "calc(288 / 414 * 100vw)",
 
         "@media screen and (min-width: 1024px)": {
-          width: "calc(20rem + 10vw)",
-          height: "calc(20rem + 10vw)",
+          width: "calc(500 / 1440 * 100vw)",
+          height: "calc(500 / 1440 * 100vw)",
         },
 
-        "@media screen and (min-width: 1320px)": {
+        "@media screen and (min-width: 1600px)": {
           width: "calc(20rem + 30vmin)",
           height: "calc(20rem + 30vmin)",
         },

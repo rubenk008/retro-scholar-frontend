@@ -1,19 +1,32 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import clsx from "clsx";
 import styled from "styled-components";
 import { motion, useMotionValue } from "framer-motion";
 
-const Container = styled(motion.div)`
+import CardStackProps from "./CardStack.types";
+
+const Container = styled(motion.div)<CardStackProps>`
   position: absolute;
+
+  &.hasBeenRestacked {
+    transition-delay: ${(props) => `${props.delayRestacking}ms !important`};
+    transition: transform 500ms ease-out;
+  }
+
+  &.restacked {
+    transform: translateX(100vw) !important;
+  }
 `;
 
 export const StackCardContainer = ({
   children,
-  style,
   onVote,
-  id,
+  restacked = false,
+  delayRestacking = 0,
   ...props
-}) => {
+}: CardStackProps) => {
   const cardElem = useRef(null);
+  const [hasBeenRestacked, setHasBeenRestacked] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -45,8 +58,25 @@ export const StackCardContainer = ({
     }
   };
 
+  useEffect(() => {
+    if (restacked) {
+      setHasBeenRestacked(true);
+    }
+  }, [restacked]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setHasBeenRestacked(false);
+    }, 500 + delayRestacking);
+  }, [hasBeenRestacked]);
+
   return (
     <Container
+      className={clsx(
+        restacked ? "restacked" : "",
+        hasBeenRestacked ? "hasBeenRestacked" : ""
+      )}
+      delayRestacking={delayRestacking}
       animate={dragStart.animation}
       dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
       dragElastic={1}
