@@ -23,6 +23,7 @@ const Section = styled.section`
 `;
 
 const Swiper = styled.div`
+  z-index: 2;
   position: relative;
   display: flex;
   flex-direction: column-reverse;
@@ -118,9 +119,51 @@ const SlideDurationProgress = styled(motion.div)`
   transform-origin: left center;
 `;
 
+const ScrollIndicator = styled.div`
+  z-index: 1;
+  width: calc(2 / 414 * 100vw);
+  max-width: 2px;
+  height: calc(132 / 414 * 100vw);
+  max-height: 132px;
+  position: absolute;
+  background: var(--gigas);
+  right: calc(31 / 414 * 100vw);
+  bottom: 0;
+
+  @media screen and (min-width: 1024px) {
+    width: calc(2 / 1440 * 100vw);
+    max-width: 2px;
+    height: calc(180 / 1440 * 100vw);
+    max-height: 180px;
+    right: calc(68 / 1440 * 100vw);
+    bottom: 0;
+  }
+`;
+
+const ScrollIndicatorDesc = styled.div`
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+`;
+
+const ScrollIndicatorProgress = styled(motion.div)`
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: var(--chetwode-blue);
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transform: scaleY(0.4);
+  transform-origin: center top;
+`;
+
 const HomepageHero = ({ slice }) => {
   const [activeSlide, setActiveSlide] = useState(slice.items.length - 1);
   const [slideCount, setSlideCount] = useState(1);
+  const [slideTimerEnded, setSlideTimerEnded] = useState(false);
 
   const slideDurationAnimationControls = useAnimation();
 
@@ -144,6 +187,14 @@ const HomepageHero = ({ slice }) => {
       scaleX: 1,
       transition: { ease: "linear", duration: 5 },
     });
+  };
+
+  const onEndTimerAnimation = () => {
+    setSlideTimerEnded(true);
+
+    setTimeout(() => {
+      setSlideTimerEnded(false);
+    }, 1);
   };
 
   // initial slide duration animation
@@ -172,12 +223,12 @@ const HomepageHero = ({ slice }) => {
           ))}
         </SwiperSlides>
         <CardStack
-          onVote={(itemID) => {
+          onVote={(itemID: number) => {
             const nextIndex = itemID - 1;
-
             setActiveSlide(nextIndex);
             getRevertedSliceIndex(nextIndex);
           }}
+          triggerAutoAnimation={slideTimerEnded}
         >
           {slice.items.map((sliceItem, index) => (
             <Card
@@ -206,6 +257,7 @@ const HomepageHero = ({ slice }) => {
             <SlideDurationProgress
               initial={{ scaleX: 0 }}
               animate={slideDurationAnimationControls}
+              onAnimationComplete={onEndTimerAnimation}
             />
           </SlideDuration>
           <Typography variant="h6Small" color="off-white" component={"span"}>
@@ -213,6 +265,26 @@ const HomepageHero = ({ slice }) => {
           </Typography>
         </SlideCountIndicator>
       </Swiper>
+      <ScrollIndicator>
+        <ScrollIndicatorDesc>
+          <Typography variant="h6Small" color="off-white" component={"span"}>
+            scroll
+          </Typography>
+        </ScrollIndicatorDesc>
+        <ScrollIndicatorProgress
+          animate={{
+            scaleY: [0, 1, 1, 0],
+            originY: ["0%", "0%", "100%", "100%"],
+          }}
+          transition={{
+            duration: 2,
+            type: "spring",
+            mass: 1.5,
+            stiffness: 200,
+            repeat: Infinity,
+          }}
+        />
+      </ScrollIndicator>
     </Section>
   );
 };

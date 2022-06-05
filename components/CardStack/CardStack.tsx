@@ -20,7 +20,12 @@ const Frame = styled(motion.div)`
   }
 `;
 
-const CardStack = ({ children, onVote, ...props }: CardStackProps) => {
+const CardStack = ({
+  children,
+  triggerAutoAnimation,
+  onVote,
+  ...props
+}: CardStackProps) => {
   const restoredStack = Children.toArray(children);
   const [stack, setStack] = useState(Children.toArray(children));
 
@@ -69,6 +74,9 @@ const CardStack = ({ children, onVote, ...props }: CardStackProps) => {
               onVote={() => handleVote(item)}
               restacked={isBeingRestacked}
               delayRestacking={index * 100}
+              triggerAutoAnimation={
+                isTop && triggerAutoAnimation ? true : false
+              }
             >
               {item}
             </StackCardContainer>

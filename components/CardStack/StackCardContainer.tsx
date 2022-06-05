@@ -23,10 +23,12 @@ export const StackCardContainer = ({
   onVote,
   restacked = false,
   delayRestacking = 0,
+  triggerAutoAnimation,
   ...props
 }: CardStackProps) => {
   const cardElem = useRef(null);
   const [hasBeenRestacked, setHasBeenRestacked] = useState(false);
+  const [hasBeenAutoAnimated, setHasBeenAutoAnimated] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -57,6 +59,13 @@ export const StackCardContainer = ({
       else if (info.offset.y <= -100) animateCardSwipe({ x: 0, y: -1000 });
     }
   };
+
+  useEffect(() => {
+    if (triggerAutoAnimation && !hasBeenAutoAnimated) {
+      animateCardSwipe({ x: 1500, y: 0 });
+      setHasBeenAutoAnimated(true);
+    }
+  }, [triggerAutoAnimation]);
 
   useEffect(() => {
     if (restacked) {
