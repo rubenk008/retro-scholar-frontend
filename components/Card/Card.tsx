@@ -210,13 +210,28 @@ const CardRoot = styled(motion.div)<Props>(
         borderColor: "var(--slight-titan-white)",
         borderStyle: "solid",
         borderWidth: ["4px", "6px"],
-        height: ["calc((288/414) * 100vw)", "calc((496/1440) * 100vw)"],
-        width: ["calc((288/414) * 100vw)", "calc((496/1440) * 100vw)"],
-        maxHeight: "496px",
-        maxWidth: "496px",
+        width: "calc(288 / 414 * 100vw)",
+        height: "calc(288 / 414 * 100vw)",
+
+        "@media screen and (min-width: 1024px)": {
+          width: "calc(500 / 1440 * 100vw)",
+          height: "calc(500 / 1440 * 100vw)",
+        },
+
+        "@media screen and (min-width: 1600px)": {
+          width: "calc(20rem + 30vmin)",
+          height: "calc(20rem + 30vmin)",
+        },
 
         "&.hasDropShadow": {
           boxShadow: "0px 8px 27px 4px rgba(9,25,189,0.2)",
+        },
+
+        "&.hasRandomRotation": {
+          transform: () => {
+            let rotation = Math.random() * (5 - -5) + -5;
+            return `rotate(${rotation}deg)`;
+          },
         },
       },
       quiz: {
@@ -239,13 +254,19 @@ const Card = ({
   className,
   children,
   hasDropShadow = false,
+  hasRandomRotation = false,
   ...props
 }: Props) => {
   return (
     <CardRoot
       variant={variant}
       withMargin={withMargin}
-      className={clsx(className, hasDropShadow ? "hasDropShadow" : "", size)}
+      className={clsx(
+        className,
+        hasDropShadow ? "hasDropShadow" : "",
+        hasRandomRotation ? "hasRandomRotation" : "",
+        size
+      )}
       {...props}
     >
       {variant === "elevated" && (

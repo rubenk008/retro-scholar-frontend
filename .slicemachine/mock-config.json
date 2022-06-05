@@ -14,6 +14,18 @@
           }
         }
       }
-    }
+    },
+    "HomepageHero": {
+      "default": {
+        "primary": {},
+        "items": {
+          "category": {
+            "content": "Renowed People"
+          }
+        }
+      }
+    },
+    "SingleHighlightedCategorySection": {},
+    "TopCategoriesSection": {}
   }
 }

@@ -4,19 +4,13 @@ import clsx from "clsx";
 import styled from "styled-components";
 import { variant } from "styled-system";
 
+import pxToRem from "../../utils/pxToRem";
+
 import Props from "./Typography.types";
-
-const fontSize = 16;
-
-const htmlFontSize = 16;
-
-const coef = fontSize / 16;
 
 const round = (value) => {
   return Math.round(value * 1e5) / 1e5;
 };
-
-const pxToRem = (size: number) => `${(size / htmlFontSize) * coef}rem`;
 
 const letterSpacing = (size: number, spacing: number) =>
   `${round(spacing / size)}em`;

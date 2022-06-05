@@ -1,0 +1,41 @@
+{
+  "id": "homepage_hero",
+  "type": "SharedSlice",
+  "name": "HomepageHero",
+  "description": "HomepageHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "HomepageHero",
+      "primary": {},
+      "items": {
+        "category": {
+          "type": "Text",
+          "config": {
+            "label": "Category",
+            "placeholder": "Renowed People"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "thumbnail": {
+          "type": "Image",
+          "config": {
+            "label": "Thumbnail",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

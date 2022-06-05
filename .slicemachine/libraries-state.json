@@ -1,0 +1,253 @@
+{
+  "slices": {
+    "components": {
+      "homepage_hero": {
+        "library": "slices",
+        "id": "homepage_hero",
+        "name": "HomepageHero",
+        "description": "HomepageHero",
+        "model": {
+          "id": "homepage_hero",
+          "type": "SharedSlice",
+          "name": "HomepageHero",
+          "description": "HomepageHero",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "HomepageHero",
+              "primary": {},
+              "items": {
+                "category": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Category",
+                    "placeholder": "Renowed People"
+                  }
+                },
+                "title": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Title",
+                    "placeholder": ""
+                  }
+                },
+                "thumbnail": {
+                  "type": "Image",
+                  "config": {
+                    "label": "Thumbnail",
+                    "constraint": {},
+                    "thumbnails": []
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "homepage_hero",
+            "items": [
+              {
+                "category": "extend magnetic synergies",
+                "title": "unleash customized paradigms",
+                "thumbnail": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?w=900&h=500&fit=crop"
+                }
+              },
+              {
+                "category": "syndicate synergistic eyeballs",
+                "title": "leverage user-centric communities",
+                "thumbnail": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=900&h=500&fit=crop"
+                }
+              },
+              {
+                "category": "synthesize out-of-the-box niches",
+                "title": "whiteboard interactive eyeballs",
+                "thumbnail": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?w=900&h=500&fit=crop"
+                }
+              }
+            ],
+            "primary": {}
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/rubenkuiper/Documents/retro-scholar/retro-scholar/.slicemachine/assets/slices/HomepageHero/default/preview.png",
+            "width": 800,
+            "height": 600
+          }
+        }
+      },
+      "single_highlighted_category_section": {
+        "library": "slices",
+        "id": "single_highlighted_category_section",
+        "name": "SingleHighlightedCategorySection",
+        "description": "SingleHighlightedCategorySection",
+        "model": {
+          "id": "single_highlighted_category_section",
+          "type": "SharedSlice",
+          "name": "SingleHighlightedCategorySection",
+          "description": "SingleHighlightedCategorySection",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "SingleHighlightedCategorySection",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "heading1",
+                    "label": "Title",
+                    "placeholder": "This is where it all begins..."
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "paragraph",
+                    "label": "Description",
+                    "placeholder": "A nice description of your feature"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "single_highlighted_category_section",
+            "items": [],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading1",
+                  "text": "Envisioneer efficient interfaces",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Nostrud aliqua nisi cupidatat aute.",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {}
+      },
+      "top_categories_section": {
+        "library": "slices",
+        "id": "top_categories_section",
+        "name": "TopCategoriesSection",
+        "description": "TopCategoriesSection",
+        "model": {
+          "id": "top_categories_section",
+          "type": "SharedSlice",
+          "name": "TopCategoriesSection",
+          "description": "TopCategoriesSection",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "TopCategoriesSection",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "heading1",
+                    "label": "Title",
+                    "placeholder": "This is where it all begins..."
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "paragraph",
+                    "label": "Description",
+                    "placeholder": "A nice description of your feature"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "top_categories_section",
+            "items": [],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading1",
+                  "text": "Generate cross-platform supply-chains",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Incididunt exercitation elit ullamco sunt consectetur amet. Irure elit magna veniam.",
+                  "spans": []
+                }
+              ]
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "tsx"
+        },
+        "screenshotPaths": {}
+      }
+    }
+  }
+}
