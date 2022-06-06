@@ -1,0 +1,41 @@
+{
+  "id": "story_slide",
+  "type": "SharedSlice",
+  "name": "StorySlide",
+  "description": "StorySlide",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "StorySlide",
+      "primary": {},
+      "items": {
+        "Heading": {
+          "type": "Text",
+          "config": {
+            "label": "Heading",
+            "placeholder": ""
+          }
+        },
+        "Caption": {
+          "type": "Text",
+          "config": {
+            "label": "Caption",
+            "placeholder": ""
+          }
+        },
+        "Media": {
+          "type": "Image",
+          "config": {
+            "label": "Media",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

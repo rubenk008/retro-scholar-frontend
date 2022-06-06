@@ -26,6 +26,15 @@
       }
     },
     "SingleHighlightedCategorySection": {},
-    "TopCategoriesSection": {}
+    "TopCategoriesSection": {},
+    "StorySlide": {
+      "default": {
+        "primary": {}
+      }
+    }
+  },
+  "_cts": {
+    "home-page": {},
+    "story-page": {}
   }
 }
