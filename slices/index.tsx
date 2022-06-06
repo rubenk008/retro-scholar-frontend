@@ -2,16 +2,19 @@
 
 import HomepageHero from './HomepageHero';
 import SingleHighlightedCategorySection from './SingleHighlightedCategorySection';
+import StorySlide from './StorySlide';
 import TopCategoriesSection from './TopCategoriesSection';
 
 export {
 	HomepageHero,
 	SingleHighlightedCategorySection,
+	StorySlide,
 	TopCategoriesSection,
 };
 
 export const components = {
 	homepage_hero: HomepageHero,
 	single_highlighted_category_section: SingleHighlightedCategorySection,
+	story_slide: StorySlide,
 	top_categories_section: TopCategoriesSection,
 };
