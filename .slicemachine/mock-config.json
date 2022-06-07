@@ -29,7 +29,8 @@
     "TopCategoriesSection": {},
     "StorySlide": {
       "default": {
-        "primary": {}
+        "primary": {},
+        "items": {}
       }
     }
   },

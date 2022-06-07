@@ -12,21 +12,21 @@
       "description": "StorySlide",
       "primary": {},
       "items": {
-        "Heading": {
+        "heading": {
           "type": "Text",
           "config": {
             "label": "Heading",
             "placeholder": ""
           }
         },
-        "Caption": {
+        "caption": {
           "type": "Text",
           "config": {
             "label": "Caption",
             "placeholder": ""
           }
         },
-        "Media": {
+        "media": {
           "type": "Image",
           "config": {
             "label": "Media",

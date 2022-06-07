@@ -197,21 +197,21 @@
               "description": "StorySlide",
               "primary": {},
               "items": {
-                "Heading": {
+                "heading": {
                   "type": "Text",
                   "config": {
                     "label": "Heading",
                     "placeholder": ""
                   }
                 },
-                "Caption": {
+                "caption": {
                   "type": "Text",
                   "config": {
                     "label": "Caption",
                     "placeholder": ""
                   }
                 },
-                "Media": {
+                "media": {
                   "type": "Image",
                   "config": {
                     "label": "Media",
@@ -231,22 +231,9 @@
             "slice_type": "story_slide",
             "items": [
               {
-                "Heading": "benchmark integrated niches",
-                "Caption": "evolve granular schemas",
-                "Media": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
-                }
-              },
-              {
-                "Heading": "deploy virtual infomediaries",
-                "Caption": "leverage web-enabled relationships",
-                "Media": {
+                "heading": "scale world-class initiatives",
+                "caption": "grow strategic metrics",
+                "media": {
                   "dimensions": {
                     "width": 900,
                     "height": 500
@@ -257,42 +244,68 @@
                 }
               },
               {
-                "Heading": "disintermediate compelling mindshare",
-                "Caption": "recontextualize holistic e-commerce",
-                "Media": {
+                "heading": "embrace interactive technologies",
+                "caption": "generate user-centric architectures",
+                "media": {
                   "dimensions": {
                     "width": 900,
                     "height": 500
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468?w=900&h=500&fit=crop"
                 }
               },
               {
-                "Heading": "scale 24/7 paradigms",
-                "Caption": "e-enable granular deliverables",
-                "Media": {
+                "heading": "exploit visionary partnerships",
+                "caption": "morph holistic infrastructures",
+                "media": {
                   "dimensions": {
                     "width": 900,
                     "height": 500
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
                 }
               },
               {
-                "Heading": "implement innovative schemas",
-                "Caption": "incubate cutting-edge deliverables",
-                "Media": {
+                "heading": "empower leading-edge schemas",
+                "caption": "expedite real-time deliverables",
+                "media": {
                   "dimensions": {
                     "width": 900,
                     "height": 500
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
+                }
+              },
+              {
+                "heading": "visualize integrated mindshare",
+                "caption": "e-enable enterprise vortals",
+                "media": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?w=900&h=500&fit=crop"
+                }
+              },
+              {
+                "heading": "synergize dynamic networks",
+                "caption": "exploit proactive eyeballs",
+                "media": {
+                  "dimensions": {
+                    "width": 900,
+                    "height": 500
+                  },
+                  "alt": "Placeholder image",
+                  "copyright": null,
+                  "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=900&h=500&fit=crop"
                 }
               }
             ],
@@ -307,7 +320,7 @@
           "default": {
             "path": "/Users/rubenkuiper/Documents/retro-scholar/retro-scholar/.slicemachine/assets/slices/StorySlide/default/preview.png",
             "width": 800,
-            "height": 74
+            "height": 600
           }
         }
       },
