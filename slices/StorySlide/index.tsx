@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import Media from "../../components/Media";
 import Typography from "../../components/Typography";
+import DurationIndicator from "../../components/DurationIndicator";
 
 const SliderWrapper = styled(motion.div)`
   position: relative;
@@ -25,7 +26,6 @@ const Slide = styled.div`
   height: 100%;
   top: 0;
   left: 0;
-
   opacity: 0;
   transition: opacity 500ms;
 
@@ -97,8 +97,77 @@ const SlideText = styled.div`
   }
 `;
 
+const DurationWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(32 / 414 * 100vw);
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-column-gap: 8px;
+  z-index: 4;
+  padding: 0 calc(32 / 414 * 100vw);
+
+  @media screen and (min-width: 1024px) {
+    width: calc(300 / 1440 * 100vw);
+    max-width: 300px;
+    padding: 0;
+    left: calc(40 / 1440 * 100vw);
+    top: calc(40 / 1440 * 100vw);
+  }
+`;
+
 const StorySlide = ({ storyId = 0, slice }) => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [playedSlides, setPlayedSlides] = useState([]);
+  const [pausingSlide, setPauseSlide] = useState(false);
+
+  let slidesDurationArray = [];
+
+  const updateActiveSlideOnEndTimer = () => {
+    if (activeSlide < slice.items.length - 1) {
+      const updatedPlayedSlidesArray = playedSlides.map((slide) =>
+        slide.slideIndex === activeSlide ? { ...slide, hasPlayed: true } : slide
+      );
+      setPlayedSlides(updatedPlayedSlidesArray);
+
+      setActiveSlide(activeSlide + 1);
+    }
+
+    if (activeSlide === slice.items.length - 1) {
+      const updatedPlayedSlidesArray = playedSlides.map((slide) =>
+        slide.slideIndex === activeSlide ? { ...slide, hasPlayed: true } : slide
+      );
+      setPlayedSlides(updatedPlayedSlidesArray);
+    }
+  };
+
+  const pauseSlide = () => {
+    setPauseSlide(true);
+  };
+
+  const playSlide = () => {
+    setPauseSlide(false);
+  };
+
+  useEffect(() => {
+    setActiveSlide(0);
+  }, []);
+
+  useEffect(() => {
+    if (slice.items.length > 0) {
+      slidesDurationArray = [];
+
+      let slidesPlayedStateArray = [];
+
+      slice.items.map((sliceItem, index) => {
+        slidesDurationArray.push(5);
+        slidesPlayedStateArray.push({ slideIndex: index, hasPlayed: false });
+      });
+
+      setPlayedSlides(slidesPlayedStateArray);
+    }
+  }, [slice]);
 
   return (
     <SliderWrapper layoutId={`card-container-${storyId}`}>
@@ -106,6 +175,8 @@ const StorySlide = ({ storyId = 0, slice }) => {
         <Slide
           key={`key-${index + 1}`}
           className={index === activeSlide ? "isActive" : ""}
+          onMouseDown={pauseSlide}
+          onMouseUp={playSlide}
         >
           <SlideImage>
             <Media
@@ -130,6 +201,21 @@ const StorySlide = ({ storyId = 0, slice }) => {
           </SlideText>
         </Slide>
       ))}
+
+      <DurationWrapper>
+        {slice.items.map((sliceItem, index) => (
+          <DurationIndicator
+            key={`key-${index + 1}`}
+            playAnimation={index === activeSlide ? true : false}
+            pauseAnimation={
+              index === activeSlide && pausingSlide ? true : false
+            }
+            restartAnimation={false}
+            durationOfSlide={slidesDurationArray[index]}
+            endOfAnimation={updateActiveSlideOnEndTimer}
+          />
+        ))}
+      </DurationWrapper>
     </SliderWrapper>
   );
 };

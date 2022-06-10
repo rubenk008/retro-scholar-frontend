@@ -40,7 +40,8 @@
     "storybook-addon-state": "^1.0.3",
     "styled-components": "^5.3.3",
     "styled-system": "^5.1.5",
-    "tslib": "2.1.0"
+    "tslib": "2.1.0",
+    "usehooks-ts": "^2.5.4"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.4.22",

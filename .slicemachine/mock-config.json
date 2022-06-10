@@ -30,7 +30,11 @@
     "StorySlide": {
       "default": {
         "primary": {},
-        "items": {}
+        "items": {
+          "slideDuration": {
+            "content": 5
+          }
+        }
       }
     }
   },
