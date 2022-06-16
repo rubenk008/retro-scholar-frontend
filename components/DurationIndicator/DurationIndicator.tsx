@@ -4,8 +4,11 @@ import { motion, useAnimation } from "framer-motion";
 import { useCountdown } from "usehooks-ts";
 
 interface OwnProps {
+  slideNumber?: number;
   playAnimation?: boolean;
   pauseAnimation?: boolean;
+  stoppingAnimation?: boolean;
+  resetAnimation?: boolean;
   restartAnimation?: boolean;
   durationOfSlide?: number;
   endOfAnimation?: () => void;
@@ -39,7 +42,10 @@ const DurationIndicatorProgress = styled(motion.div)`
 `;
 
 const DurationIndicator = ({
+  slideNumber = 0,
   playAnimation = false,
+  stoppingAnimation = false,
+  resetAnimation = false,
   restartAnimation = false,
   pauseAnimation = false,
   durationOfSlide = 5,
@@ -47,13 +53,19 @@ const DurationIndicator = ({
 }: OwnProps) => {
   const durationAnimationControls = useAnimation();
   const [hasBeenPaused, setHasBeenPaused] = useState(false);
-  const [count, { start, stop }] = useCountdown({
+  const [count, { start, stop, reset }] = useCountdown({
     seconds: durationOfSlide,
     interval: 1000,
     isIncrement: false,
   });
 
+  const resetingAnimation = () => {
+    durationAnimationControls.set({ scaleX: 0.0 });
+  };
+
   const startAnimation = () => {
+    console.log("starting animation");
+    reset();
     start();
     durationAnimationControls.set({ scaleX: 0.0 });
     durationAnimationControls.start({
@@ -63,6 +75,7 @@ const DurationIndicator = ({
   };
 
   const stopAnimation = () => {
+    console.log("stop animation of slide", slideNumber);
     durationAnimationControls.stop();
     stop();
   };
@@ -87,16 +100,34 @@ const DurationIndicator = ({
   }, [pauseAnimation]);
 
   useEffect(() => {
+    console.log(`play state of slide ${slideNumber}`, playAnimation);
+
     if (playAnimation) {
       startAnimation();
     }
   }, [playAnimation]);
 
   useEffect(() => {
+    if (stoppingAnimation) {
+      stopAnimation();
+    }
+  }, [stoppingAnimation]);
+
+  useEffect(() => {
     if (restartAnimation) {
       startAnimation();
     }
   }, [restartAnimation]);
+
+  useEffect(() => {
+    if (resetAnimation) {
+      resetingAnimation();
+    }
+  }, [resetAnimation]);
+
+  useEffect(() => {
+    console.log(`count of slide ${slideNumber}`, count);
+  }, [count]);
 
   return (
     <DurationIndicatorWrapper>

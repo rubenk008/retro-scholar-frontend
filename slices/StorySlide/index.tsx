@@ -118,7 +118,7 @@ const DurationWrapper = styled.div`
 `;
 
 const SlideNavigation = styled.div`
-  /* background: rgba(255,255,255,0); */
+  background: rgba(255, 255, 255, 0);
   position: absolute;
   width: 50%;
   height: 100%;
@@ -126,15 +126,17 @@ const SlideNavigation = styled.div`
   bottom: 0;
   z-index: 9999;
 
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+
   &.next {
     right: 0;
-    background: red;
     left: auto;
   }
 
   &.prev {
     right: auto;
-    background: blue;
     left: 0;
   }
 `;
@@ -144,6 +146,8 @@ const StorySlide = ({ storyId = 0, slice }) => {
   const [playedSlides, setPlayedSlides] = useState([]);
   const [pausingSlide, setPauseSlide] = useState(false);
   const [longTouchActive, setLongTouchActive] = useState(false);
+  const [direction, setDirection] = useState("");
+  const [navigationClicked, setNavigationClicked] = useState(false);
 
   let slidesDurationArray = [];
 
@@ -173,18 +177,34 @@ const StorySlide = ({ storyId = 0, slice }) => {
     setPauseSlide(false);
   };
 
-  const nextSlide = () => {};
+  const nextSlide = () => {
+    if (activeSlide < slice.items.length - 1) {
+      setActiveSlide(activeSlide + 1);
+    }
 
-  const prevSlide = () => [];
+    setNavigationClicked(false);
+    setDirection("");
+  };
+
+  const prevSlide = () => {
+    if (activeSlide > 0) {
+      setActiveSlide(activeSlide - 1);
+    } else {
+      setActiveSlide(0);
+    }
+    setNavigationClicked(false);
+    setDirection("");
+  };
 
   let timer;
 
   const onLongTouch = () => {
-    pauseSlide();
+    // pauseSlide();
     setLongTouchActive(true);
   };
 
-  const onTouchStart = () => {
+  const onTouchStart = (dir) => {
+    setDirection(dir);
     timer = setTimeout(onLongTouch, 200);
   };
 
@@ -192,6 +212,16 @@ const StorySlide = ({ storyId = 0, slice }) => {
     if (longTouchActive) {
       setLongTouchActive(false);
       playSlide();
+    }
+
+    if (direction === "left") {
+      setNavigationClicked(true);
+      prevSlide();
+    }
+
+    if (direction === "right") {
+      setNavigationClicked(true);
+      nextSlide();
     }
 
     if (timer) {
@@ -217,6 +247,10 @@ const StorySlide = ({ storyId = 0, slice }) => {
       setPlayedSlides(slidesPlayedStateArray);
     }
   }, [slice]);
+
+  useEffect(() => {
+    console.log("currrent slide", activeSlide);
+  }, [activeSlide]);
 
   return (
     <SliderWrapper layoutId={`card-container-${storyId}`}>
@@ -255,11 +289,18 @@ const StorySlide = ({ storyId = 0, slice }) => {
         {slice.items.map((sliceItem, index) => (
           <DurationIndicator
             key={`key-${index + 1}`}
+            slideNumber={index}
             playAnimation={index === activeSlide ? true : false}
+            stoppingAnimation={index !== activeSlide ? true : false}
             pauseAnimation={
               index === activeSlide && pausingSlide ? true : false
             }
-            restartAnimation={false}
+            resetAnimation={
+              navigationClicked && index > activeSlide ? true : false
+            }
+            // restartAnimation={
+            //   index === activeSlide && direction === "left" ? true : false
+            // }
             durationOfSlide={slidesDurationArray[index]}
             endOfAnimation={updateActiveSlideOnEndTimer}
           />
@@ -267,12 +308,12 @@ const StorySlide = ({ storyId = 0, slice }) => {
       </DurationWrapper>
       <SlideNavigation
         className="prev"
-        onTouchStart={onTouchStart}
+        onTouchStart={() => onTouchStart("left")}
         onTouchEnd={onTouchEnd}
       />
       <SlideNavigation
         className="next"
-        onTouchStart={onTouchStart}
+        onTouchStart={() => onTouchStart("right")}
         onTouchEnd={onTouchEnd}
       />
     </SliderWrapper>
