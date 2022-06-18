@@ -11,6 +11,7 @@ interface OwnProps {
   resetAnimation?: boolean;
   restartAnimation?: boolean;
   durationOfSlide?: number;
+  setComplete?: boolean;
   endOfAnimation?: () => void;
 }
 
@@ -50,6 +51,7 @@ const DurationIndicator = ({
   pauseAnimation = false,
   durationOfSlide = 5,
   endOfAnimation,
+  setComplete = false,
 }: OwnProps) => {
   const durationAnimationControls = useAnimation();
   const [hasBeenPaused, setHasBeenPaused] = useState(false);
@@ -60,11 +62,10 @@ const DurationIndicator = ({
   });
 
   const resetingAnimation = () => {
-    durationAnimationControls.set({ scaleX: 0.0 });
+    durationAnimationControls.set({ scaleX: setComplete ? 1.0 : 0.0 });
   };
 
   const startAnimation = () => {
-    console.log("starting animation");
     reset();
     start();
     durationAnimationControls.set({ scaleX: 0.0 });
@@ -74,8 +75,13 @@ const DurationIndicator = ({
     });
   };
 
+  const pauseThisAnimation = () => {
+    durationAnimationControls.stop();
+    stop();
+  };
+
   const stopAnimation = () => {
-    console.log("stop animation of slide", slideNumber);
+    durationAnimationControls.set({ scaleX: setComplete ? 1.0 : 0.0 });
     durationAnimationControls.stop();
     stop();
   };
@@ -91,7 +97,7 @@ const DurationIndicator = ({
   useEffect(() => {
     if (pauseAnimation) {
       setHasBeenPaused(true);
-      stopAnimation();
+      pauseThisAnimation();
     }
     if (!pauseAnimation && hasBeenPaused) {
       setHasBeenPaused(false);
@@ -100,8 +106,6 @@ const DurationIndicator = ({
   }, [pauseAnimation]);
 
   useEffect(() => {
-    console.log(`play state of slide ${slideNumber}`, playAnimation);
-
     if (playAnimation) {
       startAnimation();
     }
@@ -125,14 +129,10 @@ const DurationIndicator = ({
     }
   }, [resetAnimation]);
 
-  useEffect(() => {
-    console.log(`count of slide ${slideNumber}`, count);
-  }, [count]);
-
   return (
     <DurationIndicatorWrapper>
       <DurationIndicatorProgress
-        initial={{ scaleX: 0.0 }}
+        initial={{ scaleX: setComplete ? 1.0 : 0.0 }}
         animate={durationAnimationControls}
         onAnimationComplete={() => {
           endOfAnimation();
