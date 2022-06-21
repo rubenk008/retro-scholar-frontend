@@ -33,6 +33,7 @@ const Slide = styled.div`
   left: 0;
   opacity: 0;
   transition: opacity 500ms;
+  overflow: hidden;
 
   &.isActive {
     transition-delay: 100ms;
@@ -40,7 +41,7 @@ const Slide = styled.div`
   }
 `;
 
-const SlideImage = styled.div`
+const SlideImage = styled(motion.div)`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -75,7 +76,7 @@ const SlideImageOverlay = styled.div`
   }
 `;
 
-const SlideText = styled.div`
+const SlideText = styled(motion.div)`
   position: absolute;
   z-index: 1;
   bottom: calc(68 / 414 * 100vw);
@@ -310,17 +311,40 @@ const StorySlide = ({ storyId = 0, slice }) => {
           onMouseUp={playSlide}
         >
           <SlideImage>
-            <Media
-              type="image"
-              image={{
-                url: sliceItem.media.url,
-                alt: sliceItem.media.alt,
+            <motion.div
+              initial={{ scale: 1 }}
+              animate={{
+                scale: index === activeSlide ? 1.08 : 1,
               }}
-              layoutId={index === 0 ? `card-media-${storyId}` : ""}
-            />
+              transition={{
+                duration: 5,
+                ease: "linear",
+              }}
+            >
+              <Media
+                type="image"
+                image={{
+                  url: sliceItem.media.url,
+                  alt: sliceItem.media.alt,
+                }}
+                layoutId={index === 0 ? `card-media-${storyId}` : ""}
+              />
+            </motion.div>
+
             <SlideImageOverlay />
           </SlideImage>
-          <SlideText>
+          <SlideText
+            initial={{ translateY: "20px", opacity: 0 }}
+            animate={{
+              translateY: index === activeSlide ? "0px" : "20px",
+              opacity: index === activeSlide ? 1 : 0,
+            }}
+            transition={{
+              duration: 0.6,
+              ease: "easeInOut",
+              delay: index === activeSlide ? 0.2 : 0,
+            }}
+          >
             <Typography color="white" variant="h4Alt" component={"h2"}>
               {sliceItem.heading ? sliceItem.heading : "Lorem ipsum"}
             </Typography>
@@ -337,7 +361,6 @@ const StorySlide = ({ storyId = 0, slice }) => {
         {slice.items.map((sliceItem, index) => (
           <DurationIndicator
             key={`key-${index + 1}`}
-            slideNumber={index}
             playAnimation={index === activeSlide ? true : false}
             stoppingAnimation={index !== activeSlide ? true : false}
             pauseAnimation={
@@ -369,10 +392,13 @@ const StorySlide = ({ storyId = 0, slice }) => {
             <Arrow height={40} width={40} style={{ transform: "scaleX(-1)" }} />
           }
         />
-        <IconButton
-          onClick={nextSlide}
-          icon={<Arrow height={40} width={40} />}
-        />
+
+        {activeSlide < slice.items.length - 1 && (
+          <IconButton
+            onClick={nextSlide}
+            icon={<Arrow height={40} width={40} />}
+          />
+        )}
       </DesktopSlideNavigationWrapper>
       <CloseButton>
         <IconButton

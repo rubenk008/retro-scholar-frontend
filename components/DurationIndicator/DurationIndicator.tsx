@@ -43,7 +43,6 @@ const DurationIndicatorProgress = styled(motion.div)`
 `;
 
 const DurationIndicator = ({
-  slideNumber = 0,
   playAnimation = false,
   stoppingAnimation = false,
   resetAnimation = false,
