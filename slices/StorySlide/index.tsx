@@ -1,10 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import Media from "../../components/Media";
 import Typography from "../../components/Typography";
 import DurationIndicator from "../../components/DurationIndicator";
+import IconButton from "../../components/IconButton";
+import Arrow from "../../components/icons/Arrow";
+import Cross from "../../components/icons/Cross";
+import prevDomainSelf from "../../utils/prevDomainSelf";
 
 const SliderWrapper = styled(motion.div)`
   position: relative;
@@ -141,17 +146,44 @@ const SlideNavigation = styled.div`
   }
 `;
 
+const DesktopSlideNavigationWrapper = styled.div`
+  display: none;
+  justify-content: space-between;
+  position: absolute;
+  z-index: 99999;
+  width: calc(600 / 1440 * 100vw);
+  max-width: 600px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
+`;
+
+const CloseButton = styled.div`
+  position: absolute;
+  z-index: 99999;
+  top: calc(32 / 414 * 100vw);
+  right: calc(32 / 414 * 100vw);
+
+  @media screen and (min-width: 1024px) {
+    top: calc(32 / 1440 * 100vw);
+    right: calc(32 / 1440 * 100vw);
+  }
+`;
+
 const StorySlide = ({ storyId = 0, slice }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [playedSlides, setPlayedSlides] = useState([]);
   const [pausingSlide, setPauseSlide] = useState(false);
-  // const [longTouchActive, setLongTouchActive] = useState(false);
   const [direction, setDirection] = useState("");
   const [navigationClicked, setNavigationClicked] = useState(false);
-  // const [action, setAction] = useState("");
 
   const timerRef = useRef(null);
   const isLongPress = useRef(null);
+  const router = useRouter();
 
   let slidesDurationArray = [];
 
@@ -236,6 +268,19 @@ const StorySlide = ({ storyId = 0, slice }) => {
     return;
   };
 
+  const handleClosePage = (e) => {
+    e.preventDefault();
+    const prevIsDomainSelf = prevDomainSelf(router.basePath);
+
+    if (prevIsDomainSelf) {
+      router.back;
+    }
+
+    if (!prevIsDomainSelf) {
+      router.push("/category");
+    }
+  };
+
   useEffect(() => {
     setActiveSlide(0);
   }, []);
@@ -317,6 +362,24 @@ const StorySlide = ({ storyId = 0, slice }) => {
         onTouchStart={() => onTouchStart("right")}
         onTouchEnd={onTouchEnd}
       />
+      <DesktopSlideNavigationWrapper>
+        <IconButton
+          onClick={prevSlide}
+          icon={
+            <Arrow height={40} width={40} style={{ transform: "scaleX(-1)" }} />
+          }
+        />
+        <IconButton
+          onClick={nextSlide}
+          icon={<Arrow height={40} width={40} />}
+        />
+      </DesktopSlideNavigationWrapper>
+      <CloseButton>
+        <IconButton
+          icon={<Cross color="#283086" />}
+          onClick={(e) => handleClosePage(e)}
+        />
+      </CloseButton>
     </SliderWrapper>
   );
 };
