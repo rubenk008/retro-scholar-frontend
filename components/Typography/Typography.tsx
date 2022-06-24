@@ -17,12 +17,10 @@ const letterSpacing = (size: number, spacing: number) =>
 
 const TypographyRoot = styled("span")<Props>(
   {
-    appearance: "none",
+    all: "unset",
     padding: "0",
     margin: "0",
     display: "flex",
-    marginBlockStart: 0,
-    marginBlockEnd: 0,
 
     "&.primary": {
       color: "var(--cranberry)",
@@ -75,6 +73,12 @@ const TypographyRoot = styled("span")<Props>(
       h4: {
         fontFamily: "var(--font-rift-soft-bold)",
         fontSize: [pxToRem(32), pxToRem(44)],
+        letterSpacing: [letterSpacing(32, 0.48), letterSpacing(44, 0.66)],
+        lineHeight: [0.96, 0.9],
+      },
+      h4Alt: {
+        fontFamily: "var(--font-rift-soft-bold)",
+        fontSize: [pxToRem(36), pxToRem(44)],
         letterSpacing: [letterSpacing(32, 0.48), letterSpacing(44, 0.66)],
         lineHeight: [0.96, 0.9],
       },

@@ -12,26 +12,33 @@
       "description": "StorySlide",
       "primary": {},
       "items": {
-        "Heading": {
+        "heading": {
           "type": "Text",
           "config": {
             "label": "Heading",
             "placeholder": ""
           }
         },
-        "Caption": {
+        "caption": {
           "type": "Text",
           "config": {
             "label": "Caption",
             "placeholder": ""
           }
         },
-        "Media": {
+        "media": {
           "type": "Image",
           "config": {
             "label": "Media",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "slideDuration": {
+          "type": "Number",
+          "config": {
+            "label": "Slide Duration",
+            "placeholder": "5"
           }
         }
       },

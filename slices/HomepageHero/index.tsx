@@ -212,7 +212,10 @@ const HomepageHero = ({ slice }) => {
       <Swiper>
         <SwiperSlides>
           {slice.items.map((sliceItem, index) => (
-            <SwiperContent className={index === activeSlide ? "isActive" : ""}>
+            <SwiperContent
+              key={`${index}-key`}
+              className={index === activeSlide ? "isActive" : ""}
+            >
               <Typography variant="subtitle3" component={"h2"}>
                 {sliceItem.category}
               </Typography>

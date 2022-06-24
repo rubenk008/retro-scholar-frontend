@@ -29,7 +29,12 @@
     "TopCategoriesSection": {},
     "StorySlide": {
       "default": {
-        "primary": {}
+        "primary": {},
+        "items": {
+          "slideDuration": {
+            "content": 5
+          }
+        }
       }
     }
   },
