@@ -32,11 +32,9 @@ const Slide = styled.div`
   top: 0;
   left: 0;
   opacity: 0;
-  transition: opacity 500ms;
   overflow: hidden;
 
   &.isActive {
-    transition-delay: 100ms;
     opacity: 1;
   }
 `;
@@ -312,9 +310,12 @@ const StorySlide = ({ storyId = 0, slice }) => {
         >
           <SlideImage>
             <motion.div
-              initial={{ scale: 1 }}
+              style={{ width: "100%", height: "100%" }}
+              initial={{ scale: 1, transform: "translate(0px)" }}
               animate={{
                 scale: index === activeSlide ? 1.08 : 1,
+                transform:
+                  index === activeSlide ? "translate(20px)" : "translate(0px)",
               }}
               transition={{
                 duration: 5,
@@ -342,7 +343,7 @@ const StorySlide = ({ storyId = 0, slice }) => {
             transition={{
               duration: 0.6,
               ease: "easeInOut",
-              delay: index === activeSlide ? 0.2 : 0,
+              delay: index === activeSlide ? 0 : 0,
             }}
           >
             <Typography color="white" variant="h4Alt" component={"h2"}>
