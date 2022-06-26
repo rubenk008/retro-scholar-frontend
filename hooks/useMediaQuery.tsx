@@ -20,3 +20,5 @@ export function useMediaQuery(query) {
 
 export const useIsSmall = () => useMediaQuery("(min-width: 480px)");
 export const useIsMedium = () => useMediaQuery("(min-width: 768px)");
+export const useIsLarge = () => useMediaQuery("(min-width: 1024px)");
+export const useIsXtraLarge = () => useMediaQuery("(min-width: 1440px)");

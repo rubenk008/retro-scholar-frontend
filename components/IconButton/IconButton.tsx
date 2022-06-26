@@ -7,8 +7,8 @@ import Props from "./IconButton.types";
 const StyledIconButton = styled(motion.button)`
   cursor: pointer;
   border: none;
-  height: 40px;
-  width: 40px;
+  height: ${(props) => (props.size === "large" ? "40px" : "24px")};
+  width: ${(props) => (props.size === "large" ? "40px" : "24px")};
   border-radius: 100px;
   display: grid;
   box-sizing: border-box;

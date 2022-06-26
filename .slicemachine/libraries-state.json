@@ -126,24 +126,33 @@
               "version": "sktwi1xtmkfgx8626",
               "description": "SingleHighlightedCategorySection",
               "primary": {
-                "title": {
-                  "type": "StructuredText",
+                "collectionTitle": {
+                  "type": "Text",
                   "config": {
-                    "single": "heading1",
-                    "label": "Title",
-                    "placeholder": "This is where it all begins..."
+                    "label": "Collection Title",
+                    "placeholder": ""
                   }
                 },
-                "description": {
-                  "type": "StructuredText",
+                "categoryLink": {
+                  "type": "Link",
                   "config": {
-                    "single": "paragraph",
-                    "label": "Description",
-                    "placeholder": "A nice description of your feature"
+                    "label": "Category Link",
+                    "select": "document",
+                    "customtypes": [
+                      "category-page"
+                    ]
                   }
                 }
               },
-              "items": {},
+              "items": {
+                "article": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Article",
+                    "select": "document"
+                  }
+                }
+              },
               "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
             }
           ]
@@ -153,22 +162,128 @@
             "variation": "default",
             "name": "Default",
             "slice_type": "single_highlighted_category_section",
-            "items": [],
+            "items": [
+              {
+                "article": {
+                  "id": 1,
+                  "link_type": "Web",
+                  "url": "http://google.com",
+                  "title": "testing",
+                  "tags": [
+                    "story",
+                    "people"
+                  ],
+                  "media": {
+                    "type": "video",
+                    "video": {
+                      "url": "https://www.w3schools.com/howto/rain.mp4",
+                      "playState": true
+                    }
+                  }
+                }
+              },
+              {
+                "article": {
+                  "id": 2,
+                  "link_type": "Web",
+                  "url": "https://prismic.io",
+                  "title": "Lorem ipsum DOLOR?",
+                  "tags": [
+                    "story",
+                    "people"
+                  ],
+                  "media": {
+                    "type": "video",
+                    "video": {
+                      "url": "https://www.w3schools.com/howto/rain.mp4",
+                      "playState": true
+                    }
+                  }
+                }
+              },
+              {
+                "article": {
+                  "id": 3,
+                  "link_type": "Web",
+                  "url": "https://prismic.io",
+                  "title": "Lorem ipsum DOLOR?",
+                  "tags": [
+                    "story",
+                    "people"
+                  ],
+                  "media": {
+                    "type": "video",
+                    "video": {
+                      "url": "https://www.w3schools.com/howto/rain.mp4",
+                      "playState": true
+                    }
+                  }
+                }
+              },
+              {
+                "article": {
+                  "id": 4,
+                  "link_type": "Web",
+                  "url": "https://prismic.io",
+                  "title": "Lorem ipsum DOLOR?",
+                  "tags": [
+                    "story",
+                    "people"
+                  ],
+                  "media": {
+                    "type": "video",
+                    "video": {
+                      "url": "https://www.w3schools.com/howto/rain.mp4",
+                      "playState": true
+                    }
+                  }
+                }
+              },
+              {
+                "article": {
+                  "id": 5,
+                  "link_type": "Web",
+                  "url": "https://prismic.io",
+                  "title": "Lorem ipsum DOLOR?",
+                  "tags": [
+                    "story",
+                    "people"
+                  ],
+                  "media": {
+                    "type": "video",
+                    "video": {
+                      "url": "https://www.w3schools.com/howto/rain.mp4",
+                      "playState": true
+                    }
+                  }
+                }
+              },
+              {
+                "article": {
+                  "id": 6,
+                  "link_type": "Web",
+                  "url": "https://prismic.io",
+                  "title": "Lorem ipsum DOLOR?",
+                  "tags": [
+                    "story",
+                    "people"
+                  ],
+                  "media": {
+                    "type": "video",
+                    "video": {
+                      "url": "https://www.w3schools.com/howto/rain.mp4",
+                      "playState": true
+                    }
+                  }
+                }
+              }
+            ],
             "primary": {
-              "title": [
-                {
-                  "type": "heading1",
-                  "text": "Envisioneer efficient interfaces",
-                  "spans": []
-                }
-              ],
-              "description": [
-                {
-                  "type": "paragraph",
-                  "text": "Nostrud aliqua nisi cupidatat aute.",
-                  "spans": []
-                }
-              ]
+              "collectionTitle": "seize innovative applications",
+              "categoryLink": {
+                "link_type": "Web",
+                "url": "http://twitter.com"
+              }
             }
           }
         },
@@ -176,7 +291,13 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {}
+        "screenshotPaths": {
+          "default": {
+            "path": "/Users/rubenkuiper/Documents/retro-scholar/retro-scholar/.slicemachine/assets/slices/SingleHighlightedCategorySection/default/preview.png",
+            "width": 800,
+            "height": 74
+          }
+        }
       },
       "story_slide": {
         "library": "slices",

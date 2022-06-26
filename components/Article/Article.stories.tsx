@@ -37,7 +37,6 @@ export const Article = () => {
           id={1}
           media={articleData.media}
           onClick={() => {
-            console.log(activeArticleId);
             setActiveArticleId(0);
           }}
         />

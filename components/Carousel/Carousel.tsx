@@ -14,7 +14,7 @@ interface SliderProps {
 const Slider = styled(motion.div)<SliderProps>`
   cursor: grab;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-top: 20px;
   padding-left: ${({ insetLeft }) => insetLeft};
   margin-right: ${({ insetRight }) => insetRight};
