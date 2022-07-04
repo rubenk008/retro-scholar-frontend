@@ -1,31 +1,86 @@
-import React from 'react'
-import { RichText } from 'prismic-reactjs'
+import React, { useEffect } from "react";
+import styled from "styled-components";
 
-const SingleHighlightedCategorySection = ({ slice }) => (
-  <section>
-    <span className="title">
-      {
-        slice.primary.title ?
-        <RichText render={slice.primary.title}/>
-        : <h2>Template slice, update me!</h2>
-      }
-    </span>
-    {
-      slice.primary.description ?
-      <RichText render={slice.primary.description}/>
-      : <p>start by editing this slice from inside Slice Machine!</p>
-    }
-    <style jsx>{`
-        section {
-          max-width: 600px;
-          margin: 4em auto;
-          text-align: center;
-        }
-        .title {
-          color: #8592e0;
-        }
-    `}</style>
-  </section>
-)
+import { useIsLarge } from "../../hooks/useMediaQuery";
 
-export default SingleHighlightedCategorySection
+import pxToRem from "../../utils/pxToRem";
+
+import Carousel from "../../components/Carousel";
+import Article from "../../components/Article";
+import Typography from "../../components/Typography";
+import IconButton from "../../components/IconButton";
+import ArrowCircle from "../../components/icons/ArrowCircle";
+
+const Section = styled.section`
+  width: 100vw;
+`;
+
+const HighlightedCategoryHeading = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 0 0;
+
+  @media screen and (min-width: 1024px) {
+    padding: ${pxToRem(44)} ${pxToRem(114)} ${pxToRem(32)};
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1600px;
+  }
+`;
+
+const ViewCategoryLink = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SingleHighlightedCategorySection = ({ slice }) => {
+  const isLargeScreen = useIsLarge();
+
+  useEffect(() => {
+    console.log(slice);
+  }, []);
+
+  return (
+    <Section>
+      <HighlightedCategoryHeading>
+        <Typography variant="h4" component={"h2"} color="secondary">
+          {slice.primary.collectionTitle}
+        </Typography>
+        <ViewCategoryLink>
+          <Typography variant="h6" component={"span"} color="secondary">
+            view all in the collection
+          </Typography>
+          <IconButton
+            size="small"
+            icon={
+              <ArrowCircle
+                height={pxToRem(24)}
+                width={pxToRem(24)}
+                style={{ marginLeft: pxToRem(16), transform: "scale(1)" }}
+              />
+            }
+          />
+        </ViewCategoryLink>
+      </HighlightedCategoryHeading>
+
+      <Carousel
+        insetLeft={isLargeScreen ? pxToRem(120) : pxToRem(32)}
+        insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}
+      >
+        {slice.items.map((item, index) => (
+          <Article
+            key={`article-${index}`}
+            cardData={item.article}
+            variant="regular"
+            withMargin={true}
+          />
+        ))}
+      </Carousel>
+    </Section>
+  );
+};
+
+export default SingleHighlightedCategorySection;

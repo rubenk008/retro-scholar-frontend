@@ -25,7 +25,11 @@
         }
       }
     },
-    "SingleHighlightedCategorySection": {},
+    "SingleHighlightedCategorySection": {
+      "default": {
+        "primary": {}
+      }
+    },
     "TopCategoriesSection": {},
     "StorySlide": {
       "default": {
@@ -40,6 +44,7 @@
   },
   "_cts": {
     "home-page": {},
-    "story-page": {}
+    "story-page": {},
+    "category-page": {}
   }
 }

@@ -12,7 +12,7 @@ const Article = ({
 }: ArticleProps) => {
   return (
     <ArticleCollapsed
-      id={1}
+      id={cardData.id}
       tags={cardData.tags}
       title={cardData.title}
       media={cardData.media}

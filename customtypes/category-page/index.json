@@ -1,0 +1,9 @@
+{
+  "id": "category-page",
+  "label": "Categorypage",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {}
+  }
+}
