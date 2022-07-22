@@ -27,6 +27,7 @@ const Nav = styled.nav`
 
 const Container = styled.div`
   max-width: 1440px;
+  min-width: 100vw;
   padding: 48px 32px 54px;
   margin: 0 auto;
   display: flex;
