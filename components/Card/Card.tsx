@@ -122,7 +122,7 @@ const BackdropRightEdge = styled(motion.div)`
   top: 0px;
   bottom: 0px;
   right: 0px;
-  background: var(--bay-of-many);
+  background: ${(props) => props.color};
   transform-origin: 100% 0px;
   width: 8px;
   transform: scaleX(1);
@@ -136,7 +136,7 @@ const BackdropTopEdge = styled(motion.div)`
   height: 0px;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-left: 8px solid var(--bay-of-many);
+  border-left: 8px solid ${(props) => props.color};
   transform-origin: right center;
 `;
 
@@ -145,7 +145,7 @@ const BackdropBottomEdge = styled(motion.div)`
   bottom: 0px;
   left: 0px;
   right: 0px;
-  background: var(--bay-of-many);
+  background: ${(props) => props.color};
   transform-origin: 0px 100%;
   height: 8px;
 `;
@@ -158,7 +158,7 @@ const BackdropLeftEdge = styled(motion.div)`
   height: 0px;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid var(--bay-of-many);
+  border-top: 8px solid ${(props) => props.color};
   transform-origin: center bottom;
 `;
 
@@ -242,6 +242,13 @@ const CardRoot = styled(motion.div)<Props>(
         maxWidth: "900px",
         boxShadow: "0px 8px 27px 4px rgba(9,25,189,0.2)",
       },
+      highlightedCat: {
+        background: "var(--blue-pigment)",
+        height: ["calc((304/414) * 100vw)", "calc((426/1440) * 100vw)"],
+        width: ["calc((340/414) * 100vw)", "calc((360/1440) * 100vw)"],
+        // maxHeight: "426px",
+        // maxWidth: "360px",
+      },
     },
   })
 );
@@ -269,34 +276,63 @@ const Card = ({
       )}
       {...props}
     >
-      {variant === "elevated" && (
-        <motion.div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            display: "grid",
-            width: "100%",
-            height: "100%",
-          }}
-          whileHover="hover"
-          initial="hidden"
-          animate="visible"
-        >
-          <Backdrop>
-            <BackdropLeftEdge variants={LeftEdgeAnim} />
-            <BackdropBottomEdge variants={BottomEdgeAnim} />
-            <BackdropRightEdge variants={RightEdgeAnim} />
-            <BackdropTopEdge variants={TopEdgeAnim} />
-          </Backdrop>
-          <ContentWrapper
-            layoutId={`card-container-${cardArticleId}`}
-            variants={ContentAnim}
+      {variant === "elevated" ||
+        (variant === "highlightedCat" && (
+          <motion.div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              display: "grid",
+              width: "100%",
+              height: "100%",
+            }}
+            whileHover="hover"
+            initial="hidden"
+            animate="visible"
           >
-            {children}
-          </ContentWrapper>
-        </motion.div>
-      )}
+            <Backdrop>
+              <BackdropLeftEdge
+                color={
+                  variant === "highlightedCat"
+                    ? "var(--moody-blue)"
+                    : "var(--bay-of-many)"
+                }
+                variants={LeftEdgeAnim}
+              />
+              <BackdropBottomEdge
+                color={
+                  variant === "highlightedCat"
+                    ? "var(--moody-blue)"
+                    : "var(--bay-of-many)"
+                }
+                variants={BottomEdgeAnim}
+              />
+              <BackdropRightEdge
+                color={
+                  variant === "highlightedCat"
+                    ? "var(--moody-blue)"
+                    : "var(--bay-of-many)"
+                }
+                variants={RightEdgeAnim}
+              />
+              <BackdropTopEdge
+                color={
+                  variant === "highlightedCat"
+                    ? "var(--moody-blue)"
+                    : "var(--bay-of-many)"
+                }
+                variants={TopEdgeAnim}
+              />
+            </Backdrop>
+            <ContentWrapper
+              layoutId={`card-container-${cardArticleId}`}
+              variants={ContentAnim}
+            >
+              {children}
+            </ContentWrapper>
+          </motion.div>
+        ))}
       {variant === "outlined" && <>{children}</>}
     </CardRoot>
   );
