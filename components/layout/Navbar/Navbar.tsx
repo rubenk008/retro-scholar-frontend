@@ -8,12 +8,15 @@ import Props from "./Navbar.types";
 
 import LogoWithName from "../../icons/LogoWithName";
 import SearchIcon from "../../icons/Search";
-import DonerMenu from "../../icons/DonerMenu";
+// import DonerMenu from "../../icons/DonerMenu";
 
 const Nav = styled.nav`
   width: 100vw;
   height: 180px;
-  /* background: var(--bay-of-many); */
+  position: fixed;
+  top: 0;
+  left: -50%;
+  transform: translateX(50%);
   margin: 0;
 
   @media screen and (min-width: 768px) {
@@ -27,6 +30,7 @@ const Container = styled.div`
   padding: 48px 32px 54px;
   margin: 0 auto;
   display: flex;
+  position: relative;
   flex-direction: row-reverse;
   justify-content: space-between;
 

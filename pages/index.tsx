@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <PageWrapper>
-      <div>Testing</div>
+      <div></div>
     </PageWrapper>
   );
 };

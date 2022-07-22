@@ -18,7 +18,7 @@ const PageWrapper = ({ children }) => {
   };
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       <Navbar links={links} />
 
       <main>{children}</main>
@@ -32,7 +32,7 @@ const PageWrapper = ({ children }) => {
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
           font-size: 18px;
-          background: var(--bay-of-many);
+          overscroll-behavior: none;
         }
         * {
           box-sizing: border-box;
@@ -43,6 +43,8 @@ const PageWrapper = ({ children }) => {
         }
         main {
           padding: 0.5rem;
+          background: var(--bay-of-many);
+          height: 100vh;
         }
         ul {
           list-style: none;
