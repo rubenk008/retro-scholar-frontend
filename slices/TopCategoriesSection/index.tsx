@@ -41,13 +41,18 @@ const TopCategoryGrid = styled.div`
     margin-bottom: ${pxToRem(30)};
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     flex-direction: row;
-    padding: 0 ${pxToRem(120)};
+    padding: 0 ${pxToRem(40)};
 
     > div {
       margin-bottom: ${pxToRem(0)};
     }
+  }
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    padding: 0 ${pxToRem(120)};
   }
 
   @media screen and (min-width: 1440px) {
