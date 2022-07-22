@@ -8,6 +8,7 @@ import pxToRem from "../../utils/pxToRem";
 import Card from "../../components/Card";
 import Media from "../../components/Media";
 import Typography from "../../components/Typography";
+import Link from "next/link";
 
 const Section = styled.section`
   width: 100vw;
@@ -76,13 +77,16 @@ const HighlightedCatHeading = styled.div`
   }
 `;
 
+const HighlightedCatThumbnail = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+`;
+
 const TopCategoriesSection = ({ slice }) => {
-  const isLargeScreen = useIsLarge();
-
-  useEffect(() => {
-    console.log(slice);
-  }, []);
-
   return (
     <Section>
       <TopCategoriesHeading>
@@ -91,33 +95,30 @@ const TopCategoriesSection = ({ slice }) => {
         </Typography>
       </TopCategoriesHeading>
       <TopCategoryGrid>
-        <Card variant="highlightedCat" cardArticleId={0}>
-          <HighlightedCatContent>
-            <HighlightedCatHeading>
-              <Typography variant="h5" component={"h3"} color="white">
-                Retro tech
-              </Typography>
-            </HighlightedCatHeading>
-          </HighlightedCatContent>
-        </Card>
-        <Card variant="highlightedCat" cardArticleId={1}>
-          <HighlightedCatContent>
-            <HighlightedCatHeading>
-              <Typography variant="h5" component={"h3"} color="white">
-                ARCHITECTURE
-              </Typography>
-            </HighlightedCatHeading>
-          </HighlightedCatContent>
-        </Card>
-        <Card variant="highlightedCat" cardArticleId={2}>
-          <HighlightedCatContent>
-            <HighlightedCatHeading>
-              <Typography variant="h5" component={"h3"} color="white">
-                Music
-              </Typography>
-            </HighlightedCatHeading>
-          </HighlightedCatContent>
-        </Card>
+        {slice.items.map((item, index) =>
+          index != 3 ? (
+            <Link href={item.categoryLink.url} key={`key-${index + 1}`}>
+              <Card variant="highlightedCat" cardArticleId={index}>
+                <HighlightedCatContent>
+                  <HighlightedCatThumbnail>
+                    <Media
+                      type="image"
+                      image={{
+                        url: item.categoryThumbnail.url,
+                        alt: item.categoryThumbnail.alt,
+                      }}
+                    />
+                  </HighlightedCatThumbnail>
+                  <HighlightedCatHeading>
+                    <Typography variant="h5" component={"h3"} color="white">
+                      {item.categoryName}
+                    </Typography>
+                  </HighlightedCatHeading>
+                </HighlightedCatContent>
+              </Card>
+            </Link>
+          ) : null
+        )}
       </TopCategoryGrid>
     </Section>
   );

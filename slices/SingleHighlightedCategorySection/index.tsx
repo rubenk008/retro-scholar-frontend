@@ -39,10 +39,6 @@ const ViewCategoryLink = styled.div`
 const SingleHighlightedCategorySection = ({ slice }) => {
   const isLargeScreen = useIsLarge();
 
-  useEffect(() => {
-    console.log(slice);
-  }, []);
-
   return (
     <Section>
       <HighlightedCategoryHeading>
