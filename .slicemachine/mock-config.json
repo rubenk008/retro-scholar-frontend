@@ -30,7 +30,11 @@
         "primary": {}
       }
     },
-    "TopCategoriesSection": {},
+    "TopCategoriesSection": {
+      "default": {
+        "primary": {}
+      }
+    },
     "StorySlide": {
       "default": {
         "primary": {},
