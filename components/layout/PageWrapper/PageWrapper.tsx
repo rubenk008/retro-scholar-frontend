@@ -1,13 +1,25 @@
+import React, { useState } from "react";
+
 import Link from "next/link";
+import Navbar from "../Navbar";
 
 const PageWrapper = ({ children }) => {
+  const [drawerState, setDrawerState] = useState("open");
+
+  const links = [
+    { name: "topics", href: "https://www.google.com" },
+    { name: "quizes", href: "https://www.google.com" },
+  ];
+
+  const onButtonClick = () => {
+    if (drawerState === "closed") {
+      setDrawerState("open");
+    }
+  };
+
   return (
     <div>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>
-      </nav>
+      <Navbar links={links} />
 
       <main>{children}</main>
 
@@ -20,6 +32,7 @@ const PageWrapper = ({ children }) => {
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
           font-size: 18px;
+          background: var(--bay-of-many);
         }
         * {
           box-sizing: border-box;
@@ -27,10 +40,6 @@ const PageWrapper = ({ children }) => {
         a {
           text-decoration: none;
           color: #1565c0;
-        }
-        nav {
-          background: #c8e6c9;
-          padding: 0.5rem;
         }
         main {
           padding: 0.5rem;

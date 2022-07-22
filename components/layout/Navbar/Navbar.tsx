@@ -13,7 +13,7 @@ import DonerMenu from "../../icons/DonerMenu";
 const Nav = styled.nav`
   width: 100vw;
   height: 180px;
-  background: var(--bay-of-many);
+  /* background: var(--bay-of-many); */
   margin: 0;
 
   @media screen and (min-width: 768px) {
@@ -153,7 +153,7 @@ const Search = styled.button`
   position: relative;
 `;
 
-const Navbar = ({ links }: Props) => {
+const Navbar = ({ links, theme = "dark" }: Props) => {
   return (
     <Nav>
       <Container>
@@ -166,7 +166,10 @@ const Navbar = ({ links }: Props) => {
               links.map((link, index) => (
                 <LinkListItem key={`key-${index}`}>
                   <Link href={link.href}>
-                    <Typography variant="h6Alt" color="off-white">
+                    <Typography
+                      variant="h6Alt"
+                      color={theme === "dark" ? "off-white" : "primary"}
+                    >
                       {link.name}
                     </Typography>
                   </Link>
@@ -174,7 +177,7 @@ const Navbar = ({ links }: Props) => {
               ))}
           </LinkListDesktop>
           <Search>
-            <SearchIcon color="#DDE0FF" />
+            <SearchIcon color={theme === "dark" ? "#DDE0FF" : "#DB5493"} />
           </Search>
         </Column>
       </Container>
