@@ -5,5 +5,5 @@ export default {
 }
 
 
-export const _Default = () => <MyComponent slice={{"variation":"default","name":"Default","slice_type":"single_highlighted_category_section","items":[{"article":{"link_type":"Web","url":"http://google.com"}},{"article":{"link_type":"Web","url":"https://prismic.io"}}],"primary":{"collectionTitle":"seize innovative applications","categoryLink":{"link_type":"Web","url":"http://twitter.com"}},"id":"_Default"}} />
+export const _Default = () => <MyComponent slice={{"variation":"default","name":"Default","slice_type":"single_highlighted_category_section","items":[{"article":{"link_type":"Web","url":"http://google.com"}},{"article":{"link_type":"Web","url":"http://google.com"}},{"article":{"link_type":"Web","url":"http://google.com"}},{"article":{"link_type":"Web","url":"https://slicemachine.dev"}},{"article":{"link_type":"Web","url":"http://google.com"}}],"primary":{"collectionTitle":"empower one-to-one infomediaries","categoryLink":{"link_type":"Web","url":"https://prismic.io"}},"id":"_Default"}} />
 _Default.storyName = 'Default'

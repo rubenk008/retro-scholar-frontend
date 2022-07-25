@@ -10,7 +10,7 @@ import Media from "../../components/Media";
 import Typography from "../../components/Typography";
 
 const Section = styled.section`
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background: var(--bay-of-many);
   padding: ${pxToRem(133)} ${pxToRem(32)} ${pxToRem(100)};

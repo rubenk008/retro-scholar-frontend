@@ -15,20 +15,20 @@ const StyledFooter = styled.footer`
   margin: 0;
 
   @media screen and (min-width: 768px) {
-    height: 128px;
+    height: auto;
   }
 `;
 
 const Container = styled.div`
   max-width: 1440px;
-  padding: 48px 32px 54px;
+  padding: 48px 32px 0px;
   margin: 0 auto;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
-    padding: 52px 120px 54px;
+    padding: 52px 120px 48px;
     flex-direction: row;
   }
 `;
@@ -59,10 +59,15 @@ const StyledLogo = styled(Logo)`
 
 const Copyright = styled.div`
   position: relative;
-  margin: 30px 0 0 0;
+  margin: 36px 0 0 0;
 
   span {
     color: var(--azalea);
+    margin-right: 3px;
+  }
+
+  h6 {
+    margin-top: -6px;
   }
 
   @media screen and (min-width: 768px) {
@@ -75,16 +80,21 @@ const LinkList = styled.ul`
   display: flex;
   flex-direction: column;
   align-self: flex-start;
-  margin: 0;
+  margin: 0 0 12px 0;
   padding: 0;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
+    margin: 0;
   }
 `;
 const LinkListItem = styled.li`
-  margin: 0 0 16px;
+  margin: 0 0 0px;
   display: flex;
+
+  &:first-child {
+    margin: 0 0 8px;
+  }
 
   @media screen and (min-width: 768px) {
     margin: 0 0 0 36px;
@@ -100,7 +110,7 @@ const SocialLinkList = styled.ul`
   align-self: flex-start;
 
   @media screen and (min-width: 768px) {
-    margin: 0 0 0 8px;
+    margin: 4px 0 0 8px;
   }
 `;
 const SocialLinkListItem = styled.li`

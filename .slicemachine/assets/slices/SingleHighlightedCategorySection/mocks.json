@@ -6,106 +6,40 @@
     "items": [
       {
         "article": {
-          "id": 1,
           "link_type": "Web",
-          "url": "http://google.com",
-          "title": "testing",
-          "tags": ["story", "people"],
-          "media": {
-            "type": "video",
-            "video": {
-              "url": "https://www.w3schools.com/howto/rain.mp4",
-              "playState": true
-            }
-          }
+          "url": "http://google.com"
         }
       },
       {
         "article": {
-          "id": 2,
           "link_type": "Web",
-          "url": "https://prismic.io",
-          "title": "Lorem ipsum DOLOR?",
-          "tags": ["story", "people"],
-          "media": {
-            "type": "video",
-            "video": {
-              "url": "https://www.w3schools.com/howto/rain.mp4",
-              "playState": true
-            }
-          }
+          "url": "http://google.com"
         }
       },
       {
         "article": {
-          "id": 3,
           "link_type": "Web",
-          "url": "https://prismic.io",
-          "title": "Lorem ipsum DOLOR?",
-          "tags": ["story", "people"],
-          "media": {
-            "type": "video",
-            "video": {
-              "url": "https://www.w3schools.com/howto/rain.mp4",
-              "playState": true
-            }
-          }
+          "url": "http://google.com"
         }
       },
       {
         "article": {
-          "id": 4,
           "link_type": "Web",
-          "url": "https://prismic.io",
-          "title": "Lorem ipsum DOLOR?",
-          "tags": ["story", "people"],
-          "media": {
-            "type": "video",
-            "video": {
-              "url": "https://www.w3schools.com/howto/rain.mp4",
-              "playState": true
-            }
-          }
+          "url": "https://slicemachine.dev"
         }
       },
       {
         "article": {
-          "id": 5,
           "link_type": "Web",
-          "url": "https://prismic.io",
-          "title": "Lorem ipsum DOLOR?",
-          "tags": ["story", "people"],
-          "media": {
-            "type": "video",
-            "video": {
-              "url": "https://www.w3schools.com/howto/rain.mp4",
-              "playState": true
-            }
-          }
-        }
-      },
-      {
-        "article": {
-          "id": 6,
-          "link_type": "Web",
-          "url": "https://prismic.io",
-          "title": "Lorem ipsum DOLOR?",
-          "tags": ["story", "people"],
-          "media": {
-            "type": "video",
-            "video": {
-              "url": "https://www.w3schools.com/howto/rain.mp4",
-              "playState": true
-            }
-          }
+          "url": "http://google.com"
         }
       }
     ],
     "primary": {
-      "collectionTitle": "seize innovative applications",
+      "collectionTitle": "empower one-to-one infomediaries",
       "categoryLink": {
         "link_type": "Web",
-        "url": "http://twitter.com"
+        "url": "https://prismic.io"
       }
     }
   }

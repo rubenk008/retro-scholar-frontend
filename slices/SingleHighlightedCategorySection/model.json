@@ -23,7 +23,9 @@
           "config": {
             "label": "Category Link",
             "select": "document",
-            "customtypes": ["category-page"]
+            "customtypes": [
+              "category-page"
+            ]
           }
         }
       },
@@ -32,7 +34,10 @@
           "type": "Link",
           "config": {
             "label": "Article",
-            "select": "document"
+            "select": "document",
+            "customtypes": [
+              "story-page"
+            ]
           }
         }
       },

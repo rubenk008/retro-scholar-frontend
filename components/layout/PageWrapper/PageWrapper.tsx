@@ -2,6 +2,19 @@ import React, { useState } from "react";
 
 import Link from "next/link";
 import Navbar from "../Navbar";
+import Footer from "../Footer";
+
+import InstagramIcon from "../../icons/Instagram";
+import FacebookIcon from "../../icons/Facebook";
+import styled from "styled-components";
+
+const Container = styled.div`
+  position: relative;
+`;
+
+const Main = styled.main`
+  background: var(--bay-of-many);
+`;
 
 const PageWrapper = ({ children }) => {
   const [drawerState, setDrawerState] = useState("open");
@@ -11,6 +24,20 @@ const PageWrapper = ({ children }) => {
     { name: "quizes", href: "https://www.google.com" },
   ];
 
+  const footerData = {
+    links: [
+      { name: "about us", href: "https://www.google.com" },
+      { name: "privacy", href: "https://www.google.com" },
+    ],
+    socialLinks: [
+      {
+        icon: <InstagramIcon />,
+        href: "",
+      },
+      { icon: <FacebookIcon />, href: "" },
+    ],
+  };
+
   const onButtonClick = () => {
     if (drawerState === "closed") {
       setDrawerState("open");
@@ -18,49 +45,11 @@ const PageWrapper = ({ children }) => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <Container>
       <Navbar links={links} />
-
-      <main>{children}</main>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-          font-size: 18px;
-          overscroll-behavior: none;
-        }
-        * {
-          box-sizing: border-box;
-        }
-        a {
-          text-decoration: none;
-          color: #1565c0;
-        }
-        main {
-          padding: 0.5rem;
-          background: var(--bay-of-many);
-          height: 100vh;
-        }
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-        }
-        li {
-          padding: 0;
-          margin: 0;
-        }
-        .huge {
-          padding: 3rem;
-          font-size: 3rem;
-        }
-      `}</style>
-    </div>
+      <Main>{children}</Main>
+      <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
+    </Container>
   );
 };
 

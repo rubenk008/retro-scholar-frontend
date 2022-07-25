@@ -39,6 +39,10 @@ const ViewCategoryLink = styled.div`
 const SingleHighlightedCategorySection = ({ slice }) => {
   const isLargeScreen = useIsLarge();
 
+  useEffect(() => {
+    console.log(slice);
+  });
+
   return (
     <Section>
       <HighlightedCategoryHeading>
@@ -66,14 +70,14 @@ const SingleHighlightedCategorySection = ({ slice }) => {
         insetLeft={isLargeScreen ? pxToRem(120) : pxToRem(32)}
         insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}
       >
-        {slice.items.map((item, index) => (
+        {/* {slice.items.map((item, index) => (
           <Article
             key={`article-${index}`}
             cardData={item.article}
             variant="regular"
             withMargin={true}
           />
-        ))}
+        ))} */}
       </Carousel>
     </Section>
   );

@@ -12,7 +12,7 @@
   ],
   "plugins": [
     "react-require",
-    ["styled-components", { "ssr": false }],
+    ["babel-plugin-styled-components", { "ssr": false }],
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-private-methods"
     // ["@babel/plugin-proposal-private-property-in-object", { "loose": true }]

@@ -12,16 +12,22 @@ import Link from "next/link";
 
 const Section = styled.section`
   width: 100vw;
+  background-color: var(--tutu);
+  padding: ${pxToRem(100)} 0;
+
+  @media screen and (min-width: 1024px) {
+    padding: ${pxToRem(200)} 0;
+  }
 `;
 
 const TopCategoriesHeading = styled.div`
   display: flex;
   justify-content: space-between;
   margin: auto auto;
-  padding: ${pxToRem(44)} ${pxToRem(32)} ${pxToRem(40)};
+  padding: 0 ${pxToRem(32)} ${pxToRem(40)};
 
   @media screen and (min-width: 1024px) {
-    padding: ${pxToRem(44)} ${pxToRem(114)} ${pxToRem(44)};
+    padding: 0 ${pxToRem(114)} ${pxToRem(44)};
   }
 
   @media screen and (min-width: 1440px) {
@@ -102,7 +108,7 @@ const TopCategoriesSection = ({ slice }) => {
       <TopCategoryGrid>
         {slice.items.map((item, index) =>
           index != 3 ? (
-            <Link href={item.categoryLink.url} key={`key-${index + 1}`}>
+            <div key={`key-${index + 1}`}>
               <Card variant="highlightedCat" cardArticleId={index}>
                 <HighlightedCatContent>
                   <HighlightedCatThumbnail>
@@ -121,7 +127,7 @@ const TopCategoriesSection = ({ slice }) => {
                   </HighlightedCatHeading>
                 </HighlightedCatContent>
               </Card>
-            </Link>
+            </div>
           ) : null
         )}
       </TopCategoryGrid>

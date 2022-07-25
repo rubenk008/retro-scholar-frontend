@@ -1,10 +1,15 @@
 {
-  "id": "9628ccc3-f2e5-4422-9ee8-f2667b2fa10f",
-  "uid": "reiciendis-labore-debitis",
+  "id": "707ab61d-63a0-4ae1-981d-2ad957f7e205",
+  "uid": "itaque-possimus-non",
   "type": "story-page",
   "data": {
-    "metaTitle": "implement real-time bandwidth",
-    "metaDescription": "enhance viral supply-chains",
+    "title": "syndicate user-centric infomediaries",
+    "category": {
+      "link_type": "Web",
+      "url": "https://prismic.io"
+    },
+    "metaTitle": "generate sticky niches",
+    "metaDescription": "strategize dot-com markets",
     "socialCards": [
       {
         "socialCardImage": {
@@ -14,10 +19,10 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1586952518485-11b180e92764?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482?w=900&h=500&fit=crop"
         },
-        "socialCardTitle": "reinvent interactive markets",
-        "socialCardDescription": "revolutionize enterprise interfaces"
+        "socialCardTitle": "mesh ubiquitous content",
+        "socialCardDescription": "visualize out-of-the-box communities"
       },
       {
         "socialCardImage": {
@@ -27,10 +32,10 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=900&h=500&fit=crop"
         },
-        "socialCardTitle": "disintermediate end-to-end users",
-        "socialCardDescription": "optimize bleeding-edge models"
+        "socialCardTitle": "e-enable innovative paradigms",
+        "socialCardDescription": "enable virtual paradigms"
       },
       {
         "socialCardImage": {
@@ -40,10 +45,23 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=900&h=500&fit=crop"
         },
-        "socialCardTitle": "facilitate out-of-the-box functionalities",
-        "socialCardDescription": "maximize e-business infrastructures"
+        "socialCardTitle": "enhance out-of-the-box niches",
+        "socialCardDescription": "harness real-time portals"
+      },
+      {
+        "socialCardImage": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&h=500&fit=crop"
+        },
+        "socialCardTitle": "facilitate value-added ROI",
+        "socialCardDescription": "envisioneer integrated markets"
       }
     ]
   }
