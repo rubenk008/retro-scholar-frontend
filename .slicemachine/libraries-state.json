@@ -20,26 +20,14 @@
               "description": "HomepageHero",
               "primary": {},
               "items": {
-                "category": {
-                  "type": "Text",
+                "article": {
+                  "type": "Link",
                   "config": {
-                    "label": "Category",
-                    "placeholder": "Renowed People"
-                  }
-                },
-                "title": {
-                  "type": "Text",
-                  "config": {
-                    "label": "Title",
-                    "placeholder": ""
-                  }
-                },
-                "thumbnail": {
-                  "type": "Image",
-                  "config": {
-                    "label": "Thumbnail",
-                    "constraint": {},
-                    "thumbnails": []
+                    "label": "Article",
+                    "select": "document",
+                    "customtypes": [
+                      "story-page"
+                    ]
                   }
                 }
               },
@@ -54,42 +42,21 @@
             "slice_type": "homepage_hero",
             "items": [
               {
-                "category": "extend magnetic synergies",
-                "title": "unleash customized paradigms",
-                "thumbnail": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?w=900&h=500&fit=crop"
+                "article": {
+                  "link_type": "Web",
+                  "url": "http://twitter.com"
                 }
               },
               {
-                "category": "syndicate synergistic eyeballs",
-                "title": "leverage user-centric communities",
-                "thumbnail": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=900&h=500&fit=crop"
+                "article": {
+                  "link_type": "Web",
+                  "url": "https://slicemachine.dev"
                 }
               },
               {
-                "category": "synthesize out-of-the-box niches",
-                "title": "whiteboard interactive eyeballs",
-                "thumbnail": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88?w=900&h=500&fit=crop"
+                "article": {
+                  "link_type": "Web",
+                  "url": "https://slicemachine.dev"
                 }
               }
             ],
@@ -100,13 +67,7 @@
           "fileName": "index",
           "extension": "tsx"
         },
-        "screenshotPaths": {
-          "default": {
-            "path": "/Users/rubenkuiper/Documents/retro-scholar/retro-scholar/.slicemachine/assets/slices/HomepageHero/default/preview.png",
-            "width": 800,
-            "height": 600
-          }
-        }
+        "screenshotPaths": {}
       },
       "single_highlighted_category_section": {
         "library": "slices",
@@ -149,7 +110,10 @@
                   "type": "Link",
                   "config": {
                     "label": "Article",
-                    "select": "document"
+                    "select": "document",
+                    "customtypes": [
+                      "story-page"
+                    ]
                   }
                 }
               },
@@ -165,124 +129,40 @@
             "items": [
               {
                 "article": {
-                  "id": 1,
                   "link_type": "Web",
-                  "url": "http://google.com",
-                  "title": "testing",
-                  "tags": [
-                    "story",
-                    "people"
-                  ],
-                  "media": {
-                    "type": "video",
-                    "video": {
-                      "url": "https://www.w3schools.com/howto/rain.mp4",
-                      "playState": true
-                    }
-                  }
+                  "url": "http://google.com"
                 }
               },
               {
                 "article": {
-                  "id": 2,
                   "link_type": "Web",
-                  "url": "https://prismic.io",
-                  "title": "Lorem ipsum DOLOR?",
-                  "tags": [
-                    "story",
-                    "people"
-                  ],
-                  "media": {
-                    "type": "video",
-                    "video": {
-                      "url": "https://www.w3schools.com/howto/rain.mp4",
-                      "playState": true
-                    }
-                  }
+                  "url": "http://google.com"
                 }
               },
               {
                 "article": {
-                  "id": 3,
                   "link_type": "Web",
-                  "url": "https://prismic.io",
-                  "title": "Lorem ipsum DOLOR?",
-                  "tags": [
-                    "story",
-                    "people"
-                  ],
-                  "media": {
-                    "type": "video",
-                    "video": {
-                      "url": "https://www.w3schools.com/howto/rain.mp4",
-                      "playState": true
-                    }
-                  }
+                  "url": "http://google.com"
                 }
               },
               {
                 "article": {
-                  "id": 4,
                   "link_type": "Web",
-                  "url": "https://prismic.io",
-                  "title": "Lorem ipsum DOLOR?",
-                  "tags": [
-                    "story",
-                    "people"
-                  ],
-                  "media": {
-                    "type": "video",
-                    "video": {
-                      "url": "https://www.w3schools.com/howto/rain.mp4",
-                      "playState": true
-                    }
-                  }
+                  "url": "https://slicemachine.dev"
                 }
               },
               {
                 "article": {
-                  "id": 5,
                   "link_type": "Web",
-                  "url": "https://prismic.io",
-                  "title": "Lorem ipsum DOLOR?",
-                  "tags": [
-                    "story",
-                    "people"
-                  ],
-                  "media": {
-                    "type": "video",
-                    "video": {
-                      "url": "https://www.w3schools.com/howto/rain.mp4",
-                      "playState": true
-                    }
-                  }
-                }
-              },
-              {
-                "article": {
-                  "id": 6,
-                  "link_type": "Web",
-                  "url": "https://prismic.io",
-                  "title": "Lorem ipsum DOLOR?",
-                  "tags": [
-                    "story",
-                    "people"
-                  ],
-                  "media": {
-                    "type": "video",
-                    "video": {
-                      "url": "https://www.w3schools.com/howto/rain.mp4",
-                      "playState": true
-                    }
-                  }
+                  "url": "http://google.com"
                 }
               }
             ],
             "primary": {
-              "collectionTitle": "seize innovative applications",
+              "collectionTitle": "empower one-to-one infomediaries",
               "categoryLink": {
                 "link_type": "Web",
-                "url": "http://twitter.com"
+                "url": "https://prismic.io"
               }
             }
           }
@@ -295,7 +175,7 @@
           "default": {
             "path": "/Users/rubenkuiper/Documents/retro-scholar/retro-scholar/.slicemachine/assets/slices/SingleHighlightedCategorySection/default/preview.png",
             "width": 800,
-            "height": 74
+            "height": 508
           }
         }
       },
@@ -490,8 +370,10 @@
                   "type": "Link",
                   "config": {
                     "label": "Category Link",
-                    "placeholder": "",
-                    "select": null
+                    "select": "document",
+                    "customtypes": [
+                      "category-page"
+                    ]
                   }
                 }
               },
@@ -513,12 +395,12 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=900&h=500&fit=crop"
                 },
-                "categoryName": "enhance seamless functionalities",
+                "categoryName": "scale innovative e-markets",
                 "categoryLink": {
                   "link_type": "Web",
-                  "url": "https://prismic.io"
+                  "url": "http://twitter.com"
                 }
               },
               {
@@ -529,9 +411,9 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1571126770897-2d612d1f7b89?w=900&h=500&fit=crop"
                 },
-                "categoryName": "reintermediate sexy networks",
+                "categoryName": "mesh next-generation e-services",
                 "categoryLink": {
                   "link_type": "Web",
                   "url": "https://slicemachine.dev"
@@ -545,33 +427,17 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
+                  "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=900&h=500&fit=crop"
                 },
-                "categoryName": "extend enterprise supply-chains",
+                "categoryName": "redefine intuitive schemas",
                 "categoryLink": {
                   "link_type": "Web",
-                  "url": "http://google.com"
-                }
-              },
-              {
-                "categoryThumbnail": {
-                  "dimensions": {
-                    "width": 900,
-                    "height": 500
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=900&h=500&fit=crop"
-                },
-                "categoryName": "visualize integrated convergence",
-                "categoryLink": {
-                  "link_type": "Web",
-                  "url": "http://google.com"
+                  "url": "https://prismic.io"
                 }
               }
             ],
             "primary": {
-              "sectionTitle": "harness ubiquitous niches"
+              "sectionTitle": "harness next-generation technologies"
             }
           }
         },
@@ -583,7 +449,7 @@
           "default": {
             "path": "/Users/rubenkuiper/Documents/retro-scholar/retro-scholar/.slicemachine/assets/slices/TopCategoriesSection/default/preview.png",
             "width": 800,
-            "height": 74
+            "height": 360
           }
         }
       }

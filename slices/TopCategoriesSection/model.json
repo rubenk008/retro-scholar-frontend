@@ -39,8 +39,10 @@
           "type": "Link",
           "config": {
             "label": "Category Link",
-            "placeholder": "",
-            "select": null
+            "select": "document",
+            "customtypes": [
+              "category-page"
+            ]
           }
         }
       },

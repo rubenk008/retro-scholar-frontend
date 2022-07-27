@@ -8,10 +8,10 @@ export interface MediaProps extends ComponentProps<typeof motion.div> {
   type: string;
 
   // Image
-  image?: ImageProps | string;
+  image?: ImageProps;
 
   // Video
-  video?: VideoProps | string;
+  video?: VideoProps;
 
   // Custom classname
   className?: string;

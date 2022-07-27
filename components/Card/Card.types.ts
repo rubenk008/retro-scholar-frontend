@@ -26,5 +26,5 @@ export default interface Props extends ComponentProps<typeof motion.div> {
 
   withMargin?: boolean;
 
-  cardArticleId?: number;
+  cardArticleId?: number | string;
 }

@@ -18,21 +18,19 @@
     "HomepageHero": {
       "default": {
         "primary": {},
-        "items": {
-          "category": {
-            "content": "Renowed People"
-          }
-        }
+        "items": {}
       }
     },
     "SingleHighlightedCategorySection": {
       "default": {
-        "primary": {}
+        "primary": {},
+        "items": {}
       }
     },
     "TopCategoriesSection": {
       "default": {
-        "primary": {}
+        "primary": {},
+        "items": {}
       }
     },
     "StorySlide": {
@@ -49,6 +47,7 @@
   "_cts": {
     "home-page": {},
     "story-page": {},
-    "category-page": {}
+    "category-page": {},
+    "categories": {}
   }
 }

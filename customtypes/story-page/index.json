@@ -5,11 +5,28 @@
   "status": true,
   "json": {
     "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
       "uid": {
         "type": "UID",
         "config": {
           "label": "Slug",
           "placeholder": ""
+        }
+      },
+      "category": {
+        "type": "Link",
+        "config": {
+          "label": "Category",
+          "select": "document",
+          "customtypes": [
+            "category-page"
+          ]
         }
       },
       "slices": {

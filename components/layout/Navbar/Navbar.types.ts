@@ -6,4 +6,5 @@ interface PageLinks extends LinkProps {
 
 export default interface Props {
   links: Array<PageLinks>;
+  theme?: string;
 }

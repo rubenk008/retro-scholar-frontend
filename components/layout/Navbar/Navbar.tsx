@@ -8,13 +8,16 @@ import Props from "./Navbar.types";
 
 import LogoWithName from "../../icons/LogoWithName";
 import SearchIcon from "../../icons/Search";
-import DonerMenu from "../../icons/DonerMenu";
 
 const Nav = styled.nav`
   width: 100vw;
-  height: 180px;
-  background: var(--bay-of-many);
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: -50%;
+  transform: translateX(50%);
   margin: 0;
+  z-index: 9999999;
 
   @media screen and (min-width: 768px) {
     height: 128px;
@@ -24,10 +27,10 @@ const Nav = styled.nav`
 
 const Container = styled.div`
   max-width: 1440px;
-  padding: 48px 32px 54px;
+  padding: 16px 24px 0px 20px;
   margin: 0 auto;
   display: flex;
-  flex-direction: row-reverse;
+  position: relative;
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
@@ -38,13 +41,12 @@ const Container = styled.div`
 
 const Column = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   position: relative;
 
   @media screen and (min-width: 768px) {
     justify-content: center;
-    flex-direction: row;
   }
 `;
 
@@ -56,38 +58,22 @@ const StyledLogo = styled(LogoWithName)`
   }
 `;
 
-const LinkListDesktop = styled.ul`
+const LinkList = styled.ul`
   list-style-type: none;
   align-self: flex-start;
-  margin: 0;
+  margin: auto 0;
   padding: 0;
   flex-direction: row;
   align-items: center;
-  display: none;
+  display: flex;
 
   @media screen and (min-width: 920px) {
     height: 40px;
-    display: flex;
-  }
-`;
-
-const LinkListMobile = styled.ul`
-  list-style-type: none;
-  align-self: flex-start;
-  margin: 0;
-  padding: 0;
-  flex-direction: row;
-  align-items: center;
-  display: none;
-
-  @media screen and (min-width: 920px) {
-    height: 40px;
-    display: flex;
   }
 `;
 
 const LinkListItem = styled.li`
-  margin: 0 0 16px;
+  margin: 0 0 0px 20px;
   height: 26px;
   display: flex;
   flex-direction: row;
@@ -153,7 +139,7 @@ const Search = styled.button`
   position: relative;
 `;
 
-const Navbar = ({ links }: Props) => {
+const Navbar = ({ links, theme = "dark" }: Props) => {
   return (
     <Nav>
       <Container>
@@ -161,20 +147,23 @@ const Navbar = ({ links }: Props) => {
           <StyledLogo />
         </Column>
         <Column style={{ height: "40px", marginTop: "28px" }}>
-          <LinkListDesktop>
+          <LinkList>
             {links &&
               links.map((link, index) => (
                 <LinkListItem key={`key-${index}`}>
                   <Link href={link.href}>
-                    <Typography variant="h6Alt" color="off-white">
+                    <Typography
+                      variant="h6Alt"
+                      color={theme === "dark" ? "off-white" : "primary"}
+                    >
                       {link.name}
                     </Typography>
                   </Link>
                 </LinkListItem>
               ))}
-          </LinkListDesktop>
+          </LinkList>
           <Search>
-            <SearchIcon color="#DDE0FF" />
+            <SearchIcon color={theme === "dark" ? "#DDE0FF" : "#DB5493"} />
           </Search>
         </Column>
       </Container>

@@ -264,6 +264,9 @@ const Card = ({
   hasRandomRotation = false,
   ...props
 }: Props) => {
+  const elevatedVariant =
+    variant === "elevated" || variant === "highlightedCat" ? true : false;
+
   return (
     <CardRoot
       variant={variant}
@@ -276,63 +279,62 @@ const Card = ({
       )}
       {...props}
     >
-      {variant === "elevated" ||
-        (variant === "highlightedCat" && (
-          <motion.div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              display: "grid",
-              width: "100%",
-              height: "100%",
-            }}
-            whileHover="hover"
-            initial="hidden"
-            animate="visible"
+      {elevatedVariant && (
+        <motion.div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            display: "grid",
+            width: "100%",
+            height: "100%",
+          }}
+          whileHover="hover"
+          initial="hidden"
+          animate="visible"
+        >
+          <Backdrop>
+            <BackdropLeftEdge
+              color={
+                variant === "highlightedCat"
+                  ? "var(--moody-blue)"
+                  : "var(--bay-of-many)"
+              }
+              variants={LeftEdgeAnim}
+            />
+            <BackdropBottomEdge
+              color={
+                variant === "highlightedCat"
+                  ? "var(--moody-blue)"
+                  : "var(--bay-of-many)"
+              }
+              variants={BottomEdgeAnim}
+            />
+            <BackdropRightEdge
+              color={
+                variant === "highlightedCat"
+                  ? "var(--moody-blue)"
+                  : "var(--bay-of-many)"
+              }
+              variants={RightEdgeAnim}
+            />
+            <BackdropTopEdge
+              color={
+                variant === "highlightedCat"
+                  ? "var(--moody-blue)"
+                  : "var(--bay-of-many)"
+              }
+              variants={TopEdgeAnim}
+            />
+          </Backdrop>
+          <ContentWrapper
+            layoutId={`card-container-${cardArticleId}`}
+            variants={ContentAnim}
           >
-            <Backdrop>
-              <BackdropLeftEdge
-                color={
-                  variant === "highlightedCat"
-                    ? "var(--moody-blue)"
-                    : "var(--bay-of-many)"
-                }
-                variants={LeftEdgeAnim}
-              />
-              <BackdropBottomEdge
-                color={
-                  variant === "highlightedCat"
-                    ? "var(--moody-blue)"
-                    : "var(--bay-of-many)"
-                }
-                variants={BottomEdgeAnim}
-              />
-              <BackdropRightEdge
-                color={
-                  variant === "highlightedCat"
-                    ? "var(--moody-blue)"
-                    : "var(--bay-of-many)"
-                }
-                variants={RightEdgeAnim}
-              />
-              <BackdropTopEdge
-                color={
-                  variant === "highlightedCat"
-                    ? "var(--moody-blue)"
-                    : "var(--bay-of-many)"
-                }
-                variants={TopEdgeAnim}
-              />
-            </Backdrop>
-            <ContentWrapper
-              layoutId={`card-container-${cardArticleId}`}
-              variants={ContentAnim}
-            >
-              {children}
-            </ContentWrapper>
-          </motion.div>
-        ))}
+            {children}
+          </ContentWrapper>
+        </motion.div>
+      )}
       {variant === "outlined" && <>{children}</>}
     </CardRoot>
   );
