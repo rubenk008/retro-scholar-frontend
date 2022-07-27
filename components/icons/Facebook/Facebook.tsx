@@ -1,5 +1,6 @@
 import * as React from "react";
 
+// eslint-disable-next-line react/display-name
 const Facebook = React.forwardRef(
   (
     { height = 22, width = 22, ...props }: React.SVGProps<SVGSVGElement>,

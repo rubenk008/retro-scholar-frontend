@@ -341,6 +341,7 @@ const Drawer = ({
           </LinkListHeading>
           {linkItems &&
             linkItems.map((link, index) => (
+              // eslint-disable-next-line react/jsx-key
               <motion.li variants={item}>
                 <LinkListItem
                   key={`key-${index}`}
@@ -371,6 +372,7 @@ const Drawer = ({
         >
           {socialLinks &&
             socialLinks.map((socialLink, index) => (
+              // eslint-disable-next-line react/jsx-key
               <motion.li variants={itemSocial}>
                 <SocialLinkListItem key={`key-${index}`}>
                   <Link href={socialLink.href}>{socialLink.icon}</Link>

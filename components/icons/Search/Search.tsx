@@ -1,5 +1,6 @@
 import * as React from "react";
 
+// eslint-disable-next-line react/display-name
 const Search = React.forwardRef(
   (
     {

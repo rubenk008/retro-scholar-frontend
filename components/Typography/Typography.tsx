@@ -178,6 +178,7 @@ const defaultVariantMapping = {
   inherit: "p",
 };
 
+// eslint-disable-next-line react/display-name
 const Typography = React.forwardRef(
   (
     {

@@ -70,7 +70,7 @@ const Carousel = ({
   insetRight = "0px",
   insetLeft = "0px",
 }) => {
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
 
   const [sliderWidth, setSliderWidth] = useState(0);

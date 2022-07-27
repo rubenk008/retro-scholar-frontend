@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import Props from "./IconButton.types";
 
-const StyledIconButton = styled(motion.button)`
+const StyledIconButton = styled(motion.button)<{ size: "large" }>`
   cursor: pointer;
   border: none;
   height: ${(props) => (props.size === "large" ? "40px" : "24px")};

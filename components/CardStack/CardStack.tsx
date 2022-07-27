@@ -70,7 +70,7 @@ const CardStack = ({
           return (
             <StackCardContainer
               drag={isTop}
-              key={item.key || index}
+              key={`uid-${index + 1}`}
               onVote={() => handleVote(item)}
               restacked={isBeingRestacked}
               delayRestacking={index * 100}
