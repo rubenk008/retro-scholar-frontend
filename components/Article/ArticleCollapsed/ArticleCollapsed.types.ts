@@ -3,7 +3,7 @@ import React from "react";
 import { MediaProps } from "../../Media/Media.types";
 
 export default interface ArticleCollapsedProps {
-  id?: number;
+  id?: string;
   tags?: Array<String>;
   title?: string;
   media?: MediaProps;

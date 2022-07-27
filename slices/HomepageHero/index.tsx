@@ -216,9 +216,12 @@ const HomepageHero = ({ slice }) => {
               key={`${index}-key`}
               className={index === activeSlide ? "isActive" : ""}
             >
-              <Typography variant="subtitle3" component={"h2"}>
-                {sliceItem.category}
-              </Typography>
+              <span style={{ textTransform: "capitalize" }}>
+                <Typography variant="subtitle3" component={"h2"}>
+                  {sliceItem.category}
+                </Typography>
+              </span>
+
               <Typography variant="h2" component={"h3"}>
                 {sliceItem.title}
               </Typography>
@@ -237,6 +240,7 @@ const HomepageHero = ({ slice }) => {
             <Card
               key={`${index}-key`}
               itemID={index}
+              cardArticleId={sliceItem.id}
               variant="outlined"
               hasDropShadow={true}
               hasRandomRotation={true}

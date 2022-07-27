@@ -13,6 +13,12 @@ import ArrowCircle from "../../components/icons/ArrowCircle";
 
 const Section = styled.section`
   width: 100vw;
+  background-color: var(--tutu);
+  padding: ${pxToRem(100)} 0 0;
+
+  @media screen and (min-width: 1024px) {
+    padding: ${pxToRem(200)} 0 0;
+  }
 `;
 
 const HighlightedCategoryHeading = styled.div`
@@ -38,10 +44,6 @@ const ViewCategoryLink = styled.div`
 
 const SingleHighlightedCategorySection = ({ slice }) => {
   const isLargeScreen = useIsLarge();
-
-  useEffect(() => {
-    console.log(slice);
-  });
 
   return (
     <Section>
@@ -70,14 +72,23 @@ const SingleHighlightedCategorySection = ({ slice }) => {
         insetLeft={isLargeScreen ? pxToRem(120) : pxToRem(32)}
         insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}
       >
-        {/* {slice.items.map((item, index) => (
+        {slice.items.map((item, index) => (
           <Article
             key={`article-${index}`}
-            cardData={item.article}
+            cardData={{
+              id: item.id,
+              title: item.title,
+              tags: ["story"],
+              media: {
+                type: "image",
+                image: { url: item.thumbnail.url, alt: item.thumbnail.alt },
+                video: {},
+              },
+            }}
             variant="regular"
             withMargin={true}
           />
-        ))} */}
+        ))}
       </Carousel>
     </Section>
   );
