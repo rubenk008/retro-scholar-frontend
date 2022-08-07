@@ -62,10 +62,10 @@ const SwiperSlides = styled.div`
 const SwiperContent = styled.div`
   position: absolute;
   opacity: 0;
-  transition: opacity 500ms;
+  transition: opacity 400ms;
 
   &.isActive {
-    transition-delay: 100ms;
+    transition-delay: 300ms;
     opacity: 1;
   }
 `;
@@ -169,7 +169,8 @@ const HomepageHero = ({ slice }) => {
 
   const getRevertedSliceIndex = (index) => {
     const itemInNormalArray = slice.items[index];
-    const reversedArray = slice.items.reverse();
+    const itemsArray = [...slice.items];
+    const reversedArray = itemsArray.reverse();
 
     if (index >= 0) {
       const indexInReversedArray = reversedArray.findIndex((item) => {
@@ -191,7 +192,6 @@ const HomepageHero = ({ slice }) => {
 
   const onEndTimerAnimation = () => {
     setSlideTimerEnded(true);
-
     setTimeout(() => {
       setSlideTimerEnded(false);
     }, 1);
@@ -200,11 +200,14 @@ const HomepageHero = ({ slice }) => {
   // initial slide duration animation
   useEffect(() => {
     restartSlideDurationAnimation();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // reset slide duration animation
   useEffect(() => {
     restartSlideDurationAnimation();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeSlide]);
 
   return (
@@ -214,7 +217,9 @@ const HomepageHero = ({ slice }) => {
           {slice.items.map((sliceItem, index) => (
             <SwiperContent
               key={`${index}-key`}
-              className={index === activeSlide ? "isActive" : ""}
+              className={
+                sliceItem.id === slice.items[activeSlide].id ? "isActive" : ""
+              }
             >
               <span style={{ textTransform: "capitalize" }}>
                 <Typography variant="subtitle3" component={"h2"}>
@@ -231,7 +236,15 @@ const HomepageHero = ({ slice }) => {
         <CardStack
           onVote={(itemID: number) => {
             const nextIndex = itemID - 1;
-            setActiveSlide(nextIndex);
+
+            if (nextIndex !== -1) {
+              setActiveSlide(nextIndex);
+            }
+
+            if (nextIndex === -1) {
+              setActiveSlide(slice.items.length - 1);
+            }
+
             getRevertedSliceIndex(nextIndex);
           }}
           triggerAutoAnimation={slideTimerEnded}

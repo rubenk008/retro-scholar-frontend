@@ -7,7 +7,6 @@ import { SliceZone } from "@prismicio/react";
 
 import PageWrapper from "../components/layout/PageWrapper";
 import { components } from "../slices";
-import { CreateClientConfig } from "@prismicio/next";
 import { Client } from "@prismicio/client";
 
 const Home = ({ content, slices }) => {

@@ -26,7 +26,7 @@ const CardStack = ({
   onVote,
   ...props
 }: CardStackProps) => {
-  const restoredStack = Children.toArray(children);
+  const [restoredStack, setRestoredStack] = useState(null);
   const [stack, setStack] = useState(Children.toArray(children));
 
   const [isBeingRestacked, setIsBeingRestacked] = useState(false);
@@ -38,12 +38,16 @@ const CardStack = ({
   };
 
   useEffect(() => {
+    setRestoredStack(Children.toArray(children));
+  }, []);
+
+  useEffect(() => {
     if (stack.length === 0) {
       setTimeout(() => {
         onVote(restoredStack.length);
         setIsBeingRestacked(true);
         setStack(restoredStack);
-      }, 500);
+      }, 400);
     }
   }, [stack]);
 

@@ -14,8 +14,10 @@ const Section = styled.section`
   width: 100vw;
   background-color: var(--tutu);
   padding: ${pxToRem(100)} 0;
+  margin-top: ${pxToRem(-20)};
 
   @media screen and (min-width: 1024px) {
+    margin: 0;
     padding: ${pxToRem(200)} 0;
   }
 `;

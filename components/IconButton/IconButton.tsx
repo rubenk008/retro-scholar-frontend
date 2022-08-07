@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 import Props from "./IconButton.types";
+import pxToRem from "../../utils/pxToRem";
 
 const StyledIconButton = styled(motion.button)<{ size: "large" }>`
   cursor: pointer;
   border: none;
-  height: ${(props) => (props.size === "large" ? "40px" : "24px")};
-  width: ${(props) => (props.size === "large" ? "40px" : "24px")};
+  height: ${(props) => (props.size === "large" ? pxToRem(40) : pxToRem(24))};
+  width: ${(props) => (props.size === "large" ? pxToRem(40) : pxToRem(24))};
   border-radius: 100px;
   display: grid;
   box-sizing: border-box;

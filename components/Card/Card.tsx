@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
@@ -264,15 +264,21 @@ const Card = ({
   hasRandomRotation = false,
   ...props
 }: Props) => {
-  const elevatedVariant =
-    variant === "elevated" || variant === "highlightedCat" ? true : false;
+  const [elevatedVariant, setElevatedVariant] = useState(false);
+
+  useEffect(() => {
+    if (variant === "elevated" || variant === "highlightedCat") {
+      setElevatedVariant(true);
+    } else {
+      setElevatedVariant(false);
+    }
+  }, [variant]);
 
   return (
     <CardRoot
       variant={variant}
-      withMargin={withMargin}
+      // withMargin={withMargin}
       className={clsx(
-        className,
         hasDropShadow ? "hasDropShadow" : "",
         hasRandomRotation ? "hasRandomRotation" : "",
         size

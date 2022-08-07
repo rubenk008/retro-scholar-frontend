@@ -14,7 +14,7 @@ import ArrowCircle from "../../components/icons/ArrowCircle";
 const Section = styled.section`
   width: 100vw;
   background-color: var(--tutu);
-  padding: ${pxToRem(100)} 0 0;
+  padding: ${pxToRem(100)} 0 ${pxToRem(20)};
 
   @media screen and (min-width: 1024px) {
     padding: ${pxToRem(200)} 0 0;
@@ -25,8 +25,11 @@ const HighlightedCategoryHeading = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 auto 0 0;
+  padding: 0 ${pxToRem(24)} ${pxToRem(36)};
+  max-width: ${pxToRem(300)};
 
   @media screen and (min-width: 1024px) {
+    max-width: 100%;
     padding: ${pxToRem(44)} ${pxToRem(114)} ${pxToRem(32)};
   }
 
@@ -35,11 +38,33 @@ const HighlightedCategoryHeading = styled.div`
   }
 `;
 
+const StyledArrowCircle = styled(ArrowCircle)`
+  transform: "scale(1)";
+
+  @media screen and (min-width: 1024px) {
+    margin-left: ${pxToRem(16)};
+  }
+`;
+
 const ViewCategoryLink = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
+  padding: ${pxToRem(36)} ${pxToRem(24)} 0;
+
+  > span {
+    margin-right: ${pxToRem(8)};
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 0;
+    justify-content: center;
+
+    > span {
+      margin-right: 0;
+    }
+  }
 `;
 
 const SingleHighlightedCategorySection = ({ slice }) => {
@@ -51,21 +76,19 @@ const SingleHighlightedCategorySection = ({ slice }) => {
         <Typography variant="h4" component={"h2"} color="secondary">
           {slice.primary.collectionTitle}
         </Typography>
-        <ViewCategoryLink>
-          <Typography variant="h6" component={"span"} color="secondary">
-            view all in the collection
-          </Typography>
-          <IconButton
-            size="small"
-            icon={
-              <ArrowCircle
-                height={pxToRem(24)}
-                width={pxToRem(24)}
-                style={{ marginLeft: pxToRem(16), transform: "scale(1)" }}
-              />
-            }
-          />
-        </ViewCategoryLink>
+        {isLargeScreen && (
+          <ViewCategoryLink>
+            <Typography variant="h6" component={"span"} color="secondary">
+              view all in the collection
+            </Typography>
+            <IconButton
+              size="small"
+              icon={
+                <StyledArrowCircle height={pxToRem(24)} width={pxToRem(24)} />
+              }
+            />
+          </ViewCategoryLink>
+        )}
       </HighlightedCategoryHeading>
 
       <Carousel
@@ -90,6 +113,19 @@ const SingleHighlightedCategorySection = ({ slice }) => {
           />
         ))}
       </Carousel>
+      {!isLargeScreen && (
+        <ViewCategoryLink>
+          <Typography variant="h6" component={"span"} color="secondary">
+            view all in the collection
+          </Typography>
+          <IconButton
+            size="small"
+            icon={
+              <StyledArrowCircle height={pxToRem(24)} width={pxToRem(24)} />
+            }
+          />
+        </ViewCategoryLink>
+      )}
     </Section>
   );
 };
