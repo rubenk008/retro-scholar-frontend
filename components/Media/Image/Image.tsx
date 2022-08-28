@@ -48,7 +48,7 @@ const Placeholder = styled.div`
 const StyledImage = styled.img<ImageProps>`
   height: 100%;
   width: 100%;
-  object-position: center;
+  object-position: 20%;
   object-fit: cover;
 `;
 

@@ -174,6 +174,7 @@ const ContentWrapper = styled(motion.div)`
   line-height: 0;
   transform-origin: center;
   background: #fff;
+  overflow: hidden;
 `;
 
 const CardRoot = styled(motion.div)<Props>(
@@ -334,6 +335,7 @@ const Card = ({
             />
           </Backdrop>
           <ContentWrapper
+            layout
             layoutId={`card-container-${cardArticleId}`}
             variants={ContentAnim}
           >

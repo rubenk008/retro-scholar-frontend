@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
+import Link from "next/link";
+
 import { useIsLarge } from "../../hooks/useMediaQuery";
 
 import pxToRem from "../../utils/pxToRem";
@@ -96,21 +98,28 @@ const SingleHighlightedCategorySection = ({ slice }) => {
         insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}
       >
         {slice.items.map((item, index) => (
-          <Article
+          <Link
             key={`article-${index}`}
-            cardData={{
-              id: item.id,
-              title: item.title,
-              tags: ["story"],
-              media: {
-                type: "image",
-                image: { url: item.thumbnail.url, alt: item.thumbnail.alt },
-                video: {},
-              },
-            }}
-            variant="regular"
-            withMargin={true}
-          />
+            href={`/?article=${item.id}`}
+            as={`/article/${item.id}`}
+            scroll={false}
+            shallow={true}
+          >
+            <Article
+              cardData={{
+                id: item.id,
+                title: item.title,
+                tags: ["story"],
+                media: {
+                  type: "image",
+                  image: { url: item.thumbnail.url, alt: item.thumbnail.alt },
+                  video: {},
+                },
+              }}
+              variant="regular"
+              withMargin={true}
+            />
+          </Link>
         ))}
       </Carousel>
       {!isLargeScreen && (
