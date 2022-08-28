@@ -14,6 +14,9 @@ import prevDomainSelf from "../../utils/prevDomainSelf";
 const SliderWrapper = styled(motion.div)`
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
   margin: auto;
@@ -173,7 +176,7 @@ const CloseButton = styled.div`
   }
 `;
 
-const StorySlide = ({ storyId = 0, slice }) => {
+const StorySlide = ({ storyId = "", slice }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [playedSlides, setPlayedSlides] = useState([]);
   const [pausingSlide, setPauseSlide] = useState(false);
@@ -272,7 +275,7 @@ const StorySlide = ({ storyId = 0, slice }) => {
     const prevIsDomainSelf = prevDomainSelf(router.basePath);
 
     if (prevIsDomainSelf) {
-      router.back;
+      router.push("/", "/", { scroll: false, shallow: true });
     }
 
     if (!prevIsDomainSelf) {
@@ -310,7 +313,10 @@ const StorySlide = ({ storyId = 0, slice }) => {
         >
           <SlideImage>
             <motion.div
-              style={{ width: "100%", height: "100%" }}
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
               initial={{ scale: 1, transform: "translate(0px)" }}
               animate={{
                 scale: index === activeSlide ? 1.08 : 1,
@@ -328,6 +334,7 @@ const StorySlide = ({ storyId = 0, slice }) => {
                   url: sliceItem.media.url,
                   alt: sliceItem.media.alt,
                 }}
+                layout
                 layoutId={index === 0 ? `card-media-${storyId}` : ""}
               />
             </motion.div>

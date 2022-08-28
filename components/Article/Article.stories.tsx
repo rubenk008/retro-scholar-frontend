@@ -35,11 +35,13 @@ export const Article = () => {
       {activeArticleId === 1 && (
         <ArticleExpanded
           id={1}
-          media={articleData.media}
+          // media={articleData.media}
           onClick={() => {
             setActiveArticleId(0);
           }}
-        />
+        >
+          <div></div>
+        </ArticleExpanded>
       )}
     </>
   );

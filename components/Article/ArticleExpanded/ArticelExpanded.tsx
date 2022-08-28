@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import Media from "../../Media";
-
 const Overlay = styled(motion.div)`
   width: 100vw;
   height: 100vh;
@@ -11,7 +9,7 @@ const Overlay = styled(motion.div)`
   left: 0;
   background: rgba(0, 0, 0, 0.3);
   position: fixed;
-  z-index: 1;
+  z-index: 999999999;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -23,27 +21,30 @@ const Wrapper = styled.div`
   left: 0;
   right: 0;
   position: fixed;
-  z-index: 1;
-  padding: 48px 0;
+  z-index: 9999999999;
+  padding: 0;
   max-height: 100vh;
-  overflow-y: scroll;
+
+  @media screen and (min-width: 1024px) {
+    padding: 48px 0;
+  }
 `;
 
-const ArticleContent = styled(motion.div)`
-  position: relative;
-  overflow: hidden;
-  width: 84vw;
-  height: 100%;
-  margin: 0 auto;
-  background: #fff;
-`;
+// const ArticleContent = styled(motion.div)`
+//   position: relative;
+//   overflow: hidden;
+//   width: 84vw;
+//   height: 100%;
+//   margin: 0 auto;
+//   background: #fff;
+// `;
 
-const HeaderImage = styled.div`
-  height: 600px;
-  width: 100%;
-`;
+// const HeaderImage = styled.div`
+//   height: 600px;
+//   width: 100%;
+// `;
 
-const ArticleExpanded = ({ id, media, onClick }) => {
+const ArticleExpanded = ({ id, children, onClick }) => {
   return (
     <>
       <Overlay
@@ -54,19 +55,7 @@ const ArticleExpanded = ({ id, media, onClick }) => {
         transition={{ duration: 0.2, delay: 0.15 }}
       ></Overlay>
 
-      <Wrapper onClick={onClick}>
-        <ArticleContent layoutId={`card-container-${id}`}>
-          <HeaderImage>
-            <Media
-              type={media.type}
-              video={media.video}
-              image={media.image}
-              layoutId={`card-media-${id}`}
-            />
-          </HeaderImage>
-          <motion.div style={{ width: "100%", height: "800px" }}></motion.div>
-        </ArticleContent>
-      </Wrapper>
+      <Wrapper>{children}</Wrapper>
     </>
   );
 };
