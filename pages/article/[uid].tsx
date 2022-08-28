@@ -1,5 +1,5 @@
 import React from "react";
 
 const ArticlePage = ({ articleId }) => {
-  return <></>;
+  return <div></div>;
 };
