@@ -10,6 +10,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
+  -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+  -webkit-user-select: none;
 `;
 
 const Main = styled.main`

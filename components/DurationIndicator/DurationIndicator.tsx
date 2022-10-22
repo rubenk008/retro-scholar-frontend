@@ -22,6 +22,7 @@ const DurationIndicatorWrapper = styled.div`
   max-height: 4px;
   position: relative;
   background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
 
   @media screen and (min-width: 1024px) {
     height: calc(4 / 1440 * 100vw);
@@ -40,6 +41,7 @@ const DurationIndicatorProgress = styled(motion.div)`
   bottom: 0;
   transform: scaleX(0);
   transform-origin: left center;
+  pointer-events: none;
 `;
 
 const DurationIndicator = ({

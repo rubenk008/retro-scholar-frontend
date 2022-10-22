@@ -19,14 +19,17 @@ const Home = ({ prefetchedArticles, slices }) => {
   });
 
   useEffect(() => {
-    console.log(overlayOpen);
-    if (!overlayOpen) {
-      enableBodyScroll(document);
-    }
-    if (overlayOpen) {
-      disableBodyScroll(document);
-    }
-  }, [overlayOpen]);
+    console.log("EXPANDED CONTENT", expandedArticleContent);
+  }, [expandedArticleContent]);
+
+  // useEffect(() => {
+  //   if (!overlayOpen) {
+  //     enableBodyScroll(document);
+  //   }
+  //   if (overlayOpen) {
+  //     disableBodyScroll(document);
+  //   }
+  // }, [overlayOpen]);
 
   useEffect(() => {
     if (!!router.query.article) {
