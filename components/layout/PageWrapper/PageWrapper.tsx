@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Navbar from "../Navbar";
@@ -20,6 +20,19 @@ const Main = styled.main`
 
 const PageWrapper = ({ children }) => {
   const [drawerState, setDrawerState] = useState("open");
+
+  useEffect(() => {
+    const appHeight = () => {
+      const doc = document.documentElement;
+      doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+    };
+    window.addEventListener("resize", appHeight);
+    appHeight();
+
+    return () => {
+      window.removeEventListener("resize", appHeight);
+    };
+  }, []);
 
   const links = [
     { name: "topics", href: "https://www.google.com" },

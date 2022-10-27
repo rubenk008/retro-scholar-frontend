@@ -30,6 +30,7 @@
   --timing-short: 100ms;
   --timing-medium: 180ms;
   --timing-long: 500ms;
+  --app-height: 100%;
 }
 
 html,
@@ -38,6 +39,7 @@ body {
   margin: 0;
   font-family: var(--font-nunito-sans);
   overscroll-behavior: none;
+  /* min-height: 100vh; */
 }
 
 a {

@@ -9,7 +9,7 @@ import DurationIndicator from "../../components/DurationIndicator";
 import IconButton from "../../components/IconButton";
 import Arrow from "../../components/icons/Arrow";
 import Cross from "../../components/icons/Cross";
-import prevDomainSelf from "../../utils/prevDomainSelf";
+// import prevDomainSelf from "../../utils/prevDomainSelf";
 
 const SliderWrapper = styled(motion.div)`
   position: relative;
@@ -18,7 +18,7 @@ const SliderWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   margin: auto;
   background: #fff;
 

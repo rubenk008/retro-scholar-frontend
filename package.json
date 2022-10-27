@@ -15,6 +15,7 @@
     "slicemachine": "start-slicemachine --port 9998",
     "storybook": "NODE_OPTIONS=--openssl-legacy-provider start-storybook -s ./public -p 8888",
     "build-storybook": "build-storybook -s public",
+    "launch-ios": "xcrun simctl boot D3172317-5489-4397-B995-E62319EEF3D9",
     "lint": "next lint"
   },
   "dependencies": {
@@ -27,7 +28,7 @@
     "@storybook/addon-links": "^6.4.9",
     "@types/styled-system": "^5.1.13",
     "@use-gesture/react": "^10.2.20",
-    "body-scroll-lock": "^4.0.0-beta.0",
+    "body-scroll-lock": "2.6.4",
     "clsx": "^1.1.1",
     "eslint": "^8.20.0",
     "eslint-config-next": "^12.2.3",
