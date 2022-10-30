@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import styled from "styled-components";
 
 import Typography from "../../Typography";
@@ -57,6 +56,8 @@ const StyledLogo = styled(LogoWithName)`
     transform: rotate(-2deg) scale(1);
   }
 `;
+
+const Link = styled.a``;
 
 const LinkList = styled.ul`
   list-style-type: none;
@@ -151,7 +152,7 @@ const Navbar = ({ links, theme = "dark" }: Props) => {
             {links &&
               links.map((link, index) => (
                 <LinkListItem key={`key-${index}`}>
-                  <Link href={link.href}>
+                  <Link onClick={link.onClick}>
                     <Typography
                       variant="h6Alt"
                       color={theme === "dark" ? "off-white" : "primary"}

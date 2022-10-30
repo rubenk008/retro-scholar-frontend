@@ -29,7 +29,6 @@ const Wrapper = styled.div`
   z-index: 9999999999;
   padding: 0;
   max-height: 100vh;
-  /* height: 100vh; */
   height: var(--app-height);
 
   @media screen and (min-width: 1024px) {

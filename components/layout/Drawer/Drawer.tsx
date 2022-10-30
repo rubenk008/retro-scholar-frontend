@@ -11,7 +11,8 @@ import Cross from "../../icons/Cross";
 import Props from "./Drawer.types";
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
+  z-index: 999999999;
   top: 0;
   left: 0;
   right: 0;
@@ -19,7 +20,8 @@ const Wrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: flex-end;
-  height: 100vh;
+  max-height: 100vh;
+  height: var(--app-height);
   width: 100vw;
   pointer-events: ${(props: { menuIsOpen: boolean }) =>
     props.menuIsOpen ? "" : "none"};
@@ -31,7 +33,8 @@ const Overlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  height: 100vh;
+  max-height: 100vh;
+  height: var(--app-height);
   width: 100vw;
   background: var(--bay-of-many);
   opacity: ${(props: { menuIsOpen: boolean }) => (props.menuIsOpen ? 0.8 : 0)};
@@ -43,7 +46,8 @@ const Overlay = styled.div`
 const MenuWrapper = styled.div`
   position: relative;
   display: flex;
-  height: 100vh;
+  max-height: 100vh;
+  height: var(--app-height);
   width: 100vw;
   padding: 48px 32px;
 

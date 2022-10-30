@@ -1,7 +1,6 @@
-import { LinkProps } from "next/link";
-
-interface PageLinks extends LinkProps {
+interface PageLinks {
   name: string;
+  onClick: () => void;
 }
 
 export default interface Props {
