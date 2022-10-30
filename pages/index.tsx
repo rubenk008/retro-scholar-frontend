@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 import { useRouter } from "next/router";
 import { createClient } from "../prismicio";
@@ -17,16 +16,6 @@ const Home = ({ prefetchedArticles, slices }) => {
   const [expandedArticleContent, setExpandedArticleContent] = useState({
     data: { slices: [] },
   });
-
-  useEffect(() => {
-    console.log(overlayOpen);
-    if (!overlayOpen) {
-      enableBodyScroll(document);
-    }
-    if (overlayOpen) {
-      disableBodyScroll(document);
-    }
-  }, [overlayOpen]);
 
   useEffect(() => {
     if (!!router.query.article) {
@@ -47,8 +36,10 @@ const Home = ({ prefetchedArticles, slices }) => {
   }, [prefetchedArticles]);
 
   return (
-    <PageWrapper>
-      <SliceZone slices={slices} components={components} />
+    <>
+      <PageWrapper>
+        <SliceZone slices={slices} components={components} />
+      </PageWrapper>
       {!!router.query.article && (
         <ArticleExpanded
           id={router.query.article}
@@ -65,7 +56,7 @@ const Home = ({ prefetchedArticles, slices }) => {
           )}
         </ArticleExpanded>
       )}
-    </PageWrapper>
+    </>
   );
 };
 
@@ -165,5 +156,6 @@ export async function getStaticProps({ previewData }) {
       prefetchedArticles,
       slices,
     },
+    revalidate: 10,
   };
 }

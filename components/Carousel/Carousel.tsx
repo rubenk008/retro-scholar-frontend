@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { RemoveScroll } from "react-remove-scroll";
+import { useDrag } from "@use-gesture/react";
 
 import { motion } from "framer-motion";
 
@@ -31,16 +32,42 @@ const SliderWrap = ({
   insetRight = "0px",
 }) => {
   const [removeScrollEnabled, setRemoveScrollEnabled] = useState(false);
+  const [horizontalDragEnabled, setHorizontalDragEnabled] = useState(false);
 
   const setRemoveScrollState = () => {
-    setRemoveScrollEnabled(removeScrollEnabled ? false : true);
+    setRemoveScrollEnabled(false);
+    setHorizontalDragEnabled(false);
   };
+
+  const bind: any = useDrag(({ movement: [mx, my] }) => {
+    let horizontalScroll = false;
+    let verticalScroll = true;
+
+    if (mx > 5 || mx < -5) {
+      horizontalScroll = true;
+    }
+
+    if (horizontalDragEnabled) {
+      if (my > 5 || my < -5) {
+        verticalScroll = true;
+      }
+      if ((my > 2 && !horizontalScroll) || (my < -2 && !horizontalScroll)) {
+        setRemoveScrollEnabled(false);
+        setHorizontalDragEnabled(false);
+      }
+    }
+
+    if ((mx > 5 && !verticalScroll) || (mx < -5 && !verticalScroll)) {
+      setRemoveScrollEnabled(true);
+      setHorizontalDragEnabled(true);
+    }
+  });
 
   return (
     <RemoveScroll enabled={removeScrollEnabled}>
       <div
+        {...bind()}
         style={{ overflowX: "hidden" }}
-        onTouchStart={setRemoveScrollState}
         onTouchEnd={setRemoveScrollState}
       >
         <Slider

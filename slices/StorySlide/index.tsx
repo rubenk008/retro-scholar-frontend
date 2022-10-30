@@ -9,7 +9,7 @@ import DurationIndicator from "../../components/DurationIndicator";
 import IconButton from "../../components/IconButton";
 import Arrow from "../../components/icons/Arrow";
 import Cross from "../../components/icons/Cross";
-import prevDomainSelf from "../../utils/prevDomainSelf";
+// import prevDomainSelf from "../../utils/prevDomainSelf";
 
 const SliderWrapper = styled(motion.div)`
   position: relative;
@@ -18,7 +18,7 @@ const SliderWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   margin: auto;
   background: #fff;
 
@@ -114,6 +114,7 @@ const DurationWrapper = styled.div`
   grid-column-gap: 8px;
   z-index: 4;
   padding: 0 calc(32 / 414 * 100vw);
+  pointer-events: none;
 
   @media screen and (min-width: 1024px) {
     width: calc(300 / 1440 * 100vw);
@@ -272,15 +273,16 @@ const StorySlide = ({ storyId = "", slice }) => {
 
   const handleClosePage = (e) => {
     e.preventDefault();
-    const prevIsDomainSelf = prevDomainSelf(router.basePath);
+    router.push("/", "/", { scroll: false, shallow: true });
+    // const prevIsDomainSelf = prevDomainSelf(router.basePath);
 
-    if (prevIsDomainSelf) {
-      router.push("/", "/", { scroll: false, shallow: true });
-    }
+    // if (prevIsDomainSelf) {
+    //   router.push("/", "/", { scroll: false, shallow: true });
+    // }
 
-    if (!prevIsDomainSelf) {
-      router.push("/category");
-    }
+    // if (!prevIsDomainSelf) {
+    //   router.push("/category");
+    // }
   };
 
   useEffect(() => {
@@ -354,11 +356,11 @@ const StorySlide = ({ storyId = "", slice }) => {
             }}
           >
             <Typography color="white" variant="h4Alt" component={"h2"}>
-              {sliceItem.heading ? sliceItem.heading : "Lorem ipsum"}
+              {sliceItem.heading ? sliceItem.heading : ""}
             </Typography>
             <Typography color="white" variant=" body2" component={"p"}>
-              {sliceItem.description
-                ? sliceItem.discription
+              {sliceItem.caption
+                ? sliceItem.caption
                 : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}
             </Typography>
           </SlideText>

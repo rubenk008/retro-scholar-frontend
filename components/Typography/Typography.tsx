@@ -21,6 +21,9 @@ const TypographyRoot = styled("span")<Props>(
     padding: "0",
     margin: "0",
     display: "flex",
+    userSelect: "none",
+    WebkitUserSelect: "none",
+    msUserSelect: "none",
 
     "&.primary": {
       color: "var(--cranberry)",

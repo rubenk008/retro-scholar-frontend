@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Navbar from "../Navbar";
@@ -10,6 +10,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
+  -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+  -webkit-user-select: none;
 `;
 
 const Main = styled.main`
@@ -18,6 +20,19 @@ const Main = styled.main`
 
 const PageWrapper = ({ children }) => {
   const [drawerState, setDrawerState] = useState("open");
+
+  useEffect(() => {
+    const appHeight = () => {
+      const doc = document.documentElement;
+      doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+    };
+    window.addEventListener("resize", appHeight);
+    appHeight();
+
+    return () => {
+      window.removeEventListener("resize", appHeight);
+    };
+  }, []);
 
   const links = [
     { name: "topics", href: "https://www.google.com" },

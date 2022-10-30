@@ -42,11 +42,16 @@ const MediaContainer = styled(motion.div)`
   top: 0;
   left: 0;
   overflow: hidden;
-
-  aspect-ratio: 207 / 448;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 0.56 / 1;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 
   @media screen and (min-width: 1024px) {
     left: -80%;
+    width: auto;
     height: 100%;
     aspect-ratio: 25 / 14;
   }
