@@ -34,6 +34,10 @@ const PageWrapper = ({ children, menu }) => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(menu);
+  }, [menu]);
+
   const onButtonClick = () => {
     if (drawerState === "closed") {
       setDrawerState("open");
@@ -47,12 +51,12 @@ const PageWrapper = ({ children, menu }) => {
         onButtonClick();
       },
     },
-    {
-      name: "quizes",
-      onClick: () => {
-        onButtonClick();
-      },
-    },
+    // {
+    //   name: "quizes",
+    //   onClick: () => {
+    //     onButtonClick();
+    //   },
+    // },
   ];
 
   const footerData = {
@@ -70,44 +74,6 @@ const PageWrapper = ({ children, menu }) => {
   };
 
   const drawerTempData = {
-    heading: "topics",
-    links: [
-      {
-        name: "Retro tech",
-        desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
-        href: "https://www.google.com",
-        opacity: 1,
-        active: false,
-      },
-      {
-        name: "Renowed People",
-        desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
-        href: "https://www.google.com",
-        opacity: 1,
-        active: false,
-      },
-      {
-        name: "Architecture",
-        desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
-        href: "https://www.google.com",
-        opacity: 1,
-        active: false,
-      },
-      {
-        name: "Cities",
-        desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
-        href: "https://www.google.com",
-        opacity: 1,
-        active: false,
-      },
-      {
-        name: "Music",
-        desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
-        href: "https://www.google.com",
-        opacity: 1,
-        active: false,
-      },
-    ],
     socialLinks: [
       {
         icon: <InstagramIcon />,
@@ -125,8 +91,8 @@ const PageWrapper = ({ children, menu }) => {
       <Drawer
         state={drawerState}
         setState={setDrawerState}
-        heading={drawerTempData.heading}
-        links={drawerTempData.links}
+        heading={menu.title}
+        links={menu.links}
         socialLinks={drawerTempData.socialLinks}
       />
     </Container>

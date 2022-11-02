@@ -48,6 +48,9 @@
     "home-page": {},
     "story-page": {},
     "category-page": {},
-    "categories": {}
+    "categories": {},
+    "menu": {
+      "menu_links": {}
+    }
   }
 }

@@ -1,0 +1,42 @@
+{
+  "id": "8d24adea-902b-425a-ac8f-5e3f9febe2ad",
+  "uid": "impedit-et-qui",
+  "type": "menu",
+  "data": {
+    "menuTitle": "brand sticky ROI",
+    "menu_links": [
+      {
+        "menuItemName": "disintermediate collaborative eyeballs",
+        "menuItemDesc": "brand value-added applications",
+        "menuItemLink": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "menuItemName": "strategize sticky architectures",
+        "menuItemDesc": "unleash robust e-services",
+        "menuItemLink": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      },
+      {
+        "menuItemName": "engineer impactful partnerships",
+        "menuItemDesc": "transition one-to-one initiatives",
+        "menuItemLink": {
+          "link_type": "Web",
+          "url": "https://prismic.io"
+        }
+      },
+      {
+        "menuItemName": "integrate web-enabled applications",
+        "menuItemDesc": "scale holistic synergies",
+        "menuItemLink": {
+          "link_type": "Web",
+          "url": "https://slicemachine.dev"
+        }
+      }
+    ]
+  }
+}
