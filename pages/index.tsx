@@ -9,7 +9,7 @@ import { components, StorySlide } from "../slices";
 import { Client } from "@prismicio/client";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
 
-const Home = ({ prefetchedArticles, slices }) => {
+const Home = ({ menu, prefetchedArticles, slices }) => {
   const router = useRouter();
   const [prefetched, setPrefetced] = useState([]);
   const [overlayOpen, setOverlayOpen] = useState(false);
@@ -37,7 +37,7 @@ const Home = ({ prefetchedArticles, slices }) => {
 
   return (
     <>
-      <PageWrapper>
+      <PageWrapper menu={menu}>
         <SliceZone slices={slices} components={components} />
       </PageWrapper>
       {!!router.query.article && (
@@ -61,6 +61,32 @@ const Home = ({ prefetchedArticles, slices }) => {
 };
 
 export default Home;
+
+const getMenu = async (client: Client) => {
+  const response = await (await client.getSingle("menu")).data;
+
+  const title = response.title ? response.title : "";
+
+  const links = [];
+
+  for (const link of response.links) {
+    const item = {
+      name: link.menuItemName,
+      desc: link.menuItemDesc,
+      href: "",
+      opacity: 1,
+      active: false,
+    };
+
+    links.push(item);
+  }
+
+  const menu = {
+    title: title,
+    links: links,
+  };
+  return menu;
+};
 
 const getCategory = async (client: Client, categoryId) => {
   const response = await (await client.getByID(categoryId)).data;
@@ -99,6 +125,7 @@ const getArticles = async (client: Client, articleIds) => {
 export async function getStaticProps({ previewData }) {
   const client = createClient({ previewData });
 
+  const menu = await getMenu(client);
   const content = await client.getAllByType("home-page");
 
   let prefetchedArticles = [];
@@ -153,6 +180,7 @@ export async function getStaticProps({ previewData }) {
 
   return {
     props: {
+      menu,
       prefetchedArticles,
       slices,
     },

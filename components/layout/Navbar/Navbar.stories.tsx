@@ -8,8 +8,8 @@ export default {
 
 const footerTempData = {
   links: [
-    { name: "topics", href: "https://www.google.com" },
-    { name: "quizes", href: "https://www.google.com" },
+    { name: "topics", onClick: () => {} },
+    { name: "quizes", onClick: () => {} },
   ],
 };
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import Link from "next/link";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import Drawer from "../Drawer";
 
 import InstagramIcon from "../../icons/Instagram";
 import FacebookIcon from "../../icons/Facebook";
@@ -18,8 +18,8 @@ const Main = styled.main`
   background: var(--bay-of-many);
 `;
 
-const PageWrapper = ({ children }) => {
-  const [drawerState, setDrawerState] = useState("open");
+const PageWrapper = ({ children, menu }) => {
+  const [drawerState, setDrawerState] = useState("closed");
 
   useEffect(() => {
     const appHeight = () => {
@@ -34,9 +34,29 @@ const PageWrapper = ({ children }) => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log(menu);
+  }, [menu]);
+
+  const onButtonClick = () => {
+    if (drawerState === "closed") {
+      setDrawerState("open");
+    }
+  };
+
   const links = [
-    { name: "topics", href: "https://www.google.com" },
-    { name: "quizes", href: "https://www.google.com" },
+    {
+      name: "topics",
+      onClick: () => {
+        onButtonClick();
+      },
+    },
+    // {
+    //   name: "quizes",
+    //   onClick: () => {
+    //     onButtonClick();
+    //   },
+    // },
   ];
 
   const footerData = {
@@ -53,10 +73,14 @@ const PageWrapper = ({ children }) => {
     ],
   };
 
-  const onButtonClick = () => {
-    if (drawerState === "closed") {
-      setDrawerState("open");
-    }
+  const drawerTempData = {
+    socialLinks: [
+      {
+        icon: <InstagramIcon />,
+        href: "",
+      },
+      { icon: <FacebookIcon />, href: "" },
+    ],
   };
 
   return (
@@ -64,6 +88,13 @@ const PageWrapper = ({ children }) => {
       <Navbar links={links} />
       <Main>{children}</Main>
       <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
+      <Drawer
+        state={drawerState}
+        setState={setDrawerState}
+        heading={menu.title}
+        links={menu.links}
+        socialLinks={drawerTempData.socialLinks}
+      />
     </Container>
   );
 };
