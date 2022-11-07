@@ -223,7 +223,7 @@ const HomepageHero = ({ slice }) => {
             >
               <span style={{ textTransform: "capitalize" }}>
                 <Typography variant="subtitle3" component={"h2"}>
-                  {sliceItem.category}
+                  {sliceItem.category[0].text}
                 </Typography>
               </span>
 

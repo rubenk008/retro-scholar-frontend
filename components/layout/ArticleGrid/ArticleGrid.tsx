@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import Link from "next/link";
 import Article from "../../Article";
-
-import ArticleGridProps from "./ArticleGrid.types";
 
 const Grid = styled.div`
   display: grid;
@@ -24,15 +23,38 @@ const Grid = styled.div`
   @media screen and (min-width: 1300px) {
     grid-template-columns: repeat(4, 1fr);
     max-width: 1200px;
-    padding: 100px 0;
+    padding: 200px 0 100px;
   }
 `;
 
-const ArticleGrid = ({ articles }: ArticleGridProps) => {
+const ArticleGrid = ({ articles }: any) => {
   return (
     <Grid>
-      {articles.map((article, index) => (
-        <Article key={`article-${index}`} cardData={article.cardData} />
+      {articles.map((item, index) => (
+        <>
+          <Link
+            key={`article-${index}`}
+            href={`/?article=${item.id}`}
+            as={`/article/${item.id}`}
+            scroll={false}
+            shallow={true}
+          >
+            <Article
+              cardData={{
+                id: item.id,
+                title: item.title,
+                tags: ["story"],
+                media: {
+                  type: "image",
+                  image: { url: item.thumbnail.url, alt: item.thumbnail.alt },
+                  video: {},
+                },
+              }}
+              variant="small"
+              withMargin={true}
+            />
+          </Link>
+        </>
       ))}
     </Grid>
   );

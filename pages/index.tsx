@@ -6,8 +6,9 @@ import { SliceZone } from "@prismicio/react";
 
 import PageWrapper from "../components/layout/PageWrapper";
 import { components, StorySlide } from "../slices";
-import { Client } from "@prismicio/client";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
+
+import { getMenu, getArticles } from "../services/prismic";
 
 const Home = ({ menu, prefetchedArticles, slices }) => {
   const router = useRouter();
@@ -32,6 +33,11 @@ const Home = ({ menu, prefetchedArticles, slices }) => {
   }, [router]);
 
   useEffect(() => {
+    console.log(slices);
+  }, [slices]);
+
+  useEffect(() => {
+    console.log(prefetchedArticles);
     setPrefetced(prefetchedArticles);
   }, [prefetchedArticles]);
 
@@ -62,66 +68,6 @@ const Home = ({ menu, prefetchedArticles, slices }) => {
 
 export default Home;
 
-const getMenu = async (client: Client) => {
-  const response = await (await client.getSingle("menu")).data;
-
-  const title = response.title ? response.title : "";
-
-  const links = [];
-
-  for (const link of response.links) {
-    const item = {
-      name: link.menuItemName,
-      desc: link.menuItemDesc,
-      href: "",
-      opacity: 1,
-      active: false,
-    };
-
-    links.push(item);
-  }
-
-  const menu = {
-    title: title,
-    links: links,
-  };
-  return menu;
-};
-
-const getCategory = async (client: Client, categoryId) => {
-  const response = await (await client.getByID(categoryId)).data;
-
-  const category = response.category_name;
-  return category;
-};
-
-const getArticles = async (client: Client, articleIds) => {
-  const response = await (await client.getByIDs(articleIds)).results;
-
-  const prefetchedArticles = [];
-  const articles = [];
-
-  for (const [index, item] of response.entries()) {
-    let category = "";
-    if (item.data.category.hasOwnProperty("id")) {
-      category = await getCategory(client, item.data.category.id);
-    }
-
-    prefetchedArticles.push(item);
-
-    const article = {
-      id: articleIds[index],
-      category: category,
-      title: item.data.title,
-      thumbnail: item.data.slices[0].items[0].media,
-    };
-
-    articles.push(article);
-  }
-
-  return { articles: articles, prefetchedArticles: prefetchedArticles };
-};
-
 export async function getStaticProps({ previewData }) {
   const client = createClient({ previewData });
 
@@ -139,41 +85,31 @@ export async function getStaticProps({ previewData }) {
 
     if (slice.slice_type === "single_highlighted_category_section") {
       const articleIds = [];
-
       for (const item of slice.items) {
         if (item !== undefined) {
           articleIds.push(item.article.id);
         }
       }
       const data = await getArticles(client, articleIds);
-
       const sliceCopy = { ...slice };
       delete sliceCopy["items"];
-
       const newSlice = { ...sliceCopy, items: data.articles };
-
       prefetchedArticles = [...prefetchedArticles, ...data.prefetchedArticles];
       slices.push(newSlice);
     }
 
     if (slice.slice_type === "homepage_hero") {
       const articleIds = [];
-
       for (const item of slice.items) {
         if (item !== undefined) {
           articleIds.push(item.article.id);
         }
       }
-
       const data = await getArticles(client, articleIds);
-
       const sliceCopy = { ...slice };
       delete sliceCopy["items"];
-
       const newSlice = { ...sliceCopy, items: data.articles };
-
       prefetchedArticles = [...prefetchedArticles, ...data.prefetchedArticles];
-
       slices.push(newSlice);
     }
   }

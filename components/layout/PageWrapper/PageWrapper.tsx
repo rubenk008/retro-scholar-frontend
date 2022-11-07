@@ -7,6 +7,7 @@ import Drawer from "../Drawer";
 import InstagramIcon from "../../icons/Instagram";
 import FacebookIcon from "../../icons/Facebook";
 import styled from "styled-components";
+import { MainContainerProps } from "./PageWrapper.types";
 
 const Container = styled.div`
   position: relative;
@@ -14,11 +15,12 @@ const Container = styled.div`
   -webkit-user-select: none;
 `;
 
-const Main = styled.main`
-  background: var(--bay-of-many);
+const Main = styled.main<MainContainerProps>`
+  background: ${(props) =>
+    props.variant === "dark" ? "var(--bay-of-many)" : "var(--tutu)"};
 `;
 
-const PageWrapper = ({ children, menu }) => {
+const PageWrapper = ({ children, menu, variant = "dark" }) => {
   const [drawerState, setDrawerState] = useState("closed");
 
   useEffect(() => {
@@ -85,8 +87,8 @@ const PageWrapper = ({ children, menu }) => {
 
   return (
     <Container>
-      <Navbar links={links} />
-      <Main>{children}</Main>
+      <Navbar links={links} theme={variant} />
+      <Main variant={variant}>{children}</Main>
       <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
       <Drawer
         state={drawerState}
