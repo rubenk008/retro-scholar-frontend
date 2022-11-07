@@ -23,7 +23,7 @@ const Grid = styled.div`
   @media screen and (min-width: 1300px) {
     grid-template-columns: repeat(4, 1fr);
     max-width: 1200px;
-    padding: 200px 0 100px;
+    padding: 200px 0 200px;
   }
 `;
 
