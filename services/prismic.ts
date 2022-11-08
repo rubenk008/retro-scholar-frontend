@@ -1,13 +1,14 @@
 import { Client, predicate } from "@prismicio/client";
 
 export const getMenu = async (client: Client) => {
-  const response = await (await client.getSingle("menu")).data;
+  const response = await client.getSingle("menu");
+  const data = response.data;
 
-  const title = response.title ? response.title : "";
+  const title = data.title ? data.title : "";
 
   const links = [];
 
-  for (const link of response.links) {
+  for (const link of data.links) {
     const item = {
       name: link.menuItemName,
       desc: link.menuItemDesc,

@@ -20,7 +20,7 @@ const Main = styled.main<MainContainerProps>`
     props.variant === "dark" ? "var(--bay-of-many)" : "var(--tutu)"};
 `;
 
-const PageWrapper = ({ children, menu, variant = "dark" }) => {
+const PageWrapper = ({ menu, variant = "dark", children }) => {
   const [drawerState, setDrawerState] = useState("closed");
 
   useEffect(() => {
@@ -35,10 +35,6 @@ const PageWrapper = ({ children, menu, variant = "dark" }) => {
       window.removeEventListener("resize", appHeight);
     };
   }, []);
-
-  useEffect(() => {
-    console.log(menu);
-  }, [menu]);
 
   const onButtonClick = () => {
     if (drawerState === "closed") {

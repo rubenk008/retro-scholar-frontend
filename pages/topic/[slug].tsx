@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { createClient } from "../../prismicio";
 
@@ -11,10 +11,6 @@ import PageWrapper from "../../components/layout/PageWrapper";
 import ArticleGrid from "../../components/layout/ArticleGrid";
 
 const TopicPage = ({ menu, articles }) => {
-  useEffect(() => {
-    console.log(articles);
-  }, [articles]);
-
   return (
     <>
       <PageWrapper menu={menu} variant="light">
@@ -49,6 +45,6 @@ export async function getStaticPaths() {
 
   return {
     paths: pages.map((topic) => `/topic/${topic.uid}`),
-    fallback: true,
+    fallback: false,
   };
 }
