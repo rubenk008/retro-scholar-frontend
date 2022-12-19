@@ -94,5 +94,5 @@ export const getArticlesByCategory = async (client: Client, categoryID) => {
     articles.push(article);
   }
 
-  return articles;
+  return { articles, prefetchedArticles };
 };

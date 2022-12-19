@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { createClient } from "../prismicio";
 import { SliceZone } from "@prismicio/react";
 
-import PageWrapper from "../components/layout/PageWrapper";
 import { components, StorySlide } from "../slices";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
 
@@ -43,9 +42,8 @@ const Home = ({ menu, prefetchedArticles, slices }) => {
 
   return (
     <>
-      <PageWrapper menu={menu}>
-        <SliceZone slices={slices} components={components} />
-      </PageWrapper>
+      <SliceZone slices={slices} components={components} />
+
       {!!router.query.article && (
         <ArticleExpanded
           id={router.query.article}
@@ -58,6 +56,10 @@ const Home = ({ menu, prefetchedArticles, slices }) => {
             <StorySlide
               storyId={router.query.article.toString()}
               slice={expandedArticleContent.data.slices[0]}
+              handleClosePage={(e) => {
+                e.preventDefault();
+                router.push("/", "/", { scroll: false, shallow: true });
+              }}
             />
           )}
         </ArticleExpanded>

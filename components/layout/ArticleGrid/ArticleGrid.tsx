@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Article from "../../Article";
 
 const Grid = styled.div`
@@ -27,15 +28,19 @@ const Grid = styled.div`
   }
 `;
 
-const ArticleGrid = ({ articles }: any) => {
+const ArticleGrid = ({ articles, asPath }: any) => {
+  useEffect(() => {
+    console.log(asPath);
+  }, [asPath]);
+
   return (
     <Grid>
       {articles.map((item, index) => (
         <>
           <Link
             key={`article-${index}`}
-            href={`/?article=${item.id}`}
-            as={`/article/${item.id}`}
+            href={`${asPath}?article=${item.id}`}
+            // as={`${asPath}/article/${item.id}`}
             scroll={false}
             shallow={true}
           >
