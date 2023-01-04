@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { useRouter } from "next/router";
 import { createClient } from "../../prismicio";
@@ -8,19 +8,25 @@ import {
   getArticlesByCategory,
   getCategoryId,
 } from "../../services/prismic";
-import PageWrapper from "../../components/layout/PageWrapper";
+
 import ArticleGrid from "../../components/layout/ArticleGrid";
 import ArticleExpanded from "../../components/Article/ArticleExpanded";
 import { StorySlide } from "../../slices";
+import { ThemeContext } from "../../providers/ThemeProvider";
 
-const TopicPage = ({ menu, articles, prefetchedArticles }) => {
+const TopicPage = ({ articles, prefetchedArticles }) => {
   const router = useRouter();
+  const { toggleTheme } = useContext(ThemeContext);
 
   const [prefetched, setPrefetced] = useState([]);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [expandedArticleContent, setExpandedArticleContent] = useState({
     data: { slices: [] },
   });
+
+  useEffect(() => {
+    toggleTheme("light");
+  }, []);
 
   useEffect(() => {
     if (!!router.query.article) {
@@ -80,7 +86,6 @@ export default TopicPage;
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
 
-  const menu = await getMenu(client);
   const categoryID = await getCategoryId(client, params.slug);
   const data = await getArticlesByCategory(client, categoryID);
 
@@ -89,7 +94,6 @@ export async function getStaticProps({ params, previewData }) {
 
   return {
     props: {
-      menu,
       articles,
       prefetchedArticles,
     },

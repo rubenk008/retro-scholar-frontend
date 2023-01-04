@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import Navbar from "../Navbar";
 import Footer from "../Footer";
@@ -8,6 +8,7 @@ import InstagramIcon from "../../icons/Instagram";
 import FacebookIcon from "../../icons/Facebook";
 import styled from "styled-components";
 import { MainContainerProps } from "./PageWrapper.types";
+import { ThemeContext } from "../../../providers/ThemeProvider";
 
 const Container = styled.div`
   position: relative;
@@ -20,8 +21,10 @@ const Main = styled.main<MainContainerProps>`
     props.variant === "dark" ? "var(--bay-of-many)" : "var(--tutu)"};
 `;
 
-const PageWrapper = ({ menu, variant = "dark", children }) => {
+const PageWrapper = ({ menu, children }) => {
   const [drawerState, setDrawerState] = useState("closed");
+
+  const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
     const appHeight = () => {
@@ -83,8 +86,8 @@ const PageWrapper = ({ menu, variant = "dark", children }) => {
 
   return (
     <Container>
-      <Navbar links={links} theme={variant} />
-      <Main variant={variant}>{children}</Main>
+      <Navbar links={links} theme={theme} />
+      <Main variant={theme}>{children}</Main>
       <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
       <Drawer
         state={drawerState}
