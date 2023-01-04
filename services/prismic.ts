@@ -12,7 +12,7 @@ export const getMenu = async (client: Client) => {
     const item = {
       name: link.menuItemName,
       desc: link.menuItemDesc,
-      href: "",
+      href: !!link.menuItemLink.slug ? link.menuItemLink.slug : "",
       opacity: 1,
       active: false,
     };
@@ -94,5 +94,5 @@ export const getArticlesByCategory = async (client: Client, categoryID) => {
     articles.push(article);
   }
 
-  return articles;
+  return { articles, prefetchedArticles };
 };

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 
+import { useRouter } from "next/router";
 import { createClient } from "../../prismicio";
 
 import {
@@ -7,15 +8,75 @@ import {
   getArticlesByCategory,
   getCategoryId,
 } from "../../services/prismic";
-import PageWrapper from "../../components/layout/PageWrapper";
-import ArticleGrid from "../../components/layout/ArticleGrid";
 
-const TopicPage = ({ menu, articles }) => {
+import ArticleGrid from "../../components/layout/ArticleGrid";
+import ArticleExpanded from "../../components/Article/ArticleExpanded";
+import { StorySlide } from "../../slices";
+import { ThemeContext } from "../../providers/ThemeProvider";
+
+const TopicPage = ({ articles, prefetchedArticles }) => {
+  const router = useRouter();
+  const { toggleTheme } = useContext(ThemeContext);
+
+  const [prefetched, setPrefetced] = useState([]);
+  const [overlayOpen, setOverlayOpen] = useState(false);
+  const [expandedArticleContent, setExpandedArticleContent] = useState({
+    data: { slices: [] },
+  });
+
+  useEffect(() => {
+    toggleTheme("light");
+  }, []);
+
+  useEffect(() => {
+    if (!!router.query.article) {
+      setOverlayOpen(true);
+      const articleId = router.query.article.toString();
+      for (const prefetchedItem of prefetched) {
+        if (prefetchedItem.id === articleId) {
+          setExpandedArticleContent(prefetchedItem);
+        }
+      }
+    } else {
+      setOverlayOpen(false);
+    }
+  }, [router]);
+
+  useEffect(() => {
+    console.log(prefetchedArticles);
+    setPrefetced(prefetchedArticles);
+  }, [prefetchedArticles]);
+
   return (
     <>
-      <PageWrapper menu={menu} variant="light">
-        <ArticleGrid articles={articles} />
-      </PageWrapper>
+      <ArticleGrid articles={articles} asPath={router.asPath} />
+
+      {!!router.query.article && (
+        <ArticleExpanded
+          id={router.query.article}
+          onClick={(e) => {
+            e.preventDefault();
+            router.push("/topic/icons", "/topic/icons", {
+              scroll: false,
+              shallow: true,
+            });
+          }}
+        >
+          {expandedArticleContent.data.slices.length > 0 && (
+            <StorySlide
+              storyId={router.query.article.toString()}
+              slice={expandedArticleContent.data.slices[0]}
+              handleClosePage={(e) => {
+                e.preventDefault();
+                router.push("/topic/icons", "/topic/icons", {
+                  scroll: false,
+                  shallow: true,
+                });
+              }}
+            />
+          )}
+        </ArticleExpanded>
+      )}
     </>
   );
 };
@@ -25,14 +86,16 @@ export default TopicPage;
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
 
-  const menu = await getMenu(client);
   const categoryID = await getCategoryId(client, params.slug);
-  const articles = await getArticlesByCategory(client, categoryID);
+  const data = await getArticlesByCategory(client, categoryID);
+
+  const articles = data.articles;
+  const prefetchedArticles = data.prefetchedArticles;
 
   return {
     props: {
-      menu,
       articles,
+      prefetchedArticles,
     },
     revalidate: 10,
   };

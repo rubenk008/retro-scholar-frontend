@@ -177,7 +177,7 @@ const CloseButton = styled.div`
   }
 `;
 
-const StorySlide = ({ storyId = "", slice }) => {
+const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [playedSlides, setPlayedSlides] = useState([]);
   const [pausingSlide, setPauseSlide] = useState(false);
@@ -269,20 +269,6 @@ const StorySlide = ({ storyId = "", slice }) => {
 
     clearTimeout(timerRef.current);
     return;
-  };
-
-  const handleClosePage = (e) => {
-    e.preventDefault();
-    router.push("/", "/", { scroll: false, shallow: true });
-    // const prevIsDomainSelf = prevDomainSelf(router.basePath);
-
-    // if (prevIsDomainSelf) {
-    //   router.push("/", "/", { scroll: false, shallow: true });
-    // }
-
-    // if (!prevIsDomainSelf) {
-    //   router.push("/category");
-    // }
   };
 
   useEffect(() => {

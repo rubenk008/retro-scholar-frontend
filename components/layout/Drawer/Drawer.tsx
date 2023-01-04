@@ -346,28 +346,40 @@ const Drawer = ({
           {linkItems &&
             linkItems.map((link, index) => (
               // eslint-disable-next-line react/jsx-key
-              <motion.li variants={item}>
-                <LinkListItem
-                  key={`key-${index}`}
-                  opacity={link.opacity}
-                  onMouseOver={() => fadeOnHover(index)}
-                  onMouseLeave={fadeInOnLeave}
-                >
-                  <LinkListItemCounter>
-                    <Typography variant="h6Small" color="white" component="p">
-                      {`${index < 10 ? 0 : ""}${index + 1}`}
-                    </Typography>
-                  </LinkListItemCounter>
-                  <LinkListItemContent>
-                    <Typography variant="h4" color="white">
-                      {link.name}
-                    </Typography>
-                    <Typography variant="subtitle3" color="white" component="p">
-                      {link.desc}
-                    </Typography>
-                  </LinkListItemContent>
-                </LinkListItem>
-              </motion.li>
+              <Link
+                legacyBehavior={false}
+                href={`/topic/${link.href}`}
+                onClick={() => {
+                  onCrossClick();
+                }}
+              >
+                <motion.li variants={item}>
+                  <LinkListItem
+                    key={`key-${index}`}
+                    opacity={link.opacity}
+                    onMouseOver={() => fadeOnHover(index)}
+                    onMouseLeave={fadeInOnLeave}
+                  >
+                    <LinkListItemCounter>
+                      <Typography variant="h6Small" color="white" component="p">
+                        {`${index < 10 ? 0 : ""}${index + 1}`}
+                      </Typography>
+                    </LinkListItemCounter>
+                    <LinkListItemContent>
+                      <Typography variant="h4" color="white">
+                        {link.name}
+                      </Typography>
+                      <Typography
+                        variant="subtitle3"
+                        color="white"
+                        component="p"
+                      >
+                        {link.desc}
+                      </Typography>
+                    </LinkListItemContent>
+                  </LinkListItem>
+                </motion.li>
+              </Link>
             ))}
         </LinkList>
         <SocialLinkList

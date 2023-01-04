@@ -1,22 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { useRouter } from "next/router";
 import { createClient } from "../prismicio";
 import { SliceZone } from "@prismicio/react";
 
-import PageWrapper from "../components/layout/PageWrapper";
 import { components, StorySlide } from "../slices";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
 
 import { getMenu, getArticles } from "../services/prismic";
+import { ThemeContext } from "../providers/ThemeProvider";
 
-const Home = ({ menu, prefetchedArticles, slices }) => {
+const Home = ({ prefetchedArticles, slices }) => {
   const router = useRouter();
+  const { toggleTheme } = useContext(ThemeContext);
+
   const [prefetched, setPrefetced] = useState([]);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [expandedArticleContent, setExpandedArticleContent] = useState({
     data: { slices: [] },
   });
+
+  useEffect(() => {
+    toggleTheme("dark");
+  }, []);
 
   useEffect(() => {
     if (!!router.query.article) {
@@ -33,19 +39,13 @@ const Home = ({ menu, prefetchedArticles, slices }) => {
   }, [router]);
 
   useEffect(() => {
-    console.log(slices);
-  }, [slices]);
-
-  useEffect(() => {
-    console.log(prefetchedArticles);
     setPrefetced(prefetchedArticles);
   }, [prefetchedArticles]);
 
   return (
     <>
-      <PageWrapper menu={menu}>
-        <SliceZone slices={slices} components={components} />
-      </PageWrapper>
+      <SliceZone slices={slices} components={components} />
+
       {!!router.query.article && (
         <ArticleExpanded
           id={router.query.article}
@@ -58,6 +58,10 @@ const Home = ({ menu, prefetchedArticles, slices }) => {
             <StorySlide
               storyId={router.query.article.toString()}
               slice={expandedArticleContent.data.slices[0]}
+              handleClosePage={(e) => {
+                e.preventDefault();
+                router.push("/", "/", { scroll: false, shallow: true });
+              }}
             />
           )}
         </ArticleExpanded>
@@ -71,7 +75,6 @@ export default Home;
 export async function getStaticProps({ previewData }) {
   const client = createClient({ previewData });
 
-  const menu = await getMenu(client);
   const content = await client.getAllByType("home-page");
 
   let prefetchedArticles = [];
@@ -116,7 +119,6 @@ export async function getStaticProps({ previewData }) {
 
   return {
     props: {
-      menu,
       prefetchedArticles,
       slices,
     },

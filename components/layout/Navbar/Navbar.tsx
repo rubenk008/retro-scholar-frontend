@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+
+import Link from "next/link";
 
 import Typography from "../../Typography";
 
@@ -50,6 +52,7 @@ const Column = styled.div`
 `;
 
 const StyledLogo = styled(LogoWithName)`
+  cursor: pointer;
   transform: rotate(-2deg) scale(0.7);
 
   @media screen and (min-width: 768px) {
@@ -57,7 +60,7 @@ const StyledLogo = styled(LogoWithName)`
   }
 `;
 
-const Link = styled.a``;
+const CustomLink = styled.a``;
 
 const LinkList = styled.ul`
   list-style-type: none;
@@ -145,21 +148,23 @@ const Navbar = ({ links, theme = "dark" }: Props) => {
     <Nav>
       <Container>
         <Column>
-          <StyledLogo />
+          <Link href="/">
+            <StyledLogo />
+          </Link>
         </Column>
         <Column style={{ height: "40px", marginTop: "28px" }}>
           <LinkList>
             {links &&
               links.map((link, index) => (
                 <LinkListItem key={`key-${index}`}>
-                  <Link onClick={link.onClick}>
+                  <CustomLink onClick={link.onClick}>
                     <Typography
                       variant="h6Alt"
                       color={theme === "dark" ? "off-white" : "primary"}
                     >
                       {link.name}
                     </Typography>
-                  </Link>
+                  </CustomLink>
                 </LinkListItem>
               ))}
           </LinkList>
