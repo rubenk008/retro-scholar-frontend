@@ -30,8 +30,8 @@ export const getMenu = async (client: Client) => {
 export const getCategoryId = async (client: Client, categoryUID) => {
   const response = await client.getByUID("category-page", categoryUID);
 
-  const categoryID = response.id;
-  return categoryID;
+  const category = response;
+  return category;
 };
 
 export const getCategory = async (client: Client, categoryId) => {

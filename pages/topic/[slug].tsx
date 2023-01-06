@@ -9,8 +9,9 @@ import ArticleGrid from "../../components/layout/ArticleGrid";
 import ArticleExpanded from "../../components/Article/ArticleExpanded";
 import { StorySlide } from "../../slices";
 import { ThemeContext } from "../../providers/ThemeProvider";
+import Head from "next/head";
 
-const TopicPage = ({ articles, prefetchedArticles }) => {
+const TopicPage = ({ data, meta, articles, prefetchedArticles }) => {
   const router = useRouter();
   const { toggleTheme } = useContext(ThemeContext);
 
@@ -19,6 +20,10 @@ const TopicPage = ({ articles, prefetchedArticles }) => {
   const [expandedArticleContent, setExpandedArticleContent] = useState({
     data: { slices: [] },
   });
+
+  useEffect(() => {
+    console.log("cat data", data);
+  }, []);
 
   useEffect(() => {
     toggleTheme("light");
@@ -44,6 +49,10 @@ const TopicPage = ({ articles, prefetchedArticles }) => {
 
   return (
     <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.desc} />
+      </Head>
       <ArticleGrid articles={articles} asPath={router.asPath} />
 
       {!!router.query.article && (
@@ -81,14 +90,19 @@ export default TopicPage;
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
 
-  const categoryID = await getCategoryId(client, params.slug);
-  const data = await getArticlesByCategory(client, categoryID);
+  const category = await getCategoryId(client, params.slug);
+  const data = await getArticlesByCategory(client, category.id);
 
   const articles = data.articles;
   const prefetchedArticles = data.prefetchedArticles;
 
   return {
     props: {
+      data: category,
+      meta: {
+        title: category.data.metaTitle,
+        desc: category.data.metaDescription,
+      },
       articles,
       prefetchedArticles,
     },

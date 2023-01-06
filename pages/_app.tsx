@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NextApp, { AppProps } from "next/app";
+import { AppProps } from "next/app";
 
 import { PrismicProvider } from "@prismicio/react";
 import { PrismicPreview } from "@prismicio/next";
@@ -9,7 +9,6 @@ import "../styles/globals.css";
 import { getMenu } from "../services/prismic";
 import PageWrapper from "../components/layout/PageWrapper";
 import { ThemeProvider } from "../providers/ThemeProvider";
-import { useEffect } from "react";
 
 interface WithNavProps extends AppProps {
   menu: any;
