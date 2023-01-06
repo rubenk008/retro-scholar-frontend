@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { createClient } from "../prismicio";
 import { SliceZone } from "@prismicio/react";
@@ -7,10 +8,10 @@ import { SliceZone } from "@prismicio/react";
 import { components, StorySlide } from "../slices";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
 
-import { getMenu, getArticles } from "../services/prismic";
+import { getArticles } from "../services/prismic";
 import { ThemeContext } from "../providers/ThemeProvider";
 
-const Home = ({ prefetchedArticles, slices }) => {
+const Home = ({ meta, prefetchedArticles, slices }) => {
   const router = useRouter();
   const { toggleTheme } = useContext(ThemeContext);
 
@@ -44,6 +45,10 @@ const Home = ({ prefetchedArticles, slices }) => {
 
   return (
     <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.desc} />
+      </Head>
       <SliceZone slices={slices} components={components} />
 
       {!!router.query.article && (
@@ -119,6 +124,12 @@ export async function getStaticProps({ previewData }) {
 
   return {
     props: {
+      meta: {
+        title: !!content[0].data.metaTitle ? content[0].data.metaTitle : "",
+        desc: !!content[0].data.metaDescription
+          ? content[0].data.metaDescription
+          : "",
+      },
       prefetchedArticles,
       slices,
     },

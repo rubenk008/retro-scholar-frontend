@@ -7,8 +7,9 @@ import { getArticle } from "../../services/prismic";
 import ArticleExpanded from "../../components/Article/ArticleExpanded";
 import { StorySlide } from "../../slices";
 import { ThemeContext } from "../../providers/ThemeProvider";
+import Head from "next/head";
 
-const ArticlePage = ({ article }) => {
+const ArticlePage = ({ meta, article }) => {
   const router = useRouter();
 
   const { toggleTheme } = useContext(ThemeContext);
@@ -26,30 +27,36 @@ const ArticlePage = ({ article }) => {
   }, []);
 
   return (
-    <ArticleExpanded
-      id={article.id}
-      onClick={(e) => {
-        e.preventDefault();
-        router.push(categoryRoute, categoryRoute, {
-          scroll: false,
-          shallow: true,
-        });
-      }}
-    >
-      {article.data.slices.length > 0 && (
-        <StorySlide
-          storyId={article.id}
-          slice={article.data.slices[0]}
-          handleClosePage={(e) => {
-            e.preventDefault();
-            router.push(categoryRoute, categoryRoute, {
-              scroll: false,
-              shallow: true,
-            });
-          }}
-        />
-      )}
-    </ArticleExpanded>
+    <>
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.desc} />
+      </Head>
+      <ArticleExpanded
+        id={article.id}
+        onClick={(e) => {
+          e.preventDefault();
+          router.push(categoryRoute, categoryRoute, {
+            scroll: false,
+            shallow: true,
+          });
+        }}
+      >
+        {article.data.slices.length > 0 && (
+          <StorySlide
+            storyId={article.id}
+            slice={article.data.slices[0]}
+            handleClosePage={(e) => {
+              e.preventDefault();
+              router.push(categoryRoute, categoryRoute, {
+                scroll: false,
+                shallow: true,
+              });
+            }}
+          />
+        )}
+      </ArticleExpanded>
+    </>
   );
 };
 
@@ -62,6 +69,12 @@ export async function getStaticProps({ params, previewData }) {
 
   return {
     props: {
+      meta: {
+        title: !!article.data.metaTitle ? article.data.metaTitle : "",
+        desc: !!article.data.metaDescription
+          ? article.data.metaDescription
+          : "",
+      },
       article,
     },
     revalidate: 10,
