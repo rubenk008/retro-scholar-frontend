@@ -110,7 +110,10 @@ const TopCategoriesSection = ({ slice }) => {
       <TopCategoryGrid>
         {slice.items.map((item, index) =>
           index != 3 ? (
-            <div key={`key-${index + 1}`}>
+            <Link
+              href={`/topic/${item.categoryLink.uid}`}
+              key={`key-${index + 1}`}
+            >
               <Card variant="highlightedCat" cardArticleId={index}>
                 <HighlightedCatContent>
                   <HighlightedCatThumbnail>
@@ -129,7 +132,7 @@ const TopCategoriesSection = ({ slice }) => {
                   </HighlightedCatHeading>
                 </HighlightedCatContent>
               </Card>
-            </div>
+            </Link>
           ) : null
         )}
       </TopCategoryGrid>

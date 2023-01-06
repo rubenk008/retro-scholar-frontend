@@ -391,7 +391,11 @@ const Drawer = ({
               // eslint-disable-next-line react/jsx-key
               <motion.li variants={itemSocial}>
                 <SocialLinkListItem key={`key-${index}`}>
-                  <Link href={socialLink.href}>{socialLink.icon}</Link>
+                  <Link href={socialLink.href}>
+                    <a target="_blank" rel="noopener noreferrer">
+                      {socialLink.icon}
+                    </a>
+                  </Link>
                 </SocialLinkListItem>
               </motion.li>
             ))}

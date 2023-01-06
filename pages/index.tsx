@@ -29,7 +29,7 @@ const Home = ({ prefetchedArticles, slices }) => {
       setOverlayOpen(true);
       const articleId = router.query.article.toString();
       for (const prefetchedItem of prefetched) {
-        if (prefetchedItem.id === articleId) {
+        if (prefetchedItem.uid === articleId) {
           setExpandedArticleContent(prefetchedItem);
         }
       }
@@ -90,7 +90,7 @@ export async function getStaticProps({ previewData }) {
       const articleIds = [];
       for (const item of slice.items) {
         if (item !== undefined) {
-          articleIds.push(item.article.id);
+          articleIds.push(item.article.uid);
         }
       }
       const data = await getArticles(client, articleIds);
@@ -105,7 +105,7 @@ export async function getStaticProps({ previewData }) {
       const articleIds = [];
       for (const item of slice.items) {
         if (item !== undefined) {
-          articleIds.push(item.article.id);
+          articleIds.push(item.article.uid);
         }
       }
       const data = await getArticles(client, articleIds);
