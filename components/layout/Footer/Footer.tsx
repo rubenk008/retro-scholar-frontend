@@ -159,7 +159,11 @@ const Footer = ({ links, socialLinks }: Props) => {
             {socialLinks &&
               socialLinks.map((socialLink, index) => (
                 <SocialLinkListItem key={`key-${index}`}>
-                  <Link href={socialLink.href}>{socialLink.icon}</Link>
+                  <Link href={socialLink.href}>
+                    <a target="_blank" rel="noopener noreferrer">
+                      {socialLink.icon}
+                    </a>
+                  </Link>
                 </SocialLinkListItem>
               ))}
           </SocialLinkList>

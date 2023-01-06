@@ -12,11 +12,13 @@ import { ThemeContext } from "../../../providers/ThemeProvider";
 
 const Container = styled.div`
   position: relative;
+  min-height: 100vh;
   -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
   -webkit-user-select: none;
 `;
 
 const Main = styled.main<MainContainerProps>`
+  min-height: 100vh;
   background: ${(props) =>
     props.variant === "dark" ? "var(--bay-of-many)" : "var(--tutu)"};
 `;
@@ -62,15 +64,18 @@ const PageWrapper = ({ menu, children }) => {
 
   const footerData = {
     links: [
-      { name: "about us", href: "https://www.google.com" },
-      { name: "privacy", href: "https://www.google.com" },
+      { name: "about us", href: "" },
+      { name: "privacy", href: "" },
     ],
     socialLinks: [
       {
         icon: <InstagramIcon />,
-        href: "",
+        href: "https://www.instagram.com/retroscholar/",
       },
-      { icon: <FacebookIcon />, href: "" },
+      {
+        icon: <FacebookIcon />,
+        href: "https://www.facebook.com/retroscholar/",
+      },
     ],
   };
 
@@ -78,9 +83,12 @@ const PageWrapper = ({ menu, children }) => {
     socialLinks: [
       {
         icon: <InstagramIcon />,
-        href: "",
+        href: "https://www.instagram.com/retroscholar/",
       },
-      { icon: <FacebookIcon />, href: "" },
+      {
+        icon: <FacebookIcon />,
+        href: "https://www.facebook.com/retroscholar/",
+      },
     ],
   };
 
