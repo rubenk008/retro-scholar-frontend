@@ -341,9 +341,15 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
               delay: index === activeSlide ? 0 : 0,
             }}
           >
-            <Typography color="white" variant="h4Alt" component={"h2"}>
-              {sliceItem.heading ? sliceItem.heading : ""}
-            </Typography>
+            {sliceItem.heading ? (
+              <Typography
+                color="white"
+                variant="h4Alt"
+                component={index === 0 ? "h1" : "h2"}
+              >
+                {sliceItem.heading}
+              </Typography>
+            ) : null}
             <Typography color="white" variant=" body2" component={"p"}>
               {sliceItem.caption
                 ? sliceItem.caption

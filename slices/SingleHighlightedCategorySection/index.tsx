@@ -100,8 +100,8 @@ const SingleHighlightedCategorySection = ({ slice }) => {
         {slice.items.map((item, index) => (
           <Link
             key={`article-${index}`}
-            href={`/?article=${item.id}`}
-            as={`/article/${item.id}`}
+            href={`/?article=${item.uid}`}
+            as={`/article/${item.uid}`}
             scroll={false}
             shallow={true}
           >

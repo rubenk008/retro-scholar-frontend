@@ -41,8 +41,15 @@ export const getCategory = async (client: Client, categoryId) => {
   return category;
 };
 
+export const getArticle = async (client: Client, articleUID) => {
+  const response = await client.getByUID("story-page", articleUID);
+
+  const article = response;
+  return article;
+};
+
 export const getArticles = async (client: Client, articleIds) => {
-  const response = await (await client.getByIDs(articleIds)).results;
+  const response = await client.getAllByUIDs("story-page", articleIds);
 
   const prefetchedArticles = [];
   const articles = [];
@@ -57,6 +64,7 @@ export const getArticles = async (client: Client, articleIds) => {
 
     const article = {
       id: articleIds[index],
+      uid: articleIds[index],
       category: category,
       title: item.data.title,
       thumbnail: item.data.slices[0].items[0].media,
@@ -86,6 +94,7 @@ export const getArticlesByCategory = async (client: Client, categoryID) => {
 
     const article = {
       id: item.id,
+      uid: item.uid,
       category: category,
       title: item.data.title,
       thumbnail: item.data.slices[0].items[0].media,

@@ -3,11 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { createClient } from "../../prismicio";
 
-import {
-  getMenu,
-  getArticlesByCategory,
-  getCategoryId,
-} from "../../services/prismic";
+import { getArticlesByCategory, getCategoryId } from "../../services/prismic";
 
 import ArticleGrid from "../../components/layout/ArticleGrid";
 import ArticleExpanded from "../../components/Article/ArticleExpanded";
@@ -33,7 +29,7 @@ const TopicPage = ({ articles, prefetchedArticles }) => {
       setOverlayOpen(true);
       const articleId = router.query.article.toString();
       for (const prefetchedItem of prefetched) {
-        if (prefetchedItem.id === articleId) {
+        if (prefetchedItem.uid === articleId) {
           setExpandedArticleContent(prefetchedItem);
         }
       }
@@ -43,7 +39,6 @@ const TopicPage = ({ articles, prefetchedArticles }) => {
   }, [router]);
 
   useEffect(() => {
-    console.log(prefetchedArticles);
     setPrefetced(prefetchedArticles);
   }, [prefetchedArticles]);
 
