@@ -39,10 +39,6 @@ const Home = ({ prefetchedArticles, slices }) => {
   }, [router]);
 
   useEffect(() => {
-    console.log("slices", slices);
-  }, [slices]);
-
-  useEffect(() => {
     setPrefetced(prefetchedArticles);
   }, [prefetchedArticles]);
 
