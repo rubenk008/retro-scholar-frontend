@@ -7,9 +7,11 @@ import { getArticle } from "../../services/prismic";
 import ArticleExpanded from "../../components/Article/ArticleExpanded";
 import { StorySlide } from "../../slices";
 import { ThemeContext } from "../../providers/ThemeProvider";
-import Head from "next/head";
 
-const ArticlePage = ({ meta, article }) => {
+import SEO from "../../next-seo.config";
+import { NextSeo } from "next-seo";
+
+const ArticlePage = ({ meta, openGraph, article }) => {
   const router = useRouter();
 
   const { toggleTheme } = useContext(ThemeContext);
@@ -28,10 +30,29 @@ const ArticlePage = ({ meta, article }) => {
 
   return (
     <>
-      <Head>
-        <title>{meta.title}</title>
-        <meta name="description" content={meta.desc} />
-      </Head>
+      <NextSeo
+        title={meta.title}
+        description={meta.desc}
+        openGraph={{
+          url: SEO.baseUrl,
+          title: openGraph.socialCardTitle,
+          description: openGraph.socialCardDescription,
+          siteName: SEO.siteName,
+          defaultImageHeight: 630,
+          defaultImageWidth: 1200,
+          images: [
+            {
+              url: !!openGraph.socialCardImage.url
+                ? openGraph.socialCardImage.url
+                : "",
+              alt: !!openGraph.socialCardImage.alt
+                ? openGraph.socialCardImage.alt
+                : "",
+              type: "image/jpeg",
+            },
+          ],
+        }}
+      />
       <ArticleExpanded
         id={article.id}
         onClick={(e) => {
@@ -75,6 +96,9 @@ export async function getStaticProps({ params, previewData }) {
           ? article.data.metaDescription
           : "",
       },
+      openGraph: !!article.data.socialCards
+        ? article.data.socialCards[0]
+        : { url: "", alt: "", socialCardTitle: "", socialCardDescription: "" },
       article,
     },
     revalidate: 10,

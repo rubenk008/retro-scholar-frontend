@@ -1,17 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { createClient } from "../prismicio";
 import { SliceZone } from "@prismicio/react";
+
+import SEO from "../next-seo.config";
 
 import { components, StorySlide } from "../slices";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
 
 import { getArticles } from "../services/prismic";
 import { ThemeContext } from "../providers/ThemeProvider";
+import { NextSeo } from "next-seo";
 
-const Home = ({ meta, prefetchedArticles, slices }) => {
+const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
   const router = useRouter();
   const { toggleTheme } = useContext(ThemeContext);
 
@@ -45,10 +47,29 @@ const Home = ({ meta, prefetchedArticles, slices }) => {
 
   return (
     <>
-      <Head>
-        <title>{meta.title}</title>
-        <meta name="description" content={meta.desc} />
-      </Head>
+      <NextSeo
+        title={meta.title}
+        description={meta.desc}
+        openGraph={{
+          url: SEO.baseUrl,
+          title: openGraph.socialCardTitle,
+          description: openGraph.socialCardDescription,
+          siteName: SEO.siteName,
+          defaultImageHeight: 630,
+          defaultImageWidth: 1200,
+          images: [
+            {
+              url: !!openGraph.socialCardImage.url
+                ? openGraph.socialCardImage.url
+                : "",
+              alt: !!openGraph.socialCardImage.alt
+                ? openGraph.socialCardImage.alt
+                : "",
+              type: "image/jpeg",
+            },
+          ],
+        }}
+      />
       <SliceZone slices={slices} components={components} />
 
       {!!router.query.article && (
@@ -130,6 +151,9 @@ export async function getStaticProps({ previewData }) {
           ? content[0].data.metaDescription
           : "",
       },
+      openGraph: !!content[0].data.socialCards
+        ? content[0].data.socialCards[0]
+        : { url: "", alt: "", socialCardTitle: "", socialCardDescription: "" },
       prefetchedArticles,
       slices,
     },

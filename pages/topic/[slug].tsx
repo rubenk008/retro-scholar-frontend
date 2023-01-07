@@ -9,9 +9,11 @@ import ArticleGrid from "../../components/layout/ArticleGrid";
 import ArticleExpanded from "../../components/Article/ArticleExpanded";
 import { StorySlide } from "../../slices";
 import { ThemeContext } from "../../providers/ThemeProvider";
-import Head from "next/head";
 
-const TopicPage = ({ data, meta, articles, prefetchedArticles }) => {
+import SEO from "../../next-seo.config";
+import { NextSeo } from "next-seo";
+
+const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
   const router = useRouter();
   const { toggleTheme } = useContext(ThemeContext);
 
@@ -20,10 +22,6 @@ const TopicPage = ({ data, meta, articles, prefetchedArticles }) => {
   const [expandedArticleContent, setExpandedArticleContent] = useState({
     data: { slices: [] },
   });
-
-  useEffect(() => {
-    console.log("cat data", data);
-  }, []);
 
   useEffect(() => {
     toggleTheme("light");
@@ -49,10 +47,29 @@ const TopicPage = ({ data, meta, articles, prefetchedArticles }) => {
 
   return (
     <>
-      <Head>
-        <title>{meta.title}</title>
-        <meta name="description" content={meta.desc} />
-      </Head>
+      <NextSeo
+        title={meta.title}
+        description={meta.desc}
+        openGraph={{
+          url: SEO.baseUrl,
+          title: openGraph.socialCardTitle,
+          description: openGraph.socialCardDescription,
+          siteName: SEO.siteName,
+          defaultImageHeight: 630,
+          defaultImageWidth: 1200,
+          images: [
+            {
+              url: !!openGraph.socialCardImage.url
+                ? openGraph.socialCardImage.url
+                : "",
+              alt: !!openGraph.socialCardImage.alt
+                ? openGraph.socialCardImage.alt
+                : "",
+              type: "image/jpeg",
+            },
+          ],
+        }}
+      />
       <ArticleGrid articles={articles} asPath={router.asPath} />
 
       {!!router.query.article && (
@@ -98,11 +115,13 @@ export async function getStaticProps({ params, previewData }) {
 
   return {
     props: {
-      data: category,
       meta: {
         title: category.data.metaTitle,
         desc: category.data.metaDescription,
       },
+      openGraph: !!category.data.socialCards
+        ? category.data.socialCards[0]
+        : { url: "", alt: "", socialCardTitle: "", socialCardDescription: "" },
       articles,
       prefetchedArticles,
     },
