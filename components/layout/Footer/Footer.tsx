@@ -131,6 +131,8 @@ const SocialLinkListItem = styled.li`
 `;
 
 const Footer = ({ links, socialLinks }: Props) => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <StyledFooter>
       <Container>
@@ -138,7 +140,7 @@ const Footer = ({ links, socialLinks }: Props) => {
           <Copyright>
             <StyledLogo />
             <Typography variant="h6Alt" color="white">
-              <span>©2021</span> RETRO SCHOLAR
+              <span>©{currentYear}</span> RETRO SCHOLAR
             </Typography>
           </Copyright>
         </Column>
