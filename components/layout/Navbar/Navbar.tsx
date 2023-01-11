@@ -10,7 +10,7 @@ import Props from "./Navbar.types";
 import LogoWithName from "../../icons/LogoWithName";
 import SearchIcon from "../../icons/Search";
 
-const Nav = styled.nav`
+const Nav = styled.div`
   width: 100vw;
   height: auto;
   position: fixed;
@@ -60,7 +60,15 @@ const StyledLogo = styled(LogoWithName)`
   }
 `;
 
-const CustomLink = styled.a``;
+const CustomLink = styled.button`
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+`;
 
 const LinkList = styled.ul`
   list-style-type: none;
@@ -157,7 +165,11 @@ const Navbar = ({ links, theme = "dark" }: Props) => {
             {links &&
               links.map((link, index) => (
                 <LinkListItem key={`key-${index}`}>
-                  <CustomLink onClick={link.onClick}>
+                  <CustomLink
+                    type="button"
+                    aria-label={link.name}
+                    onClick={link.onClick}
+                  >
                     <Typography
                       variant="h6Alt"
                       color={theme === "dark" ? "off-white" : "primary"}

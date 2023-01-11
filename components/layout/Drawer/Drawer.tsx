@@ -99,7 +99,7 @@ const CloseButton = styled.div`
   }
 `;
 
-const LinkList = styled(motion.ol)`
+const LinkList = styled(motion.div)`
   list-style: none;
   z-index: 1;
   margin: 0;
@@ -185,6 +185,8 @@ const SocialLinkListItem = styled.div`
     margin: 0 0 0 32px;
   }
 `;
+
+const MotionLink = styled(motion.li)``;
 
 const Drawer = ({
   state = "closed",
@@ -337,50 +339,60 @@ const Drawer = ({
       <Overlay menuIsOpen={drawerOpen} onClick={onCrossClick} />
       <MenuWrapper>
         <MenuBackdrop menuIsOpen={drawerOpen} />
-        <LinkList variants={container} animate={drawerOpen ? "show" : "hidden"}>
+        <LinkList
+          initial="hidden"
+          variants={container}
+          animate={drawerOpen ? "show" : "hidden"}
+        >
           <LinkListHeading variants={item}>
             <Typography variant="h6Small" color="white" component="h2">
               {heading}
             </Typography>
           </LinkListHeading>
-          {linkItems &&
-            linkItems.map((link, index) => (
-              // eslint-disable-next-line react/jsx-key
-              <Link
-                legacyBehavior={false}
-                href={`/topic/${link.href}`}
-                onClick={() => {
-                  onCrossClick();
-                }}
-              >
-                <motion.li variants={item}>
-                  <LinkListItem
-                    key={`key-${index}`}
-                    opacity={link.opacity}
-                    onMouseOver={() => fadeOnHover(index)}
-                    onMouseLeave={fadeInOnLeave}
-                  >
-                    <LinkListItemCounter>
-                      <Typography variant="h6Small" color="white" component="p">
-                        {`${index < 10 ? 0 : ""}${index + 1}`}
-                      </Typography>
-                    </LinkListItemCounter>
-                    <LinkListItemContent>
-                      <Typography variant="h4" color="white">
-                        {link.name}
-                      </Typography>
-                      <Typography
-                        variant="subtitle3"
-                        color="white"
-                        component="p"
-                      >
-                        {link.desc}
-                      </Typography>
-                    </LinkListItemContent>
-                  </LinkListItem>
-                </motion.li>
-              </Link>
-            ))}
+          <nav>
+            {linkItems &&
+              linkItems.map((link, index) => (
+                // eslint-disable-next-line react/jsx-key
+                <Link
+                  legacyBehavior={false}
+                  href={`/topic/${link.href}`}
+                  onClick={() => {
+                    onCrossClick();
+                  }}
+                >
+                  <motion.li variants={item}>
+                    <LinkListItem
+                      key={`key-${index}`}
+                      opacity={link.opacity}
+                      onMouseOver={() => fadeOnHover(index)}
+                      onMouseLeave={fadeInOnLeave}
+                    >
+                      <LinkListItemCounter>
+                        <Typography
+                          variant="h6Small"
+                          color="white"
+                          component="p"
+                        >
+                          {`${index < 10 ? 0 : ""}${index + 1}`}
+                        </Typography>
+                      </LinkListItemCounter>
+                      <LinkListItemContent>
+                        <Typography variant="h4" color="white">
+                          {link.name}
+                        </Typography>
+                        <Typography
+                          variant="subtitle3"
+                          color="white"
+                          component="p"
+                        >
+                          {link.desc}
+                        </Typography>
+                      </LinkListItemContent>
+                    </LinkListItem>
+                  </motion.li>
+                </Link>
+              ))}
+          </nav>
         </LinkList>
         <SocialLinkList
           variants={containerSocial}

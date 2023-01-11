@@ -94,9 +94,6 @@ const PageWrapper = ({ menu, children }) => {
 
   return (
     <Container>
-      <Navbar links={links} theme={theme} />
-      <Main variant={theme}>{children}</Main>
-      <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
       <Drawer
         state={drawerState}
         setState={setDrawerState}
@@ -104,6 +101,9 @@ const PageWrapper = ({ menu, children }) => {
         links={menu.links}
         socialLinks={drawerTempData.socialLinks}
       />
+      <Navbar links={links} theme={theme} />
+      <Main variant={theme}>{children}</Main>
+      <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
     </Container>
   );
 };
