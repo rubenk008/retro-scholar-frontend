@@ -41,7 +41,7 @@ const ArticleGrid = ({ articles, asPath }: any) => {
           >
             <Article
               cardData={{
-                id: item.id,
+                id: item.uid,
                 title: item.title,
                 tags: ["story"],
                 media: {

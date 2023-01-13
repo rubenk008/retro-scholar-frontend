@@ -34,6 +34,7 @@ const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
   }, []);
 
   useEffect(() => {
+    // console.log("router.query.article", router);
     if (!!router.query.article) {
       setOverlayOpen(true);
       const articleId = router.query.article.toString();
@@ -76,6 +77,7 @@ const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
           ],
         }}
       />
+
       <ArticleGrid articles={articles} asPath={router.asPath} />
 
       {!!router.query.article && (
@@ -91,6 +93,7 @@ const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
         >
           {expandedArticleContent.data.slices.length > 0 && (
             <StorySlide
+              key={router.query.article.toString()}
               storyId={router.query.article.toString()}
               slice={expandedArticleContent.data.slices[0]}
               handleClosePage={(e) => {
