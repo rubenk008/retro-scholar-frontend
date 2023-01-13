@@ -24,6 +24,12 @@ const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
   });
 
   useEffect(() => {
+    setCurrentTopic(router.query.slug.toString());
+  }, [router]);
+
+  const [currentTopic, setCurrentTopic] = useState("");
+
+  useEffect(() => {
     toggleTheme("light");
   }, []);
 
@@ -77,7 +83,7 @@ const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
           id={router.query.article}
           onClick={(e) => {
             e.preventDefault();
-            router.push("/topic/icons", "/topic/icons", {
+            router.push(`/topic/${currentTopic}`, `/topic/${currentTopic}`, {
               scroll: false,
               shallow: true,
             });
@@ -89,10 +95,14 @@ const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
               slice={expandedArticleContent.data.slices[0]}
               handleClosePage={(e) => {
                 e.preventDefault();
-                router.push("/topic/icons", "/topic/icons", {
-                  scroll: false,
-                  shallow: true,
-                });
+                router.push(
+                  `/topic/${currentTopic}`,
+                  `/topic/${currentTopic}`,
+                  {
+                    scroll: false,
+                    shallow: true,
+                  }
+                );
               }}
             />
           )}
