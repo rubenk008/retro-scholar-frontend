@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import Link from "next/link";
@@ -10,7 +10,7 @@ const Grid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
 
-  padding: 80px 24px 80px 32px;
+  padding: 60px 24px 80px 32px;
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
@@ -23,7 +23,7 @@ const Grid = styled.div`
   @media screen and (min-width: 1300px) {
     grid-template-columns: repeat(4, 1fr);
     max-width: 1200px;
-    padding: 200px 0 200px;
+    padding: 100px 0 200px;
   }
 `;
 

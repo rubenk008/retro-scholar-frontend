@@ -157,6 +157,13 @@ const TypographyRoot = styled("span")<Props>(
         letterSpacing: [letterSpacing(16, 0.24), letterSpacing(20, 0.3)],
         lineHeight: ["calc(28 / 16)", "calc(32 / 20)"],
       },
+      body2alt: {
+        fontFamily: "var(--font-nunito-sans)",
+        fontWeight: 400,
+        fontSize: [pxToRem(12), pxToRem(20)],
+        letterSpacing: [letterSpacing(16, 0.1), letterSpacing(20, 0.1)],
+        lineHeight: "auto",
+      },
     },
   })
 );
