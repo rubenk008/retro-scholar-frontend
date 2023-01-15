@@ -1,4 +1,4 @@
-import { createClient } from "@prismicio/client";
+import { createClient } from "../prismicio";
 
 const BASE_URL = "https://www.retroscholar.com";
 
