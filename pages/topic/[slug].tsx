@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import styled from "styled-components";
 
 import { useRouter } from "next/router";
 import { createClient } from "../../prismicio";
@@ -12,8 +13,40 @@ import { ThemeContext } from "../../providers/ThemeProvider";
 
 import SEO from "../../next-seo.config";
 import { NextSeo } from "next-seo";
+import Typography from "../../components/Typography";
 
-const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
+const TopicHeading = styled.div`
+  padding-top: 160px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 320px;
+
+  & > h1 {
+    margin-bottom: 16px;
+  }
+
+  @media (min-width: 768px) {
+    padding-top: 200px;
+    max-width: 800px;
+
+    & > h1 {
+      margin-bottom: 32px;
+    }
+  }
+`;
+
+const TopicPage = ({
+  categoryName,
+  categoryDesc,
+  meta,
+  openGraph,
+  articles,
+  prefetchedArticles,
+}) => {
   const router = useRouter();
   const { toggleTheme } = useContext(ThemeContext);
 
@@ -34,7 +67,6 @@ const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
   }, []);
 
   useEffect(() => {
-    // console.log("router.query.article", router);
     if (!!router.query.article) {
       setOverlayOpen(true);
       const articleId = router.query.article.toString();
@@ -77,6 +109,14 @@ const TopicPage = ({ meta, openGraph, articles, prefetchedArticles }) => {
           ],
         }}
       />
+      <TopicHeading>
+        <Typography variant="h0" component="h1">
+          {categoryName}
+        </Typography>
+        <Typography variant="body2alt" component="p">
+          {categoryDesc}
+        </Typography>
+      </TopicHeading>
 
       <ArticleGrid articles={articles} asPath={router.asPath} />
 
@@ -128,6 +168,9 @@ export async function getStaticProps({ params, previewData }) {
 
   return {
     props: {
+      data: category,
+      categoryName: category.data.category_name[0].text,
+      categoryDesc: category.data.category_desc,
       meta: {
         title: category.data.metaTitle,
         desc: category.data.metaDescription,
