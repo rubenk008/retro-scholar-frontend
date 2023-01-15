@@ -9,19 +9,27 @@ function generateSiteMap(articles, topics) {
        <loc>${BASE_URL}</loc>
      </url>
      ${articles
-       .map(({ article }) => {
+       .map((article) => {
+         const lastModified = new Date(
+           article.last_publication_date
+         ).toISOString();
          return `
        <url>
            <loc>${`${BASE_URL}/article/${article.uid}`}</loc>
+          <lastmod>${lastModified}</lastmod>
        </url>
      `;
        })
        .join("")}
        ${topics
-         .map(({ topic }) => {
+         .map((topic) => {
+           const lastModified = new Date(
+             topic.last_publication_date
+           ).toISOString();
            return `
         <url>
             <loc>${`${BASE_URL}/topic/${topic.uid}`}</loc>
+            <lastmod>${lastModified}</lastmod>
         </url>
       `;
          })
