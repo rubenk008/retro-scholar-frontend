@@ -30,8 +30,17 @@
           "type": "Image",
           "config": {
             "label": "Media",
-            "constraint": {},
-            "thumbnails": []
+            "constraint": {
+              "width": 1200,
+              "height": 672
+            },
+            "thumbnails": [
+              {
+                "name": "mobile",
+                "width": 414,
+                "height": 736
+              }
+            ]
           }
         },
         "slideDuration": {
