@@ -12,7 +12,7 @@ import Cross from "../../components/icons/Cross";
 // import prevDomainSelf from "../../utils/prevDomainSelf";
 
 import { useWindowSize } from "../../hooks/useWindowSize";
-import isMobile from "../../utils/IsMobile";
+import isMobile from "../../utils/isMobileView";
 
 const SliderWrapper = styled(motion.div)`
   position: relative;
