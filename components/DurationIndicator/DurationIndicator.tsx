@@ -50,17 +50,22 @@ const DurationIndicator = ({
   resetAnimation = false,
   restartAnimation = false,
   pauseAnimation = false,
-  durationOfSlide = 5,
+  durationOfSlide,
   endOfAnimation,
   setComplete = false,
 }: OwnProps) => {
   const durationAnimationControls = useAnimation();
   const [hasBeenPaused, setHasBeenPaused] = useState(false);
+  const [duration, setDuration] = useState(durationOfSlide);
   const [count, { start, stop, reset }] = useCountdown({
-    seconds: durationOfSlide,
+    seconds: duration,
     interval: 1000,
     isIncrement: false,
   });
+
+  useEffect(() => {
+    setDuration(durationOfSlide);
+  }, [durationOfSlide]);
 
   const resetingAnimation = () => {
     durationAnimationControls.set({ scaleX: setComplete ? 1.0 : 0.0 });
@@ -72,7 +77,7 @@ const DurationIndicator = ({
     durationAnimationControls.set({ scaleX: 0.0 });
     durationAnimationControls.start({
       scaleX: 1,
-      transition: { ease: "linear", duration: durationOfSlide },
+      transition: { ease: "linear", duration: duration },
     });
   };
 
@@ -131,15 +136,17 @@ const DurationIndicator = ({
   }, [resetAnimation]);
 
   return (
-    <DurationIndicatorWrapper>
-      <DurationIndicatorProgress
-        initial={{ scaleX: setComplete ? 1.0 : 0.0 }}
-        animate={durationAnimationControls}
-        onAnimationComplete={() => {
-          endOfAnimation();
-        }}
-      />
-    </DurationIndicatorWrapper>
+    <>
+      <DurationIndicatorWrapper>
+        <DurationIndicatorProgress
+          initial={{ scaleX: setComplete ? 1.0 : 0.0 }}
+          animate={durationAnimationControls}
+          onAnimationComplete={() => {
+            endOfAnimation();
+          }}
+        />
+      </DurationIndicatorWrapper>
+    </>
   );
 };
 

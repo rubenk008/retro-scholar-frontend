@@ -57,6 +57,10 @@ const TopicPage = ({
   });
 
   useEffect(() => {
+    console.log("slices", articles);
+  }, []);
+
+  useEffect(() => {
     setCurrentTopic(router.query.slug.toString());
   }, [router]);
 
@@ -81,6 +85,7 @@ const TopicPage = ({
   }, [router]);
 
   useEffect(() => {
+    console.log("prefetched", prefetchedArticles);
     setPrefetced(prefetchedArticles);
   }, [prefetchedArticles]);
 
