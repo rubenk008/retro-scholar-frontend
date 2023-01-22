@@ -13,7 +13,7 @@ import Typography from "../../components/Typography";
 import IconButton from "../../components/IconButton";
 import ArrowCircle from "../../components/icons/ArrowCircle";
 import { useWindowSize } from "../../hooks/useWindowSize";
-import isMobile from "../../utils/isMobileView";
+import isMobile from "../../utils/isMobile";
 
 const Section = styled.section`
   width: 100vw;

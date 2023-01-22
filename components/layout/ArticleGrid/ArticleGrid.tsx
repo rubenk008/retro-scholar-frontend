@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import Article from "../../Article";
 import { useWindowSize } from "../../../hooks/useWindowSize";
-import isMobile from "../../../utils/isMobileView";
+import isMobile from "../../../utils/isMobile";
 
 const Grid = styled.div`
   display: grid;
