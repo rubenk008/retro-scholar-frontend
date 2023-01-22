@@ -1,8 +1,9 @@
 import * as React from "react";
-import LazyLoad from "react-lazyload";
+
 import styled, { keyframes } from "styled-components";
 
-import { ImageLazyProps, ImageProps } from "./Image.types";
+import { ImageLazyProps } from "./Image.types";
+import Image from "next/image";
 
 const loadingAnimation = keyframes`
   0%{
@@ -45,32 +46,20 @@ const Placeholder = styled.div`
   }
 `;
 
-const StyledImage = styled.img<ImageProps>`
-  height: 100%;
-  width: 100%;
+const StyledImage = styled(Image)`
   object-position: 20%;
   object-fit: cover;
 `;
 
-const Image = ({ image }: ImageLazyProps) => {
-  const refPlaceholder = React.useRef<HTMLDivElement>(null);
-
-  const removePlaceholder = () => {
-    refPlaceholder?.current?.remove();
-  };
-
+const CustomImage = ({ image }: ImageLazyProps) => {
   return (
-    <>
-      <Placeholder ref={refPlaceholder} />
-      <LazyLoad style={{ width: "100%", height: "100%" }}>
-        <StyledImage
-          src={image.url}
-          alt={image.alt}
-          onLoad={removePlaceholder}
-        />
-      </LazyLoad>
-    </>
+    <StyledImage
+      src={image.url}
+      alt={image.alt}
+      layout="fill"
+      priority={image.priority}
+    />
   );
 };
 
-export default Image;
+export default CustomImage;

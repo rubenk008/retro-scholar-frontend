@@ -264,6 +264,7 @@ const HomepageHero = ({ slice }) => {
                 image={{
                   url: sliceItem.thumbnail.url,
                   alt: sliceItem.thumbnail.alt,
+                  priority: true,
                 }}
               />
             </Card>
