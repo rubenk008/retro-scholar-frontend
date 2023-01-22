@@ -11,6 +11,9 @@ import Arrow from "../../components/icons/Arrow";
 import Cross from "../../components/icons/Cross";
 // import prevDomainSelf from "../../utils/prevDomainSelf";
 
+import { useWindowSize } from "../../hooks/useWindowSize";
+import isMobile from "../../utils/isMobile";
+
 const SliderWrapper = styled(motion.div)`
   position: relative;
   overflow: hidden;
@@ -188,7 +191,15 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
   const isLongPress = useRef(null);
   const router = useRouter();
 
-  let slidesDurationArray = [];
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  const [slidesDurationArray, setSlidesDurationArray] = useState([]);
+
+  const size = useWindowSize();
+
+  useEffect(() => {
+    setIsMobileView(isMobile());
+  }, [size]);
 
   const updateActiveSlideOnEndTimer = () => {
     if (activeSlide < slice.items.length - 1) {
@@ -277,14 +288,18 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
 
   useEffect(() => {
     if (slice.items.length > 0) {
-      slidesDurationArray = [];
+      let durationArray = [];
 
       let slidesPlayedStateArray = [];
 
       slice.items.map((sliceItem, index) => {
-        slidesDurationArray.push(sliceItem.slideDuration);
+        const duration =
+          sliceItem.slideDuration !== null ? sliceItem.slideDuration : 5;
+        durationArray.push(duration);
         slidesPlayedStateArray.push({ slideIndex: index, hasPlayed: false });
       });
+
+      setSlidesDurationArray(durationArray);
 
       setPlayedSlides(slidesPlayedStateArray);
     }
@@ -292,91 +307,106 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
 
   return (
     <SliderWrapper layoutId={`card-container-${storyId}`}>
-      {slice.items.map((sliceItem, index) => (
-        <Slide
-          key={`key-${index + 1}`}
-          className={index === activeSlide ? "isActive" : ""}
-          onMouseDown={pauseSlide}
-          onMouseUp={playSlide}
-        >
-          <SlideImage>
-            <motion.div
-              style={{
-                width: "100%",
-                height: "100%",
-              }}
-              initial={{ scale: 1, transform: "translate(0px)" }}
+      {slice.items.map((sliceItem, index) => {
+        const thumbnailMobile = sliceItem.media.hasOwnProperty("mobile")
+          ? sliceItem.media.mobile
+          : sliceItem.media;
+
+        const thumbnailDesktop = sliceItem.media;
+
+        return (
+          <Slide
+            key={`key-${index + 1}`}
+            className={index === activeSlide ? "isActive" : ""}
+            onMouseDown={pauseSlide}
+            onMouseUp={playSlide}
+          >
+            <SlideImage>
+              <motion.div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                initial={{ scale: 1, transform: "translate(0px)" }}
+                animate={{
+                  scale: index === activeSlide ? 1.08 : 1,
+                  transform:
+                    index === activeSlide
+                      ? "translate(20px)"
+                      : "translate(0px)",
+                }}
+                transition={{
+                  duration: 5,
+                  ease: "linear",
+                }}
+              >
+                <Media
+                  type="image"
+                  image={
+                    isMobileView
+                      ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
+                      : {
+                          url: thumbnailDesktop.url,
+                          alt: thumbnailDesktop.alt,
+                        }
+                  }
+                  layout
+                  layoutId={index === 0 ? `card-media-${storyId}` : ""}
+                />
+              </motion.div>
+
+              <SlideImageOverlay />
+            </SlideImage>
+            <SlideText
+              initial={{ translateY: "20px", opacity: 0 }}
               animate={{
-                scale: index === activeSlide ? 1.08 : 1,
-                transform:
-                  index === activeSlide ? "translate(20px)" : "translate(0px)",
+                translateY: index === activeSlide ? "0px" : "20px",
+                opacity: index === activeSlide ? 1 : 0,
               }}
               transition={{
-                duration: 5,
-                ease: "linear",
+                duration: 0.6,
+                ease: "easeInOut",
+                delay: index === activeSlide ? 0 : 0,
               }}
             >
-              <Media
-                type="image"
-                image={{
-                  url: sliceItem.media.url,
-                  alt: sliceItem.media.alt,
-                }}
-                layout
-                layoutId={index === 0 ? `card-media-${storyId}` : ""}
-              />
-            </motion.div>
-
-            <SlideImageOverlay />
-          </SlideImage>
-          <SlideText
-            initial={{ translateY: "20px", opacity: 0 }}
-            animate={{
-              translateY: index === activeSlide ? "0px" : "20px",
-              opacity: index === activeSlide ? 1 : 0,
-            }}
-            transition={{
-              duration: 0.6,
-              ease: "easeInOut",
-              delay: index === activeSlide ? 0 : 0,
-            }}
-          >
-            {sliceItem.heading ? (
-              <Typography
-                color="white"
-                variant="h4Alt"
-                component={index === 0 ? "h1" : "h2"}
-              >
-                {sliceItem.heading}
+              {sliceItem.heading ? (
+                <Typography
+                  color="white"
+                  variant="h4Alt"
+                  component={index === 0 ? "h1" : "h2"}
+                >
+                  {sliceItem.heading}
+                </Typography>
+              ) : null}
+              <Typography color="white" variant=" body2" component={"p"}>
+                {sliceItem.caption
+                  ? sliceItem.caption
+                  : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}
               </Typography>
-            ) : null}
-            <Typography color="white" variant=" body2" component={"p"}>
-              {sliceItem.caption
-                ? sliceItem.caption
-                : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}
-            </Typography>
-          </SlideText>
-        </Slide>
-      ))}
-
-      <DurationWrapper>
-        {slice.items.map((sliceItem, index) => (
-          <DurationIndicator
-            key={`key-${index + 1}`}
-            playAnimation={index === activeSlide ? true : false}
-            stoppingAnimation={index !== activeSlide ? true : false}
-            pauseAnimation={
-              index === activeSlide && pausingSlide ? true : false
-            }
-            resetAnimation={
-              navigationClicked && index > activeSlide ? true : false
-            }
-            durationOfSlide={slidesDurationArray[index]}
-            endOfAnimation={updateActiveSlideOnEndTimer}
-            setComplete={index < activeSlide}
-          />
-        ))}
-      </DurationWrapper>
+            </SlideText>
+          </Slide>
+        );
+      })}
+      {slidesDurationArray.length > 0 && (
+        <DurationWrapper>
+          {slice.items.map((sliceItem, index) => (
+            <DurationIndicator
+              key={`key-${index + 1}`}
+              playAnimation={index === activeSlide ? true : false}
+              stoppingAnimation={index !== activeSlide ? true : false}
+              pauseAnimation={
+                index === activeSlide && pausingSlide ? true : false
+              }
+              resetAnimation={
+                navigationClicked && index > activeSlide ? true : false
+              }
+              durationOfSlide={slidesDurationArray[index]}
+              endOfAnimation={updateActiveSlideOnEndTimer}
+              setComplete={index < activeSlide}
+            />
+          ))}
+        </DurationWrapper>
+      )}
       <SlideNavigation
         className="prev"
         onTouchStart={() => onTouchStart("left")}

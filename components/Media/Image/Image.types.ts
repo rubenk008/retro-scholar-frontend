@@ -8,6 +8,8 @@ export interface ImageProps {
   objectPos?: string;
   /** Optional onload function */
   onLoad?: () => void;
+
+  priority?: boolean;
 }
 
 export interface ImageLazyProps {

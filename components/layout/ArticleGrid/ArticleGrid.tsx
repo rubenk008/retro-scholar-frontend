@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import Link from "next/link";
 import Article from "../../Article";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import isMobile from "../../../utils/isMobile";
 
 const Grid = styled.div`
   display: grid;
@@ -28,34 +30,55 @@ const Grid = styled.div`
 `;
 
 const ArticleGrid = ({ articles, asPath }: any) => {
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  const size = useWindowSize();
+
+  useEffect(() => {
+    setIsMobileView(isMobile());
+  }, [size]);
+
   return (
     <Grid>
-      {articles.map((item, index) => (
-        <>
-          <Link
-            key={`article-${index}`}
-            href={`${asPath}?article=${item.uid}`}
-            // as={`${asPath}/article/${item.uid}`}
-            scroll={false}
-            shallow={true}
-          >
-            <Article
-              cardData={{
-                id: item.uid,
-                title: item.title,
-                tags: ["story"],
-                media: {
-                  type: "image",
-                  image: { url: item.thumbnail.url, alt: item.thumbnail.alt },
-                  video: {},
-                },
-              }}
-              variant="small"
-              withMargin={true}
-            />
-          </Link>
-        </>
-      ))}
+      {articles.map((item, index) => {
+        const thumbnailMobile = item.thumbnail.hasOwnProperty("mobile")
+          ? item.thumbnail.mobile
+          : item.thumbnail;
+
+        const thumbnailDesktop = item.thumbnail;
+
+        return (
+          <>
+            <Link
+              key={`article-${index}`}
+              href={`${asPath}?article=${item.uid}`}
+              // as={`${asPath}/article/${item.uid}`}
+              scroll={false}
+              shallow={true}
+            >
+              <Article
+                cardData={{
+                  id: item.uid,
+                  title: item.title,
+                  tags: ["story"],
+                  media: {
+                    type: "image",
+                    image: isMobileView
+                      ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
+                      : {
+                          url: thumbnailDesktop.url,
+                          alt: thumbnailDesktop.alt,
+                        },
+                    video: {},
+                  },
+                }}
+                variant="small"
+                withMargin={true}
+              />
+            </Link>
+          </>
+        );
+      })}
     </Grid>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import Link from "next/link";
@@ -12,6 +12,8 @@ import Article from "../../components/Article";
 import Typography from "../../components/Typography";
 import IconButton from "../../components/IconButton";
 import ArrowCircle from "../../components/icons/ArrowCircle";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import isMobile from "../../utils/isMobile";
 
 const Section = styled.section`
   width: 100vw;
@@ -72,6 +74,14 @@ const ViewCategoryLink = styled.div`
 const SingleHighlightedCategorySection = ({ slice }) => {
   const isLargeScreen = useIsLarge();
 
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  const size = useWindowSize();
+
+  useEffect(() => {
+    setIsMobileView(isMobile());
+  }, [size]);
+
   return (
     <Section>
       <HighlightedCategoryHeading>
@@ -97,30 +107,43 @@ const SingleHighlightedCategorySection = ({ slice }) => {
         insetLeft={isLargeScreen ? pxToRem(120) : pxToRem(32)}
         insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}
       >
-        {slice.items.map((item, index) => (
-          <Link
-            key={`article-${index}`}
-            href={`/?article=${item.uid}`}
-            as={`/article/${item.uid}`}
-            scroll={false}
-            shallow={true}
-          >
-            <Article
-              cardData={{
-                id: item.id,
-                title: item.title,
-                tags: ["story"],
-                media: {
-                  type: "image",
-                  image: { url: item.thumbnail.url, alt: item.thumbnail.alt },
-                  video: {},
-                },
-              }}
-              variant="regular"
-              withMargin={true}
-            />
-          </Link>
-        ))}
+        {slice.items.map((item, index) => {
+          const thumbnailMobile = item.thumbnail.hasOwnProperty("mobile")
+            ? item.thumbnail.mobile
+            : item.thumbnail;
+
+          const thumbnailDesktop = item.thumbnail;
+
+          return (
+            <Link
+              key={`article-${index}`}
+              href={`/?article=${item.uid}`}
+              as={`/article/${item.uid}`}
+              scroll={false}
+              shallow={true}
+            >
+              <Article
+                cardData={{
+                  id: item.id,
+                  title: item.title,
+                  tags: ["story"],
+                  media: {
+                    type: "image",
+                    image: isMobileView
+                      ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
+                      : {
+                          url: thumbnailDesktop.url,
+                          alt: thumbnailDesktop.alt,
+                        },
+                    video: {},
+                  },
+                }}
+                variant="regular"
+                withMargin={true}
+              />
+            </Link>
+          );
+        })}
       </Carousel>
       {!isLargeScreen && (
         <ViewCategoryLink>

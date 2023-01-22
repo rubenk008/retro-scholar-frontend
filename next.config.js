@@ -8,6 +8,9 @@ const nextConfig = {
       ssr: true,
     },
   },
+  images: {
+    domains: ["images.prismic.io"],
+  },
 };
 
 module.exports = nextConfig;
