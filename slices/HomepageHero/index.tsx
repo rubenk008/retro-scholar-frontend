@@ -262,7 +262,9 @@ const HomepageHero = ({ slice }) => {
               <Media
                 type="image"
                 image={{
-                  url: sliceItem.thumbnail.url,
+                  url: sliceItem.thumbnail.hasOwnProperty("square")
+                    ? sliceItem.thumbnail.square.url
+                    : sliceItem.thumbnail.url,
                   alt: sliceItem.thumbnail.alt,
                   priority: index === slice.items.length - 1 ? true : false,
                 }}
