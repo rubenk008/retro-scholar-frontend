@@ -56,6 +56,7 @@ const ViewCategoryLink = styled.div`
   justify-content: end;
   align-items: center;
   padding: ${pxToRem(36)} ${pxToRem(24)} 0;
+  cursor: pointer;
 
   > span {
     margin-right: ${pxToRem(8)};
@@ -89,17 +90,25 @@ const SingleHighlightedCategorySection = ({ slice }) => {
           {slice.primary.collectionTitle}
         </Typography>
         {isLargeScreen && (
-          <ViewCategoryLink>
-            <Typography variant="h6" component={"span"} color="secondary">
-              view all in the collection
-            </Typography>
-            <IconButton
-              size="small"
-              icon={
-                <StyledArrowCircle height={pxToRem(24)} width={pxToRem(24)} />
-              }
-            />
-          </ViewCategoryLink>
+          <Link
+            href={
+              slice.primary.categoryLink.hasOwnProperty("slug")
+                ? `/topic/${slice.primary.categoryLink.slug}`
+                : ""
+            }
+          >
+            <ViewCategoryLink>
+              <Typography variant="h6" component={"span"} color="secondary">
+                view all in the collection
+              </Typography>
+              <IconButton
+                size="small"
+                icon={
+                  <StyledArrowCircle height={pxToRem(24)} width={pxToRem(24)} />
+                }
+              />
+            </ViewCategoryLink>
+          </Link>
         )}
       </HighlightedCategoryHeading>
 
@@ -146,17 +155,19 @@ const SingleHighlightedCategorySection = ({ slice }) => {
         })}
       </Carousel>
       {!isLargeScreen && (
-        <ViewCategoryLink>
-          <Typography variant="h6" component={"span"} color="secondary">
-            view all in the collection
-          </Typography>
-          <IconButton
-            size="small"
-            icon={
-              <StyledArrowCircle height={pxToRem(24)} width={pxToRem(24)} />
-            }
-          />
-        </ViewCategoryLink>
+        <Link href="/topic/retro-tech">
+          <ViewCategoryLink>
+            <Typography variant="h6" component={"span"} color="secondary">
+              view all in the collection
+            </Typography>
+            <IconButton
+              size="small"
+              icon={
+                <StyledArrowCircle height={pxToRem(24)} width={pxToRem(24)} />
+              }
+            />
+          </ViewCategoryLink>
+        </Link>
       )}
     </Section>
   );
