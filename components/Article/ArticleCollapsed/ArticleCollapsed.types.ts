@@ -1,5 +1,3 @@
-import React from "react";
-
 import { MediaProps } from "../../Media/Media.types";
 
 export default interface ArticleCollapsedProps {
@@ -9,5 +7,6 @@ export default interface ArticleCollapsedProps {
   media?: MediaProps;
   variant?: string;
   withMargin?: boolean;
+  thumbnailDesktopPrecentageFromCenter?: string;
   onClick?: () => void;
 }

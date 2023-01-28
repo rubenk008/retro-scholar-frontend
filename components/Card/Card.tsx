@@ -208,6 +208,7 @@ const CardRoot = styled(motion.div)<Props>(
         },
       },
       outlined: {
+        background: "var(--slight-titan-white)",
         borderColor: "var(--slight-titan-white)",
         borderStyle: "solid",
         borderWidth: ["4px", "6px"],

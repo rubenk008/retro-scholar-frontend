@@ -71,6 +71,10 @@ const ArticleGrid = ({ articles, asPath }: any) => {
                         },
                     video: {},
                   },
+                  thumbnailDesktopPrecentageFromCenter:
+                    item.thumbnailDeskPercentageFromCenter !== null
+                      ? item.thumbnailDeskPercentageFromCenter
+                      : "0",
                 }}
                 variant="small"
                 withMargin={true}

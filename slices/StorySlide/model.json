@@ -39,6 +39,11 @@
                 "name": "mobile",
                 "width": 414,
                 "height": 736
+              },
+              {
+                "name": "square",
+                "width": 495,
+                "height": 495
               }
             ]
           }
@@ -48,6 +53,13 @@
           "config": {
             "label": "Slide Duration",
             "placeholder": "5"
+          }
+        },
+        "thumbnailPrecentageFromCenter": {
+          "type": "Text",
+          "config": {
+            "label": "Thumbnail Precentage From Center",
+            "placeholder": ""
           }
         }
       },

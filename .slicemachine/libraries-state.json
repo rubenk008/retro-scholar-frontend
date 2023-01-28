@@ -225,6 +225,11 @@
                         "name": "mobile",
                         "width": 414,
                         "height": 736
+                      },
+                      {
+                        "name": "square",
+                        "width": 495,
+                        "height": 495
                       }
                     ]
                   }
@@ -234,6 +239,13 @@
                   "config": {
                     "label": "Slide Duration",
                     "placeholder": "5"
+                  }
+                },
+                "thumbnailPrecentageFromCenter": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Thumbnail Precentage From Center",
+                    "placeholder": ""
                   }
                 }
               },
@@ -248,8 +260,8 @@
             "slice_type": "story_slide",
             "items": [
               {
-                "heading": "integrate proactive functionalities",
-                "caption": "monetize scalable applications",
+                "heading": "brand end-to-end blockchains",
+                "caption": "revolutionize one-to-one eyeballs",
                 "media": {
                   "dimensions": {
                     "width": 1200,
@@ -257,7 +269,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=1200&h=672&fit=crop",
+                  "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&h=672&fit=crop",
                   "mobile": {
                     "dimensions": {
                       "width": 414,
@@ -265,14 +277,24 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=414&h=736&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=414&h=736&fit=crop"
+                  },
+                  "square": {
+                    "dimensions": {
+                      "width": 495,
+                      "height": 495
+                    },
+                    "alt": "Placeholder image",
+                    "copyright": null,
+                    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=495&h=495&fit=crop"
                   }
                 },
-                "slideDuration": 924
+                "slideDuration": 8685,
+                "thumbnailPrecentageFromCenter": "aggregate one-to-one technologies"
               },
               {
-                "heading": "repurpose back-end deliverables",
-                "caption": "aggregate intuitive networks",
+                "heading": "orchestrate proactive experiences",
+                "caption": "whiteboard strategic e-commerce",
                 "media": {
                   "dimensions": {
                     "width": 1200,
@@ -280,7 +302,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51?w=1200&h=672&fit=crop",
+                  "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=1200&h=672&fit=crop",
                   "mobile": {
                     "dimensions": {
                       "width": 414,
@@ -288,14 +310,24 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51?w=414&h=736&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=414&h=736&fit=crop"
+                  },
+                  "square": {
+                    "dimensions": {
+                      "width": 495,
+                      "height": 495
+                    },
+                    "alt": "Placeholder image",
+                    "copyright": null,
+                    "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=495&h=495&fit=crop"
                   }
                 },
-                "slideDuration": 4157
+                "slideDuration": 1312,
+                "thumbnailPrecentageFromCenter": "reinvent 24/365 synergies"
               },
               {
-                "heading": "mesh scalable action-items",
-                "caption": "deploy integrated functionalities",
+                "heading": "extend B2B convergence",
+                "caption": "envisioneer real-time infrastructures",
                 "media": {
                   "dimensions": {
                     "width": 1200,
@@ -303,7 +335,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=1200&h=672&fit=crop",
+                  "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1200&h=672&fit=crop",
                   "mobile": {
                     "dimensions": {
                       "width": 414,
@@ -311,14 +343,24 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=414&h=736&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=414&h=736&fit=crop"
+                  },
+                  "square": {
+                    "dimensions": {
+                      "width": 495,
+                      "height": 495
+                    },
+                    "alt": "Placeholder image",
+                    "copyright": null,
+                    "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=495&h=495&fit=crop"
                   }
                 },
-                "slideDuration": 7191
+                "slideDuration": 6411,
+                "thumbnailPrecentageFromCenter": "aggregate enterprise niches"
               },
               {
-                "heading": "strategize enterprise infomediaries",
-                "caption": "syndicate plug-and-play schemas",
+                "heading": "exploit frictionless communities",
+                "caption": "transition extensible e-services",
                 "media": {
                   "dimensions": {
                     "width": 1200,
@@ -326,7 +368,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=1200&h=672&fit=crop",
+                  "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=1200&h=672&fit=crop",
                   "mobile": {
                     "dimensions": {
                       "width": 414,
@@ -334,10 +376,20 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=414&h=736&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=414&h=736&fit=crop"
+                  },
+                  "square": {
+                    "dimensions": {
+                      "width": 495,
+                      "height": 495
+                    },
+                    "alt": "Placeholder image",
+                    "copyright": null,
+                    "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=495&h=495&fit=crop"
                   }
                 },
-                "slideDuration": 9008
+                "slideDuration": 3129,
+                "thumbnailPrecentageFromCenter": "disintermediate killer users"
               }
             ],
             "primary": {}

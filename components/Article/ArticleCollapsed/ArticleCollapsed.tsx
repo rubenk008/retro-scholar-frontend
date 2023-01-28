@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 
 import Props from "./ArticleCollapsed.types";
 
@@ -37,7 +37,11 @@ const getIcon = (value) => {
   }
 };
 
-const MediaContainer = styled(motion.div)`
+interface MediaContainerProps extends MotionProps {
+  thumbnailDesktopPrecentageFromCenter?: string;
+}
+
+const MediaContainer = styled(motion.div)<MediaContainerProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -50,7 +54,9 @@ const MediaContainer = styled(motion.div)`
   user-select: none; /* Standard syntax */
 
   @media screen and (min-width: 1024px) {
-    left: -80%;
+    left: calc(
+      -80% + ${(props) => props.thumbnailDesktopPrecentageFromCenter}%
+    );
     width: auto;
     height: 100%;
     aspect-ratio: 25 / 14;
@@ -64,6 +70,7 @@ const ArticleCollapsed = ({
   media,
   variant = "small",
   withMargin = false,
+  thumbnailDesktopPrecentageFromCenter = "0",
   onClick,
 }: Props) => {
   return (
@@ -74,10 +81,14 @@ const ArticleCollapsed = ({
       onClick={onClick}
       cardArticleId={id}
     >
-      <MediaContainer layoutId={`card-media-${id}`}>
+      <MediaContainer
+        layoutId={`card-media-${id}`}
+        thumbnailDesktopPrecentageFromCenter={
+          thumbnailDesktopPrecentageFromCenter
+        }
+      >
         <Media type={media.type} video={media.video} image={media.image} />
       </MediaContainer>
-
       <TagContainter>
         {tags.map((tag, index) => (
           <Chip key={index} Icon={getIcon(tag)} variant="filled">
