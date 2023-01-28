@@ -146,6 +146,10 @@ const SingleHighlightedCategorySection = ({ slice }) => {
                         },
                     video: {},
                   },
+                  thumbnailDesktopPrecentageFromCenter:
+                    item.thumbnailDeskPercentageFromCenter !== null
+                      ? item.thumbnailDeskPercentageFromCenter
+                      : "0",
                 }}
                 variant="regular"
                 withMargin={true}

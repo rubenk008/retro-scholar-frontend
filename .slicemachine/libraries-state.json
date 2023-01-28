@@ -240,6 +240,13 @@
                     "label": "Slide Duration",
                     "placeholder": "5"
                   }
+                },
+                "thumbnailPrecentageFromCenter": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Thumbnail Precentage From Center",
+                    "placeholder": ""
+                  }
                 }
               },
               "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
@@ -253,8 +260,8 @@
             "slice_type": "story_slide",
             "items": [
               {
-                "heading": "transform end-to-end metrics",
-                "caption": "productize cutting-edge portals",
+                "heading": "brand end-to-end blockchains",
+                "caption": "revolutionize one-to-one eyeballs",
                 "media": {
                   "dimensions": {
                     "width": 1200,
@@ -262,7 +269,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=1200&h=672&fit=crop",
+                  "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=1200&h=672&fit=crop",
                   "mobile": {
                     "dimensions": {
                       "width": 414,
@@ -270,7 +277,7 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=414&h=736&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=414&h=736&fit=crop"
                   },
                   "square": {
                     "dimensions": {
@@ -279,14 +286,15 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=495&h=495&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=495&h=495&fit=crop"
                   }
                 },
-                "slideDuration": 9709
+                "slideDuration": 8685,
+                "thumbnailPrecentageFromCenter": "aggregate one-to-one technologies"
               },
               {
-                "heading": "maximize compelling solutions",
-                "caption": "evolve distributed e-tailers",
+                "heading": "orchestrate proactive experiences",
+                "caption": "whiteboard strategic e-commerce",
                 "media": {
                   "dimensions": {
                     "width": 1200,
@@ -294,7 +302,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=1200&h=672&fit=crop",
+                  "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=1200&h=672&fit=crop",
                   "mobile": {
                     "dimensions": {
                       "width": 414,
@@ -302,7 +310,7 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=414&h=736&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=414&h=736&fit=crop"
                   },
                   "square": {
                     "dimensions": {
@@ -311,14 +319,15 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=495&h=495&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?w=495&h=495&fit=crop"
                   }
                 },
-                "slideDuration": 7255
+                "slideDuration": 1312,
+                "thumbnailPrecentageFromCenter": "reinvent 24/365 synergies"
               },
               {
-                "heading": "engineer out-of-the-box portals",
-                "caption": "disintermediate intuitive technologies",
+                "heading": "extend B2B convergence",
+                "caption": "envisioneer real-time infrastructures",
                 "media": {
                   "dimensions": {
                     "width": 1200,
@@ -326,7 +335,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200&h=672&fit=crop",
+                  "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1200&h=672&fit=crop",
                   "mobile": {
                     "dimensions": {
                       "width": 414,
@@ -334,7 +343,7 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=414&h=736&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=414&h=736&fit=crop"
                   },
                   "square": {
                     "dimensions": {
@@ -343,14 +352,15 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=495&h=495&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=495&h=495&fit=crop"
                   }
                 },
-                "slideDuration": 6250
+                "slideDuration": 6411,
+                "thumbnailPrecentageFromCenter": "aggregate enterprise niches"
               },
               {
-                "heading": "leverage open-source deliverables",
-                "caption": "target distributed methodologies",
+                "heading": "exploit frictionless communities",
+                "caption": "transition extensible e-services",
                 "media": {
                   "dimensions": {
                     "width": 1200,
@@ -358,7 +368,7 @@
                   },
                   "alt": "Placeholder image",
                   "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=1200&h=672&fit=crop",
+                  "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=1200&h=672&fit=crop",
                   "mobile": {
                     "dimensions": {
                       "width": 414,
@@ -366,7 +376,7 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=414&h=736&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=414&h=736&fit=crop"
                   },
                   "square": {
                     "dimensions": {
@@ -375,74 +385,11 @@
                     },
                     "alt": "Placeholder image",
                     "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=495&h=495&fit=crop"
+                    "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=495&h=495&fit=crop"
                   }
                 },
-                "slideDuration": 393
-              },
-              {
-                "heading": "scale world-class relationships",
-                "caption": "optimize customized initiatives",
-                "media": {
-                  "dimensions": {
-                    "width": 1200,
-                    "height": 672
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118?w=1200&h=672&fit=crop",
-                  "mobile": {
-                    "dimensions": {
-                      "width": 414,
-                      "height": 736
-                    },
-                    "alt": "Placeholder image",
-                    "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118?w=414&h=736&fit=crop"
-                  },
-                  "square": {
-                    "dimensions": {
-                      "width": 495,
-                      "height": 495
-                    },
-                    "alt": "Placeholder image",
-                    "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118?w=495&h=495&fit=crop"
-                  }
-                },
-                "slideDuration": 752
-              },
-              {
-                "heading": "strategize end-to-end blockchains",
-                "caption": "recontextualize open-source models",
-                "media": {
-                  "dimensions": {
-                    "width": 1200,
-                    "height": 672
-                  },
-                  "alt": "Placeholder image",
-                  "copyright": null,
-                  "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055?w=1200&h=672&fit=crop",
-                  "mobile": {
-                    "dimensions": {
-                      "width": 414,
-                      "height": 736
-                    },
-                    "alt": "Placeholder image",
-                    "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055?w=414&h=736&fit=crop"
-                  },
-                  "square": {
-                    "dimensions": {
-                      "width": 495,
-                      "height": 495
-                    },
-                    "alt": "Placeholder image",
-                    "copyright": null,
-                    "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055?w=495&h=495&fit=crop"
-                  }
-                },
-                "slideDuration": 7994
+                "slideDuration": 3129,
+                "thumbnailPrecentageFromCenter": "disintermediate killer users"
               }
             ],
             "primary": {}

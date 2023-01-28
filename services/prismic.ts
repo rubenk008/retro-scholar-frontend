@@ -68,6 +68,8 @@ export const getArticles = async (client: Client, articleIds) => {
       category: category,
       title: item.data.title,
       thumbnail: item.data.slices[0].items[0].media,
+      thumbnailDeskPercentageFromCenter:
+        item.data.slices[0].items[0].thumbnailPrecentageFromCenter,
     };
 
     articles.push(article);
@@ -98,6 +100,8 @@ export const getArticlesByCategory = async (client: Client, categoryID) => {
       category: category,
       title: item.data.title,
       thumbnail: item.data.slices[0].items[0].media,
+      thumbnailDeskPercentageFromCenter:
+        item.data.slices[0].items[0].thumbnailPrecentageFromCenter,
     };
 
     articles.push(article);
