@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { variant } from "styled-system";
 
@@ -11,23 +11,6 @@ interface Props {
 }
 
 const ArticleHeadingRoot = styled("div")<Props>(
-  {
-    background: "var(--white)",
-    position: "absolute",
-    zIndex: 2,
-
-    "&::before": {
-      content: " ",
-      width: 0,
-      height: 0,
-      position: "absolute",
-      left: "20px",
-      top: "-10px",
-      borderLeft: "10px solid transparent",
-      borderRight: "5px solid transparent",
-      borderNottom: "10px solid var(--white)",
-    },
-  },
   variant({
     variants: {
       regular: {
@@ -45,7 +28,29 @@ const ArticleHeadingRoot = styled("div")<Props>(
         right: ["12px", "20px"],
       },
     },
-  })
+  }),
+  css`
+    position: absolute;
+    z-index: 2;
+    background: var(--white);
+
+    &:before {
+      content: " ";
+      display: block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      left: 10px;
+      top: -10px;
+      border-left: 10px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid var(--white);
+
+      @media screen and (min-width: 768px) {
+        left: 20px;
+      }
+    }
+  `
 );
 
 const CustomTypography = styled(Typography)`
