@@ -61,8 +61,9 @@ const SlideImageOverlay = styled.div`
   z-index: 1;
   background: linear-gradient(
     rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.2) 50%,
-    rgba(0, 0, 0, 0.4) 100%
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.6) 100%
   );
 
   @media screen and (min-width: 1024px) {
@@ -74,8 +75,9 @@ const SlideImageOverlay = styled.div`
     background: linear-gradient(
       90deg,
       rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.2) 50%,
-      rgba(0, 0, 0, 0.4) 100%
+      rgba(0, 0, 0, 0.2) 30%,
+      rgba(0, 0, 0, 0.4) 60%,
+      rgba(0, 0, 0, 0.6) 100%
     );
   }
 `;
@@ -352,6 +354,7 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
                   }
                   layout
                   layoutId={index === 0 ? `card-media-${storyId}` : ""}
+                  withHalftone
                 />
               </motion.div>
 
@@ -374,11 +377,17 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
                   color="white"
                   variant="h4Alt"
                   component={index === 0 ? "h1" : "h2"}
+                  textShadow
                 >
                   {sliceItem.heading}
                 </Typography>
               ) : null}
-              <Typography color="white" variant=" body2" component={"p"}>
+              <Typography
+                color="white"
+                variant=" body2"
+                component={"p"}
+                textShadow
+              >
                 {sliceItem.caption
                   ? sliceItem.caption
                   : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}

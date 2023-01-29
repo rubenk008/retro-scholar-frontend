@@ -268,6 +268,7 @@ const HomepageHero = ({ slice }) => {
                   alt: sliceItem.thumbnail.alt,
                   priority: index === slice.items.length - 1 ? true : false,
                 }}
+                withHalftone
               />
             </Card>
           ))}

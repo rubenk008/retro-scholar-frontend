@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export interface MediaProps extends ComponentProps<typeof motion.div> {
   // Media Type
-  type: string;
+  type?: string;
 
   // Image
   image?: ImageProps;
@@ -15,4 +15,6 @@ export interface MediaProps extends ComponentProps<typeof motion.div> {
 
   // Custom classname
   className?: string;
+
+  withHalftone?: boolean;
 }

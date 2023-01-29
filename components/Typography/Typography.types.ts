@@ -16,6 +16,8 @@ export default interface Props {
   /** Custom styling hook */
   className?: string;
 
+  textShadow?: boolean;
+
   /**
    * Determine component type
    */

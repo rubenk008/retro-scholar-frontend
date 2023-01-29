@@ -25,6 +25,10 @@ const TypographyRoot = styled("span")<Props>(
     WebkitUserSelect: "none",
     msUserSelect: "none",
 
+    "&.textShadow": {
+      textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",
+    },
+
     "&.primary": {
       color: "var(--cranberry)",
     },
@@ -197,6 +201,7 @@ const Typography = React.forwardRef(
       children,
       className = "",
       component = null,
+      textShadow = false,
     }: Props,
     ref
   ) => {
@@ -213,7 +218,7 @@ const Typography = React.forwardRef(
     return (
       <TypographyRoot
         variant={variant}
-        className={clsx(className, color)}
+        className={clsx(className, color, textShadow && "textShadow")}
         as={componentType}
         ref={ref}
       >
