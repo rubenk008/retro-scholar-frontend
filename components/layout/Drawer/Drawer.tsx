@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useIsMedium } from "../../../hooks/useMediaQuery";
+
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 import Typography from "../../Typography";
 
@@ -186,8 +188,6 @@ const SocialLinkListItem = styled.div`
   }
 `;
 
-const MotionLink = styled(motion.li)``;
-
 const Drawer = ({
   state = "closed",
   setState,
@@ -195,6 +195,8 @@ const Drawer = ({
   links,
   socialLinks,
 }: Props) => {
+  const ref = useRef();
+
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const [makeDrawerVisible, setMakeDrawerVisible] = useState(false);
@@ -250,6 +252,9 @@ const Drawer = ({
   useEffect(() => {
     if (state === "open") {
       setDrawerOpen(true);
+      disableBodyScroll(ref.current);
+    } else {
+      clearAllBodyScrollLocks();
     }
   }, [state]);
 
@@ -335,7 +340,7 @@ const Drawer = ({
   };
 
   return (
-    <Wrapper menuIsOpen={makeDrawerVisible}>
+    <Wrapper menuIsOpen={makeDrawerVisible} ref={ref}>
       <Overlay menuIsOpen={drawerOpen} onClick={onCrossClick} />
       <MenuWrapper>
         <MenuBackdrop menuIsOpen={drawerOpen} />
