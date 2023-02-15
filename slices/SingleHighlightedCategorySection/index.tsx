@@ -123,6 +123,10 @@ const SingleHighlightedCategorySection = ({ slice }) => {
 
           const thumbnailDesktop = item.thumbnail;
 
+          const categories = item.category.map((category) => {
+            return category.text;
+          });
+
           return (
             <Link
               key={`article-${index}`}
@@ -135,7 +139,7 @@ const SingleHighlightedCategorySection = ({ slice }) => {
                 cardData={{
                   id: item.id,
                   title: item.title,
-                  tags: ["story"],
+                  tags: ["story", ...categories],
                   media: {
                     type: "image",
                     image: isMobileView
