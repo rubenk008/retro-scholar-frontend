@@ -31,10 +31,6 @@ const TopCategoriesHeading = styled.div`
   @media screen and (min-width: 1024px) {
     padding: 0 ${pxToRem(114)} ${pxToRem(44)};
   }
-
-  @media screen and (min-width: 1440px) {
-    max-width: 1600px;
-  }
 `;
 
 const TopCategoryGrid = styled.div`
@@ -62,10 +58,6 @@ const TopCategoryGrid = styled.div`
     flex-direction: row;
     padding: 0 ${pxToRem(120)};
   }
-
-  @media screen and (min-width: 1440px) {
-    max-width: 1600px;
-  }
 `;
 
 const HighlightedCatContent = styled.div`
@@ -83,10 +75,6 @@ const HighlightedCatHeading = styled.div`
 
   @media screen and (min-width: 1024px) {
     bottom: ${pxToRem(40)};
-  }
-
-  @media screen and (min-width: 1440px) {
-    bottom: 40px;
   }
 `;
 

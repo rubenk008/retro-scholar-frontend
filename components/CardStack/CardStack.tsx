@@ -14,7 +14,8 @@ const Frame = styled(motion.div)`
   position: relative;
 
   @media screen and (min-width: 1024px) {
-    height: 520px;
+    width: 52rem;
+    height: 52rem;
     justify-content: center;
     align-items: center;
   }

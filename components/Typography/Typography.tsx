@@ -164,9 +164,16 @@ const TypographyRoot = styled("span")<Props>(
       body2alt: {
         fontFamily: "var(--font-nunito-sans)",
         fontWeight: 400,
-        fontSize: [pxToRem(12), pxToRem(20)],
+        fontSize: [pxToRem(14), pxToRem(20)],
         letterSpacing: [letterSpacing(16, 0.1), letterSpacing(20, 0.1)],
         lineHeight: "auto",
+      },
+      body3: {
+        fontFamily: "var(--font-nunito-sans)",
+        fontWeight: 400,
+        fontSize: [pxToRem(16), pxToRem(18)],
+        letterSpacing: [letterSpacing(16, 0.24), letterSpacing(20, 0.3)],
+        lineHeight: ["calc(28 / 16)", "calc(32 / 20)"],
       },
     },
   })
@@ -189,6 +196,8 @@ const defaultVariantMapping = {
   intro: "p",
   body1: "p",
   body2: "p",
+  body2alt: "p",
+  body3: "p",
   inherit: "p",
 };
 

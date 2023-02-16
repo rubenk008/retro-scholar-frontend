@@ -168,7 +168,7 @@ const ContentWrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
   grid-row: 1;
   grid-column: 1;
   line-height: 0;
@@ -190,11 +190,11 @@ const CardRoot = styled(motion.div)<Props>(
     variants: {
       elevated: {
         "&.regular": {
-          height: ["430px", "448px"],
-          minWidth: ["276px", "288px"],
-          maxWidth: ["276px", "288px"],
+          height: ["43rem", "44.8rem"],
+          minWidth: ["27.6rem", "28.8rem"],
+          maxWidth: ["27.6rem", "28.8rem"],
           marginRight: (props: { withMargin: boolean }) =>
-            props.withMargin ? ["0", "0"] : ["24px", "32px"],
+            props.withMargin ? ["0", "0"] : ["2.4rem", "3.2rem"],
         },
         "&.small": {
           paddingBottom: [
@@ -203,8 +203,8 @@ const CardRoot = styled(motion.div)<Props>(
           ],
           height: 0,
           width: "100%",
-          maxHeight: "448px",
-          maxWidth: "276px",
+          maxHeight: "44.8rem",
+          maxWidth: "27.6rem",
         },
       },
       outlined: {
@@ -216,13 +216,8 @@ const CardRoot = styled(motion.div)<Props>(
         height: "calc(288 / 414 * 100vw)",
 
         "@media screen and (min-width: 1024px)": {
-          width: "calc(500 / 1440 * 100vw)",
-          height: "calc(500 / 1440 * 100vw)",
-        },
-
-        "@media screen and (min-width: 1600px)": {
-          width: "calc(20rem + 30vmin)",
-          height: "calc(20rem + 30vmin)",
+          width: "49.5rem",
+          height: "49.5rem",
         },
 
         "&.hasDropShadow": {
@@ -246,8 +241,8 @@ const CardRoot = styled(motion.div)<Props>(
       },
       highlightedCat: {
         background: "var(--blue-pigment)",
-        height: ["calc((304/414) * 100vw)", "calc((426/1440) * 100vw)"],
-        width: ["calc((340/414) * 100vw)", "calc((360/1440) * 100vw)"],
+        height: ["calc((304/414) * 100vw)", "42.6rem"],
+        width: ["calc((340/414) * 100vw)", "36rem"],
         // maxHeight: "426px",
         // maxWidth: "360px",
       },

@@ -8,7 +8,7 @@ import Props from "./Chip.types";
 
 const ChipRoot = styled("div")<Props>(
   {
-    borderWidth: "2px",
+    borderWidth: "0.2rem",
     borderStyle: "solid",
     width: "max-content",
     display: "flex",
@@ -17,17 +17,17 @@ const ChipRoot = styled("div")<Props>(
     alignItems: "center",
 
     "&.small": {
-      padding: "4px 6px 5px",
-      height: "22px",
-      fontSize: "12px",
+      padding: "0.4rem 0.6rem 0.5rem",
+      height: "2.2rem",
+      fontSize: "1.2rem",
       fontFamily: "Nunito Sans, sans-serif",
       lineHeight: "calc(9/12)",
     },
 
     "&.medium": {
-      padding: "7px 12px",
-      height: "28px",
-      fontSize: "14px",
+      padding: "0.7rem 1.2rem",
+      height: "2.8rem",
+      fontSize: "1.4rem",
       fontFamily: "Nunito Sans, sans-serif",
       lineHeight: 1,
     },
@@ -60,12 +60,12 @@ const ChipRoot = styled("div")<Props>(
 );
 
 const IconContainer = styled.div`
-  margin: 0 4px 0 -2px;
+  margin: 0 0.4rem 0 -0.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 14px;
-  width: 14px;
+  height: 1.4rem;
+  width: 1.4rem;
 `;
 
 const Chip = ({

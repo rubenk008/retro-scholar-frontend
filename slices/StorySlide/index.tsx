@@ -9,7 +9,6 @@ import DurationIndicator from "../../components/DurationIndicator";
 import IconButton from "../../components/IconButton";
 import Arrow from "../../components/icons/Arrow";
 import Cross from "../../components/icons/Cross";
-// import prevDomainSelf from "../../utils/prevDomainSelf";
 
 import { useWindowSize } from "../../hooks/useWindowSize";
 import isMobile from "../../utils/isMobile";
@@ -26,8 +25,8 @@ const SliderWrapper = styled(motion.div)`
   background: #fff;
 
   @media screen and (min-width: 1024px) {
-    width: calc(1200 / 1440 * 100vw);
-    height: calc(672 / 1440 * 100vw);
+    width: 120rem;
+    height: 67.2rem;
   }
 `;
 
@@ -91,20 +90,21 @@ const SlideText = styled(motion.div)`
   padding: 0 calc(32 / 414 * 100vw);
   text-align: left;
 
-  > h2 {
+  > h1 {
     margin-bottom: 8px;
   }
 
   @media screen and (min-width: 1024px) {
     padding: 0;
-    width: calc(360 / 1440 * 100vw);
-    max-width: 360px;
+    width: 36rem;
+    max-width: 36rem;
     left: auto;
-    right: calc(60 / 1440 * 100vw);
-    top: calc(172 / 1440 * 100vw);
+    right: 6rem;
+    top: 17.2rem;
+    bottom: auto;
 
-    > h2 {
-      margin-bottom: 12px;
+    > h1 {
+      margin-bottom: 1.2rem;
     }
   }
 `;
@@ -122,11 +122,11 @@ const DurationWrapper = styled.div`
   pointer-events: none;
 
   @media screen and (min-width: 1024px) {
-    width: calc(300 / 1440 * 100vw);
-    max-width: 300px;
+    width: 30rem;
+    max-width: 30rem;
     padding: 0;
-    left: calc(40 / 1440 * 100vw);
-    top: calc(40 / 1440 * 100vw);
+    left: 4rem;
+    top: 4rem;
   }
 `;
 
@@ -159,9 +159,9 @@ const DesktopSlideNavigationWrapper = styled.div`
   justify-content: space-between;
   position: absolute;
   z-index: 99999;
-  width: calc(600 / 1440 * 100vw);
-  max-width: 600px;
-  bottom: 40px;
+  width: 60rem;
+  max-width: 60rem;
+  bottom: 4rem;
   left: 50%;
   transform: translateX(-50%);
 
@@ -177,8 +177,8 @@ const CloseButton = styled.div`
   right: calc(32 / 414 * 100vw);
 
   @media screen and (min-width: 1024px) {
-    top: calc(32 / 1440 * 100vw);
-    right: calc(32 / 1440 * 100vw);
+    top: 3.2rem;
+    right: 3.2rem;
   }
 `;
 
@@ -384,7 +384,7 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
               ) : null}
               <Typography
                 color="white"
-                variant=" body2"
+                variant="body3"
                 component={"p"}
                 textShadow
               >
@@ -430,20 +430,24 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
         <IconButton
           onClick={prevSlide}
           icon={
-            <Arrow height={40} width={40} style={{ transform: "scaleX(-1)" }} />
+            <Arrow
+              height="4rem"
+              width="4rem"
+              style={{ transform: "scaleX(-1)" }}
+            />
           }
         />
 
         {activeSlide < slice.items.length - 1 && (
           <IconButton
             onClick={nextSlide}
-            icon={<Arrow height={40} width={40} />}
+            icon={<Arrow height="4rem" width="4rem" />}
           />
         )}
       </DesktopSlideNavigationWrapper>
       <CloseButton>
         <IconButton
-          icon={<Cross color="#283086" />}
+          icon={<Cross color="#283086" height="4rem" width="4rem" />}
           onClick={(e) => handleClosePage(e)}
         />
       </CloseButton>

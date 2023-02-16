@@ -14,18 +14,18 @@ const ArticleHeadingRoot = styled("div")<Props>(
   variant({
     variants: {
       regular: {
-        padding: "16px 20px",
-        width: "calc(100% - 40px)",
-        bottom: "20px",
-        left: "20px",
-        right: "20px",
+        padding: ["16px 20px", "1.6rem 2rem"],
+        width: ["calc(100% - 40px)", "calc(100% - 4rem)"],
+        bottom: ["20px", "2rem"],
+        left: ["20px", "2rem"],
+        right: ["20px", "2rem"],
       },
       small: {
-        padding: ["8px 8px", "16px 16px"],
-        width: ["calc(100% - 24px)", "calc(100% - 40px)"],
-        bottom: ["12px", "20px"],
-        left: ["12px", "20px"],
-        right: ["12px", "20px"],
+        padding: ["8px 8px", "1.6rem 1.6rem"],
+        width: ["calc(100% - 24px)", "calc(100% - 4rem)"],
+        bottom: ["12px", "2rem"],
+        left: ["12px", "2rem"],
+        right: ["12px", "2rem"],
       },
     },
   }),
@@ -47,7 +47,11 @@ const ArticleHeadingRoot = styled("div")<Props>(
       border-bottom: 10px solid var(--white);
 
       @media screen and (min-width: 768px) {
-        left: 20px;
+        left: 2rem;
+        top: -1.1rem;
+        border-left: 1.2rem solid transparent;
+        border-right: 0.7rem solid transparent;
+        border-bottom: 1.2rem solid var(--white);
       }
     }
   `
@@ -55,14 +59,14 @@ const ArticleHeadingRoot = styled("div")<Props>(
 
 const CustomTypography = styled(Typography)`
   font-size: ${(props: { size: string }) =>
-    props.size === "small" ? "16px" : "24px"};
+    props.size === "small" ? "16px" : "2.4rem"};
   line-height: ${(props: { size: string }) =>
     props.size === "small" ? "14px" : "auto"};
   letter-spacing: 1%;
 
   @media screen and (min-width: 768px) {
-    font-size: 26px;
-    line-height: 24px;
+    font-size: 2.6rem;
+    line-height: 2.4rem;
   }
 `;
 

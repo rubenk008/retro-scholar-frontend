@@ -10,7 +10,7 @@ const StyledIconButton = styled(motion.button)<{ size: "large" }>`
   border: none;
   height: ${(props) => (props.size === "large" ? pxToRem(40) : pxToRem(24))};
   width: ${(props) => (props.size === "large" ? pxToRem(40) : pxToRem(24))};
-  border-radius: 100px;
+  border-radius: 10rem;
   display: grid;
   box-sizing: border-box;
   padding: 0;

@@ -20,7 +20,7 @@ const StyledFooter = styled.footer`
 `;
 
 const Container = styled.div`
-  max-width: 1440px;
+  max-width: 144rem;
   padding: 48px 32px 0px;
   margin: 0 auto;
   display: flex;
@@ -28,7 +28,7 @@ const Container = styled.div`
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
-    padding: 52px 120px 48px;
+    padding: 5.2rem 12rem 4.8rem;
     flex-direction: row;
   }
 `;
@@ -52,8 +52,8 @@ const StyledLogo = styled(Logo)`
 
   @media screen and (min-width: 768px) {
     transform: rotate(-2deg) scale(1);
-    left: -64px;
-    top: -26px;
+    left: -6.4rem;
+    top: -2.6rem;
   }
 `;
 
@@ -71,7 +71,7 @@ const Copyright = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    margin: 0 0 0 77px;
+    margin: 0 0 0 7.7rem;
   }
 `;
 
