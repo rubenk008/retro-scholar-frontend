@@ -54,8 +54,8 @@ const MenuWrapper = styled.div`
   padding: 48px 32px;
 
   @media screen and (min-width: 768px) {
-    width: calc(1192 / 1440 * 100vw);
-    padding: 60px 80px;
+    width: 119.2rem;
+    padding: 6rem 8rem;
   }
 `;
 
@@ -96,8 +96,8 @@ const CloseButton = styled.div`
     props.menuIsOpen ? "50ms" : "400ms"};
 
   @media screen and (min-width: 768px) {
-    right: 70px;
-    top: 74px;
+    right: 7rem;
+    top: 7.4rem;
   }
 `;
 
@@ -132,7 +132,7 @@ const LinkListItemCounter = styled.div`
   padding-top: 1px;
 
   @media screen and (min-width: 768px) {
-    width: 34px;
+    width: 3.4rem;
   }
 `;
 
@@ -144,7 +144,7 @@ const LinkListItemContent = styled.div`
   max-width: 290px;
 
   @media screen and (min-width: 768px) {
-    max-width: 366px;
+    max-width: 36.6rem;
   }
 `;
 
@@ -162,8 +162,8 @@ const SocialLinkList = styled(motion.ul)`
   @media screen and (min-width: 768px) {
     margin: 0 0 0 8px;
     left: auto;
-    right: 80px;
-    bottom: 60px;
+    right: 8rem;
+    bottom: 6rem;
   }
 `;
 const SocialLinkListItem = styled.div`
@@ -178,13 +178,13 @@ const SocialLinkListItem = styled.div`
     width: 18px;
 
     @media screen and (min-width: 768px) {
-      height: 22px;
-      width: 22px;
+      height: 2.2rem;
+      width: 2.2rem;
     }
   }
 
   @media screen and (min-width: 768px) {
-    margin: 0 0 0 32px;
+    margin: 0 0 0 3.2rem;
   }
 `;
 

@@ -21,13 +21,13 @@ const Nav = styled.div`
   z-index: 9999999;
 
   @media screen and (min-width: 768px) {
-    height: 128px;
-    padding-top: 26px;
+    height: 12.8rem;
+    padding-top: 2.6rem;
   }
 `;
 
 const Container = styled.div`
-  max-width: 1440px;
+  max-width: 144rem;
   padding: 16px 24px 0px 20px;
   margin: 0 auto;
   display: flex;
@@ -35,7 +35,7 @@ const Container = styled.div`
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
-    padding: 0px 52px 0;
+    padding: 0px 5.2rem 0;
     flex-direction: row;
   }
 `;

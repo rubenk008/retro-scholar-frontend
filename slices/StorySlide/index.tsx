@@ -26,8 +26,8 @@ const SliderWrapper = styled(motion.div)`
   background: #fff;
 
   @media screen and (min-width: 1024px) {
-    width: calc(1200 / 1440 * 100vw);
-    height: calc(672 / 1440 * 100vw);
+    width: 120rem;
+    height: 67.2rem;
   }
 `;
 
@@ -91,20 +91,21 @@ const SlideText = styled(motion.div)`
   padding: 0 calc(32 / 414 * 100vw);
   text-align: left;
 
-  > h2 {
+  > h1 {
     margin-bottom: 8px;
   }
 
   @media screen and (min-width: 1024px) {
     padding: 0;
-    width: calc(360 / 1440 * 100vw);
-    max-width: 360px;
+    width: 36rem;
+    max-width: 36rem;
     left: auto;
-    right: calc(60 / 1440 * 100vw);
-    top: calc(172 / 1440 * 100vw);
+    right: 6rem;
+    top: 17.2rem;
+    bottom: auto;
 
-    > h2 {
-      margin-bottom: 12px;
+    > h1 {
+      margin-bottom: 1.2rem;
     }
   }
 `;
@@ -122,11 +123,11 @@ const DurationWrapper = styled.div`
   pointer-events: none;
 
   @media screen and (min-width: 1024px) {
-    width: calc(300 / 1440 * 100vw);
-    max-width: 300px;
+    width: 30rem;
+    max-width: 30rem;
     padding: 0;
-    left: calc(40 / 1440 * 100vw);
-    top: calc(40 / 1440 * 100vw);
+    left: 4rem;
+    top: 4rem;
   }
 `;
 
@@ -159,9 +160,9 @@ const DesktopSlideNavigationWrapper = styled.div`
   justify-content: space-between;
   position: absolute;
   z-index: 99999;
-  width: calc(600 / 1440 * 100vw);
-  max-width: 600px;
-  bottom: 40px;
+  width: 60rem;
+  max-width: 60rem;
+  bottom: 4rem;
   left: 50%;
   transform: translateX(-50%);
 
@@ -384,7 +385,7 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
               ) : null}
               <Typography
                 color="white"
-                variant=" body2"
+                variant="body2"
                 component={"p"}
                 textShadow
               >

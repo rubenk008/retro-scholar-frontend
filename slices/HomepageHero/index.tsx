@@ -10,15 +10,17 @@ import Media from "../../components/Media";
 import Typography from "../../components/Typography";
 
 const Section = styled.section`
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   background: var(--bay-of-many);
   padding: ${pxToRem(133)} ${pxToRem(32)} ${pxToRem(100)};
   position: relative;
   overflow-x: hidden;
+  display: flex;
 
   @media screen and (min-width: 1024px) {
-    padding: ${pxToRem(188)} ${pxToRem(120)} ${pxToRem(60)};
+    padding: 0 ${pxToRem(120)} ${pxToRem(60)};
+    max-height: 76.8rem;
   }
 `;
 
@@ -28,15 +30,15 @@ const Swiper = styled.div`
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
-  max-width: calc(1180 / 1440 * 100vw);
+  max-width: 118rem;
   margin: 0 auto;
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
-  }
-
-  @media screen and (min-width: 1440px) {
-    max-width: 1600px;
+    width: 118rem;
+    max-width: 118rem;
+    height: 52rem;
+    align-self: flex-end;
   }
 `;
 
@@ -51,9 +53,8 @@ const SwiperSlides = styled.div`
   @media screen and (min-width: 1024px) {
     flex-direction: row;
     padding-top: ${pxToRem(55)};
-    max-width: calc(540 / 1440 * 100vw);
-    min-width: 540px;
-    max-width: 540px;
+    min-width: 54rem;
+    max-width: 54rem;
     height: auto;
     max-height: auto;
   }
@@ -98,11 +99,11 @@ const SlideDuration = styled.div`
   margin: 0 calc(8 / 414 * 100vw) 0 calc(6 / 414 * 100vw);
 
   @media screen and (min-width: 1024px) {
-    width: calc(60 / 1440 * 100vw);
-    max-width: 60px;
-    height: calc(2 / 1440 * 100vw);
-    max-height: 2px;
-    margin: 0 calc(14 / 1440 * 100vw) 0 calc(12 / 1440 * 100vw);
+    width: 6rem;
+    max-width: 6rem;
+    height: 0.2rem;
+    max-height: 0.2rem;
+    margin: 0 1.4rem 0 1.4rem;
   }
 `;
 
@@ -131,11 +132,11 @@ const ScrollIndicator = styled.div`
   bottom: 0;
 
   @media screen and (min-width: 1024px) {
-    width: calc(2 / 1440 * 100vw);
-    max-width: 2px;
-    height: calc(180 / 1440 * 100vw);
-    max-height: 180px;
-    right: calc(68 / 1440 * 100vw);
+    width: 0.2rem
+    max-width: 0.2rem
+    height: 18rem;
+    max-height: 18rem;
+    right: 6.8rem;
     bottom: 0;
   }
 `;
@@ -145,6 +146,10 @@ const ScrollIndicatorDesc = styled.div`
   top: -42px;
   left: 50%;
   transform: translateX(-50%) rotate(90deg);
+
+  @media screen and (min-width: 1024px) {
+    top: -4.2rem;
+  }
 `;
 
 const ScrollIndicatorProgress = styled(motion.div)`

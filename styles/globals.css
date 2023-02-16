@@ -30,6 +30,10 @@
   --timing-short: 100ms;
   --timing-medium: 180ms;
   --timing-long: 500ms;
+
+  --base-fontsize: 10 !important;
+  --base-design-width: 414;
+  --base-design-width-desktop: 1440;
   --app-height: 100%;
 }
 
@@ -39,7 +43,19 @@ body {
   margin: 0;
   font-family: var(--font-nunito-sans);
   overscroll-behavior: none;
+  font-size: calc(
+    var(--base-fontsize) / var(--base-design-width) * 100vw
+  ) !important;
   /* min-height: 100vh; */
+}
+
+@media screen and (min-width: 1024px) {
+  html,
+  body {
+    font-size: calc(
+      var(--base-fontsize) / var(--base-design-width-desktop) * 100vw
+    ) !important;
+  }
 }
 
 a {
