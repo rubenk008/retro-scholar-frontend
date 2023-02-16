@@ -13,7 +13,7 @@ const Section = styled.section`
   height: 100vh;
   width: 100vw;
   background: var(--bay-of-many);
-  padding: ${pxToRem(133)} ${pxToRem(32)} ${pxToRem(100)};
+  padding: ${pxToRem(133)} ${pxToRem(32)} 0;
   position: relative;
   overflow-x: hidden;
   display: flex;
@@ -28,6 +28,7 @@ const Swiper = styled.div`
   z-index: 2;
   position: relative;
   display: flex;
+  align-self: flex-start;
   flex-direction: column-reverse;
   justify-content: space-between;
   max-width: 118rem;
@@ -44,10 +45,10 @@ const Swiper = styled.div`
 
 const SwiperSlides = styled.div`
   padding-top: ${pxToRem(32)};
-  max-width: calc(320 / 414 * 100vw);
-  max-width: 320px;
-  height: calc(204 / 414 * 100vw);
-  max-height: 204px;
+  width: 32rem;
+  max-width: 32rem;
+  height: 20.4rem;
+  max-height: 20.4rem;
   position: relative;
 
   @media screen and (min-width: 1024px) {

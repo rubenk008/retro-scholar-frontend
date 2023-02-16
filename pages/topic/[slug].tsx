@@ -30,11 +30,11 @@ const TopicHeading = styled.div`
   }
 
   @media (min-width: 768px) {
-    padding-top: 200px;
-    max-width: 800px;
+    padding-top: 20rem;
+    max-width: 80rem;
 
     & > h1 {
-      margin-bottom: 32px;
+      margin-bottom: 3.2rem;
     }
   }
 `;
@@ -55,10 +55,6 @@ const TopicPage = ({
   const [expandedArticleContent, setExpandedArticleContent] = useState({
     data: { slices: [] },
   });
-
-  useEffect(() => {
-    console.log("slices", articles);
-  }, []);
 
   useEffect(() => {
     setCurrentTopic(router.query.slug.toString());
@@ -85,7 +81,6 @@ const TopicPage = ({
   }, [router]);
 
   useEffect(() => {
-    console.log("prefetched", prefetchedArticles);
     setPrefetced(prefetchedArticles);
   }, [prefetchedArticles]);
 

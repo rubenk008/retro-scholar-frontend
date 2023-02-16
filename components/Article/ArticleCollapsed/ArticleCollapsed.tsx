@@ -22,9 +22,9 @@ const TagContainter = styled.div`
   z-index: 2;
 
   @media screen and (min-width: 768px) {
-    top: 20px;
-    left: 20px;
-    right: 20px;
+    top: 2rem;
+    left: 2rem;
+    right: 2rem;
   }
 `;
 

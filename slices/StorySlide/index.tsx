@@ -9,7 +9,6 @@ import DurationIndicator from "../../components/DurationIndicator";
 import IconButton from "../../components/IconButton";
 import Arrow from "../../components/icons/Arrow";
 import Cross from "../../components/icons/Cross";
-// import prevDomainSelf from "../../utils/prevDomainSelf";
 
 import { useWindowSize } from "../../hooks/useWindowSize";
 import isMobile from "../../utils/isMobile";
@@ -178,8 +177,8 @@ const CloseButton = styled.div`
   right: calc(32 / 414 * 100vw);
 
   @media screen and (min-width: 1024px) {
-    top: calc(32 / 1440 * 100vw);
-    right: calc(32 / 1440 * 100vw);
+    top: 3.2rem;
+    right: 3.2rem;
   }
 `;
 
@@ -385,7 +384,7 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
               ) : null}
               <Typography
                 color="white"
-                variant="body2"
+                variant="body3"
                 component={"p"}
                 textShadow
               >
@@ -431,20 +430,24 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
         <IconButton
           onClick={prevSlide}
           icon={
-            <Arrow height={40} width={40} style={{ transform: "scaleX(-1)" }} />
+            <Arrow
+              height="4rem"
+              width="4rem"
+              style={{ transform: "scaleX(-1)" }}
+            />
           }
         />
 
         {activeSlide < slice.items.length - 1 && (
           <IconButton
             onClick={nextSlide}
-            icon={<Arrow height={40} width={40} />}
+            icon={<Arrow height="4rem" width="4rem" />}
           />
         )}
       </DesktopSlideNavigationWrapper>
       <CloseButton>
         <IconButton
-          icon={<Cross color="#283086" />}
+          icon={<Cross color="#283086" height="4rem" width="4rem" />}
           onClick={(e) => handleClosePage(e)}
         />
       </CloseButton>

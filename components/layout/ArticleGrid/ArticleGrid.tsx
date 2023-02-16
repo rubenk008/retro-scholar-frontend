@@ -17,15 +17,15 @@ const Grid = styled.div`
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
-    max-width: 768px;
-    grid-gap: 32px;
+    max-width: 76.8rem;
+    grid-gap: 3.2rem;
     margin: 0 auto;
   }
 
   @media screen and (min-width: 1300px) {
     grid-template-columns: repeat(4, 1fr);
-    max-width: 1200px;
-    padding: 100px 0 200px;
+    max-width: 120rem;
+    padding: 10rem 0 20rem;
   }
 `;
 
