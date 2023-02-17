@@ -25,6 +25,7 @@ const IconButton = ({
   className,
   disabled,
   component = "button",
+  ...rest
 }: Props) => {
   return (
     <StyledIconButton
@@ -34,6 +35,7 @@ const IconButton = ({
       as={component}
       disabled={disabled}
       onClick={onClick}
+      {...rest}
     >
       <motion.div
         style={{ display: "grid", width: "100%", height: "100%" }}

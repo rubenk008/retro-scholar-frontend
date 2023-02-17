@@ -156,7 +156,7 @@ const SlideNavigation = styled.div`
 
 const DesktopSlideNavigationWrapper = styled.div`
   display: none;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   position: absolute;
   z-index: 99999;
   width: 60rem;
@@ -427,21 +427,24 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
         onTouchEnd={onTouchEnd}
       />
       <DesktopSlideNavigationWrapper>
-        <IconButton
-          onClick={prevSlide}
-          icon={
-            <Arrow
-              height="4rem"
-              width="4rem"
-              style={{ transform: "scaleX(-1)" }}
-            />
-          }
-        />
-
+        {activeSlide !== 0 && (
+          <IconButton
+            onClick={prevSlide}
+            icon={
+              <Arrow
+                height="4rem"
+                width="4rem"
+                style={{ transform: "scaleX(-1)" }}
+              />
+            }
+            style={{ margin: "0 auto 0 0" }}
+          />
+        )}
         {activeSlide < slice.items.length - 1 && (
           <IconButton
             onClick={nextSlide}
             icon={<Arrow height="4rem" width="4rem" />}
+            style={{ margin: "0 0 0 auto" }}
           />
         )}
       </DesktopSlideNavigationWrapper>
