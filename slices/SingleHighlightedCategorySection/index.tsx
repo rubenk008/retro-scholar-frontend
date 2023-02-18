@@ -77,6 +77,8 @@ const SingleHighlightedCategorySection = ({ slice }) => {
 
   const [isMobileView, setIsMobileView] = useState(false);
 
+  const [selectedArticle, setSelectedArticle] = useState("");
+
   const size = useWindowSize();
 
   useEffect(() => {

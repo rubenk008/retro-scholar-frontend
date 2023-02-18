@@ -83,6 +83,8 @@ const ArticleCollapsed = ({
     >
       <MediaContainer
         layoutId={`card-media-${id}`}
+        initial={{ x: 0, y: 0 }}
+        animate={{ x: 0, y: 0 }}
         thumbnailDesktopPrecentageFromCenter={
           thumbnailDesktopPrecentageFromCenter
         }

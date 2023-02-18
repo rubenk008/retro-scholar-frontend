@@ -17,7 +17,7 @@ const Overlay = styled(motion.div)`
   overflow: hidden;
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   top: 0;
   left: 0;
   right: 0;
@@ -46,7 +46,16 @@ const Wrapper = styled.div`
 //   width: 100%;
 // `;
 
-const ArticleExpanded = ({ id, children, onClick }) => {
+const WrapperAll = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999999999;
+  padding: 0;
+`;
+
+const ArticleExpanded = ({ children, onClick }) => {
   const ref = useRef();
 
   useEffect(() => {
@@ -58,7 +67,7 @@ const ArticleExpanded = ({ id, children, onClick }) => {
   }, []);
 
   return (
-    <div ref={ref}>
+    <WrapperAll ref={ref}>
       <Overlay
         onClick={onClick}
         initial={{ opacity: 0 }}
@@ -66,9 +75,8 @@ const ArticleExpanded = ({ id, children, onClick }) => {
         exit={{ opacity: 0, transition: { duration: 0.15 } }}
         transition={{ duration: 0.2, delay: 0.15 }}
       ></Overlay>
-
       <Wrapper>{children}</Wrapper>
-    </div>
+    </WrapperAll>
   );
 };
 

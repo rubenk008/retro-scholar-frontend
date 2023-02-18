@@ -42,12 +42,17 @@
           }
         }
       }
-    }
+    },
+    "ArticleMasthead": {}
   },
   "_cts": {
     "home-page": {},
-    "story-page": {},
-    "category-page": {},
+    "story-page": {
+      "socialCards": {}
+    },
+    "category-page": {
+      "socialCards": {}
+    },
     "categories": {},
     "menu": {
       "menu_links": {}

@@ -4,6 +4,72 @@
   "repeatable": true,
   "status": true,
   "json": {
-    "Main": {}
+    "Main": {
+      "category_name": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Category Name",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "category_desc": {
+        "type": "Text",
+        "config": {
+          "label": "Category Desc",
+          "placeholder": ""
+        }
+      }
+    },
+    "SEO Metadata": {
+      "metaTitle": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": ""
+        }
+      },
+      "metaDescription": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": ""
+        }
+      },
+      "socialCards": {
+        "type": "Group",
+        "config": {
+          "label": "Social Cards",
+          "fields": {
+            "socialCardImage": {
+              "type": "Image",
+              "config": {
+                "label": "Social Card Image",
+                "constraint": {
+                  "width": 1200,
+                  "height": 630
+                },
+                "thumbnails": []
+              }
+            },
+            "socialCardTitle": {
+              "type": "Text",
+              "config": {
+                "label": "Social Card Title",
+                "placeholder": ""
+              }
+            },
+            "socialCardDescription": {
+              "type": "Text",
+              "config": {
+                "label": "Social Card Description",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

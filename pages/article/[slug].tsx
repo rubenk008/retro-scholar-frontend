@@ -54,7 +54,6 @@ const ArticlePage = ({ meta, openGraph, article }) => {
         }}
       />
       <ArticleExpanded
-        id={article.id}
         onClick={(e) => {
           e.preventDefault();
           router.push(categoryRoute, categoryRoute, {

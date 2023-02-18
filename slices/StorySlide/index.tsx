@@ -308,13 +308,16 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
   }, [slice]);
 
   return (
-    <SliderWrapper layoutId={`card-container-${storyId}`}>
+    <SliderWrapper layout layoutId={`card-container-${storyId}`}>
       {slice.items.map((sliceItem, index) => {
         const thumbnailMobile = sliceItem.media.hasOwnProperty("mobile")
           ? sliceItem.media.mobile
           : sliceItem.media;
 
         const thumbnailDesktop = sliceItem.media;
+
+        const isVisible =
+          index === activeSlide || index === activeSlide + 1 || index === 0;
 
         return (
           <Slide
@@ -323,43 +326,46 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
             onMouseDown={pauseSlide}
             onMouseUp={playSlide}
           >
-            <SlideImage>
-              <motion.div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-                initial={{ scale: 1, transform: "translate(0px)" }}
-                animate={{
-                  scale: index === activeSlide ? 1.08 : 1,
-                  transform:
-                    index === activeSlide
-                      ? "translate(20px)"
-                      : "translate(0px)",
-                }}
-                transition={{
-                  duration: 5,
-                  ease: "linear",
-                }}
-              >
-                <Media
-                  type="image"
-                  image={
-                    isMobileView
-                      ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
-                      : {
-                          url: thumbnailDesktop.url,
-                          alt: thumbnailDesktop.alt,
-                        }
-                  }
-                  layout
-                  layoutId={index === 0 ? `card-media-${storyId}` : ""}
-                  withHalftone
-                />
-              </motion.div>
+            {isVisible && (
+              <SlideImage>
+                <motion.div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  initial={{ scale: 1 }}
+                  animate={{
+                    scale: 1.08,
+                    top: 20,
+                    left: 20,
+                  }}
+                  transition={{
+                    duration: 5,
+                    ease: "linear",
+                  }}
+                >
+                  <Media
+                    type="image"
+                    image={
+                      isMobileView
+                        ? {
+                            url: thumbnailMobile.url,
+                            alt: thumbnailMobile.alt,
+                          }
+                        : {
+                            url: thumbnailDesktop.url,
+                            alt: thumbnailDesktop.alt,
+                          }
+                    }
+                    layout
+                    layoutId={index === 0 ? `card-media-${storyId}` : ""}
+                    withHalftone
+                  />
+                </motion.div>
 
-              <SlideImageOverlay />
-            </SlideImage>
+                <SlideImageOverlay />
+              </SlideImage>
+            )}
             <SlideText
               initial={{ translateY: "20px", opacity: 0 }}
               animate={{

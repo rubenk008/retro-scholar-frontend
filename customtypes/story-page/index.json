@@ -65,7 +65,10 @@
               "type": "Image",
               "config": {
                 "label": "Social Card Image",
-                "constraint": {},
+                "constraint": {
+                  "width": 1200,
+                  "height": 630
+                },
                 "thumbnails": []
               }
             },

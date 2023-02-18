@@ -22,6 +22,52 @@
           }
         }
       }
+    },
+    "SEO Metadata": {
+      "metaTitle": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": ""
+        }
+      },
+      "metaDescription": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": ""
+        }
+      },
+      "socialCards": {
+        "type": "Group",
+        "config": {
+          "label": "Social Cards Facebook & Twitter",
+          "fields": {
+            "socialCardImage": {
+              "type": "Image",
+              "config": {
+                "label": "Social Card Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "socialCardTitle": {
+              "type": "Text",
+              "config": {
+                "label": "Social Card Title",
+                "placeholder": ""
+              }
+            },
+            "socialCardDescription": {
+              "type": "Text",
+              "config": {
+                "label": "Social Card Description",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
