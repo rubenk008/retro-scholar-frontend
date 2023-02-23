@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { clearAllBodyScrollLocks } from "body-scroll-lock";
 
 import { useRouter } from "next/router";
 import { createClient } from "../prismicio";
@@ -12,6 +13,7 @@ import ArticleExpanded from "../components/Article/ArticleExpanded";
 import { getArticles } from "../services/prismic";
 import { ThemeContext } from "../providers/ThemeProvider";
 import { NextSeo } from "next-seo";
+import { AnimatePresence } from "framer-motion";
 
 const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
   const router = useRouter();
@@ -24,15 +26,11 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
   });
 
   useEffect(() => {
-    console.log("slices", slices);
-  }, []);
-
-  useEffect(() => {
     toggleTheme("dark");
   }, []);
 
   useEffect(() => {
-    if (!!router.query.article) {
+    if (router.query.hasOwnProperty("article")) {
       setOverlayOpen(true);
       const articleId = router.query.article.toString();
       for (const prefetchedItem of prefetched) {
@@ -75,27 +73,27 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
         }}
       />
       <SliceZone slices={slices} components={components} />
-
-      {!!router.query.article && (
-        <ArticleExpanded
-          id={router.query.article}
-          onClick={(e) => {
-            e.preventDefault();
-            router.push("/", "/", { scroll: false, shallow: true });
-          }}
-        >
-          {expandedArticleContent.data.slices.length > 0 && (
+      <AnimatePresence initial={false}>
+        {overlayOpen && (
+          <ArticleExpanded
+            onClick={(e) => {
+              e.preventDefault();
+              router.push("/", "/", { scroll: false, shallow: true });
+            }}
+          >
             <StorySlide
               storyId={router.query.article.toString()}
               slice={expandedArticleContent.data.slices[0]}
               handleClosePage={(e) => {
                 e.preventDefault();
+                setOverlayOpen(false);
+                clearAllBodyScrollLocks();
                 router.push("/", "/", { scroll: false, shallow: true });
               }}
             />
-          )}
-        </ArticleExpanded>
-      )}
+          </ArticleExpanded>
+        )}
+      </AnimatePresence>
     </>
   );
 };

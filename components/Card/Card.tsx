@@ -11,20 +11,19 @@ const ContentAnim = {
   hidden: {
     x: 0,
     y: 0,
-    opacity: 0,
+    opacity: 1,
   },
   visible: {
-    x: -8,
-    y: -8,
+    x: 0,
+    y: 0,
     opacity: 1,
     transition: {
       duration: 0.3,
     },
   },
-
   hover: {
-    x: -16,
-    y: -16,
+    x: -8,
+    y: -8,
     transition: {
       duration: 0.2,
     },
@@ -173,8 +172,12 @@ const ContentWrapper = styled(motion.div)`
   grid-column: 1;
   line-height: 0;
   transform-origin: center;
-  background: #fff;
+  /* background: red; */
   overflow: hidden;
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  opacity: 1;
 `;
 
 const CardRoot = styled(motion.div)<Props>(

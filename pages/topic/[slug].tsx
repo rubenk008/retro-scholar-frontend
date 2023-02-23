@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { clearAllBodyScrollLocks } from "body-scroll-lock";
 import styled from "styled-components";
 
 import { useRouter } from "next/router";
@@ -14,6 +15,7 @@ import { ThemeContext } from "../../providers/ThemeProvider";
 import SEO from "../../next-seo.config";
 import { NextSeo } from "next-seo";
 import Typography from "../../components/Typography";
+import { AnimatePresence } from "framer-motion";
 
 const TopicHeading = styled.div`
   padding-top: 160px;
@@ -40,6 +42,7 @@ const TopicHeading = styled.div`
 `;
 
 const TopicPage = ({
+  data,
   categoryName,
   categoryDesc,
   meta,
@@ -119,25 +122,25 @@ const TopicPage = ({
       </TopicHeading>
 
       <ArticleGrid articles={articles} asPath={router.asPath} />
-
-      {!!router.query.article && (
-        <ArticleExpanded
-          id={router.query.article}
-          onClick={(e) => {
-            e.preventDefault();
-            router.push(`/topic/${currentTopic}`, `/topic/${currentTopic}`, {
-              scroll: false,
-              shallow: true,
-            });
-          }}
-        >
-          {expandedArticleContent.data.slices.length > 0 && (
+      <AnimatePresence initial={false}>
+        {overlayOpen && (
+          <ArticleExpanded
+            onClick={(e) => {
+              e.preventDefault();
+              router.push(`/topic/${currentTopic}`, `/topic/${currentTopic}`, {
+                scroll: false,
+                shallow: true,
+              });
+            }}
+          >
             <StorySlide
               key={router.query.article.toString()}
               storyId={router.query.article.toString()}
               slice={expandedArticleContent.data.slices[0]}
               handleClosePage={(e) => {
                 e.preventDefault();
+                setOverlayOpen(false);
+                clearAllBodyScrollLocks();
                 router.push(
                   `/topic/${currentTopic}`,
                   `/topic/${currentTopic}`,
@@ -148,9 +151,9 @@ const TopicPage = ({
                 );
               }}
             />
-          )}
-        </ArticleExpanded>
-      )}
+          </ArticleExpanded>
+        )}
+      </AnimatePresence>
     </>
   );
 };
