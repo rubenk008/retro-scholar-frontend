@@ -1,8 +1,7 @@
 import * as prismic from "@prismicio/client";
 import { enableAutoPreviews } from "@prismicio/next";
-import sm from "./sm.json";
 
-export const endpoint = sm.apiEndpoint;
+export const endpoint = process.env.NEXT_PUBLIC_PRISMIC_API_ENDPOINT;
 export const repositoryName = prismic.getRepositoryName(endpoint);
 
 // Update the Link Resolver to match your project's route structure
