@@ -40,6 +40,5 @@ App.getInitialProps = async (ctx) => {
   const client = createClient();
 
   const menu = await getMenu(client);
-
   return { menu };
 };

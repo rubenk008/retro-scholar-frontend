@@ -4,11 +4,11 @@ export const getMenu = async (client: Client) => {
   const response = await client.getSingle("menu");
   const data = response.data;
 
-  const title = data.title ? data.title : "";
+  const title = data.menuTitle ? data.menuTitle : "";
 
   const links = [];
 
-  for (const link of data.links) {
+  for (const link of data.menu_links) {
     const item = {
       name: link.menuItemName,
       desc: link.menuItemDesc,
