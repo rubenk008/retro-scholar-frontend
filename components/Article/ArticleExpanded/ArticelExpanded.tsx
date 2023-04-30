@@ -29,6 +29,8 @@ const Wrapper = styled(motion.div)`
 
   @media screen and (min-width: 1024px) {
     padding: 48px 0;
+    max-height: 100%;
+    height: auto;
   }
 `;
 
@@ -73,9 +75,20 @@ const ArticleExpanded = ({ children, onClick }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0, transition: { duration: 0.15 } }}
-        transition={{ duration: 0.2, delay: 0.15 }}
+        transition={{ duration: 0.2 }}
       ></Overlay>
-      <Wrapper>{children}</Wrapper>
+      <Wrapper
+        initial={{ scale: 0.8, translateY: "100vh" }}
+        animate={{ scale: 1, translateY: "0vh" }}
+        exit={{
+          scale: 0.8,
+          translateY: "100vh",
+          transition: { duration: 0.3, ease: "easeIn" },
+        }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+      >
+        {children}
+      </Wrapper>
     </WrapperAll>
   );
 };
