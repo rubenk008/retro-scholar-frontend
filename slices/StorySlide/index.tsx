@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/router";
+
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -25,8 +25,9 @@ const SliderWrapper = styled(motion.div)`
   background: #fff;
 
   @media screen and (min-width: 1024px) {
-    width: 120rem;
-    height: 67.2rem;
+    width: 100vw;
+    height: 96vh;
+    margin: 0 auto;
   }
 `;
 
@@ -125,8 +126,8 @@ const DurationWrapper = styled.div`
     width: 30rem;
     max-width: 30rem;
     padding: 0;
-    left: 4rem;
-    top: 4rem;
+    left: 4.4rem;
+    top: 6rem;
   }
 `;
 
@@ -156,12 +157,11 @@ const SlideNavigation = styled.div`
 
 const DesktopSlideNavigationWrapper = styled.div`
   display: none;
-  /* justify-content: space-between; */
   position: absolute;
   z-index: 99999;
-  width: 60rem;
-  max-width: 60rem;
-  bottom: 4rem;
+  width: 64rem;
+  max-width: 64rem;
+  bottom: 4.4rem;
   left: 50%;
   transform: translateX(-50%);
 
@@ -177,12 +177,12 @@ const CloseButton = styled.div`
   right: calc(32 / 414 * 100vw);
 
   @media screen and (min-width: 1024px) {
-    top: 3.2rem;
-    right: 3.2rem;
+    top: 4.4rem;
+    right: 4.4rem;
   }
 `;
 
-const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
+const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [playedSlides, setPlayedSlides] = useState([]);
   const [pausingSlide, setPauseSlide] = useState(false);
@@ -191,13 +191,34 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
 
   const timerRef = useRef(null);
   const isLongPress = useRef(null);
-  const router = useRouter();
 
   const [isMobileView, setIsMobileView] = useState(false);
 
   const [slidesDurationArray, setSlidesDurationArray] = useState([]);
 
   const size = useWindowSize();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleKeyDown = (e) => {
+    if (e.code === "ArrowLeft") {
+      prevSlide();
+    }
+
+    if (e.code === "ArrowRight") {
+      nextSlide();
+    }
+
+    if (e.code === "Escape") {
+      handleClosePage(e);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [handleKeyDown]);
 
   useEffect(() => {
     setIsMobileView(isMobile());
@@ -308,16 +329,13 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
   }, [slice]);
 
   return (
-    <SliderWrapper layout layoutId={`card-container-${storyId}`}>
+    <SliderWrapper>
       {slice.items.map((sliceItem, index) => {
         const thumbnailMobile = sliceItem.media.hasOwnProperty("mobile")
           ? sliceItem.media.mobile
           : sliceItem.media;
 
         const thumbnailDesktop = sliceItem.media;
-
-        const isVisible =
-          index === activeSlide || index === activeSlide + 1 || index === 0;
 
         return (
           <Slide
@@ -326,46 +344,43 @@ const StorySlide = ({ storyId = "", slice, handleClosePage = (e) => {} }) => {
             onMouseDown={pauseSlide}
             onMouseUp={playSlide}
           >
-            {isVisible && (
-              <SlideImage>
-                <motion.div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                  }}
-                  initial={{ scale: 1 }}
-                  animate={{
-                    scale: 1.08,
-                    top: 20,
-                    left: 20,
-                  }}
-                  transition={{
-                    duration: 5,
-                    ease: "linear",
-                  }}
-                >
-                  <Media
-                    type="image"
-                    image={
-                      isMobileView
-                        ? {
-                            url: thumbnailMobile.url,
-                            alt: thumbnailMobile.alt,
-                          }
-                        : {
-                            url: thumbnailDesktop.url,
-                            alt: thumbnailDesktop.alt,
-                          }
-                    }
-                    layout
-                    layoutId={index === 0 ? `card-media-${storyId}` : ""}
-                    withHalftone
-                  />
-                </motion.div>
+            <SlideImage>
+              <motion.div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                initial={{ scale: 1 }}
+                animate={{
+                  scale: 1.08,
+                  top: 20,
+                  left: 20,
+                }}
+                transition={{
+                  duration: 5,
+                  ease: "linear",
+                }}
+              >
+                <Media
+                  type="image"
+                  image={
+                    isMobileView
+                      ? {
+                          url: thumbnailMobile.url,
+                          alt: thumbnailMobile.alt,
+                        }
+                      : {
+                          url: thumbnailDesktop.url,
+                          alt: thumbnailDesktop.alt,
+                        }
+                  }
+                  withHalftone
+                />
+              </motion.div>
 
-                <SlideImageOverlay />
-              </SlideImage>
-            )}
+              <SlideImageOverlay />
+            </SlideImage>
+
             <SlideText
               initial={{ translateY: "20px", opacity: 0 }}
               animate={{

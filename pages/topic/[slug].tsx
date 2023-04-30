@@ -134,7 +134,6 @@ const TopicPage = ({
           >
             <StorySlide
               key={router.query.article.toString()}
-              storyId={router.query.article.toString()}
               slice={expandedArticleContent.data.slices[0]}
               handleClosePage={() => {
                 setOverlayOpen(false);

@@ -63,7 +63,6 @@ const ArticlePage = ({ meta, openGraph, article }) => {
       >
         {article.data.slices.length > 0 && (
           <StorySlide
-            storyId={article.id}
             slice={article.data.slices[0]}
             handleClosePage={() => {
               router.push(categoryRoute, categoryRoute, {
