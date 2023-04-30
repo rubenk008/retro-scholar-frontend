@@ -54,8 +54,7 @@ const ArticlePage = ({ meta, openGraph, article }) => {
         }}
       />
       <ArticleExpanded
-        onClick={(e) => {
-          e.preventDefault();
+        onClick={() => {
           router.push(categoryRoute, categoryRoute, {
             scroll: false,
             shallow: true,
@@ -66,8 +65,7 @@ const ArticlePage = ({ meta, openGraph, article }) => {
           <StorySlide
             storyId={article.id}
             slice={article.data.slices[0]}
-            handleClosePage={(e) => {
-              e.preventDefault();
+            handleClosePage={() => {
               router.push(categoryRoute, categoryRoute, {
                 scroll: false,
                 shallow: true,

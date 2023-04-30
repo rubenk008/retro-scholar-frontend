@@ -76,16 +76,14 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
       <AnimatePresence initial={false}>
         {overlayOpen && (
           <ArticleExpanded
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
               router.push("/", "/", { scroll: false, shallow: true });
             }}
           >
             <StorySlide
               storyId={router.query.article.toString()}
               slice={expandedArticleContent.data.slices[0]}
-              handleClosePage={(e) => {
-                e.preventDefault();
+              handleClosePage={() => {
                 setOverlayOpen(false);
                 clearAllBodyScrollLocks();
                 router.push("/", "/", { scroll: false, shallow: true });

@@ -125,8 +125,7 @@ const TopicPage = ({
       <AnimatePresence initial={false}>
         {overlayOpen && (
           <ArticleExpanded
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
               router.push(`/topic/${currentTopic}`, `/topic/${currentTopic}`, {
                 scroll: false,
                 shallow: true,
@@ -137,8 +136,7 @@ const TopicPage = ({
               key={router.query.article.toString()}
               storyId={router.query.article.toString()}
               slice={expandedArticleContent.data.slices[0]}
-              handleClosePage={(e) => {
-                e.preventDefault();
+              handleClosePage={() => {
                 setOverlayOpen(false);
                 clearAllBodyScrollLocks();
                 router.push(

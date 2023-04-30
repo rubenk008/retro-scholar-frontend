@@ -172,7 +172,7 @@ const ContentWrapper = styled(motion.div)`
   grid-column: 1;
   line-height: 0;
   transform-origin: center;
-  /* background: red; */
+  background: #fff;
   overflow: hidden;
   position: absolute;
   top: -8px;
