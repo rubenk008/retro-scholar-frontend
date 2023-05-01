@@ -308,9 +308,7 @@ const HomepageHero = ({ slice }) => {
           }}
           transition={{
             duration: 2,
-            type: "spring",
-            mass: 1.5,
-            stiffness: 200,
+            ease: "easeInOut",
             repeat: Infinity,
           }}
         />
