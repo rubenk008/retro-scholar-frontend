@@ -337,6 +337,9 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
 
         const thumbnailDesktop = sliceItem.media;
 
+        const isVisible =
+          index === activeSlide || index === activeSlide + 1 || index === 0;
+
         return (
           <Slide
             key={`key-${index + 1}`}
@@ -344,43 +347,44 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
             onMouseDown={pauseSlide}
             onMouseUp={playSlide}
           >
-            <SlideImage>
-              <motion.div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-                initial={{ scale: 1 }}
-                animate={{
-                  scale: 1.08,
-                  top: 20,
-                  left: 20,
-                }}
-                transition={{
-                  duration: 5,
-                  ease: "linear",
-                }}
-              >
-                <Media
-                  type="image"
-                  image={
-                    isMobileView
-                      ? {
-                          url: thumbnailMobile.url,
-                          alt: thumbnailMobile.alt,
-                        }
-                      : {
-                          url: thumbnailDesktop.url,
-                          alt: thumbnailDesktop.alt,
-                        }
-                  }
-                  withHalftone
-                />
-              </motion.div>
+            {isVisible && (
+              <SlideImage>
+                <motion.div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  initial={{ scale: 1 }}
+                  animate={{
+                    scale: 1.08,
+                    top: 20,
+                    left: 20,
+                  }}
+                  transition={{
+                    duration: 5,
+                    ease: "linear",
+                  }}
+                >
+                  <Media
+                    type="image"
+                    image={
+                      isMobileView
+                        ? {
+                            url: thumbnailMobile.url,
+                            alt: thumbnailMobile.alt,
+                          }
+                        : {
+                            url: thumbnailDesktop.url,
+                            alt: thumbnailDesktop.alt,
+                          }
+                    }
+                    withHalftone
+                  />
+                </motion.div>
 
-              <SlideImageOverlay />
-            </SlideImage>
-
+                <SlideImageOverlay />
+              </SlideImage>
+            )}
             <SlideText
               initial={{ translateY: "20px", opacity: 0 }}
               animate={{
@@ -422,17 +426,7 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
           {slice.items.map((sliceItem, index) => (
             <DurationIndicator
               key={`key-${index + 1}`}
-              playAnimation={index === activeSlide ? true : false}
-              stoppingAnimation={index !== activeSlide ? true : false}
-              pauseAnimation={
-                index === activeSlide && pausingSlide ? true : false
-              }
-              resetAnimation={
-                navigationClicked && index > activeSlide ? true : false
-              }
-              durationOfSlide={slidesDurationArray[index]}
-              endOfAnimation={updateActiveSlideOnEndTimer}
-              setComplete={index < activeSlide}
+              setComplete={index === activeSlide ? true : false}
             />
           ))}
         </DurationWrapper>
