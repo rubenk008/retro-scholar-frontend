@@ -43,7 +43,11 @@
         }
       }
     },
-    "ArticleMasthead": {}
+    "ArticleMasthead": {
+      "default": {
+        "primary": {}
+      }
+    }
   },
   "_cts": {
     "home-page": {},
