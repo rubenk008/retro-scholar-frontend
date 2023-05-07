@@ -26,8 +26,8 @@ const Section = styled.div`
 const CloseButton = styled.div`
   position: absolute;
   z-index: 99999;
-  top: calc(32 / 414 * 100vw);
-  right: calc(32 / 414 * 100vw);
+  top: 3.2rem;
+  right: 3.2rem;
 
   @media screen and (min-width: 1024px) {
     top: 4.4rem;

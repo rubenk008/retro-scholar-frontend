@@ -48,39 +48,37 @@ const ArticleGrid = ({ articles, asPath }: any) => {
         const thumbnailDesktop = item.thumbnail;
 
         return (
-          <>
-            <Link
-              key={`article-${index}`}
-              href={`${asPath}?article=${item.uid}`}
-              // as={`${asPath}/article/${item.uid}`}
-              scroll={false}
-              shallow={true}
-            >
-              <Article
-                cardData={{
-                  id: item.uid,
-                  title: item.title,
-                  tags: ["story"],
-                  media: {
-                    type: "image",
-                    image: isMobileView
-                      ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
-                      : {
-                          url: thumbnailDesktop.url,
-                          alt: thumbnailDesktop.alt,
-                        },
-                    video: {},
-                  },
-                  thumbnailDesktopPrecentageFromCenter:
-                    item.thumbnailDeskPercentageFromCenter !== null
-                      ? item.thumbnailDeskPercentageFromCenter
-                      : "0",
-                }}
-                variant="small"
-                withMargin={true}
-              />
-            </Link>
-          </>
+          <Link
+            key={`article-${index}`}
+            href={`${asPath}?article=${item.uid}`}
+            // as={`${asPath}/article/${item.uid}`}
+            scroll={false}
+            shallow={true}
+          >
+            <Article
+              cardData={{
+                id: item.uid,
+                title: item.title,
+                tags: ["story"],
+                media: {
+                  type: "image",
+                  image: isMobileView
+                    ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
+                    : {
+                        url: thumbnailDesktop.url,
+                        alt: thumbnailDesktop.alt,
+                      },
+                  video: {},
+                },
+                thumbnailDesktopPrecentageFromCenter:
+                  item.thumbnailDeskPercentageFromCenter !== null
+                    ? item.thumbnailDeskPercentageFromCenter
+                    : "0",
+              }}
+              variant="small"
+              withMargin={true}
+            />
+          </Link>
         );
       })}
     </Grid>

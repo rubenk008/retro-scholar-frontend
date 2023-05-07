@@ -17,11 +17,8 @@
             "label": "media",
             "constraint": {},
             "thumbnails": [
-              {
-                "name": "mobile",
-                "width": 414,
-                "height": 600
-              }
+              { "name": "mobile", "width": 414, "height": 600 },
+              { "name": "square", "width": 495, "height": 495 }
             ]
           }
         }

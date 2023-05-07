@@ -364,6 +364,7 @@ const Drawer = ({
                   onClick={() => {
                     onCrossClick();
                   }}
+                  key={`key-${index}`}
                 >
                   <motion.li variants={item}>
                     <LinkListItem
@@ -406,12 +407,14 @@ const Drawer = ({
           {socialLinks &&
             socialLinks.map((socialLink, index) => (
               // eslint-disable-next-line react/jsx-key
-              <motion.li variants={itemSocial}>
+              <motion.li variants={itemSocial} key={`key-${index}`}>
                 <SocialLinkListItem key={`key-${index}`}>
-                  <Link href={socialLink.href}>
-                    <a target="_blank" rel="noopener noreferrer">
-                      {socialLink.icon}
-                    </a>
+                  <Link
+                    href={socialLink.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {socialLink.icon}
                   </Link>
                 </SocialLinkListItem>
               </motion.li>
