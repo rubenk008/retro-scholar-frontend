@@ -8,12 +8,13 @@ import { useWindowSize } from "../../../hooks/useWindowSize";
 import isMobile from "../../../utils/isMobile";
 
 import { ArticleMastheadProps } from "./ArticleMasthead.types";
-import { RichText } from "prismic-reactjs";
+import Typography from "../../Typography/Typography";
 
 const Section = styled.div`
   position: relative;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -39,6 +40,42 @@ const CloseButton = styled.div`
 const MastheadImage = styled.div`
   width: 100%;
   height: 60rem;
+`;
+
+const CopySection = styled.div`
+  width: 100%;
+  padding: 7.8rem 3.2rem 0;
+
+  @media screen and (min-width: 1024px) {
+    width: 74.4rem;
+    align-self: flex-end;
+    padding-top: 10rem;
+    margin-right: 24rem;
+  }
+`;
+
+const CategoryName = styled(Typography)`
+  padding-bottom: 0.8rem;
+  line-height: auto;
+`;
+
+const ShareSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 4rem;
+  padding-bottom: 8rem;
+
+  @media screen and (min-width: 1024px) {
+    padding-bottom: 10rem;
+  }
+`;
+
+const Introduction = styled(Typography)`
+  padding-bottom: 4rem;
+
+  @media screen and (min-width: 1024px) {
+    padding-bottom: 4.4rem;
+  }
 `;
 
 const ArticleMasthead = ({
@@ -85,6 +122,24 @@ const ArticleMasthead = ({
           onClick={(e) => handleClosePage(e)}
         />
       </CloseButton>
+
+      <CopySection>
+        <CategoryName variant="body2" component="h2">
+          {category}
+        </CategoryName>
+        <Typography variant="h1">{title}</Typography>
+        <ShareSection>
+          <Typography variant="body2" component="p">
+            Share
+          </Typography>
+        </ShareSection>
+        <Introduction variant="intro" component="p">
+          {introduction}
+        </Introduction>
+        <Typography variant="body1" component="p">
+          {firstParagraph}
+        </Typography>
+      </CopySection>
     </Section>
   );
 };

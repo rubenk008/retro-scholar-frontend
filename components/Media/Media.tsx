@@ -30,6 +30,10 @@ const Wrapper = styled(motion.div)`
       transform: rotate(45deg);
       mix-blend-mode: soft-light;
       opacity: 0.55;
+
+      @media screen and (min-width: 1024px) {
+        height: 400%;
+      }
     }
   }
 `;

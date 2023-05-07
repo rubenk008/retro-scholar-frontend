@@ -46,8 +46,10 @@ const tempdata = {
       url: "https://images.prismic.io/retro-scholar/2065ebf9-1bf4-42f5-80e3-9a1cd669b18d_Bubble+Palace_outside.jpeg?auto=compress,format&rect=296,0,1857,1857&w=495&h=495",
     },
   },
-  introduction: "",
-  first_paragraph: "",
+  introduction:
+    "Aliquam iaculis eros neque, a malesuada nunc euismod vel. Ut nulla lacus, tempor et auctor at, pulvinar sed turpis. Integer aliquam mi laoreet sapien ullamcorper ullamcorper.",
+  first_paragraph:
+    "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna. Integer ut auctor diam, quis posuere ipsum. Nam ut augue eu mauris feugiat scelerisque sit amet in velit. Suspendisse auctor dolor id vestibulum tempor. Suspendisse ac massa enim. Nunc posuere sit amet purus id mattis. Duis finibus consectetur erat mollis sagittis.",
 };
 
 export const Masthead = () => (
