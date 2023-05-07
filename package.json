@@ -38,6 +38,7 @@
     "next": "^12.2.4",
     "next-seo": "^5.15.0",
     "next-slicezone": "^0.2.6",
+    "nextjs-google-analytics": "^2.3.3",
     "prismic-reactjs": "^1.3.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
