@@ -5,7 +5,7 @@ import { createClient } from "../../prismicio";
 import { getArticle } from "../../services/prismic";
 
 import ArticleExpanded from "../../components/Article/ArticleExpanded";
-import { StorySlide } from "../../slices";
+import StorySlide from "../../slices/StorySlide";
 import { ThemeContext } from "../../providers/ThemeProvider";
 
 import SEO from "../../next-seo.config";

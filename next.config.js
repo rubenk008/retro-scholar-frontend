@@ -9,7 +9,7 @@ const nextConfig = {
     },
   },
   images: {
-    domains: ["images.prismic.io", "images.unsplash.com"],
+    domains: ["images.prismic.io", "images.unsplash.com", "i.picsum.photos"],
   },
 };
 

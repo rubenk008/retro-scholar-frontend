@@ -111,7 +111,6 @@ const SingleHighlightedCategorySection = ({ slice }) => {
           </Link>
         )}
       </HighlightedCategoryHeading>
-      ß
       <Carousel
         insetLeft={isLargeScreen ? pxToRem(120) : pxToRem(32)}
         insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}

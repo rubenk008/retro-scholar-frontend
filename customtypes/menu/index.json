@@ -7,10 +7,7 @@
     "Main": {
       "menuTitle": {
         "type": "Text",
-        "config": {
-          "label": "Menu Title",
-          "placeholder": ""
-        }
+        "config": { "label": "Menu Title", "placeholder": "" }
       },
       "menu_links": {
         "type": "Group",
@@ -18,26 +15,18 @@
           "fields": {
             "menuItemName": {
               "type": "Text",
-              "config": {
-                "label": "Menu Item Name",
-                "placeholder": ""
-              }
+              "config": { "label": "Menu Item Name", "placeholder": "" }
             },
             "menuItemDesc": {
               "type": "Text",
-              "config": {
-                "label": "Menu Item Description",
-                "placeholder": ""
-              }
+              "config": { "label": "Menu Item Description", "placeholder": "" }
             },
             "menuItemLink": {
               "type": "Link",
               "config": {
                 "label": "Menu Item Link",
                 "select": "document",
-                "customtypes": [
-                  "category-page"
-                ]
+                "customtypes": ["category-page"]
               }
             }
           },

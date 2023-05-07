@@ -300,6 +300,61 @@ export type MenuDocument<Lang extends string = string> =
 /** Content for Longreadpage documents */
 interface PageDocumentData {
   /**
+   * Title field in *Longreadpage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.title
+   * - **Tab**: Page
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  title: prismicT.KeyTextField;
+  /**
+   * Category field in *Longreadpage*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.category
+   * - **Tab**: Page
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  category: prismicT.RelationField<"category-page">;
+  /**
+   * main media field in *Longreadpage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.main_media
+   * - **Tab**: Page
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  main_media: prismicT.ImageField<never>;
+  /**
+   * introduction field in *Longreadpage*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.introduction
+   * - **Tab**: Page
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  introduction: prismicT.RichTextField;
+  /**
+   * first paragraph field in *Longreadpage*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.first_paragraph
+   * - **Tab**: Page
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  first_paragraph: prismicT.RichTextField;
+  /**
    * Meta Title field in *Longreadpage*
    *
    * - **Field Type**: Text
@@ -513,52 +568,6 @@ export type AllDocumentTypes =
   | MenuDocument
   | PageDocument
   | StoryPageDocument;
-/**
- * Primary content in ArticleMasthead → Primary
- *
- */
-interface ArticleMastheadSliceDefaultPrimary {
-  /**
-   * media field in *ArticleMasthead → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: article_masthead.primary.media
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  media: prismicT.ImageField<"mobile" | "square">;
-}
-/**
- * Default variation for ArticleMasthead Slice
- *
- * - **API ID**: `default`
- * - **Description**: `ArticleMasthead`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ArticleMastheadSliceDefault = prismicT.SharedSliceVariation<
-  "default",
-  Simplify<ArticleMastheadSliceDefaultPrimary>,
-  never
->;
-/**
- * Slice variation for *ArticleMasthead*
- *
- */
-type ArticleMastheadSliceVariation = ArticleMastheadSliceDefault;
-/**
- * ArticleMasthead Shared Slice
- *
- * - **API ID**: `article_masthead`
- * - **Description**: `ArticleMasthead`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ArticleMastheadSlice = prismicT.SharedSlice<
-  "article_masthead",
-  ArticleMastheadSliceVariation
->;
 /**
  * Item in HomepageHero → Items
  *
@@ -874,10 +883,6 @@ declare module "@prismicio/client" {
       StoryPageDocumentDataSocialCardsItem,
       StoryPageDocument,
       AllDocumentTypes,
-      ArticleMastheadSliceDefaultPrimary,
-      ArticleMastheadSliceDefault,
-      ArticleMastheadSliceVariation,
-      ArticleMastheadSlice,
       HomepageHeroSliceDefaultItem,
       HomepageHeroSliceDefault,
       HomepageHeroSliceVariation,

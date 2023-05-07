@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import styled from "styled-components";
-import { motion } from "framer-motion";
-import IconButton from "../../components/IconButton/IconButton";
-import Cross from "../../components/icons/Cross/Cross";
-import Media from "../../components/Media/Media";
-import { useWindowSize } from "../../hooks/useWindowSize";
-import isMobile from "../../utils/isMobile";
+import IconButton from "../../IconButton";
+import Cross from "../../icons/Cross";
+import Media from "../../Media";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import isMobile from "../../../utils/isMobile";
+
+import { ArticleMastheadProps } from "./ArticleMasthead.types";
+import { RichText } from "prismic-reactjs";
 
 const Section = styled.div`
   position: relative;
@@ -15,7 +17,6 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 60rem;
   background: #fff;
 
   @media screen and (min-width: 1024px) {
@@ -37,10 +38,17 @@ const CloseButton = styled.div`
 
 const MastheadImage = styled.div`
   width: 100%;
-  height: 100%;
+  height: 60rem;
 `;
 
-const ArticleMasthead = ({ slice, handleClosePage = (e) => {} }) => {
+const ArticleMasthead = ({
+  title,
+  category,
+  introduction,
+  firstParagraph,
+  media,
+  handleClosePage = (e) => {},
+}: ArticleMastheadProps) => {
   const [isMobileView, setIsMobileView] = useState(false);
   const size = useWindowSize();
 
@@ -48,13 +56,10 @@ const ArticleMasthead = ({ slice, handleClosePage = (e) => {} }) => {
     setIsMobileView(isMobile());
   }, [size]);
 
-  const sliceMedia = slice.primary.media;
+  const thumbnailMobile = media.hasOwnProperty("mobile") ? media.mobile : media;
 
-  const thumbnailMobile = sliceMedia.hasOwnProperty("mobile")
-    ? sliceMedia.mobile
-    : sliceMedia;
+  const thumbnailDesktop = media;
 
-  const thumbnailDesktop = sliceMedia;
   return (
     <Section>
       <MastheadImage>
