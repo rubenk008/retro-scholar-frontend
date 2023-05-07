@@ -9,7 +9,7 @@ import Props from "./Footer.types";
 import Logo from "../../icons/Logo";
 
 const StyledFooter = styled.footer`
-  width: 100vw;
+  width: 100%;
   height: 180px;
   background: var(--cranberry);
   margin: 0;

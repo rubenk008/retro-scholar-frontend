@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-import { useIsLarge } from "../../hooks/useMediaQuery";
-
 import pxToRem from "../../utils/pxToRem";
 
 import Card from "../../components/Card";
@@ -11,7 +9,7 @@ import Typography from "../../components/Typography";
 import Link from "next/link";
 
 const Section = styled.section`
-  width: 100vw;
+  width: 100%;
   background-color: var(--tutu);
   padding: ${pxToRem(100)} 0;
   margin-top: ${pxToRem(-20)};

@@ -16,7 +16,7 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import isMobile from "../../utils/isMobile";
 
 const Section = styled.section`
-  width: 100vw;
+  width: 100%;
   background-color: var(--tutu);
   padding: ${pxToRem(100)} 0 ${pxToRem(20)};
 

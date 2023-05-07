@@ -11,7 +11,7 @@ import LogoWithName from "../../icons/LogoWithName";
 import SearchIcon from "../../icons/Search";
 
 const Nav = styled.div`
-  width: 100vw;
+  width: 100%;
   height: auto;
   position: fixed;
   top: 0;
