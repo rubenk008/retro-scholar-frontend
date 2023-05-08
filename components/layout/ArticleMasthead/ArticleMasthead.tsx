@@ -65,8 +65,43 @@ const ShareSection = styled.div`
   padding-top: 4rem;
   padding-bottom: 8rem;
 
+  & > *:first-child {
+    padding-right: 3.6rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 1.2rem;
+      height: 0.12rem;
+      background: var(--cranberry);
+      right: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  & > * {
+    padding-right: 1.2rem;
+  }
+
   @media screen and (min-width: 1024px) {
     padding-bottom: 10rem;
+
+    & > *:first-child {
+      padding-right: 5rem;
+
+      &::after {
+        width: 2rem;
+        height: 0.18rem;
+        right: 1.4rem;
+      }
+    }
+
+    & > * {
+      padding-right: 1.6rem;
+    }
   }
 `;
 
@@ -129,8 +164,17 @@ const ArticleMasthead = ({
         </CategoryName>
         <Typography variant="h1">{title}</Typography>
         <ShareSection>
-          <Typography variant="body2" component="p">
+          <Typography variant="body2" component="span">
             Share
+          </Typography>
+          <Typography variant="body2" component="span">
+            Twitter
+          </Typography>
+          <Typography variant="body2" component="span">
+            Facebook
+          </Typography>
+          <Typography variant="body2" component="span">
+            Copy link
           </Typography>
         </ShareSection>
         <Introduction variant="intro" component="p">

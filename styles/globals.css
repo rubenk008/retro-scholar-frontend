@@ -46,7 +46,6 @@ body {
   font-size: calc(
     var(--base-fontsize) / var(--base-design-width) * 100vw
   ) !important;
-  /* min-height: 100vh; */
 }
 
 @media screen and (min-width: 1024px) {
