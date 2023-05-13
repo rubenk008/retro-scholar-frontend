@@ -60,5 +60,6 @@ export const Masthead = () => (
     firstParagraph={tempdata.first_paragraph}
     media={tempdata.thumbnail}
     handleClosePage={() => {}}
+    articleUrl="https://www.google.com"
   />
 );

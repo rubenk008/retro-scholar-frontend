@@ -6,9 +6,11 @@ import Cross from "../../icons/Cross";
 import Media from "../../Media";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import isMobile from "../../../utils/isMobile";
+import shareOnSocial from "../../../utils/shareOnSocial";
 
 import { ArticleMastheadProps } from "./ArticleMasthead.types";
 import Typography from "../../Typography/Typography";
+import copyToClipboard from "../../../utils/copyToClipboard";
 
 const Section = styled.div`
   position: relative;
@@ -68,6 +70,7 @@ const ShareSection = styled.div`
   & > *:first-child {
     padding-right: 3.6rem;
     position: relative;
+    margin-right: 0;
 
     &::after {
       content: "";
@@ -83,7 +86,7 @@ const ShareSection = styled.div`
   }
 
   & > * {
-    padding-right: 1.2rem;
+    margin-right: 1.2rem;
   }
 
   @media screen and (min-width: 1024px) {
@@ -91,6 +94,7 @@ const ShareSection = styled.div`
 
     & > *:first-child {
       padding-right: 5rem;
+      margin-right: 0;
 
       &::after {
         width: 2rem;
@@ -100,7 +104,7 @@ const ShareSection = styled.div`
     }
 
     & > * {
-      padding-right: 1.6rem;
+      margin-right: 1.6rem;
     }
   }
 `;
@@ -113,16 +117,40 @@ const Introduction = styled(Typography)`
   }
 `;
 
+const ShareArticleLink = styled.div`
+  position: relative;
+  cursor: pointer;
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 0.12rem;
+    background: var(--cranberry);
+    bottom: 0.2rem;
+
+    @media screen and (min-width: 1024px) {
+      height: 0.16rem;
+      bottom: 0.3rem;
+    }
+  }
+`;
+
 const ArticleMasthead = ({
   title,
   category,
   introduction,
   firstParagraph,
   media,
+  articleUrl,
   handleClosePage = (e) => {},
 }: ArticleMastheadProps) => {
   const [isMobileView, setIsMobileView] = useState(false);
+  const [hasCopiedUrl, setHasCopiedUrl] = useState(false);
   const size = useWindowSize();
+
+  const shareLink = shareOnSocial(articleUrl, title);
 
   useEffect(() => {
     setIsMobileView(isMobile());
@@ -131,6 +159,11 @@ const ArticleMasthead = ({
   const thumbnailMobile = media.hasOwnProperty("mobile") ? media.mobile : media;
 
   const thumbnailDesktop = media;
+
+  const copyUrl = () => {
+    copyToClipboard(articleUrl);
+    setHasCopiedUrl(true);
+  };
 
   return (
     <Section>
@@ -167,15 +200,25 @@ const ArticleMasthead = ({
           <Typography variant="body2" component="span">
             Share
           </Typography>
-          <Typography variant="body2" component="span">
-            Twitter
-          </Typography>
-          <Typography variant="body2" component="span">
-            Facebook
-          </Typography>
-          <Typography variant="body2" component="span">
-            Copy link
-          </Typography>
+          <ShareArticleLink
+            onClick={() => window.open(shareLink.twitterUrl, "_blank")}
+          >
+            <Typography variant="body2" component="span">
+              Twitter
+            </Typography>
+          </ShareArticleLink>
+          <ShareArticleLink
+            onClick={() => window.open(shareLink.facebookUrl, "_blank")}
+          >
+            <Typography variant="body2" component="span">
+              Facebook
+            </Typography>
+          </ShareArticleLink>
+          <ShareArticleLink onClick={copyUrl}>
+            <Typography variant="body2" component="span">
+              {hasCopiedUrl ? "Copied!" : "Copy link"}
+            </Typography>
+          </ShareArticleLink>
         </ShareSection>
         <Introduction variant="intro" component="p">
           {introduction}
