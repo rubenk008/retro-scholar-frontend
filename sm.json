@@ -1,7 +1,4 @@
 {
-  "libraries": ["@/slices"],
-  "_latest": "0.4.2",
-  "storybook": "http://localhost:6006",
-  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
-  "framework": "next"
+	"//": "sm.json is deprecated, if you were importing values from this file please now import them from slicemachine.config.json, else you can safely delete this file",
+	"apiEndpoint": "https://retro-scholar.cdn.prismic.io/api/v2"
 }

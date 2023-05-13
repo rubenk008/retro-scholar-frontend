@@ -1,0 +1,45 @@
+[
+  {
+    "menuTitle": {
+      "__TYPE__": "FieldContent",
+      "value": "equipment",
+      "type": "Text"
+    },
+    "menu_links": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "menuItemName",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "thirty",
+                "type": "Text"
+              }
+            ],
+            [
+              "menuItemDesc",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "grow",
+                "type": "Text"
+              }
+            ],
+            [
+              "menuItemLink",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "DocumentLink",
+                  "id": "mock_document_id"
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -77,8 +77,6 @@ const SingleHighlightedCategorySection = ({ slice }) => {
 
   const [isMobileView, setIsMobileView] = useState(false);
 
-  const [selectedArticle, setSelectedArticle] = useState("");
-
   const size = useWindowSize();
 
   useEffect(() => {
@@ -113,7 +111,6 @@ const SingleHighlightedCategorySection = ({ slice }) => {
           </Link>
         )}
       </HighlightedCategoryHeading>
-
       <Carousel
         insetLeft={isLargeScreen ? pxToRem(120) : pxToRem(32)}
         insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}

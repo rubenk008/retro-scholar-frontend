@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState, useContext } from "react";
 import { clearAllBodyScrollLocks } from "body-scroll-lock";
 
@@ -7,7 +8,8 @@ import { SliceZone } from "@prismicio/react";
 
 import SEO from "../next-seo.config";
 
-import { components, StorySlide } from "../slices";
+import { components } from "../slices";
+import StorySlide from "../slices/StorySlide";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
 
 import { getArticles } from "../services/prismic";
@@ -24,6 +26,10 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
   const [expandedArticleContent, setExpandedArticleContent] = useState({
     data: { slices: [] },
   });
+
+  useEffect(() => {
+    console.log("slices", slices);
+  }, []);
 
   useEffect(() => {
     toggleTheme("dark");
@@ -72,6 +78,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
           ],
         }}
       />
+
       <SliceZone slices={slices} components={components} />
       <AnimatePresence initial={false}>
         {overlayOpen && (
