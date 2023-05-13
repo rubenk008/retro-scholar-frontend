@@ -19,11 +19,10 @@ const Section = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  background: #fff;
+  width: 100%;
 
   @media screen and (min-width: 1024px) {
-    width: 100vw;
+    width: 100%;
     margin: 0 auto;
   }
 `;
