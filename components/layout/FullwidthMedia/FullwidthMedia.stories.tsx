@@ -1,18 +1,18 @@
 import React from "react";
 
-import OneColumnMedia from "./OneColumnMedia";
+import FullwidthMedia from "./FullwidthMedia";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  title: "article-layout/OneColumnMedia",
-  component: OneColumnMedia,
+  title: "article-layout/FullwidthMedia",
+  component: FullwidthMedia,
 };
 
 const tempdata = {
   image: {
     dimensions: {
       width: 840,
-      height: 758,
+      height: 600,
     },
     alt: "Bubble Palace outside",
     copyright: null,
@@ -20,4 +20,4 @@ const tempdata = {
   },
 };
 
-export const Default = () => <OneColumnMedia image={tempdata.image} />;
+export const Default = () => <FullwidthMedia image={tempdata.image} />;
