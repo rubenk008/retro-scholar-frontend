@@ -52,7 +52,7 @@ const tempdata = {
     "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna. Integer ut auctor diam, quis posuere ipsum. Nam ut augue eu mauris feugiat scelerisque sit amet in velit. Suspendisse auctor dolor id vestibulum tempor. Suspendisse ac massa enim. Nunc posuere sit amet purus id mattis. Duis finibus consectetur erat mollis sagittis.",
 };
 
-export const Masthead = () => (
+export const Default = () => (
   <ArticleMasthead
     title={tempdata.title}
     category={tempdata.category[0].text}
