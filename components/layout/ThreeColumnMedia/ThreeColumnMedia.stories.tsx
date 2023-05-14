@@ -10,7 +10,7 @@ export default {
 
 const tempdata = [
   {
-    image: {
+    media: {
       dimensions: {
         width: 840,
         height: 800,
@@ -21,7 +21,7 @@ const tempdata = [
     },
   },
   {
-    image: {
+    media: {
       dimensions: {
         width: 840,
         height: 800,
@@ -32,7 +32,7 @@ const tempdata = [
     },
   },
   {
-    image: {
+    media: {
       dimensions: {
         width: 840,
         height: 800,

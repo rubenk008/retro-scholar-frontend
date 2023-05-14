@@ -37,11 +37,11 @@ const TwoColumnMedia = ({ media }: TwoColumnMediaProps) => {
           <Wrapper
             key={`column-media-${index}`}
             ratio={aspectRatio(
-              item.image.dimensions.width,
-              item.image.dimensions.height
+              item.media.dimensions?.width ?? 0,
+              item.media.dimensions?.height ?? 0
             )}
           >
-            <Media image={{ url: item.image.url, alt: item.image.alt }} />
+            <Media image={{ url: item.media.url, alt: item.media.alt }} />
           </Wrapper>
         );
       })}

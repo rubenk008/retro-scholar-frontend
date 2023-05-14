@@ -45,6 +45,16 @@
           "allowTargetBlank": true,
           "single": "paragraph,strong,em,embed"
         }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "media_columns": { "type": "SharedSlice" },
+            "text_row": { "type": "SharedSlice" }
+          }
+        }
       }
     },
     "SEO Metadata": {
