@@ -11,13 +11,12 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0 3.2rem;
+  padding: 8rem 3.2rem 0;
 
   @media screen and (min-width: 1024px) {
-    padding: 0;
+    padding: 10rem 0 0;
     margin-left: 45.6rem;
     width: 51.6666666666667%;
-    height: 100%;
   }
 `;
 

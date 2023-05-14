@@ -34,20 +34,6 @@ const Wrapper = styled(motion.div)`
   }
 `;
 
-// const ArticleContent = styled(motion.div)`
-//   position: relative;
-//   overflow: hidden;
-//   width: 84vw;
-//   height: 100%;
-//   margin: 0 auto;
-//   background: #fff;
-// `;
-
-// const HeaderImage = styled.div`
-//   height: 600px;
-//   width: 100%;
-// `;
-
 const WrapperAll = styled(motion.div)`
   position: fixed;
   top: 0;

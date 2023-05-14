@@ -26,7 +26,14 @@
       },
       "main_media": {
         "type": "Image",
-        "config": { "label": "main media", "constraint": {}, "thumbnails": [] }
+        "config": {
+          "label": "main media",
+          "constraint": { "width": 1440, "height": 600 },
+          "thumbnails": [
+            { "name": "mobile", "width": 414, "height": 600 },
+            { "name": "square", "width": 495, "height": 495 }
+          ]
+        }
       },
       "introduction": {
         "type": "StructuredText",

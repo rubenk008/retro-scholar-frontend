@@ -331,7 +331,7 @@ interface PageDocumentData {
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  main_media: prismicT.ImageField<never>;
+  main_media: prismicT.ImageField<"mobile" | "square">;
   /**
    * introduction field in *Longreadpage*
    *

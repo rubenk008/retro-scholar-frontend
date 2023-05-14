@@ -16,6 +16,10 @@ import SEO from "../../next-seo.config";
 import { NextSeo } from "next-seo";
 import Typography from "../../components/Typography";
 import { AnimatePresence } from "framer-motion";
+import Longread from "../../components/Longread/Longread";
+import ArticleMasthead from "../../components/layout/ArticleMasthead/ArticleMasthead";
+import { SliceZone } from "@prismicio/react";
+import { components } from "../../slices";
 
 const TopicHeading = styled.div`
   padding-top: 160px;
@@ -56,7 +60,16 @@ const TopicPage = ({
   const [prefetched, setPrefetced] = useState([]);
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [expandedArticleContent, setExpandedArticleContent] = useState({
-    data: { slices: [] },
+    type: "",
+    category: [],
+
+    data: {
+      title: "",
+      main_media: "",
+      slices: [],
+      introduction: [],
+      firstParagraph: [],
+    },
   });
 
   useEffect(() => {
@@ -132,22 +145,56 @@ const TopicPage = ({
               });
             }}
           >
-            <StorySlide
-              key={router.query.article.toString()}
-              slice={expandedArticleContent.data.slices[0]}
-              handleClosePage={() => {
-                setOverlayOpen(false);
-                clearAllBodyScrollLocks();
-                router.push(
-                  `/topic/${currentTopic}`,
-                  `/topic/${currentTopic}`,
-                  {
-                    scroll: false,
-                    shallow: true,
-                  }
-                );
-              }}
-            />
+            {expandedArticleContent.type === "story-page" && (
+              <StorySlide
+                key={router.query.article.toString()}
+                slice={expandedArticleContent.data.slices[0]}
+                handleClosePage={() => {
+                  setOverlayOpen(false);
+                  clearAllBodyScrollLocks();
+                  router.push(
+                    `/topic/${currentTopic}`,
+                    `/topic/${currentTopic}`,
+                    {
+                      scroll: false,
+                      shallow: true,
+                    }
+                  );
+                }}
+              />
+            )}
+            {expandedArticleContent.type === "page" && (
+              <Longread
+                masthead={
+                  <ArticleMasthead
+                    title={expandedArticleContent.data.title}
+                    media={expandedArticleContent.data.main_media}
+                    category={expandedArticleContent.category[0].text}
+                    introduction={expandedArticleContent.data.introduction}
+                    firstParagraph={expandedArticleContent.data.firstParagraph}
+                    articleUrl=""
+                    handleClosePage={() => {
+                      setOverlayOpen(false);
+                      clearAllBodyScrollLocks();
+                      router.push(
+                        `/topic/${currentTopic}`,
+                        `/topic/${currentTopic}`,
+                        {
+                          scroll: false,
+                          shallow: true,
+                        }
+                      );
+                    }}
+                  />
+                }
+                slicezone={
+                  <SliceZone
+                    slices={expandedArticleContent.data.slices}
+                    components={components}
+                  />
+                }
+              />
+            )}
           </ArticleExpanded>
         )}
       </AnimatePresence>

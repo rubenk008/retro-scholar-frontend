@@ -29,6 +29,20 @@ const Grid = styled.div`
   }
 `;
 
+const getTags = (pageType: string) => {
+  const tags = [];
+
+  if (pageType === "story-page") {
+    tags.push("story");
+  }
+
+  if (pageType === "page") {
+    tags.push("longread");
+  }
+
+  return tags;
+};
+
 const ArticleGrid = ({ articles, asPath }: any) => {
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -47,6 +61,8 @@ const ArticleGrid = ({ articles, asPath }: any) => {
 
         const thumbnailDesktop = item.thumbnail;
 
+        const tags = getTags(item.type);
+
         return (
           <Link
             key={`article-${index}`}
@@ -59,7 +75,7 @@ const ArticleGrid = ({ articles, asPath }: any) => {
               cardData={{
                 id: item.uid,
                 title: item.title,
-                tags: ["story"],
+                tags: tags,
                 media: {
                   type: "image",
                   image: isMobileView

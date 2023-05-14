@@ -13,12 +13,11 @@ const Section = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding: 0 3.2rem;
+  padding: 8rem 3.2rem 0;
   gap: 2rem;
 
   @media screen and (min-width: 1024px) {
-    height: 100%;
-    padding: 0;
+    padding: 10rem 0 0;
     flex-direction: row;
     gap: 2.4rem;
   }

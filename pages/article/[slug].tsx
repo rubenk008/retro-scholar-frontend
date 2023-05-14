@@ -104,7 +104,10 @@ export async function getStaticProps({ params, previewData }) {
 export async function getStaticPaths() {
   const client = createClient();
 
-  const pages = await client.getAllByType("story-page");
+  const storyPages = await client.getAllByType("story-page");
+  const longreadPages = await client.getAllByType("page");
+
+  const pages = [...storyPages, ...longreadPages];
 
   return {
     paths: pages.map((article) => `/article/${article.uid}`),

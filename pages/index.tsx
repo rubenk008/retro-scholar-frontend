@@ -28,10 +28,6 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
   });
 
   useEffect(() => {
-    console.log("slices", slices);
-  }, []);
-
-  useEffect(() => {
     toggleTheme("dark");
   }, []);
 
