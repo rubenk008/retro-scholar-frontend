@@ -48,7 +48,7 @@ const CopySection = styled.div`
   padding: 7.8rem 3.2rem 0;
 
   @media screen and (min-width: 1024px) {
-    width: 74.4rem;
+    width: 51.6666666666667%;
     align-self: flex-end;
     padding-top: 10rem;
     margin-right: 24rem;
