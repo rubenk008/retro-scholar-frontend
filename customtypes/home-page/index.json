@@ -10,15 +10,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "homepage_hero": {
-              "type": "SharedSlice"
-            },
-            "single_highlighted_category_section": {
-              "type": "SharedSlice"
-            },
-            "top_categories_section": {
-              "type": "SharedSlice"
-            }
+            "homepage_hero": { "type": "SharedSlice" },
+            "single_highlighted_category_section": { "type": "SharedSlice" },
+            "top_categories_section": { "type": "SharedSlice" }
           }
         }
       }
@@ -26,17 +20,11 @@
     "SEO Metadata": {
       "metaTitle": {
         "type": "Text",
-        "config": {
-          "label": "Meta Title",
-          "placeholder": ""
-        }
+        "config": { "label": "Meta Title", "placeholder": "" }
       },
       "metaDescription": {
         "type": "Text",
-        "config": {
-          "label": "Meta Description",
-          "placeholder": ""
-        }
+        "config": { "label": "Meta Description", "placeholder": "" }
       },
       "socialCards": {
         "type": "Group",
@@ -53,10 +41,7 @@
             },
             "socialCardTitle": {
               "type": "Text",
-              "config": {
-                "label": "Social Card Title",
-                "placeholder": ""
-              }
+              "config": { "label": "Social Card Title", "placeholder": "" }
             },
             "socialCardDescription": {
               "type": "Text",

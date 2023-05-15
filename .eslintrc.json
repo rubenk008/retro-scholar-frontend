@@ -1,4 +1,7 @@
 {
-  "extends": "next",
+  "extends": [
+    "next",
+    "plugin:storybook/recommended"
+  ],
   "rules": {}
 }

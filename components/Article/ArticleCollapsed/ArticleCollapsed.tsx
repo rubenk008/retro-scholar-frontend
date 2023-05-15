@@ -32,6 +32,9 @@ const getIcon = (value) => {
   switch (value) {
     case "story":
       return <Story />;
+
+    case "longread":
+      return <Story />;
     default:
       break;
   }

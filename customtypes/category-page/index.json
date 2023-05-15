@@ -16,26 +16,17 @@
       },
       "category_desc": {
         "type": "Text",
-        "config": {
-          "label": "Category Desc",
-          "placeholder": ""
-        }
+        "config": { "label": "Category Desc", "placeholder": "" }
       }
     },
     "SEO Metadata": {
       "metaTitle": {
         "type": "Text",
-        "config": {
-          "label": "Meta Title",
-          "placeholder": ""
-        }
+        "config": { "label": "Meta Title", "placeholder": "" }
       },
       "metaDescription": {
         "type": "Text",
-        "config": {
-          "label": "Meta Description",
-          "placeholder": ""
-        }
+        "config": { "label": "Meta Description", "placeholder": "" }
       },
       "socialCards": {
         "type": "Group",
@@ -46,19 +37,13 @@
               "type": "Image",
               "config": {
                 "label": "Social Card Image",
-                "constraint": {
-                  "width": 1200,
-                  "height": 630
-                },
+                "constraint": { "width": 1200, "height": 630 },
                 "thumbnails": []
               }
             },
             "socialCardTitle": {
               "type": "Text",
-              "config": {
-                "label": "Social Card Title",
-                "placeholder": ""
-              }
+              "config": { "label": "Social Card Title", "placeholder": "" }
             },
             "socialCardDescription": {
               "type": "Text",

@@ -72,12 +72,24 @@ const ViewCategoryLink = styled.div`
   }
 `;
 
+const getTags = (pageType: string) => {
+  const tags = [];
+
+  if (pageType === "story-page") {
+    tags.push("story");
+  }
+
+  if (pageType === "page") {
+    tags.push("longread");
+  }
+
+  return tags;
+};
+
 const SingleHighlightedCategorySection = ({ slice }) => {
   const isLargeScreen = useIsLarge();
 
   const [isMobileView, setIsMobileView] = useState(false);
-
-  const [selectedArticle, setSelectedArticle] = useState("");
 
   const size = useWindowSize();
 
@@ -113,7 +125,6 @@ const SingleHighlightedCategorySection = ({ slice }) => {
           </Link>
         )}
       </HighlightedCategoryHeading>
-
       <Carousel
         insetLeft={isLargeScreen ? pxToRem(120) : pxToRem(32)}
         insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}
@@ -129,6 +140,8 @@ const SingleHighlightedCategorySection = ({ slice }) => {
             return category.text;
           });
 
+          const tags = getTags(item.type);
+
           return (
             <Link
               key={`article-${index}`}
@@ -141,7 +154,7 @@ const SingleHighlightedCategorySection = ({ slice }) => {
                 cardData={{
                   id: item.id,
                   title: item.title,
-                  tags: ["story", ...categories],
+                  tags: [...tags, ...categories],
                   media: {
                     type: "image",
                     image: isMobileView

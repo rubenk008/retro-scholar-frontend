@@ -29,6 +29,20 @@ const Grid = styled.div`
   }
 `;
 
+const getTags = (pageType: string) => {
+  const tags = [];
+
+  if (pageType === "story-page") {
+    tags.push("story");
+  }
+
+  if (pageType === "page") {
+    tags.push("longread");
+  }
+
+  return tags;
+};
+
 const ArticleGrid = ({ articles, asPath }: any) => {
   const [isMobileView, setIsMobileView] = useState(false);
 
@@ -47,40 +61,40 @@ const ArticleGrid = ({ articles, asPath }: any) => {
 
         const thumbnailDesktop = item.thumbnail;
 
+        const tags = getTags(item.type);
+
         return (
-          <>
-            <Link
-              key={`article-${index}`}
-              href={`${asPath}?article=${item.uid}`}
-              // as={`${asPath}/article/${item.uid}`}
-              scroll={false}
-              shallow={true}
-            >
-              <Article
-                cardData={{
-                  id: item.uid,
-                  title: item.title,
-                  tags: ["story"],
-                  media: {
-                    type: "image",
-                    image: isMobileView
-                      ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
-                      : {
-                          url: thumbnailDesktop.url,
-                          alt: thumbnailDesktop.alt,
-                        },
-                    video: {},
-                  },
-                  thumbnailDesktopPrecentageFromCenter:
-                    item.thumbnailDeskPercentageFromCenter !== null
-                      ? item.thumbnailDeskPercentageFromCenter
-                      : "0",
-                }}
-                variant="small"
-                withMargin={true}
-              />
-            </Link>
-          </>
+          <Link
+            key={`article-${index}`}
+            href={`${asPath}?article=${item.uid}`}
+            // as={`${asPath}/article/${item.uid}`}
+            scroll={false}
+            shallow={true}
+          >
+            <Article
+              cardData={{
+                id: item.uid,
+                title: item.title,
+                tags: tags,
+                media: {
+                  type: "image",
+                  image: isMobileView
+                    ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
+                    : {
+                        url: thumbnailDesktop.url,
+                        alt: thumbnailDesktop.alt,
+                      },
+                  video: {},
+                },
+                thumbnailDesktopPrecentageFromCenter:
+                  item.thumbnailDeskPercentageFromCenter !== null
+                    ? item.thumbnailDeskPercentageFromCenter
+                    : "0",
+              }}
+              variant="small"
+              withMargin={true}
+            />
+          </Link>
         );
       })}
     </Grid>

@@ -17,9 +17,7 @@
           "config": {
             "label": "Article",
             "select": "document",
-            "customtypes": [
-              "story-page"
-            ]
+            "customtypes": ["story-page", "page"]
           }
         }
       },

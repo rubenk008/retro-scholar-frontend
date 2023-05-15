@@ -1,7 +1,0 @@
-{
-  "libraries": ["@/slices"],
-  "_latest": "0.4.2",
-  "storybook": "http://localhost:6006",
-  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator",
-  "framework": "next"
-}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState, useContext } from "react";
 import { clearAllBodyScrollLocks } from "body-scroll-lock";
 
@@ -7,8 +8,11 @@ import { SliceZone } from "@prismicio/react";
 
 import SEO from "../next-seo.config";
 
-import { components, StorySlide } from "../slices";
+import { components } from "../slices";
+import StorySlide from "../slices/StorySlide";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
+import Longread from "../components/Longread/Longread";
+import ArticleMasthead from "../components/layout/ArticleMasthead/ArticleMasthead";
 
 import { getArticles } from "../services/prismic";
 import { ThemeContext } from "../providers/ThemeProvider";
@@ -72,6 +76,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
           ],
         }}
       />
+
       <SliceZone slices={slices} components={components} />
       <AnimatePresence initial={false}>
         {overlayOpen && (
@@ -80,14 +85,41 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
               router.push("/", "/", { scroll: false, shallow: true });
             }}
           >
-            <StorySlide
-              slice={expandedArticleContent.data.slices[0]}
-              handleClosePage={() => {
-                setOverlayOpen(false);
-                clearAllBodyScrollLocks();
-                router.push("/", "/", { scroll: false, shallow: true });
-              }}
-            />
+            {expandedArticleContent.type === "story-page" && (
+              <StorySlide
+                slice={expandedArticleContent.data.slices[0]}
+                handleClosePage={() => {
+                  setOverlayOpen(false);
+                  clearAllBodyScrollLocks();
+                  router.push("/", "/", { scroll: false, shallow: true });
+                }}
+              />
+            )}
+            {expandedArticleContent.type === "page" && (
+              <Longread
+                masthead={
+                  <ArticleMasthead
+                    title={expandedArticleContent.data.title}
+                    media={expandedArticleContent.data.main_media}
+                    category={expandedArticleContent.category[0].text}
+                    introduction={expandedArticleContent.data.introduction}
+                    firstParagraph={expandedArticleContent.data.firstParagraph}
+                    articleUrl=""
+                    handleClosePage={() => {
+                      setOverlayOpen(false);
+                      clearAllBodyScrollLocks();
+                      router.push("/", "/", { scroll: false, shallow: true });
+                    }}
+                  />
+                }
+                slicezone={
+                  <SliceZone
+                    slices={expandedArticleContent.data.slices}
+                    components={components}
+                  />
+                }
+              />
+            )}
           </ArticleExpanded>
         )}
       </AnimatePresence>
