@@ -32,13 +32,14 @@ const ThreeColumnMedia = ({ media }: ThreeColumnMediaProps) => {
   return (
     <Section>
       {media.map((item, index) => {
+        const dimensions = item.media.hasOwnProperty("dimensions")
+          ? item.media.dimensions
+          : { width: 0, height: 0 };
+
         return (
           <Wrapper
             key={`column-media-${index}`}
-            ratio={aspectRatio(
-              item.media.dimensions?.width ?? 0,
-              item.media.dimensions?.height ?? 0
-            )}
+            ratio={aspectRatio(dimensions.width ?? 0, dimensions.height ?? 0)}
           >
             <Media image={{ url: item.media.url, alt: item.media.alt }} />
           </Wrapper>

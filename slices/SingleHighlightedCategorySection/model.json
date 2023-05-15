@@ -13,19 +13,14 @@
       "primary": {
         "collectionTitle": {
           "type": "Text",
-          "config": {
-            "label": "Collection Title",
-            "placeholder": ""
-          }
+          "config": { "label": "Collection Title", "placeholder": "" }
         },
         "categoryLink": {
           "type": "Link",
           "config": {
             "label": "Category Link",
             "select": "document",
-            "customtypes": [
-              "category-page"
-            ]
+            "customtypes": ["category-page"]
           }
         }
       },
@@ -35,9 +30,7 @@
           "config": {
             "label": "Article",
             "select": "document",
-            "customtypes": [
-              "story-page"
-            ]
+            "customtypes": ["story-page", "page"]
           }
         }
       },

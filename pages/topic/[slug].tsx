@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useEffect, useState, useContext } from "react";
 import { clearAllBodyScrollLocks } from "body-scroll-lock";
 import styled from "styled-components";

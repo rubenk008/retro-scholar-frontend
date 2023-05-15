@@ -27,6 +27,7 @@ const Wrapper = styled(motion.div)`
 
 const Section = styled.div`
   height: 100%;
+  width: 100%;
 
   > :last-child {
     padding-bottom: 8rem;

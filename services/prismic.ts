@@ -42,10 +42,41 @@ export const getCategory = async (client: Client, categoryId) => {
 };
 
 export const getArticle = async (client: Client, articleUID) => {
-  const response = await client.getByUID("story-page", articleUID);
+  let response;
+  let category = "";
 
-  const article = response;
-  return article;
+  try {
+    response = await client.getByUID("story-page", articleUID);
+
+    if (response.data.category.hasOwnProperty("id")) {
+      category = await getCategory(client, response.data.category.id);
+    }
+
+    const article = {
+      ...response,
+      category: category,
+    };
+
+    return article;
+  } catch (e) {
+    console.log(e);
+  }
+
+  try {
+    response = await client.getByUID("page", articleUID);
+
+    if (response.data.category.hasOwnProperty("id")) {
+      category = await getCategory(client, response.data.category.id);
+    }
+
+    const article = {
+      ...response,
+      category: category,
+    };
+    return article;
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const getArticles = async (client: Client, articleIds) => {
@@ -63,12 +94,17 @@ export const getArticles = async (client: Client, articleIds) => {
       category = await getCategory(client, item.data.category.id);
     }
 
-    prefetchedArticles.push(item);
+    const prefetchedArticle = {
+      category: category,
+      ...item,
+    };
+
+    prefetchedArticles.push(prefetchedArticle);
 
     const article = {
       type: item.type,
-      id: articleIds[index],
-      uid: articleIds[index],
+      id: item.id,
+      uid: item.uid,
       category: category,
       title: item.data.title,
       thumbnail:

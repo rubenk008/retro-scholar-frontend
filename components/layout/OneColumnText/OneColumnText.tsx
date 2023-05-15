@@ -9,7 +9,7 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   padding: 8rem 3.2rem 0;
 

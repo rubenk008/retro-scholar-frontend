@@ -28,12 +28,19 @@ const Wrapper = styled.div<WrapperProps>`
 `;
 
 const OneColumnMedia = ({ image }: OneColumnMediaProps) => {
+  const dimensions = image.hasOwnProperty("dimensions")
+    ? image.dimensions
+    : { width: 0, height: 0 };
+
   return (
     <Section>
-      <Wrapper
-        ratio={aspectRatio(image.dimensions.width, image.dimensions.height)}
-      >
-        <Media image={{ url: image.url, alt: image.alt }} />
+      <Wrapper ratio={aspectRatio(dimensions.width, dimensions.height)}>
+        <Media
+          image={{
+            url: image.url ? image.url : "",
+            alt: image.alt ? image.alt : "",
+          }}
+        />
       </Wrapper>
     </Section>
   );

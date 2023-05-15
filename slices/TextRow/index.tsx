@@ -14,17 +14,17 @@ const TextRow = ({ slice }: TextRowProps): JSX.Element => {
         field={slice.primary.body}
         components={{
           heading1: ({ children }) => (
-            <Typography variant="h2" component="h1">
+            <Typography variant="h3" component="h1">
               {children}
             </Typography>
           ),
           heading2: ({ children }) => (
-            <Typography variant="h3" component="h2">
+            <Typography variant="h4" component="h2">
               {children}
             </Typography>
           ),
           heading3: ({ children }) => (
-            <Typography variant="h4" component="h3">
+            <Typography variant="h5" component="h3">
               {children}
             </Typography>
           ),

@@ -598,7 +598,7 @@ export interface HomepageHeroSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
    *
    */
-  article: prismicT.RelationField<"story-page">;
+  article: prismicT.RelationField<"story-page" | "page">;
 }
 /**
  * Default variation for HomepageHero Slice
@@ -716,7 +716,7 @@ export interface SingleHighlightedCategorySectionSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
    *
    */
-  article: prismicT.RelationField<"story-page">;
+  article: prismicT.RelationField<"story-page" | "page">;
 }
 /**
  * Default variation for SingleHighlightedCategorySection Slice
