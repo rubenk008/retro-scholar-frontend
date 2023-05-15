@@ -11,6 +11,7 @@ import shareOnSocial from "../../../utils/shareOnSocial";
 import { ArticleMastheadProps } from "./ArticleMasthead.types";
 import Typography from "../../Typography/Typography";
 import copyToClipboard from "../../../utils/copyToClipboard";
+import { PrismicRichText } from "@prismicio/react";
 
 const Section = styled.div`
   position: relative;
@@ -28,7 +29,7 @@ const Section = styled.div`
 `;
 const CloseButton = styled.div`
   position: absolute;
-  z-index: 99999;
+  z-index: 99999999;
   top: 3.2rem;
   right: 3.2rem;
 
@@ -49,9 +50,9 @@ const CopySection = styled.div`
 
   @media screen and (min-width: 1024px) {
     width: 51.6666666666667%;
-    align-self: flex-end;
-    padding-top: 10rem;
-    margin-right: 24rem;
+    align-self: flex-start;
+    padding: 10rem 0 0 0;
+    margin-left: 45.6rem;
   }
 `;
 
@@ -108,7 +109,7 @@ const ShareSection = styled.div`
   }
 `;
 
-const Introduction = styled(Typography)`
+const Introduction = styled(PrismicRichText)`
   padding-bottom: 4rem;
 
   @media screen and (min-width: 1024px) {
@@ -183,12 +184,6 @@ const ArticleMasthead = ({
           withHalftone
         />
       </MastheadImage>
-      <CloseButton>
-        <IconButton
-          icon={<Cross color="#283086" height="4rem" width="4rem" />}
-          onClick={(e) => handleClosePage(e)}
-        />
-      </CloseButton>
 
       <CopySection>
         <CategoryName variant="body2" component="h2">
@@ -219,13 +214,74 @@ const ArticleMasthead = ({
             </Typography>
           </ShareArticleLink>
         </ShareSection>
-        <Introduction variant="intro" component="p">
-          {introduction}
-        </Introduction>
-        <Typography variant="body1" component="p">
-          {firstParagraph}
-        </Typography>
+
+        <Introduction
+          field={introduction}
+          components={{
+            heading1: ({ children }) => (
+              <Typography variant="h2" component="h1">
+                {children}
+              </Typography>
+            ),
+            heading2: ({ children }) => (
+              <Typography variant="h3" component="h2">
+                {children}
+              </Typography>
+            ),
+            heading3: ({ children }) => (
+              <Typography variant="h4" component="h3">
+                {children}
+              </Typography>
+            ),
+            paragraph: ({ children }) => (
+              <Typography variant="body1" component="p">
+                {children}
+              </Typography>
+            ),
+            hyperlink: ({ children }) => (
+              <Typography variant="body1" component="a">
+                {children}
+              </Typography>
+            ),
+          }}
+        />
+        <PrismicRichText
+          field={firstParagraph}
+          components={{
+            heading1: ({ children }) => (
+              <Typography variant="h2" component="h1">
+                {children}
+              </Typography>
+            ),
+            heading2: ({ children }) => (
+              <Typography variant="h3" component="h2">
+                {children}
+              </Typography>
+            ),
+            heading3: ({ children }) => (
+              <Typography variant="h4" component="h3">
+                {children}
+              </Typography>
+            ),
+            paragraph: ({ children }) => (
+              <Typography variant="body1" component="p">
+                {children}
+              </Typography>
+            ),
+            hyperlink: ({ children }) => (
+              <Typography variant="body1" component="a">
+                {children}
+              </Typography>
+            ),
+          }}
+        />
       </CopySection>
+      <CloseButton>
+        <IconButton
+          icon={<Cross color="#283086" height="4rem" width="4rem" />}
+          onClick={(e) => handleClosePage(e)}
+        />
+      </CloseButton>
     </Section>
   );
 };

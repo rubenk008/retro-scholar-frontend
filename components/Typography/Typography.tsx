@@ -24,6 +24,7 @@ const TypographyRoot = styled("span")<Props>(
     userSelect: "none",
     WebkitUserSelect: "none",
     msUserSelect: "none",
+    flexDirection: "column",
 
     "&.textShadow": {
       textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",

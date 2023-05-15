@@ -1,0 +1,23 @@
+{
+  "id": "media_columns",
+  "type": "SharedSlice",
+  "name": "MediaRow",
+  "description": "MediaColumns",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "media": {
+          "type": "Image",
+          "config": { "label": "Media", "constraint": {}, "thumbnails": [] }
+        }
+      }
+    }
+  ]
+}

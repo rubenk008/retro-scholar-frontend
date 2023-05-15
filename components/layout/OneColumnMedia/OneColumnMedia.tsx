@@ -13,13 +13,12 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 0 3.2rem;
+  padding: 8rem 3.2rem 0;
 
   @media screen and (min-width: 1024px) {
-    padding: 0;
+    padding: 10rem 0 0;
     margin-left: 45.6rem;
     width: 58%;
-    height: 100%;
   }
 `;
 
@@ -29,12 +28,19 @@ const Wrapper = styled.div<WrapperProps>`
 `;
 
 const OneColumnMedia = ({ image }: OneColumnMediaProps) => {
+  const dimensions = image.hasOwnProperty("dimensions")
+    ? image.dimensions
+    : { width: 0, height: 0 };
+
   return (
     <Section>
-      <Wrapper
-        ratio={aspectRatio(image.dimensions.width, image.dimensions.height)}
-      >
-        <Media image={{ url: image.url, alt: image.alt }} />
+      <Wrapper ratio={aspectRatio(dimensions.width, dimensions.height)}>
+        <Media
+          image={{
+            url: image.url ? image.url : "",
+            alt: image.alt ? image.alt : "",
+          }}
+        />
       </Wrapper>
     </Section>
   );

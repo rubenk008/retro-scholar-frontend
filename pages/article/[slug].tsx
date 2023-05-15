@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useContext, useState } from "react";
 
 import { useRouter } from "next/router";
@@ -7,9 +8,13 @@ import { getArticle } from "../../services/prismic";
 import ArticleExpanded from "../../components/Article/ArticleExpanded";
 import StorySlide from "../../slices/StorySlide";
 import { ThemeContext } from "../../providers/ThemeProvider";
+import Longread from "../../components/Longread/Longread";
+import ArticleMasthead from "../../components/layout/ArticleMasthead/ArticleMasthead";
 
 import SEO from "../../next-seo.config";
 import { NextSeo } from "next-seo";
+import { SliceZone } from "@prismicio/react";
+import { components } from "../../slices";
 
 const ArticlePage = ({ meta, openGraph, article }) => {
   const router = useRouter();
@@ -23,6 +28,10 @@ const ArticlePage = ({ meta, openGraph, article }) => {
       setCategoryRoute(`/topic/${article.data.category.uid}`);
     }
   }, []);
+
+  useEffect(() => {
+    console.log(article);
+  }, [article]);
 
   useEffect(() => {
     toggleTheme("light");
@@ -42,10 +51,10 @@ const ArticlePage = ({ meta, openGraph, article }) => {
           defaultImageWidth: 1200,
           images: [
             {
-              url: !!openGraph.socialCardImage.url
+              url: openGraph.socialCardImage?.url
                 ? openGraph.socialCardImage.url
                 : "",
-              alt: !!openGraph.socialCardImage.alt
+              alt: openGraph.socialCardImage?.alt
                 ? openGraph.socialCardImage.alt
                 : "",
               type: "image/jpeg",
@@ -61,7 +70,7 @@ const ArticlePage = ({ meta, openGraph, article }) => {
           });
         }}
       >
-        {article.data.slices.length > 0 && (
+        {article.data.slices.length > 0 && article.type === "story-page" && (
           <StorySlide
             slice={article.data.slices[0]}
             handleClosePage={() => {
@@ -70,6 +79,29 @@ const ArticlePage = ({ meta, openGraph, article }) => {
                 shallow: true,
               });
             }}
+          />
+        )}
+        {article.type === "page" && (
+          <Longread
+            masthead={
+              <ArticleMasthead
+                title={article.data.title}
+                media={article.data.main_media}
+                category={article.category[0].text}
+                introduction={article.data.introduction}
+                firstParagraph={article.data.firstParagraph}
+                articleUrl=""
+                handleClosePage={() => {
+                  router.push(categoryRoute, categoryRoute, {
+                    scroll: false,
+                    shallow: true,
+                  });
+                }}
+              />
+            }
+            slicezone={
+              <SliceZone slices={article.data.slices} components={components} />
+            }
           />
         )}
       </ArticleExpanded>
@@ -87,12 +119,10 @@ export async function getStaticProps({ params, previewData }) {
   return {
     props: {
       meta: {
-        title: !!article.data.metaTitle ? article.data.metaTitle : "",
-        desc: !!article.data.metaDescription
-          ? article.data.metaDescription
-          : "",
+        title: article.data.metaTitle ? article.data.metaTitle : "",
+        desc: article.data.metaDescription ? article.data.metaDescription : "",
       },
-      openGraph: !!article.data.socialCards
+      openGraph: article.data.socialCards
         ? article.data.socialCards[0]
         : { url: "", alt: "", socialCardTitle: "", socialCardDescription: "" },
       article,
@@ -104,7 +134,10 @@ export async function getStaticProps({ params, previewData }) {
 export async function getStaticPaths() {
   const client = createClient();
 
-  const pages = await client.getAllByType("story-page");
+  const storyPages = await client.getAllByType("story-page");
+  const longreadPages = await client.getAllByType("page");
+
+  const pages = [...storyPages, ...longreadPages];
 
   return {
     paths: pages.map((article) => `/article/${article.uid}`),

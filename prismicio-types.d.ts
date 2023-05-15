@@ -331,7 +331,7 @@ interface PageDocumentData {
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  main_media: prismicT.ImageField<never>;
+  main_media: prismicT.ImageField<"mobile" | "square">;
   /**
    * introduction field in *Longreadpage*
    *
@@ -354,6 +354,17 @@ interface PageDocumentData {
    *
    */
   first_paragraph: prismicT.RichTextField;
+  /**
+   * Slice Zone field in *Longreadpage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.slices[]
+   * - **Tab**: Page
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismicT.SliceZone<PageDocumentDataSlicesSlice>;
   /**
    * Meta Title field in *Longreadpage*
    *
@@ -388,6 +399,11 @@ interface PageDocumentData {
    */
   social_cards: prismicT.GroupField<Simplify<PageDocumentDataSocialCardsItem>>;
 }
+/**
+ * Slice for *Longreadpage → Slice Zone*
+ *
+ */
+type PageDocumentDataSlicesSlice = MediaColumnsSlice | TextRowSlice;
 /**
  * Item in Longreadpage → Social Cards - Facebook & Twitter
  *
@@ -582,7 +598,7 @@ export interface HomepageHeroSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
    *
    */
-  article: prismicT.RelationField<"story-page">;
+  article: prismicT.RelationField<"story-page" | "page">;
 }
 /**
  * Default variation for HomepageHero Slice
@@ -613,6 +629,52 @@ type HomepageHeroSliceVariation = HomepageHeroSliceDefault;
 export type HomepageHeroSlice = prismicT.SharedSlice<
   "homepage_hero",
   HomepageHeroSliceVariation
+>;
+/**
+ * Item in MediaRow → Items
+ *
+ */
+export interface MediaColumnsSliceDefaultItem {
+  /**
+   * Media field in *MediaRow → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_columns.items[].media
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  media: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for MediaRow Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MediaColumnsSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<MediaColumnsSliceDefaultItem>
+>;
+/**
+ * Slice variation for *MediaRow*
+ *
+ */
+type MediaColumnsSliceVariation = MediaColumnsSliceDefault;
+/**
+ * MediaRow Shared Slice
+ *
+ * - **API ID**: `media_columns`
+ * - **Description**: `MediaColumns`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type MediaColumnsSlice = prismicT.SharedSlice<
+  "media_columns",
+  MediaColumnsSliceVariation
 >;
 /**
  * Primary content in SingleHighlightedCategorySection → Primary
@@ -654,7 +716,7 @@ export interface SingleHighlightedCategorySectionSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
    *
    */
-  article: prismicT.RelationField<"story-page">;
+  article: prismicT.RelationField<"story-page" | "page">;
 }
 /**
  * Default variation for SingleHighlightedCategorySection Slice
@@ -775,6 +837,52 @@ export type StorySlideSlice = prismicT.SharedSlice<
   StorySlideSliceVariation
 >;
 /**
+ * Primary content in TextRow → Primary
+ *
+ */
+interface TextRowSliceDefaultPrimary {
+  /**
+   * body field in *TextRow → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: text_row.primary.body
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  body: prismicT.RichTextField;
+}
+/**
+ * Default variation for TextRow Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextRowSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Simplify<TextRowSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *TextRow*
+ *
+ */
+type TextRowSliceVariation = TextRowSliceDefault;
+/**
+ * TextRow Shared Slice
+ *
+ * - **API ID**: `text_row`
+ * - **Description**: `TextRow`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextRowSlice = prismicT.SharedSlice<
+  "text_row",
+  TextRowSliceVariation
+>;
+/**
  * Primary content in TopCategoriesSection → Primary
  *
  */
@@ -876,6 +984,7 @@ declare module "@prismicio/client" {
       MenuDocumentDataMenuLinksItem,
       MenuDocument,
       PageDocumentData,
+      PageDocumentDataSlicesSlice,
       PageDocumentDataSocialCardsItem,
       PageDocument,
       StoryPageDocumentData,
@@ -887,6 +996,10 @@ declare module "@prismicio/client" {
       HomepageHeroSliceDefault,
       HomepageHeroSliceVariation,
       HomepageHeroSlice,
+      MediaColumnsSliceDefaultItem,
+      MediaColumnsSliceDefault,
+      MediaColumnsSliceVariation,
+      MediaColumnsSlice,
       SingleHighlightedCategorySectionSliceDefaultPrimary,
       SingleHighlightedCategorySectionSliceDefaultItem,
       SingleHighlightedCategorySectionSliceDefault,
@@ -896,6 +1009,10 @@ declare module "@prismicio/client" {
       StorySlideSliceDefault,
       StorySlideSliceVariation,
       StorySlideSlice,
+      TextRowSliceDefaultPrimary,
+      TextRowSliceDefault,
+      TextRowSliceVariation,
+      TextRowSlice,
       TopCategoriesSectionSliceDefaultPrimary,
       TopCategoriesSectionSliceDefaultItem,
       TopCategoriesSectionSliceDefault,

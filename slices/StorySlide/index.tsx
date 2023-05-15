@@ -224,23 +224,23 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
     setIsMobileView(isMobile());
   }, [size]);
 
-  const updateActiveSlideOnEndTimer = () => {
-    if (activeSlide < slice.items.length - 1) {
-      const updatedPlayedSlidesArray = playedSlides.map((slide) =>
-        slide.slideIndex === activeSlide ? { ...slide, hasPlayed: true } : slide
-      );
-      setPlayedSlides(updatedPlayedSlidesArray);
+  // const updateActiveSlideOnEndTimer = () => {
+  //   if (activeSlide < slice.items.length - 1) {
+  //     const updatedPlayedSlidesArray = playedSlides.map((slide) =>
+  //       slide.slideIndex === activeSlide ? { ...slide, hasPlayed: true } : slide
+  //     );
+  //     setPlayedSlides(updatedPlayedSlidesArray);
 
-      setActiveSlide(activeSlide + 1);
-    }
+  //     setActiveSlide(activeSlide + 1);
+  //   }
 
-    if (activeSlide === slice.items.length - 1) {
-      const updatedPlayedSlidesArray = playedSlides.map((slide) =>
-        slide.slideIndex === activeSlide ? { ...slide, hasPlayed: true } : slide
-      );
-      setPlayedSlides(updatedPlayedSlidesArray);
-    }
-  };
+  //   if (activeSlide === slice.items.length - 1) {
+  //     const updatedPlayedSlidesArray = playedSlides.map((slide) =>
+  //       slide.slideIndex === activeSlide ? { ...slide, hasPlayed: true } : slide
+  //     );
+  //     setPlayedSlides(updatedPlayedSlidesArray);
+  //   }
+  // };
 
   const startPressTimer = () => {
     isLongPress.current = false;

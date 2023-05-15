@@ -13,12 +13,11 @@ const Section = styled.div`
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  padding: 0 3.2rem;
+  padding: 8rem 3.2rem 0;
   gap: 2rem;
 
   @media screen and (min-width: 1024px) {
-    height: 100%;
-    padding: 0 14.4rem;
+    padding: 10rem 14.4rem 0;
     flex-direction: row;
     gap: 2.4rem;
   }
@@ -33,15 +32,16 @@ const TwoColumnMedia = ({ media }: TwoColumnMediaProps) => {
   return (
     <Section>
       {media.map((item, index) => {
+        const dimensions = item.media.hasOwnProperty("dimensions")
+          ? item.media.dimensions
+          : { width: 0, height: 0 };
+
         return (
           <Wrapper
             key={`column-media-${index}`}
-            ratio={aspectRatio(
-              item.image.dimensions.width,
-              item.image.dimensions.height
-            )}
+            ratio={aspectRatio(dimensions.width ?? 0, dimensions.height ?? 0)}
           >
-            <Media image={{ url: item.image.url, alt: item.image.alt }} />
+            <Media image={{ url: item.media.url, alt: item.media.alt }} />
           </Wrapper>
         );
       })}

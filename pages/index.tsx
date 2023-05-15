@@ -11,6 +11,8 @@ import SEO from "../next-seo.config";
 import { components } from "../slices";
 import StorySlide from "../slices/StorySlide";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
+import Longread from "../components/Longread/Longread";
+import ArticleMasthead from "../components/layout/ArticleMasthead/ArticleMasthead";
 
 import { getArticles } from "../services/prismic";
 import { ThemeContext } from "../providers/ThemeProvider";
@@ -26,10 +28,6 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
   const [expandedArticleContent, setExpandedArticleContent] = useState({
     data: { slices: [] },
   });
-
-  useEffect(() => {
-    console.log("slices", slices);
-  }, []);
 
   useEffect(() => {
     toggleTheme("dark");
@@ -87,14 +85,41 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
               router.push("/", "/", { scroll: false, shallow: true });
             }}
           >
-            <StorySlide
-              slice={expandedArticleContent.data.slices[0]}
-              handleClosePage={() => {
-                setOverlayOpen(false);
-                clearAllBodyScrollLocks();
-                router.push("/", "/", { scroll: false, shallow: true });
-              }}
-            />
+            {expandedArticleContent.type === "story-page" && (
+              <StorySlide
+                slice={expandedArticleContent.data.slices[0]}
+                handleClosePage={() => {
+                  setOverlayOpen(false);
+                  clearAllBodyScrollLocks();
+                  router.push("/", "/", { scroll: false, shallow: true });
+                }}
+              />
+            )}
+            {expandedArticleContent.type === "page" && (
+              <Longread
+                masthead={
+                  <ArticleMasthead
+                    title={expandedArticleContent.data.title}
+                    media={expandedArticleContent.data.main_media}
+                    category={expandedArticleContent.category[0].text}
+                    introduction={expandedArticleContent.data.introduction}
+                    firstParagraph={expandedArticleContent.data.firstParagraph}
+                    articleUrl=""
+                    handleClosePage={() => {
+                      setOverlayOpen(false);
+                      clearAllBodyScrollLocks();
+                      router.push("/", "/", { scroll: false, shallow: true });
+                    }}
+                  />
+                }
+                slicezone={
+                  <SliceZone
+                    slices={expandedArticleContent.data.slices}
+                    components={components}
+                  />
+                }
+              />
+            )}
           </ArticleExpanded>
         )}
       </AnimatePresence>
