@@ -124,13 +124,24 @@ export const getArticles = async (client: Client, articleIds) => {
 };
 
 export const getArticlesByCategory = async (client: Client, categoryID) => {
-  const storyPages = await client.getAllByType("story-page", {
-    predicates: [predicate.at("my.story-page.category", categoryID)],
-  });
+  let storyPages = [];
+  let longreadPages = [];
 
-  const longreadPages = await client.getAllByType("page", {
-    predicates: [predicate.at("my.page.category", categoryID)],
-  });
+  try {
+    storyPages = await client.getAllByType("story-page", {
+      predicates: [predicate.at("my.story-page.category", categoryID)],
+    });
+  } catch (e) {
+    console.log(e);
+  }
+
+  try {
+    longreadPages = await client.getAllByType("page", {
+      predicates: [predicate.at("my.page.category", categoryID)],
+    });
+  } catch (e) {
+    console.log(e);
+  }
 
   const response = [...storyPages, ...longreadPages];
 

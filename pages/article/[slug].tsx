@@ -134,8 +134,20 @@ export async function getStaticProps({ params, previewData }) {
 export async function getStaticPaths() {
   const client = createClient();
 
-  const storyPages = await client.getAllByType("story-page");
-  const longreadPages = await client.getAllByType("page");
+  let storyPages = [];
+  let longreadPages = [];
+
+  try {
+    storyPages = await client.getAllByType("story-page");
+  } catch (error) {
+    console.log(error);
+  }
+
+  try {
+    longreadPages = await client.getAllByType("page");
+  } catch (error) {
+    console.log(error);
+  }
 
   const pages = [...storyPages, ...longreadPages];
 
