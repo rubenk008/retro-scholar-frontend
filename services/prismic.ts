@@ -80,8 +80,20 @@ export const getArticle = async (client: Client, articleUID) => {
 };
 
 export const getArticles = async (client: Client, articleIds) => {
-  const storyPages = await client.getAllByUIDs("story-page", articleIds);
-  const longreadPages = await client.getAllByUIDs("page", articleIds);
+  let storyPages = [];
+  let longreadPages = [];
+
+  try {
+    storyPages = await client.getAllByUIDs("story-page", articleIds);
+  } catch (e) {
+    console.log(e);
+  }
+
+  try {
+    longreadPages = await client.getAllByUIDs("page", articleIds);
+  } catch (e) {
+    console.log(e);
+  }
 
   const response = [...storyPages, ...longreadPages];
 
