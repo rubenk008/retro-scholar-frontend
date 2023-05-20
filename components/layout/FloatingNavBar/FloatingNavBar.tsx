@@ -1,15 +1,271 @@
-import { motion } from "framer-motion";
-import React, { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import IconButton from "../../IconButton";
 
-const Nav = styled(motion.nav)``;
+import pxToRem from "../../../utils/pxToRem";
+import Search from "../../icons/Search";
+import HamburgerMenu from "../../icons/HamburgerMenu/HamburgerMenu";
+import Bookmark from "../../icons/Bookmark/Bookmark";
+import Cross from "../../icons/Cross/Cross";
+import { useIsMedium } from "../../../hooks/useMediaQuery";
 
-const NavItem = styled.a``;
+const Nav = styled(motion.nav)`
+  width: 17.2rem;
+  height: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+
+  @media screen and (min-width: 768px) {
+    width: 15.2rem;
+    padding: 0 1.2rem;
+  }
+`;
+
+const NavBarBackground = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 17.2rem;
+  height: 4rem;
+  border-radius: 20rem;
+  background: var(--tutu);
+  box-shadow: 0px 4px 4px rgba(9, 25, 189, 0.18);
+
+  @media screen and (min-width: 768px) {
+    width: 15.2rem;
+    left: auto;
+    transform: none;
+    right: 0;
+  }
+`;
+
+const NavBarItems = styled(motion.div)`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  padding: 0 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media screen and (min-width: 768px) {
+    padding: 0 1.2rem;
+    transform: none;
+    left: auto;
+    right: 0;
+  }
+`;
+
+const NavItem = styled(motion.a)``;
+
+const CloseButton = styled(motion.div)`
+  margin: 0 0 0 auto;
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media screen and (min-width: 768px) {
+    transform: translateX(0%);
+    left: auto;
+    right: 0;
+    opacity: 0;
+  }
+`;
 
 const FloatingNavBar = () => {
+  const [isCollapesed, setIsCollapsed] = useState(false);
+
+  const isDesktop = useIsMedium();
+
+  const handleClick = () => {
+    setIsCollapsed(!isCollapesed);
+  };
+
+  const NavBarVariants = {
+    collapsed: {
+      width: "4rem",
+    },
+    expanded: {
+      width: "15.2rem",
+    },
+  };
+
+  const CloseButtonVariants = isDesktop
+    ? {
+        collapsed: {
+          transform: "translateX(0px)",
+          opacity: 1,
+          transition: { duration: 0.2, delay: 0.15, ease: "ease" },
+        },
+        expanded: {
+          transform: "translateX(-10px)",
+          opacity: 0,
+        },
+      }
+    : {
+        collapsed: {
+          opacity: 1,
+          transition: { duration: 0.2, delay: 0.15, ease: "ease" },
+        },
+        expanded: {
+          opacity: 0,
+        },
+      };
+
+  const container = isDesktop
+    ? {
+        collapsed: {
+          transition: {
+            staggerChildren: 0.04,
+          },
+        },
+        expanded: {
+          transition: {
+            delayChildren: 0.04,
+            staggerChildren: 0.05,
+          },
+        },
+      }
+    : {
+        collapsed: {
+          transition: {
+            staggerChildren: 0,
+          },
+        },
+        expanded: {
+          transition: {
+            delayChildren: 0,
+            staggerChildren: 0,
+          },
+        },
+      };
+
+  const item = {
+    collapsed: {
+      opacity: 0,
+      transform: "translateX(10px)",
+      transition: { duration: 0.18, ease: "easeIn" },
+    },
+    expanded: {
+      opacity: 1,
+
+      transition: { duration: 0.22, ease: "easeOut" },
+    },
+  };
+
+  const itemLeft = {
+    collapsed: {
+      opacity: 0,
+      transform: "translateX(10px)",
+      transition: { duration: 0.18, ease: "easeIn" },
+    },
+    expanded: {
+      opacity: 1,
+
+      transition: { duration: 0.22, ease: "easeOut" },
+    },
+  };
+
+  const itemCenter = {
+    collapsed: {
+      opacity: 0,
+      transition: { duration: 0.18, ease: "easeIn" },
+    },
+    expanded: {
+      opacity: 1,
+      transition: { duration: 0.22, ease: "easeOut" },
+    },
+  };
+
+  const itemRight = {
+    collapsed: {
+      opacity: 0,
+      transform: "translateX(-10px)",
+      transition: { duration: 0.18, ease: "easeIn" },
+    },
+    expanded: {
+      opacity: 1,
+      transition: { duration: 0.22, ease: "easeOut" },
+    },
+  };
+
   return (
     <Nav>
-      <NavItem>Home</NavItem>
+      <NavBarBackground
+        variants={NavBarVariants}
+        animate={isCollapesed ? "collapsed" : ""}
+        initial={"expanded"}
+      />
+
+      <NavBarItems
+        animate={isCollapesed ? "collapsed" : ""}
+        initial={"expanded"}
+        variants={container}
+      >
+        <NavItem variants={isDesktop ? item : itemLeft} onClick={handleClick}>
+          <IconButton
+            style={{ backgroundColor: "transparent" }}
+            icon={
+              <Bookmark
+                height={pxToRem(40)}
+                width={pxToRem(40)}
+                color="var(--cranberry)"
+              />
+            }
+          />
+        </NavItem>
+        <NavItem variants={isDesktop ? item : itemCenter} onClick={handleClick}>
+          <IconButton
+            style={{ backgroundColor: "transparent" }}
+            icon={
+              <Search
+                height={pxToRem(40)}
+                width={pxToRem(40)}
+                color="var(--cranberry)"
+              />
+            }
+          />
+        </NavItem>
+        <NavItem variants={isDesktop ? item : itemRight} onClick={handleClick}>
+          <IconButton
+            style={{ backgroundColor: "transparent" }}
+            icon={
+              <HamburgerMenu
+                height={pxToRem(40)}
+                width={pxToRem(40)}
+                color="var(--cranberry)"
+              />
+            }
+          />
+        </NavItem>
+      </NavBarItems>
+      <AnimatePresence>
+        {isCollapesed && (
+          <CloseButton
+            variants={CloseButtonVariants}
+            animate={isCollapesed ? "collapsed" : ""}
+            initial={"expanded"}
+            onClick={handleClick}
+          >
+            <IconButton
+              style={{ backgroundColor: "transparent" }}
+              icon={
+                <Cross
+                  height={pxToRem(40)}
+                  width={pxToRem(40)}
+                  color="var(--cranberry)"
+                />
+              }
+            />
+          </CloseButton>
+        )}
+      </AnimatePresence>
     </Nav>
   );
 };

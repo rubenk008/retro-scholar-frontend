@@ -13,4 +13,4 @@ const footerTempData = {
   ],
 };
 
-export const Default = () => <FloatingNavBar />;
+export const Floating = () => <FloatingNavBar />;
