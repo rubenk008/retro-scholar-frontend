@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import Typography from "../../Typography";
 
-import Props from "./Navbar.types";
+import Props from "./TopBar.types";
 
 import LogoWithName from "../../icons/LogoWithName";
 import SearchIcon from "../../icons/Search";

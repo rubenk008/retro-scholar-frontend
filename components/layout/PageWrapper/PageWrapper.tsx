@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import Navbar from "../Navbar";
+import Topbar from "../TopBar";
 import Footer from "../Footer";
 import Drawer from "../Drawer";
 
@@ -101,7 +101,7 @@ const PageWrapper = ({ menu, children }) => {
         links={menu.links}
         socialLinks={drawerTempData.socialLinks}
       />
-      <Navbar links={links} theme={theme} />
+      <Topbar links={links} theme={theme} />
       <Main variant={theme}>{children}</Main>
       <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
     </Container>
