@@ -111,9 +111,11 @@ const FloatingNavBar = () => {
     : {
         collapsed: {
           opacity: 1,
-          transition: { duration: 0.2, delay: 0.15, ease: "ease" },
+          transform: "translateX(-50%) scale(1)",
+          transition: { duration: 0.25, delay: 0.15, ease: "easeOut" },
         },
         expanded: {
+          transform: "translateX(-50%) scale(0.8)",
           opacity: 0,
         },
       };
@@ -154,7 +156,6 @@ const FloatingNavBar = () => {
     },
     expanded: {
       opacity: 1,
-
       transition: { duration: 0.22, ease: "easeOut" },
     },
   };
@@ -162,12 +163,12 @@ const FloatingNavBar = () => {
   const itemLeft = {
     collapsed: {
       opacity: 0,
-      transform: "translateX(10px)",
+      transform: "translateX(10px) scale(0.8)",
       transition: { duration: 0.18, ease: "easeIn" },
     },
     expanded: {
       opacity: 1,
-
+      transform: "translateX(0px) scale(1)",
       transition: { duration: 0.22, ease: "easeOut" },
     },
   };
@@ -175,10 +176,12 @@ const FloatingNavBar = () => {
   const itemCenter = {
     collapsed: {
       opacity: 0,
+      transform: "scale(0.8)",
       transition: { duration: 0.18, ease: "easeIn" },
     },
     expanded: {
       opacity: 1,
+      transform: "scale(1)",
       transition: { duration: 0.22, ease: "easeOut" },
     },
   };
@@ -186,11 +189,12 @@ const FloatingNavBar = () => {
   const itemRight = {
     collapsed: {
       opacity: 0,
-      transform: "translateX(-10px)",
+      transform: "translateX(-10px) scale(0.8)",
       transition: { duration: 0.18, ease: "easeIn" },
     },
     expanded: {
       opacity: 1,
+      transform: "translateX(0px)  scale(1)",
       transition: { duration: 0.22, ease: "easeOut" },
     },
   };
