@@ -17,5 +17,6 @@ const config: StorybookConfig = {
   features: {
     storyStoreV7: false, // 👈 Opt out of on-demand story loading
   },
+  staticDirs: ["../public"],
 };
 export default config;
