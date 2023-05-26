@@ -6,11 +6,31 @@ export default {
   component: StyledNavbar,
 };
 
-const footerTempData = {
+const drawerTempData = {
+  heading: "topics",
   links: [
-    { name: "topics", onClick: () => {} },
-    { name: "quizes", onClick: () => {} },
+    {
+      name: "Retro tech",
+      desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
+      href: "https://www.google.com",
+      opacity: 1,
+      active: false,
+    },
+    {
+      name: "Iconic Figures",
+      desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
+      href: "https://www.google.com",
+      opacity: 1,
+      active: false,
+    },
+    {
+      name: "Architecture",
+      desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
+      href: "https://www.google.com",
+      opacity: 1,
+      active: false,
+    },
   ],
 };
 
-export const Navbar = () => <StyledNavbar links={footerTempData.links} />;
+export const Navbar = () => <StyledNavbar navDrawerData={drawerTempData} />;

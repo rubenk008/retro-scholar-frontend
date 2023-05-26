@@ -10,48 +10,30 @@ import Typography from "../../Typography";
 
 import Props from "./Drawer.types";
 
-const Wrapper = styled.div`
-  position: fixed;
-  z-index: 999999999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: end;
-  justify-content: flex-end;
-  width: 100vw;
-  pointer-events: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "" : "none"};
-
-  padding: 0 3.2rem;
-
-  @media screen and (min-width: 768px) {
-    align-items: start;
-    padding: 0;
-  }
-`;
-
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  max-height: 100vh;
-  height: var(--app-height);
-  width: 100vw;
-  background: var(--bay-of-many);
-  opacity: ${(props: { menuIsOpen: boolean }) => (props.menuIsOpen ? 0.8 : 0)};
-  transition: all 450ms ease-in-out;
-  transition-delay: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "0ms" : "250ms"};
-`;
+// const Overlay = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   max-height: 100vh;
+//   height: var(--app-height);
+//   width: 100vw;
+//   background: var(--bay-of-many);
+//   opacity: ${(props: { menuIsOpen: boolean }) => (props.menuIsOpen ? 0.8 : 0)};
+//   transition: all 450ms ease-in-out;
+//   transition-delay: ${(props: { menuIsOpen: boolean }) =>
+//     props.menuIsOpen ? "0ms" : "250ms"};
+// `;
 
 const MenuWrapper = styled.div`
-  position: relative;
+  position: absolute;
   display: block;
   width: 100%;
+  top: 8.8rem;
+  right: 5.2rem;
+  pointer-events: ${(props: { menuIsOpen: boolean }) =>
+    props.menuIsOpen ? "" : "none"};
 
   padding: 3rem 4.6rem 3rem 2.5rem;
 
@@ -76,7 +58,7 @@ const MenuBackdrop = styled.div`
   opacity: ${(props: { menuIsOpen: boolean }) =>
     props.menuIsOpen ? "1" : "0"};
   transform: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "translateY(0px)" : "translateY(80px)"};
+    props.menuIsOpen ? "translateY(0px)" : "translateY(-30px)"};
 
   transition: all 250ms
     ${(props: { menuIsOpen: boolean }) =>
@@ -190,6 +172,7 @@ const Drawer = ({ state = "closed", setState, heading, links }: Props) => {
       setDrawerOpen(true);
       disableBodyScroll(ref.current);
     } else {
+      setDrawerOpen(false);
       clearAllBodyScrollLocks();
     }
   }, [state]);
@@ -220,86 +203,96 @@ const Drawer = ({ state = "closed", setState, heading, links }: Props) => {
     },
   };
 
-  const item = {
-    hidden: {
-      opacity: 0,
-      transform: "translateY(40px)",
-      transition: { duration: 0.18, ease: "easeIn" },
-    },
-    show: {
-      opacity: 1,
-      transform: "translateY(0px)",
-      transition: { duration: 0.22, ease: "easeOut" },
-    },
-  };
+  const item = isDesktop
+    ? {
+        hidden: {
+          opacity: 0,
+          transform: "translateY(-20px)",
+          transition: { duration: 0.18, ease: "easeIn" },
+        },
+        show: {
+          opacity: 1,
+          transform: "translateY(0px)",
+          transition: { duration: 0.22, ease: "easeOut" },
+        },
+      }
+    : {
+        hidden: {
+          opacity: 0,
+          transform: "translateY(40px)",
+          transition: { duration: 0.18, ease: "easeIn" },
+        },
+        show: {
+          opacity: 1,
+          transform: "translateY(0px)",
+          transition: { duration: 0.22, ease: "easeOut" },
+        },
+      };
 
   return (
-    <Wrapper menuIsOpen={makeDrawerVisible} ref={ref}>
-      <Overlay menuIsOpen={drawerOpen} onClick={onCrossClick} />
-      <MenuWrapper>
-        <MenuBackdrop menuIsOpen={drawerOpen} />
-        <LinkList
-          initial="hidden"
-          variants={container}
-          animate={drawerOpen ? "show" : "hidden"}
-        >
-          <LinkListHeading variants={item}>
-            <Typography variant="h6SmallAlt" color="primary" component="h2">
-              {heading}
-            </Typography>
-          </LinkListHeading>
-          <nav>
-            {linkItems &&
-              linkItems.map((link, index) => (
-                // eslint-disable-next-line react/jsx-key
-                <Link
-                  legacyBehavior={false}
-                  href={`/topic/${link.href}`}
-                  onClick={() => {
-                    onCrossClick();
-                  }}
-                  key={`key-${index}`}
-                >
-                  <motion.li variants={item}>
-                    <LinkListItem
-                      key={`key-${index}`}
-                      opacity={link.opacity}
-                      onMouseOver={() => fadeOnHover(index)}
-                      onMouseLeave={fadeInOnLeave}
-                    >
-                      <LinkListItemCounter>
-                        <Typography
-                          variant="h6SmallAlt"
-                          color="primary"
-                          component="p"
-                        >
-                          {`${index < 10 ? 0 : ""}${index + 1}`}
-                        </Typography>
-                      </LinkListItemCounter>
-                      <LinkListItemContent>
-                        <Typography
-                          variant="h3Alt"
-                          color="primary"
-                          component="h4"
-                        >
-                          {link.name}
-                        </Typography>
-                        <Typography
-                          variant="subtitle4"
-                          color="primary"
-                          component="p"
-                        >
-                          {link.desc}
-                        </Typography>
-                      </LinkListItemContent>
-                    </LinkListItem>
-                  </motion.li>
-                </Link>
-              ))}
-          </nav>
-        </LinkList>
-      </MenuWrapper>
-    </Wrapper>
+    <MenuWrapper menuIsOpen={drawerOpen}>
+      <MenuBackdrop menuIsOpen={drawerOpen} />
+      <LinkList
+        initial="hidden"
+        variants={container}
+        animate={drawerOpen ? "show" : "hidden"}
+      >
+        <LinkListHeading variants={item}>
+          <Typography variant="h6SmallAlt" color="primary" component="h2">
+            {heading}
+          </Typography>
+        </LinkListHeading>
+        <nav>
+          {linkItems &&
+            linkItems.map((link, index) => (
+              // eslint-disable-next-line react/jsx-key
+              <Link
+                legacyBehavior={false}
+                href={`/topic/${link.href}`}
+                onClick={() => {
+                  onCrossClick();
+                }}
+                key={`key-${index}`}
+              >
+                <motion.li variants={item}>
+                  <LinkListItem
+                    key={`key-${index}`}
+                    opacity={link.opacity}
+                    onMouseOver={() => fadeOnHover(index)}
+                    onMouseLeave={fadeInOnLeave}
+                  >
+                    <LinkListItemCounter>
+                      <Typography
+                        variant="h6SmallAlt"
+                        color="primary"
+                        component="p"
+                      >
+                        {`${index < 10 ? 0 : ""}${index + 1}`}
+                      </Typography>
+                    </LinkListItemCounter>
+                    <LinkListItemContent>
+                      <Typography
+                        variant="h3Alt"
+                        color="primary"
+                        component="h4"
+                      >
+                        {link.name}
+                      </Typography>
+                      <Typography
+                        variant="subtitle4"
+                        color="primary"
+                        component="p"
+                      >
+                        {link.desc}
+                      </Typography>
+                    </LinkListItemContent>
+                  </LinkListItem>
+                </motion.li>
+              </Link>
+            ))}
+        </nav>
+      </LinkList>
+    </MenuWrapper>
   );
 };
 

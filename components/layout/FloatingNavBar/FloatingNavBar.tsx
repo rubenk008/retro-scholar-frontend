@@ -9,6 +9,7 @@ import HamburgerMenu from "../../icons/HamburgerMenu/HamburgerMenu";
 import Bookmark from "../../icons/Bookmark/Bookmark";
 import Cross from "../../icons/Cross/Cross";
 import { useIsMedium } from "../../../hooks/useMediaQuery";
+import FloatingNavBarProps from "./FloatingNavBar.types";
 
 const Nav = styled(motion.nav)`
   width: 17.2rem;
@@ -78,14 +79,21 @@ const CloseButton = styled(motion.div)`
   }
 `;
 
-const FloatingNavBar = () => {
+const FloatingNavBar = ({ onClick, state }: FloatingNavBarProps) => {
   const [isCollapesed, setIsCollapsed] = useState(false);
 
   const isDesktop = useIsMedium();
 
-  const handleClick = () => {
+  const handleClick = (event: any) => {
+    onClick(event);
     setIsCollapsed(!isCollapesed);
   };
+
+  useEffect(() => {
+    if (state === "closed") {
+      setIsCollapsed(false);
+    }
+  }, [state]);
 
   const NavBarVariants = {
     collapsed: {
