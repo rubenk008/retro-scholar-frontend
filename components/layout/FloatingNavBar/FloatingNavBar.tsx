@@ -18,6 +18,7 @@ const Nav = styled(motion.nav)`
   flex-direction: row;
   justify-content: center;
   position: relative;
+  z-index: 2;
 
   @media screen and (min-width: 768px) {
     width: 15.2rem;
@@ -80,13 +81,13 @@ const CloseButton = styled(motion.div)`
 `;
 
 const FloatingNavBar = ({ onClick, state }: FloatingNavBarProps) => {
-  const [isCollapesed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const isDesktop = useIsMedium();
 
   const handleClick = (event: any) => {
     onClick(event);
-    setIsCollapsed(!isCollapesed);
+    setIsCollapsed(!isCollapsed);
   };
 
   useEffect(() => {
@@ -211,12 +212,12 @@ const FloatingNavBar = ({ onClick, state }: FloatingNavBarProps) => {
     <Nav>
       <NavBarBackground
         variants={NavBarVariants}
-        animate={isCollapesed ? "collapsed" : ""}
+        animate={isCollapsed ? "collapsed" : ""}
         initial={"expanded"}
       />
 
       <NavBarItems
-        animate={isCollapesed ? "collapsed" : ""}
+        animate={isCollapsed ? "collapsed" : ""}
         initial={"expanded"}
         variants={container}
       >
@@ -257,27 +258,26 @@ const FloatingNavBar = ({ onClick, state }: FloatingNavBarProps) => {
           />
         </NavItem>
       </NavBarItems>
-      <AnimatePresence>
-        {isCollapesed && (
-          <CloseButton
-            variants={CloseButtonVariants}
-            animate={isCollapesed ? "collapsed" : ""}
-            initial={"expanded"}
-            onClick={handleClick}
-          >
-            <IconButton
-              style={{ backgroundColor: "transparent" }}
-              icon={
-                <Cross
-                  height={pxToRem(40)}
-                  width={pxToRem(40)}
-                  color="var(--cranberry)"
-                />
-              }
-            />
-          </CloseButton>
-        )}
-      </AnimatePresence>
+
+      {isCollapsed && (
+        <CloseButton
+          variants={CloseButtonVariants}
+          animate={isCollapsed ? "collapsed" : ""}
+          initial={"expanded"}
+          onClick={handleClick}
+        >
+          <IconButton
+            style={{ backgroundColor: "transparent" }}
+            icon={
+              <Cross
+                height={pxToRem(40)}
+                width={pxToRem(40)}
+                color="var(--cranberry)"
+              />
+            }
+          />
+        </CloseButton>
+      )}
     </Nav>
   );
 };

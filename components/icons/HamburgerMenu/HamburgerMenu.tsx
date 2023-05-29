@@ -25,7 +25,7 @@ const HamburgerMenu = React.forwardRef(
           x2="30"
           y2="12.8"
           stroke={color}
-          stroke-width="2.4"
+          strokeWidth="2.4"
         />
         <line
           x1="16"
@@ -33,7 +33,7 @@ const HamburgerMenu = React.forwardRef(
           x2="30"
           y2="18.8"
           stroke={color}
-          stroke-width="2.4"
+          strokeWidth="2.4"
         />
         <line
           x1="22"
@@ -41,7 +41,7 @@ const HamburgerMenu = React.forwardRef(
           x2="30"
           y2="24.8"
           stroke={color}
-          stroke-width="2.4"
+          strokeWidth="2.4"
         />
       </svg>
     );

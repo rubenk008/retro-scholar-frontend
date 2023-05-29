@@ -24,8 +24,6 @@ const Main = styled.main<MainContainerProps>`
 `;
 
 const PageWrapper = ({ menu, children }) => {
-  const [drawerState, setDrawerState] = useState("closed");
-
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -40,27 +38,6 @@ const PageWrapper = ({ menu, children }) => {
       window.removeEventListener("resize", appHeight);
     };
   }, []);
-
-  const onButtonClick = () => {
-    if (drawerState === "closed") {
-      setDrawerState("open");
-    }
-  };
-
-  const links = [
-    {
-      name: "topics",
-      onClick: () => {
-        onButtonClick();
-      },
-    },
-    // {
-    //   name: "quizes",
-    //   onClick: () => {
-    //     onButtonClick();
-    //   },
-    // },
-  ];
 
   const footerData = {
     links: [
@@ -79,29 +56,9 @@ const PageWrapper = ({ menu, children }) => {
     ],
   };
 
-  const drawerTempData = {
-    socialLinks: [
-      {
-        icon: <InstagramIcon />,
-        href: "https://www.instagram.com/retroscholar/",
-      },
-      {
-        icon: <FacebookIcon />,
-        href: "https://www.facebook.com/retroscholar/",
-      },
-    ],
-  };
-
   return (
     <Container>
-      <Drawer
-        state={drawerState}
-        setState={setDrawerState}
-        heading={menu.title}
-        links={menu.links}
-        socialLinks={drawerTempData.socialLinks}
-      />
-      <Topbar links={links} theme={theme} />
+      <Topbar navDrawerData={menu} />
       <Main variant={theme}>{children}</Main>
       <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
     </Container>

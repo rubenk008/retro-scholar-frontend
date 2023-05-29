@@ -10,30 +10,15 @@ import Typography from "../../Typography";
 
 import Props from "./Drawer.types";
 
-// const Overlay = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   max-height: 100vh;
-//   height: var(--app-height);
-//   width: 100vw;
-//   background: var(--bay-of-many);
-//   opacity: ${(props: { menuIsOpen: boolean }) => (props.menuIsOpen ? 0.8 : 0)};
-//   transition: all 450ms ease-in-out;
-//   transition-delay: ${(props: { menuIsOpen: boolean }) =>
-//     props.menuIsOpen ? "0ms" : "250ms"};
-// `;
-
 const MenuWrapper = styled.div`
   position: absolute;
   display: block;
   width: 100%;
   top: 8.8rem;
-  right: 5.2rem;
+  right: 0;
   pointer-events: ${(props: { menuIsOpen: boolean }) =>
     props.menuIsOpen ? "" : "none"};
+  z-index: 2;
 
   padding: 3rem 4.6rem 3rem 2.5rem;
 
@@ -98,7 +83,8 @@ const LinkListItemCounter = styled.div`
   padding-top: 1px;
 
   @media screen and (min-width: 768px) {
-    width: 3.4rem;
+    width: 2.2rem;
+    min-width: 2.2rem;
   }
 `;
 
@@ -108,7 +94,7 @@ const LinkListItemContent = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    max-width: 36.6rem;
+    // max-width: 25.6rem;
   }
 `;
 
