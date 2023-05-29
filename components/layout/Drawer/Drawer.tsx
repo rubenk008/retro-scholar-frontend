@@ -13,9 +13,10 @@ import Props from "./Drawer.types";
 const MenuWrapper = styled.div`
   position: absolute;
   display: block;
-  width: 100%;
-  top: 8.8rem;
-  right: 0;
+  width: calc(100vw - 6.4rem);
+  bottom: 9rem;
+  left: 50%;
+  transform: translateX(-50%);
   pointer-events: ${(props: { menuIsOpen: boolean }) =>
     props.menuIsOpen ? "" : "none"};
   z-index: 2;
@@ -23,6 +24,9 @@ const MenuWrapper = styled.div`
   padding: 3rem 4.6rem 3rem 2.5rem;
 
   @media screen and (min-width: 768px) {
+    top: 8.8rem;
+    bottom: auto;
+    right: 0;
     width: 35rem;
     padding: 3rem 4.6rem 3rem 2.5rem;
   }
@@ -79,13 +83,9 @@ const LinkListItem = styled.div`
 `;
 
 const LinkListItemCounter = styled.div`
-  width: 32px;
+  width: 2.2rem;
+  min-width: 2.2rem;
   padding-top: 1px;
-
-  @media screen and (min-width: 768px) {
-    width: 2.2rem;
-    min-width: 2.2rem;
-  }
 `;
 
 const LinkListItemContent = styled.div`

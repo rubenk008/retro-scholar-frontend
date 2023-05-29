@@ -23,6 +23,7 @@ const Nav = styled(motion.nav)`
   @media screen and (min-width: 768px) {
     width: 15.2rem;
     padding: 0 1.2rem;
+    margin-top: 2.6rem;
   }
 `;
 

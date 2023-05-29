@@ -12,16 +12,22 @@ import FloatingNavBar from "../FloatingNavBar";
 import Drawer from "../Drawer";
 import Overlay from "../Overlay";
 import pxToRem from "../../../utils/pxToRem";
+import { useIsMedium } from "../../../hooks/useMediaQuery";
 
 const Nav = styled(motion.div)`
   width: 100%;
-  height: auto;
+  height: var(--app-height);
   position: fixed;
   top: 0;
   left: -50%;
   transform: translateX(50%);
   margin: 0;
   z-index: 9999999;
+  pointer-events: none;
+
+  @media screen and (min-width: 768px) {
+    height: auto;
+  }
 `;
 
 const Container = styled.div`
@@ -31,6 +37,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   justify-content: space-between;
+  height: 100%;
 
   @media screen and (min-width: 768px) {
     padding: 0;
@@ -39,10 +46,9 @@ const Container = styled.div`
   }
 `;
 
-const Column = styled.div`
+const Column = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  align-items: center;
   position: relative;
 
   @media screen and (min-width: 768px) {
@@ -50,9 +56,29 @@ const Column = styled.div`
   }
 `;
 
+const NavBar = styled(motion.div)`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  pointer-events: auto;
+  z-index: 2;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding: 0 3.2rem 3rem;
+
+  @media screen and (min-width: 768px) {
+    width: auto;
+    left: auto;
+    bottom: auto;
+    position: relative;
+  }
+`;
+
 const StyledLogo = styled(LogoWithName)`
   cursor: pointer;
   transform: rotate(-2deg);
+  pointer-events: auto;
 
   @media screen and (min-width: 768px) {
     transform: rotate(-2deg) translateX(-1.5rem);
@@ -65,6 +91,8 @@ const Navbar = ({ navDrawerData }: Props) => {
 
   const [scrollYprev, setScrollYprev] = useState(0);
   const [hidden, setHidden] = useState(false);
+
+  const isDesktop = useIsMedium();
 
   const { scrollY } = useScroll();
 
@@ -95,32 +123,52 @@ const Navbar = ({ navDrawerData }: Props) => {
     });
   });
 
-  const variants = {
-    visible: { transform: "translate(50%, 0rem)" },
-    hidden: { transform: "translate(50%, -12rem)" },
-  };
+  const desktopVariants = isDesktop
+    ? {
+        visible: { transform: "translate(0%, 0rem)" },
+        hidden: { transform: "translate(0%, -12rem)" },
+      }
+    : {
+        visible: { transform: "translate(0%, 0rem)" },
+        hidden: { transform: "translate(0%, -12rem)" },
+      };
+
+  const floatingNavbarAnimations = isDesktop
+    ? {
+        visible: { transform: "translate(0%, 0rem)" },
+        hidden: { transform: "translate(0%, -12rem)" },
+      }
+    : {
+        visible: { transform: "translate(-50%, 0rem)" },
+        hidden: { transform: "translate(-50%, 12rem)" },
+      };
 
   return (
-    <Nav
-      variants={variants}
-      animate={hidden ? "hidden" : "visible"}
-      transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
-    >
+    <Nav>
       <Container>
-        <Column style={{ zIndex: logoZIndex }}>
+        <Column
+          style={{ zIndex: logoZIndex }}
+          variants={desktopVariants}
+          animate={hidden ? "hidden" : "visible"}
+          transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
+        >
           <Link href="/">
             <StyledLogo height={pxToRem(79.38)} width={pxToRem(61.37)} />
           </Link>
         </Column>
-        <Column style={{ paddingTop: "2rem" }}>
+        <NavBar
+          variants={floatingNavbarAnimations}
+          animate={hidden ? "hidden" : "visible"}
+          transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
+        >
           <FloatingNavBar onClick={onNavClick} state={drawerState} />
-        </Column>
-        <Drawer
-          state={drawerState}
-          setState={setDrawerState}
-          heading={navDrawerData.heading}
-          links={navDrawerData.links}
-        />
+          <Drawer
+            state={drawerState}
+            setState={setDrawerState}
+            heading={navDrawerData.heading}
+            links={navDrawerData.links}
+          />
+        </NavBar>
       </Container>
       <Overlay
         onClick={onNavClick}
