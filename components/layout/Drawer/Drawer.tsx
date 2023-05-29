@@ -26,6 +26,8 @@ const MenuWrapper = styled.div`
   @media screen and (min-width: 768px) {
     top: 8.8rem;
     bottom: auto;
+    left: auto;
+    transform: none;
     right: 0;
     width: 35rem;
     padding: 3rem 4.6rem 3rem 2.5rem;
@@ -47,13 +49,18 @@ const MenuBackdrop = styled.div`
   opacity: ${(props: { menuIsOpen: boolean }) =>
     props.menuIsOpen ? "1" : "0"};
   transform: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "translateY(0px)" : "translateY(-30px)"};
+    props.menuIsOpen ? "translateY(0px)" : "translateY(30px)"};
 
   transition: all 250ms
     ${(props: { menuIsOpen: boolean }) =>
       props.menuIsOpen ? "ease-out" : "ease-in"};
   transition-delay: ${(props: { menuIsOpen: boolean }) =>
     props.menuIsOpen ? "200ms" : "0ms"};
+
+  @media screen and (min-width: 768px) {
+    transform: ${(props: { menuIsOpen: boolean }) =>
+      props.menuIsOpen ? "translateY(0px)" : "translateY(-30px)"};
+  }
 `;
 
 const LinkList = styled(motion.div)`

@@ -16,7 +16,7 @@ import { useIsMedium } from "../../../hooks/useMediaQuery";
 
 const Nav = styled(motion.div)`
   width: 100%;
-  height: var(--app-height);
+  height: 100dvh;
   position: fixed;
   top: 0;
   left: -50%;
@@ -71,7 +71,9 @@ const NavBar = styled(motion.div)`
     width: auto;
     left: auto;
     bottom: auto;
+    transform: translateX(0%);
     position: relative;
+    padding: 0;
   }
 `;
 
@@ -135,8 +137,8 @@ const Navbar = ({ navDrawerData }: Props) => {
 
   const floatingNavbarAnimations = isDesktop
     ? {
-        visible: { transform: "translate(0%, 0rem)" },
-        hidden: { transform: "translate(0%, -12rem)" },
+        visible: { transform: "translateY(0rem)" },
+        hidden: { transform: "translateY(-12rem)" },
       }
     : {
         visible: { transform: "translate(-50%, 0rem)" },
