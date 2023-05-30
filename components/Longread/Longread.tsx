@@ -8,6 +8,9 @@ const Wrapper = styled(motion.div)`
   position: relative;
   top: 0;
   overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,6 +20,10 @@ const Wrapper = styled(motion.div)`
   margin: auto;
   background: #fff;
   padding-bottom: 8rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media screen and (min-width: 1024px) {
     width: 100vw;
