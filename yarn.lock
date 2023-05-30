@@ -14585,6 +14585,11 @@ lodash.sortby@^4.7.0:
   resolved "https://registry.yarnpkg.com/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
 
+lodash.throttle@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+  integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
+
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz"
@@ -17649,6 +17654,13 @@ react-fast-compare@^3.0.1:
   version "3.2.0"
   resolved "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
   integrity sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA==
+
+react-fixed-bottom@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/react-fixed-bottom/-/react-fixed-bottom-1.0.10.tgz#9fe8861c3391e94d0f59a1cf9c870b3cc162bca0"
+  integrity sha512-oq5l9cyYhLdb3bFyOkB0vRJnC0RbwYKQNPQjecdecgZrZsE8AtjM2PYXTfLPF8qP+i/oRSuf8Ow7o54+3mpbXw==
+  dependencies:
+    lodash.throttle "^4.1.1"
 
 react-inspector@^6.0.0:
   version "6.0.1"

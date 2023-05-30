@@ -12,27 +12,28 @@ import FloatingNavBar from "../FloatingNavBar";
 import Drawer from "../Drawer";
 import Overlay from "../Overlay";
 import pxToRem from "../../../utils/pxToRem";
-import { useIsMedium } from "../../../hooks/useMediaQuery";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import isMobile from "../../../utils/isMobile";
 
 const Nav = styled(motion.div)`
   width: 100%;
-  height: 100dvh;
-  position: fixed;
-  top: 0;
-  left: -50%;
-  transform: translateX(50%);
+  height: var(--app-height);
+  position: absolute;
+  display: block;
   margin: 0;
   z-index: 9999999;
   pointer-events: none;
 
   @media screen and (min-width: 768px) {
+    left: -50%;
+    transform: translateX(50%);
     height: auto;
+    position: fixed;
   }
 `;
 
 const Container = styled.div`
   max-width: 118rem;
-  padding: 16px 24px 0px 20px;
   margin: 0 auto;
   display: flex;
   position: relative;
@@ -46,20 +47,22 @@ const Container = styled.div`
   }
 `;
 
-const Column = styled(motion.div)`
+const Logo = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  position: relative;
+  position: fixed;
 
   @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    position: relative;
     justify-content: center;
   }
 `;
 
 const NavBar = styled(motion.div)`
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  left: 50%;
   pointer-events: auto;
   z-index: 2;
   width: 100vw;
@@ -71,9 +74,11 @@ const NavBar = styled(motion.div)`
     width: auto;
     left: auto;
     bottom: auto;
+    right: 0;
     transform: translateX(0%);
     position: relative;
     padding: 0;
+    position: absolute;
   }
 `;
 
@@ -81,8 +86,10 @@ const StyledLogo = styled(LogoWithName)`
   cursor: pointer;
   transform: rotate(-2deg);
   pointer-events: auto;
+  margin: 1.6rem 0 0 2rem;
 
   @media screen and (min-width: 768px) {
+    margin: 0;
     transform: rotate(-2deg) translateX(-1.5rem);
   }
 `;
@@ -94,7 +101,13 @@ const Navbar = ({ navDrawerData }: Props) => {
   const [scrollYprev, setScrollYprev] = useState(0);
   const [hidden, setHidden] = useState(false);
 
-  const isDesktop = useIsMedium();
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  const size = useWindowSize();
+
+  useEffect(() => {
+    setIsMobileView(isMobile());
+  }, [size]);
 
   const { scrollY } = useScroll();
 
@@ -125,7 +138,7 @@ const Navbar = ({ navDrawerData }: Props) => {
     });
   });
 
-  const desktopVariants = isDesktop
+  const logoAnimations = !isMobileView
     ? {
         visible: { transform: "translate(0%, 0rem)" },
         hidden: { transform: "translate(0%, -12rem)" },
@@ -135,30 +148,31 @@ const Navbar = ({ navDrawerData }: Props) => {
         hidden: { transform: "translate(0%, -12rem)" },
       };
 
-  const floatingNavbarAnimations = isDesktop
+  const floatingNavbarAnimations = !isMobileView
     ? {
         visible: { transform: "translateY(0rem)" },
         hidden: { transform: "translateY(-12rem)" },
       }
     : {
-        visible: { transform: "translate(-50%, 0rem)" },
-        hidden: { transform: "translate(-50%, 12rem)" },
+        visible: { transform: "translateY(0rem)" },
+        hidden: { transform: "translateY(12rem)" },
       };
 
   return (
     <Nav>
       <Container>
-        <Column
+        <Logo
           style={{ zIndex: logoZIndex }}
-          variants={desktopVariants}
+          variants={logoAnimations}
           animate={hidden ? "hidden" : "visible"}
           transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
         >
           <Link href="/">
             <StyledLogo height={pxToRem(79.38)} width={pxToRem(61.37)} />
           </Link>
-        </Column>
+        </Logo>
         <NavBar
+          initial="visible"
           variants={floatingNavbarAnimations}
           animate={hidden ? "hidden" : "visible"}
           transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}

@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "slices/index.js",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev && lt --port 3000",
     "ngrok": "ngrok http 3000",
     "build": "next build",
     "start": "next start",
