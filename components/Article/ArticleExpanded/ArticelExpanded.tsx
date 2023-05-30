@@ -8,7 +8,8 @@ const Overlay = styled(motion.div)`
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--bay-of-many);
+  opacity: 0.9;
   position: fixed;
   z-index: 999999999;
   display: flex;
@@ -28,7 +29,7 @@ const Wrapper = styled(motion.div)`
   height: var(--app-height);
 
   @media screen and (min-width: 1024px) {
-    padding: 48px 0;
+    padding: 2rem 0;
     max-height: 100%;
     height: auto;
   }
@@ -59,7 +60,7 @@ const ArticleExpanded = ({ children, onClick }) => {
       <Overlay
         onClick={onClick}
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={{ opacity: 0.9 }}
         exit={{ opacity: 0, transition: { duration: 0.15 } }}
         transition={{ duration: 0.2 }}
       ></Overlay>

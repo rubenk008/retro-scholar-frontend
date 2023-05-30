@@ -38,6 +38,7 @@ const TopCategoryGrid = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-left: ${pxToRem(8)};
+  gap: ${pxToRem(34)};
 
   > div {
     margin-bottom: ${pxToRem(30)};
@@ -55,6 +56,7 @@ const TopCategoryGrid = styled.div`
   @media screen and (min-width: 1024px) {
     flex-direction: row;
     padding: 0 ${pxToRem(120)};
+    gap: ${pxToRem(0)};
   }
 `;
 

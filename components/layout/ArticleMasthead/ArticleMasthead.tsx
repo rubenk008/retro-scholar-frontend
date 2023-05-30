@@ -42,6 +42,10 @@ const CloseButton = styled.div`
 const MastheadImage = styled.div`
   width: 100%;
   height: 60rem;
+
+  @media screen and (min-width: 1024px) {
+    height: 55rem;
+  }
 `;
 
 const CopySection = styled.div`
