@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useEffect, useState, useContext } from "react";
-import { clearAllBodyScrollLocks } from "body-scroll-lock";
+import { clearAllBodyScrollLocks } from "body-scroll-lock-upgrade";
 
 import { useRouter } from "next/router";
 import { createClient } from "../prismicio";
