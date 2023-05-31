@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+
+import {
+  disableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock-upgrade";
 
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -21,13 +26,9 @@ const Wrapper = styled(motion.div)`
   background: #fff;
   padding-bottom: 8rem;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   @media screen and (min-width: 1024px) {
     width: 100vw;
-    height: 96vh;
+    height: 97vh;
     margin: 0 auto;
   }
 `;
@@ -48,8 +49,18 @@ const Section = styled.div`
 `;
 
 const Longread = ({ masthead, slicezone }: LongreadProps) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    disableBodyScroll(ref.current);
+
+    return () => {
+      clearAllBodyScrollLocks();
+    };
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       <Section>
         {masthead}
         {slicezone}

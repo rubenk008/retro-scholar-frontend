@@ -4,7 +4,10 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useIsMedium } from "../../../hooks/useMediaQuery";
 
-import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import {
+  disableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock-upgrade";
 
 import Typography from "../../Typography";
 

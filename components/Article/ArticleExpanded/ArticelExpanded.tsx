@@ -1,5 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import {
+  disableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock-upgrade";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
