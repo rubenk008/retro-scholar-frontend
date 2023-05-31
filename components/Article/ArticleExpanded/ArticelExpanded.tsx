@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   disableBodyScroll,
   clearAllBodyScrollLocks,
@@ -6,13 +6,15 @@ import {
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import isMobile from "../../../utils/isMobile";
+
 const Overlay = styled(motion.div)`
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   background: var(--bay-of-many);
-  opacity: 0.9;
   position: fixed;
   z-index: 999999999;
   display: flex;
@@ -58,15 +60,25 @@ const ArticleExpanded = ({ children, onClick }) => {
     };
   }, []);
 
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  const size = useWindowSize();
+
+  useEffect(() => {
+    setIsMobileView(isMobile());
+  }, [size]);
+
   return (
     <WrapperAll ref={ref}>
-      <Overlay
-        onClick={onClick}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.9 }}
-        exit={{ opacity: 0, transition: { duration: 0.15 } }}
-        transition={{ duration: 0.2 }}
-      ></Overlay>
+      {!isMobileView && (
+        <Overlay
+          onClick={onClick}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.9 }}
+          exit={{ opacity: 0, transition: { duration: 0.15 } }}
+          transition={{ duration: 0.2 }}
+        ></Overlay>
+      )}
       <Wrapper
         initial={{ scale: 0.8, translateY: "100vh" }}
         animate={{ scale: 1, translateY: "0vh" }}

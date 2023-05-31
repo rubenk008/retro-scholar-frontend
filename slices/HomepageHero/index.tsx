@@ -8,6 +8,7 @@ import Card from "../../components/Card";
 import CardStack from "../../components/CardStack";
 import Media from "../../components/Media";
 import Typography from "../../components/Typography";
+import Link from "next/link";
 
 const Section = styled.section`
   height: 100vh;
@@ -69,6 +70,18 @@ const SwiperContent = styled.div`
   &.isActive {
     transition-delay: 300ms;
     opacity: 1;
+  }
+
+  > * > h3 {
+    transition: all 250ms ease;
+  }
+
+  &:hover {
+    > * > h3 {
+      text-shadow: 0.3rem 0.3rem 0px var(--azalea);
+      transform: translate(-0.4rem, -0.4rem);
+      transition: all 250ms ease;
+    }
   }
 `;
 
@@ -227,15 +240,25 @@ const HomepageHero = ({ slice }) => {
                 sliceItem.id === slice.items[activeSlide].id ? "isActive" : ""
               }
             >
-              <span style={{ textTransform: "capitalize" }}>
-                <Typography variant="subtitle3" component={"h2"}>
-                  {sliceItem.category[0].text}
-                </Typography>
-              </span>
+              <Link
+                style={{
+                  display:
+                    sliceItem.id === slice.items[activeSlide].id ? "" : "none",
+                }}
+                key={`article-${index}`}
+                href={`/?article=${sliceItem.uid}`}
+                as={`/article/${sliceItem.uid}`}
+              >
+                <span style={{ textTransform: "capitalize" }}>
+                  <Typography variant="subtitle3" component={"h2"}>
+                    {sliceItem.category[0].text}
+                  </Typography>
+                </span>
 
-              <Typography variant="h2" component={"h3"}>
-                {sliceItem.title}
-              </Typography>
+                <Typography variant="h2" component={"h3"}>
+                  {sliceItem.title}
+                </Typography>
+              </Link>
             </SwiperContent>
           ))}
         </SwiperSlides>

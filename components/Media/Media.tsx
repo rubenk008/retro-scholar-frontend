@@ -33,6 +33,9 @@ const Wrapper = styled(motion.div)`
 
       @media screen and (min-width: 1024px) {
         height: 400%;
+        width: 400%;
+        top: -100%;
+        left: -100%;
       }
     }
   }

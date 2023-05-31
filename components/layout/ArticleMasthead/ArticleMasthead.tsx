@@ -282,7 +282,7 @@ const ArticleMasthead = ({
       </CopySection>
       <CloseButton>
         <IconButton
-          icon={<Cross color="#283086" height="4rem" width="4rem" />}
+          icon={<Cross color="var(--cranberry)" height="4rem" width="4rem" />}
           onClick={(e) => handleClosePage(e)}
         />
       </CloseButton>
