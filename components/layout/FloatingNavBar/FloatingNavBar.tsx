@@ -139,8 +139,8 @@ const FloatingNavBar = ({ onClick, state }: FloatingNavBarProps) => {
         },
         expanded: {
           transition: {
-            delayChildren: 0.04,
-            staggerChildren: 0.05,
+            delayChildren: 2,
+            staggerChildren: 2,
           },
         },
       }
@@ -162,7 +162,7 @@ const FloatingNavBar = ({ onClick, state }: FloatingNavBarProps) => {
     collapsed: {
       opacity: 0,
       transform: "translateX(10px)",
-      transition: { duration: 0.18, ease: "easeIn" },
+      transition: { duration: 0.12, ease: "easeIn" },
     },
     expanded: {
       opacity: 1,

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import Topbar from "../TopBar";
 import Footer from "../Footer";
-import Drawer from "../Drawer";
 
 import InstagramIcon from "../../icons/Instagram";
 import FacebookIcon from "../../icons/Facebook";
@@ -56,10 +56,29 @@ const PageWrapper = ({ menu, children }) => {
     ],
   };
 
+  const variants = {
+    hidden: { opacity: 0 },
+    enter: { opacity: 1 },
+    exit: { opacity: 0 },
+  };
+
   return (
     <Container>
       <Topbar navDrawerData={menu} />
-      <Main variant={theme}>{children}</Main>
+      <Main variant={theme}>
+        <motion.div
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 300, opacity: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+        >
+          {children}
+        </motion.div>
+      </Main>
       <Footer links={footerData.links} socialLinks={footerData.socialLinks} />
     </Container>
   );
