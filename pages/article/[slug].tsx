@@ -89,7 +89,7 @@ const ArticlePage = ({ meta, openGraph, article }) => {
                 media={article.data.main_media}
                 category={article.category[0].text}
                 introduction={article.data.introduction}
-                firstParagraph={article.data.firstParagraph}
+                firstParagraph={article.data.first_paragraph}
                 articleUrl=""
                 handleClosePage={() => {
                   router.push(categoryRoute, categoryRoute, {

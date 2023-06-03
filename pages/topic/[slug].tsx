@@ -102,6 +102,10 @@ const TopicPage = ({
     setPrefetced(prefetchedArticles);
   }, [prefetchedArticles]);
 
+  useEffect(() => {
+    console.log(expandedArticleContent);
+  }, [expandedArticleContent]);
+
   return (
     <>
       <NextSeo
@@ -173,7 +177,7 @@ const TopicPage = ({
                     media={expandedArticleContent.data.main_media}
                     category={expandedArticleContent.category[0].text}
                     introduction={expandedArticleContent.data.introduction}
-                    firstParagraph={expandedArticleContent.data.firstParagraph}
+                    firstParagraph={expandedArticleContent.data.first_paragraph}
                     articleUrl=""
                     handleClosePage={() => {
                       setOverlayOpen(false);

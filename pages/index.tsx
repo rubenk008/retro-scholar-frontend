@@ -103,7 +103,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
                     media={expandedArticleContent.data.main_media}
                     category={expandedArticleContent.category[0].text}
                     introduction={expandedArticleContent.data.introduction}
-                    firstParagraph={expandedArticleContent.data.firstParagraph}
+                    firstParagraph={expandedArticleContent.data.first_paragraph}
                     articleUrl=""
                     handleClosePage={() => {
                       setOverlayOpen(false);
