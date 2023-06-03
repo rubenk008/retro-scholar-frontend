@@ -102,17 +102,13 @@ const TopicPage = ({
     setPrefetced(prefetchedArticles);
   }, [prefetchedArticles]);
 
-  useEffect(() => {
-    console.log(expandedArticleContent);
-  }, [expandedArticleContent]);
-
   return (
     <>
       <NextSeo
         title={meta.title}
         description={meta.desc}
         openGraph={{
-          url: SEO.baseUrl,
+          url: `${SEO.baseUrl}/topic/${currentTopic}`,
           title: openGraph.socialCardTitle,
           description: openGraph.socialCardDescription,
           siteName: SEO.siteName,
@@ -225,12 +221,19 @@ export async function getStaticProps({ params, previewData }) {
       categoryName: category.data.category_name[0].text,
       categoryDesc: category.data.category_desc,
       meta: {
-        title: category.data.metaTitle,
-        desc: category.data.metaDescription,
+        title: category.data.metaTitle ? category.data.metaTitle : "",
+        desc: category.data.metaDescription
+          ? category.data.metaDescription
+          : "",
       },
       openGraph: !!category.data.socialCards
         ? category.data.socialCards[0]
-        : { url: "", alt: "", socialCardTitle: "", socialCardDescription: "" },
+        : {
+            url: "",
+            alt: "",
+            socialCardImage: "",
+            socialCardDescription: "",
+          },
       articles,
       prefetchedArticles,
     },

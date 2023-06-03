@@ -30,10 +30,6 @@ const ArticlePage = ({ meta, openGraph, article }) => {
   }, []);
 
   useEffect(() => {
-    console.log(article);
-  }, [article]);
-
-  useEffect(() => {
     toggleTheme("light");
   }, []);
 
@@ -43,19 +39,19 @@ const ArticlePage = ({ meta, openGraph, article }) => {
         title={meta.title}
         description={meta.desc}
         openGraph={{
-          url: SEO.baseUrl,
-          title: openGraph.socialCardTitle,
-          description: openGraph.socialCardDescription,
+          url: `${SEO.baseUrl}/article/${article.uid}`,
+          title: openGraph.social_card_title,
+          description: openGraph.social_card_description,
           siteName: SEO.siteName,
           defaultImageHeight: 630,
           defaultImageWidth: 1200,
           images: [
             {
-              url: openGraph.socialCardImage?.url
-                ? openGraph.socialCardImage.url
+              url: openGraph.social_card_image?.url
+                ? openGraph.social_card_image.url
                 : "",
-              alt: openGraph.socialCardImage?.alt
-                ? openGraph.socialCardImage.alt
+              alt: openGraph.social_card_image?.alt
+                ? openGraph.social_card_image.alt
                 : "",
               type: "image/jpeg",
             },
@@ -119,12 +115,19 @@ export async function getStaticProps({ params, previewData }) {
   return {
     props: {
       meta: {
-        title: article.data.metaTitle ? article.data.metaTitle : "",
-        desc: article.data.metaDescription ? article.data.metaDescription : "",
+        title: article.data.meta_title ? article.data.meta_title : "",
+        desc: article.data.meta_description
+          ? article.data.meta_description
+          : "",
       },
-      openGraph: article.data.socialCards
-        ? article.data.socialCards[0]
-        : { url: "", alt: "", socialCardTitle: "", socialCardDescription: "" },
+      openGraph: article.data.social_cards
+        ? article.data.social_cards[0]
+        : {
+            url: "",
+            alt: "",
+            social_card_title: "",
+            social_card_description: "",
+          },
       article,
     },
     revalidate: 10,
