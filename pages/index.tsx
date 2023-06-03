@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useEffect, useState, useContext } from "react";
-import { clearAllBodyScrollLocks } from "body-scroll-lock";
+import { clearAllBodyScrollLocks } from "body-scroll-lock-upgrade";
 
 import { useRouter } from "next/router";
 import { createClient } from "../prismicio";
@@ -57,6 +57,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
         title={meta.title}
         description={meta.desc}
         openGraph={{
+          type: "website",
           url: SEO.baseUrl,
           title: openGraph.socialCardTitle,
           description: openGraph.socialCardDescription,
@@ -105,7 +106,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
                     media={expandedArticleContent.data.main_media}
                     category={expandedArticleContent.category[0].text}
                     introduction={expandedArticleContent.data.introduction}
-                    firstParagraph={expandedArticleContent.data.firstParagraph}
+                    firstParagraph={expandedArticleContent.data.first_paragraph}
                     articleUrl=""
                     handleClosePage={() => {
                       setOverlayOpen(false);

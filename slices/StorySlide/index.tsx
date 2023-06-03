@@ -184,8 +184,7 @@ const CloseButton = styled.div`
 
 const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [playedSlides, setPlayedSlides] = useState([]);
-  const [pausingSlide, setPauseSlide] = useState(false);
+
   const [direction, setDirection] = useState("");
   const [navigationClicked, setNavigationClicked] = useState(false);
 
@@ -227,17 +226,8 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
   const startPressTimer = () => {
     isLongPress.current = false;
     timerRef.current = setTimeout(() => {
-      onLongTouch();
       isLongPress.current = true;
     }, 300);
-  };
-
-  const pauseSlide = () => {
-    setPauseSlide(true);
-  };
-
-  const playSlide = () => {
-    setPauseSlide(false);
   };
 
   const nextSlide = () => {
@@ -259,20 +249,12 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
     setDirection("");
   };
 
-  const onLongTouch = () => {
-    pauseSlide();
-  };
-
   const onTouchStart = (dir) => {
     setDirection(dir);
     startPressTimer();
   };
 
   const onTouchEnd = () => {
-    if (isLongPress.current) {
-      playSlide();
-    }
-
     if (direction === "left" && !isLongPress.current) {
       setNavigationClicked(true);
       prevSlide();
@@ -305,8 +287,6 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
       });
 
       setSlidesDurationArray(durationArray);
-
-      setPlayedSlides(slidesPlayedStateArray);
     }
   }, [slice]);
 
@@ -326,8 +306,6 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
           <Slide
             key={`key-${index + 1}`}
             className={index === activeSlide ? "isActive" : ""}
-            onMouseDown={pauseSlide}
-            onMouseUp={playSlide}
           >
             {isVisible && (
               <SlideImage>
@@ -431,6 +409,7 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
               <Arrow
                 height="4rem"
                 width="4rem"
+                color="var(--cranberry)"
                 style={{ transform: "scaleX(-1)" }}
               />
             }
@@ -440,14 +419,14 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
         {activeSlide < slice.items.length - 1 && (
           <IconButton
             onClick={nextSlide}
-            icon={<Arrow height="4rem" width="4rem" />}
+            icon={<Arrow height="4rem" color="var(--cranberry)" width="4rem" />}
             style={{ margin: "0 0 0 auto" }}
           />
         )}
       </DesktopSlideNavigationWrapper>
       <CloseButton>
         <IconButton
-          icon={<Cross color="#283086" height="4rem" width="4rem" />}
+          icon={<Cross color="var(--cranberry)" height="4rem" width="4rem" />}
           onClick={(e) => handleClosePage(e)}
         />
       </CloseButton>

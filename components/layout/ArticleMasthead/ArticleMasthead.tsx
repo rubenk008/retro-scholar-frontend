@@ -42,17 +42,29 @@ const CloseButton = styled.div`
 const MastheadImage = styled.div`
   width: 100%;
   height: 60rem;
+
+  @media screen and (min-width: 1024px) {
+    height: 55rem;
+  }
 `;
 
 const CopySection = styled.div`
   width: 100%;
   padding: 7.8rem 3.2rem 0;
 
+  & > *:last-child {
+    padding-top: 4rem;
+  }
+
   @media screen and (min-width: 1024px) {
     width: 51.6666666666667%;
     align-self: flex-start;
     padding: 10rem 0 0 0;
     margin-left: 45.6rem;
+
+    & > *:last-child {
+      padding-top: 4.4rem;
+    }
   }
 `;
 
@@ -106,14 +118,6 @@ const ShareSection = styled.div`
     & > * {
       margin-right: 1.6rem;
     }
-  }
-`;
-
-const Introduction = styled(PrismicRichText)`
-  padding-bottom: 4rem;
-
-  @media screen and (min-width: 1024px) {
-    padding-bottom: 4.4rem;
   }
 `;
 
@@ -214,8 +218,7 @@ const ArticleMasthead = ({
             </Typography>
           </ShareArticleLink>
         </ShareSection>
-
-        <Introduction
+        <PrismicRichText
           field={introduction}
           components={{
             heading1: ({ children }) => (
@@ -234,7 +237,7 @@ const ArticleMasthead = ({
               </Typography>
             ),
             paragraph: ({ children }) => (
-              <Typography variant="body1" component="p">
+              <Typography variant="intro" component="p">
                 {children}
               </Typography>
             ),
@@ -245,6 +248,7 @@ const ArticleMasthead = ({
             ),
           }}
         />
+
         <PrismicRichText
           field={firstParagraph}
           components={{
@@ -278,7 +282,7 @@ const ArticleMasthead = ({
       </CopySection>
       <CloseButton>
         <IconButton
-          icon={<Cross color="#283086" height="4rem" width="4rem" />}
+          icon={<Cross color="var(--cranberry)" height="4rem" width="4rem" />}
           onClick={(e) => handleClosePage(e)}
         />
       </CloseButton>

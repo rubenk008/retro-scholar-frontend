@@ -40,6 +40,7 @@ const OneColumnMedia = ({ image }: OneColumnMediaProps) => {
             url: image.url ? image.url : "",
             alt: image.alt ? image.alt : "",
           }}
+          withHalftone
         />
       </Wrapper>
     </Section>

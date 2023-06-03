@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import React, { useEffect, useState, useContext } from "react";
-import { clearAllBodyScrollLocks } from "body-scroll-lock";
+import { clearAllBodyScrollLocks } from "body-scroll-lock-upgrade";
 import styled from "styled-components";
 
 import { useRouter } from "next/router";
@@ -110,7 +110,8 @@ const TopicPage = ({
         title={meta.title}
         description={meta.desc}
         openGraph={{
-          url: SEO.baseUrl,
+          type: "website",
+          url: `${SEO.baseUrl}/topic/${currentTopic}`,
           title: openGraph.socialCardTitle,
           description: openGraph.socialCardDescription,
           siteName: SEO.siteName,
@@ -176,7 +177,7 @@ const TopicPage = ({
                     media={expandedArticleContent.data.main_media}
                     category={expandedArticleContent.category[0].text}
                     introduction={expandedArticleContent.data.introduction}
-                    firstParagraph={expandedArticleContent.data.firstParagraph}
+                    firstParagraph={expandedArticleContent.data.first_paragraph}
                     articleUrl=""
                     handleClosePage={() => {
                       setOverlayOpen(false);
@@ -224,12 +225,19 @@ export async function getStaticProps({ params, previewData }) {
       categoryName: category.data.category_name[0].text,
       categoryDesc: category.data.category_desc,
       meta: {
-        title: category.data.metaTitle,
-        desc: category.data.metaDescription,
+        title: category.data.metaTitle ? category.data.metaTitle : "",
+        desc: category.data.metaDescription
+          ? category.data.metaDescription
+          : "",
       },
       openGraph: !!category.data.socialCards
         ? category.data.socialCards[0]
-        : { url: "", alt: "", socialCardTitle: "", socialCardDescription: "" },
+        : {
+            url: "",
+            alt: "",
+            socialCardImage: "",
+            socialCardDescription: "",
+          },
       articles,
       prefetchedArticles,
     },
