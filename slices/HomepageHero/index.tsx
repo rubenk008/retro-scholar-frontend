@@ -248,6 +248,8 @@ const HomepageHero = ({ slice }) => {
                 key={`article-${index}`}
                 href={`/?article=${sliceItem.uid}`}
                 as={`/article/${sliceItem.uid}`}
+                scroll={false}
+                shallow={true}
               >
                 <span style={{ textTransform: "capitalize" }}>
                   <Typography variant="subtitle3" component={"h2"}>
