@@ -167,7 +167,7 @@ const Navbar = ({ navDrawerData }: Props) => {
           animate={hidden ? "hidden" : "visible"}
           transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
         >
-          <Link href="/">
+          <Link href="/" scroll={false}>
             <StyledLogo height={pxToRem(79.38)} width={pxToRem(61.37)} />
           </Link>
         </Logo>

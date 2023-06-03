@@ -34,7 +34,7 @@ const Wrapper = styled(motion.div)`
   }
 `;
 
-const WrapperAll = styled(motion.div)`
+const WrapperAll = styled.div`
   position: fixed;
   top: 0;
   left: 0;

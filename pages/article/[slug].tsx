@@ -30,10 +30,6 @@ const ArticlePage = ({ meta, openGraph, article }) => {
   }, []);
 
   useEffect(() => {
-    console.log(article);
-  }, [article]);
-
-  useEffect(() => {
     toggleTheme("light");
   }, []);
 

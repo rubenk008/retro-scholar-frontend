@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 
 import Topbar from "../TopBar";
 import Footer from "../Footer";
@@ -18,6 +18,7 @@ const Container = styled.div`
 
 const Main = styled.main<MainContainerProps>`
   min-height: 100vh;
+  transition: background-color 0.25s linear;
   background: ${(props) =>
     props.variant === "dark" ? "var(--bay-of-many)" : "var(--tutu)"};
 `;

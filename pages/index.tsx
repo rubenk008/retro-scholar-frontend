@@ -78,6 +78,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
       />
 
       <SliceZone slices={slices} components={components} />
+
       <AnimatePresence initial={false}>
         {overlayOpen && (
           <ArticleExpanded
@@ -90,6 +91,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
                 slice={expandedArticleContent.data.slices[0]}
                 handleClosePage={() => {
                   setOverlayOpen(false);
+
                   clearAllBodyScrollLocks();
                   router.push("/", "/", { scroll: false, shallow: true });
                 }}
@@ -107,6 +109,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
                     articleUrl=""
                     handleClosePage={() => {
                       setOverlayOpen(false);
+
                       clearAllBodyScrollLocks();
                       router.push("/", "/", { scroll: false, shallow: true });
                     }}

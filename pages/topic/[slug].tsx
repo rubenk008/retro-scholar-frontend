@@ -139,7 +139,8 @@ const TopicPage = ({
       </TopicHeading>
 
       <ArticleGrid articles={articles} asPath={router.asPath} />
-      <AnimatePresence initial={false}>
+
+      <AnimatePresence initial={false} mode="sync">
         {overlayOpen && (
           <ArticleExpanded
             onClick={() => {

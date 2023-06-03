@@ -118,6 +118,7 @@ const Drawer = ({ state = "closed", setState, heading, links }: Props) => {
 
   const onCrossClick = () => {
     setDrawerOpen(drawerOpen ? false : true);
+
     setState("closed");
   };
 
@@ -240,12 +241,12 @@ const Drawer = ({ state = "closed", setState, heading, links }: Props) => {
             linkItems.map((link, index) => (
               // eslint-disable-next-line react/jsx-key
               <Link
-                legacyBehavior={false}
                 href={`/topic/${link.href}`}
                 onClick={() => {
                   onCrossClick();
                 }}
                 key={`key-${index}`}
+                scroll={false}
               >
                 <motion.li variants={item}>
                   <LinkListItem

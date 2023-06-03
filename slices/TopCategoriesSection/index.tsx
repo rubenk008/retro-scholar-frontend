@@ -99,6 +99,8 @@ const TopCategoriesSection = ({ slice }) => {
             <Link
               href={`/topic/${item.categoryLink.uid}`}
               key={`key-${index + 1}`}
+              scroll={false}
+              shallow={true}
             >
               <Card variant="highlightedCat" cardArticleId={index}>
                 <HighlightedCatContent>

@@ -12,7 +12,7 @@ import Typography from "../../components/Typography";
 const Section = styled.section`
   height: 100vh;
   width: 100%;
-  background: var(--bay-of-many);
+  // background: var(--bay-of-many);
   padding: ${pxToRem(133)} ${pxToRem(32)} 0;
   position: relative;
   overflow-x: hidden;
