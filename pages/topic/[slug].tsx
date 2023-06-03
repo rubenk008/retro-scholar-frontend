@@ -75,7 +75,9 @@ const TopicPage = ({
   });
 
   useEffect(() => {
-    setCurrentTopic(router.query.slug.toString());
+    if (router.query.slug) {
+      setCurrentTopic(router.query.slug.toString());
+    }
   }, [router]);
 
   const [currentTopic, setCurrentTopic] = useState("");
@@ -138,7 +140,8 @@ const TopicPage = ({
       </TopicHeading>
 
       <ArticleGrid articles={articles} asPath={router.asPath} />
-      <AnimatePresence initial={false}>
+
+      <AnimatePresence initial={false} mode="sync">
         {overlayOpen && (
           <ArticleExpanded
             onClick={() => {

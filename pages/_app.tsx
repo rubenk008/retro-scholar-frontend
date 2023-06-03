@@ -9,7 +9,9 @@ import { linkResolver, repositoryName, createClient } from "../prismicio";
 import "../styles/globals.css";
 import { getMenu } from "../services/prismic";
 import PageWrapper from "../components/layout/PageWrapper";
+
 import { ThemeProvider } from "../providers/ThemeProvider";
+import Transition from "../components/layout/Transition";
 
 interface WithNavProps extends AppProps {
   menu: any;
@@ -29,7 +31,9 @@ export default function App({ Component, pageProps, menu }: WithNavProps) {
         <PrismicPreview repositoryName={repositoryName}>
           <GoogleAnalytics trackPageViews />
           <PageWrapper menu={menu}>
-            <Component {...pageProps} />
+            <Transition>
+              <Component {...pageProps} />
+            </Transition>
           </PageWrapper>
         </PrismicPreview>
       </PrismicProvider>

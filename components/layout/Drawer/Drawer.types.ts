@@ -1,9 +1,5 @@
 import { LinkProps } from "next/link";
 
-interface SocialLinks extends LinkProps {
-  icon?: React.ReactNode;
-}
-
 interface PageLinks extends LinkProps {
   name: string;
   desc?: string;
@@ -16,5 +12,4 @@ export default interface Props {
   setState: React.Dispatch<React.SetStateAction<string>>;
   heading: string;
   links: Array<PageLinks>;
-  socialLinks: Array<SocialLinks>;
 }

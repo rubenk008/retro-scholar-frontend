@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import StyledDrawer from "./index";
 import Button from "../../Button";
 
-import InstagramIcon from "../../icons/Instagram";
-import FacebookIcon from "../../icons/Facebook";
-
 export default {
   title: "Layout/Drawer",
   component: StyledDrawer,
@@ -21,7 +18,7 @@ const drawerTempData = {
       active: false,
     },
     {
-      name: "Renowed People",
+      name: "Iconic Figures",
       desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
       href: "https://www.google.com",
       opacity: 1,
@@ -34,27 +31,6 @@ const drawerTempData = {
       opacity: 1,
       active: false,
     },
-    {
-      name: "Cities",
-      desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
-      href: "https://www.google.com",
-      opacity: 1,
-      active: false,
-    },
-    {
-      name: "Music",
-      desc: "Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna.",
-      href: "https://www.google.com",
-      opacity: 1,
-      active: false,
-    },
-  ],
-  socialLinks: [
-    {
-      icon: <InstagramIcon />,
-      href: "",
-    },
-    { icon: <FacebookIcon />, href: "" },
   ],
 };
 
@@ -85,7 +61,6 @@ export const Drawer = () => {
         setState={setDrawerState}
         heading={drawerTempData.heading}
         links={drawerTempData.links}
-        socialLinks={drawerTempData.socialLinks}
       />
     </>
   );
