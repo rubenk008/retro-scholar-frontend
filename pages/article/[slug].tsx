@@ -39,6 +39,7 @@ const ArticlePage = ({ meta, openGraph, article }) => {
         title={meta.title}
         description={meta.desc}
         openGraph={{
+          type: "article",
           url: `${SEO.baseUrl}/article/${article.uid}`,
           title: openGraph.social_card_title,
           description: openGraph.social_card_description,

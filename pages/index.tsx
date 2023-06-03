@@ -57,6 +57,7 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
         title={meta.title}
         description={meta.desc}
         openGraph={{
+          type: "website",
           url: SEO.baseUrl,
           title: openGraph.socialCardTitle,
           description: openGraph.socialCardDescription,

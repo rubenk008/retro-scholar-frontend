@@ -108,6 +108,7 @@ const TopicPage = ({
         title={meta.title}
         description={meta.desc}
         openGraph={{
+          type: "website",
           url: `${SEO.baseUrl}/topic/${currentTopic}`,
           title: openGraph.socialCardTitle,
           description: openGraph.socialCardDescription,
