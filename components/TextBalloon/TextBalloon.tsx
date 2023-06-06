@@ -24,7 +24,7 @@ const Wrapper = styled.div`
     left: 0;
     top: 0;
     background: var(--blue-pigment);
-    clip-path: polygon(69% 2%, 100% 0, 100% 100%, 28% 98%, 0 100%, 0% 0%);
+    clip-path: polygon(69% 2%, 100% 0, 100% 100%, 28% 99%, 0 100%, 0% 0%);
     z-index: 1;
   }
 
@@ -93,19 +93,19 @@ const BackdropRightEdge = styled.div`
   right: 0px;
   background: ${(props) => props.color};
   transform-origin: 100% 0px;
-  width: 0.8rem;
+  width: 1.1rem;
   transform: scaleX(1);
 `;
 
 const BackdropBottomEdge = styled.div`
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom:  -1.05rem;
+  right: -0.0rem;
   width: 0px;
   height: 0px;
-  border-top: 0.8rem solid transparent;
-  border-bottom: 0.8rem solid transparent;
-  border-left: 0.8rem solid ${(props) => props.color};
+  border-top: 0rem solid transparent;
+  border-bottom: 1.1rem solid transparent;
+  border-left: 1.1rem solid ${(props) => props.color};
   transform-origin: right center;
 `;
 
@@ -117,18 +117,18 @@ const BackdropTopEdge = styled.div`
   background: ${(props) => props.color};
   transform-origin: 0px 100%;
   height: 2rem;
-  clip-path: polygon(67% 40%, 100% 0, 100% 99%, 60% 100%, 0 100%, 0% 0%);
+  clip-path: polygon(67% 30%, 100% 0, 100% 90%, 60% 100%, 0 100%, 0% 0%);
 `;
 
 const BackdropLeftEdge = styled.div`
   position: absolute;
-  top: 0px;
-  left: -1.1rem;
+  top: 0;
+  left: -1.05rem;
   width: 0px;
   height: 0px;
-  border-left: 1.2rem solid transparent;
+  border-left: 1.1rem solid transparent;
   border-right: 0rem solid transparent;
-  border-bottom: 1.2rem solid ${(props) => props.color};
+  border-bottom: 1.1rem solid ${(props) => props.color};
   transform-origin: center top;
 `;
 
