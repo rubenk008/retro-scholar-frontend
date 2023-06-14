@@ -22,7 +22,7 @@ const Wrapper = styled.div`
     height: 100%;
     left: 0;
     top: 0;
-    background: var(--blue-pigment);
+    background: ${(props) => props.color};
     clip-path: polygon(69% 2%, 100% 0, 100% 100%, 28% 99%, 0 100%, 0% 0%);
     z-index: 1;
   }
@@ -37,14 +37,14 @@ const Wrapper = styled.div`
     top: -2rem;
     border-left: 3rem solid transparent;
     border-right: 1.5rem solid transparent;
-    border-bottom: 3rem solid var(--blue-pigment);
+    border-bottom: 3rem solid ${(props) => props.color};
 
     @media screen and (min-width: 768px) {
       left: 2rem;
       top: -2.3rem;
       border-left: 3.5rem solid transparent;
       border-right: 2.3rem solid transparent;
-      border-bottom: 3.5rem solid var(--blue-pigment);
+      border-bottom: 3.5rem solid ${(props) => props.color};
     }
   }
 `;
@@ -78,14 +78,14 @@ const Backdrop = styled.div`
     top: -1.8rem;
     border-left: 3rem solid transparent;
     border-right: 1.5rem solid transparent;
-    border-bottom: 3rem solid var(--bay-of-many);
+    border-bottom: 3rem solid ${(props) => props.color};
 
     @media screen and (min-width: 768px) {
       left: 1.5rem;
       top: -2rem;
       border-left: 3.5rem solid transparent;
       border-right: 2.3rem solid transparent;
-      border-bottom: 3.5rem solid var(--bay-of-many);
+      border-bottom: 3.5rem solid ${(props) => props.color};
     }
   }
 `;
@@ -151,11 +151,21 @@ const BackdropLeftEdge = styled.div`
   }
 `;
 
+const variants = {
+  blue: {
+    primaryColor: "var(--blue-pigment)",
+    secondaryColor: "var(--bay-of-many)",
+  },
+  pink: {
+    primaryColor: "var(--azalea)",
+    secondaryColor: "var(--cranberry)",
+  },
+};
+
 const TextBalloon = ({ children }: TextBalloonProps) => {
   return (
-    <Wrapper>
-      {/* <Elevated /> */}
-      <Backdrop>
+    <Wrapper color={"var(--blue-pigment)"}>
+      <Backdrop color={"var(--bay-of-many)"}>
         <BackdropLeftEdge color={"var(--bay-of-many)"} />
         <BackdropTopEdge color={"var(--bay-of-many)"} />
         <BackdropRightEdge color={"var(--bay-of-many)"} />
