@@ -66,8 +66,8 @@ const ArticleGrid = ({ articles, asPath }: any) => {
         return (
           <Link
             key={`article-${index}`}
-            href={`${asPath}?article=${item.uid}`}
-            as={`/article/${item.uid}`}
+            href={`${asPath}/?article=${encodeURIComponent(item.uid)}`}
+            as={`${asPath}?${encodeURIComponent(item.uid)}`}
             scroll={false}
             shallow={true}
           >

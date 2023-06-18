@@ -48,7 +48,6 @@ const TopicHeading = styled.div`
 `;
 
 const TopicPage = ({
-  data,
   categoryName,
   categoryDesc,
   meta,
