@@ -157,19 +157,21 @@ const variants = {
     secondaryColor: "var(--bay-of-many)",
   },
   pink: {
-    primaryColor: "var(--azalea)",
+    primaryColor: "var(--charm-pink)",
     secondaryColor: "var(--cranberry)",
   },
 };
 
-const TextBalloon = ({ children }: TextBalloonProps) => {
+const TextBalloon = ({ children, variant }: TextBalloonProps) => {
+  const { primaryColor, secondaryColor } = variants[variant];
+
   return (
-    <Wrapper color={"var(--blue-pigment)"}>
-      <Backdrop color={"var(--bay-of-many)"}>
-        <BackdropLeftEdge color={"var(--bay-of-many)"} />
-        <BackdropTopEdge color={"var(--bay-of-many)"} />
-        <BackdropRightEdge color={"var(--bay-of-many)"} />
-        <BackdropBottomEdge color={"var(--bay-of-many)"} />
+    <Wrapper color={primaryColor}>
+      <Backdrop color={secondaryColor}>
+        <BackdropLeftEdge color={secondaryColor} />
+        <BackdropTopEdge color={secondaryColor} />
+        <BackdropRightEdge color={secondaryColor} />
+        <BackdropBottomEdge color={secondaryColor} />
       </Backdrop>
       <Content>{children}</Content>
     </Wrapper>
