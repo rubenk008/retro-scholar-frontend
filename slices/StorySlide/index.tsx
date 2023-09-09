@@ -338,7 +338,6 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
                             alt: thumbnailDesktop.alt,
                           }
                     }
-                    withHalftone
                   />
                 </motion.div>
 

@@ -87,7 +87,11 @@ const ArticlePage = ({ meta, openGraph, article }) => {
                 category={article.category[0].text}
                 introduction={article.data.introduction}
                 firstParagraph={article.data.first_paragraph}
-                articleUrl=""
+                articleUrl={`${
+                  typeof window !== "undefined" && window.location.hostname
+                    ? window.location.href
+                    : ""
+                }`}
                 handleClosePage={() => {
                   router.push(categoryRoute, categoryRoute, {
                     scroll: false,

@@ -178,7 +178,11 @@ const TopicPage = ({
                     category={expandedArticleContent.category[0].text}
                     introduction={expandedArticleContent.data.introduction}
                     firstParagraph={expandedArticleContent.data.first_paragraph}
-                    articleUrl=""
+                    articleUrl={`https://${
+                      typeof window !== "undefined" && window.location.hostname
+                        ? window.location.hostname
+                        : ""
+                    }/article/${expandedArticleContent.uid}`}
                     handleClosePage={() => {
                       setOverlayOpen(false);
                       clearAllBodyScrollLocks();

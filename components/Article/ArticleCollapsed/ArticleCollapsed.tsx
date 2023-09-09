@@ -92,12 +92,7 @@ const ArticleCollapsed = ({
           thumbnailDesktopPrecentageFromCenter
         }
       >
-        <Media
-          type={media.type}
-          video={media.video}
-          image={media.image}
-          withHalftone
-        />
+        <Media type={media.type} video={media.video} image={media.image} />
       </MediaContainer>
       <TagContainter>
         {tags.map((tag, index) => (
