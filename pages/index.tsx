@@ -12,7 +12,7 @@ import { components } from "../slices";
 import StorySlide from "../slices/StorySlide";
 import ArticleExpanded from "../components/Article/ArticleExpanded";
 import Longread from "../components/Longread/Longread";
-import ArticleMasthead from "../components/layout/ArticleMasthead/ArticleMasthead";
+import ArticleMasthead from "../components/layout/ArticleMasthead";
 
 import { getArticles } from "../services/prismic";
 import { ThemeContext } from "../providers/ThemeProvider";
@@ -107,7 +107,11 @@ const Home = ({ meta, openGraph, prefetchedArticles, slices }) => {
                     category={expandedArticleContent.category[0].text}
                     introduction={expandedArticleContent.data.introduction}
                     firstParagraph={expandedArticleContent.data.first_paragraph}
-                    articleUrl=""
+                    articleUrl={`https://${
+                      typeof window !== "undefined" && window.location.hostname
+                        ? window.location.hostname
+                        : ""
+                    }/article/${expandedArticleContent.uid}`}
                     handleClosePage={() => {
                       setOverlayOpen(false);
 
