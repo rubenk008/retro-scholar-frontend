@@ -11,54 +11,29 @@ import {
 
 import Typography from "../../Typography";
 
-import Cross from "../../icons/Cross";
-
 import Props from "./Drawer.types";
 
-const Wrapper = styled.div`
-  position: fixed;
-  z-index: 999999999;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
-  max-height: 100vh;
-  height: var(--app-height);
-  width: 100vw;
+const MenuWrapper = styled.div`
+  position: absolute;
+  display: block;
+  width: calc(100vw - 6.4rem);
+  bottom: 9rem;
+  left: 50%;
+  transform: translateX(-50%);
   pointer-events: ${(props: { menuIsOpen: boolean }) =>
     props.menuIsOpen ? "" : "none"};
-`;
+  z-index: 2;
 
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  max-height: 100vh;
-  height: var(--app-height);
-  width: 100vw;
-  background: var(--bay-of-many);
-  opacity: ${(props: { menuIsOpen: boolean }) => (props.menuIsOpen ? 0.8 : 0)};
-  transition: all 450ms ease-in-out;
-  transition-delay: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "0ms" : "250ms"};
-`;
-
-const MenuWrapper = styled.div`
-  position: relative;
-  display: flex;
-  max-height: 100vh;
-  height: var(--app-height);
-  width: 100vw;
-  padding: 48px 32px;
+  padding: 3rem 4.6rem 3rem 2.5rem;
 
   @media screen and (min-width: 768px) {
-    width: 119.2rem;
-    padding: 6rem 8rem;
+    top: 8.8rem;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    right: 0;
+    width: 35rem;
+    padding: 3rem 4.6rem 3rem 2.5rem;
   }
 `;
 
@@ -70,37 +45,24 @@ const MenuBackdrop = styled.div`
   bottom: 0;
   right: 0;
   top: 0;
-  background: var(--cranberry);
-  box-shadow: -2px 4px 4px 0 rgba(219, 84, 147, 0.25);
-
-  transform: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "translateX(0%)" : "translateX(100%)"};
-
-  transition: all 450ms
-    ${(props: { menuIsOpen: boolean }) =>
-      props.menuIsOpen
-        ? "cubic-bezier(0.55, 0.47, 0.11, 0.94)"
-        : "cubic-bezier(0.89, 0.06, 0.45, 0.53)"};
-  transition-delay: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "0ms" : "200ms"};
-`;
-
-const CloseButton = styled.div`
-  position: absolute;
-  right: 20px;
-  top: 36px;
-  z-index: 2;
-  cursor: pointer;
+  background: var(--tutu);
+  box-shadow: 0px 4px 4px 0 rgba(9, 25, 189, 0.18);
+  border-radius: 2rem;
+  transform-origin: top center;
   opacity: ${(props: { menuIsOpen: boolean }) =>
     props.menuIsOpen ? "1" : "0"};
+  transform: ${(props: { menuIsOpen: boolean }) =>
+    props.menuIsOpen ? "translateY(0px)" : "translateY(30px)"};
 
-  transition: all 150ms ease-in-out;
+  transition: all 250ms
+    ${(props: { menuIsOpen: boolean }) =>
+      props.menuIsOpen ? "ease-out" : "ease-in"};
   transition-delay: ${(props: { menuIsOpen: boolean }) =>
-    props.menuIsOpen ? "50ms" : "400ms"};
+    props.menuIsOpen ? "200ms" : "0ms"};
 
   @media screen and (min-width: 768px) {
-    right: 7rem;
-    top: 7.4rem;
+    transform: ${(props: { menuIsOpen: boolean }) =>
+      props.menuIsOpen ? "translateY(0px)" : "translateY(-30px)"};
   }
 `;
 
@@ -119,7 +81,7 @@ const LinkListHeading = styled(motion.div)`
 `;
 
 const LinkListItem = styled.div`
-  padding: 0 0 24px 0;
+  padding: 0 0 2rem 0;
   margin: 0;
   display: flex;
   flex-direction: row;
@@ -131,73 +93,22 @@ const LinkListItem = styled.div`
 `;
 
 const LinkListItemCounter = styled.div`
-  width: 30px;
+  width: 2.2rem;
+  min-width: 2.2rem;
   padding-top: 1px;
-
-  @media screen and (min-width: 768px) {
-    width: 3.4rem;
-  }
 `;
 
 const LinkListItemContent = styled.div`
   > p {
-    margin-top: 8px;
-  }
-
-  max-width: 290px;
-
-  @media screen and (min-width: 768px) {
-    max-width: 36.6rem;
-  }
-`;
-
-const SocialLinkList = styled(motion.ul)`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  position: absolute;
-  left: 32px;
-  bottom: 48px;
-  flex-direction: row;
-  list-style-type: none;
-  align-self: flex-start;
-
-  @media screen and (min-width: 768px) {
-    margin: 0 0 0 8px;
-    left: auto;
-    right: 8rem;
-    bottom: 6rem;
-  }
-`;
-const SocialLinkListItem = styled.div`
-  margin: 0 12px 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-
-  > svg {
-    height: 18px;
-    width: 18px;
-
-    @media screen and (min-width: 768px) {
-      height: 2.2rem;
-      width: 2.2rem;
-    }
+    margin-top: 0.2rem;
   }
 
   @media screen and (min-width: 768px) {
-    margin: 0 0 0 3.2rem;
+    // max-width: 25.6rem;
   }
 `;
 
-const Drawer = ({
-  state = "closed",
-  setState,
-  heading,
-  links,
-  socialLinks,
-}: Props) => {
+const Drawer = ({ state = "closed", setState, heading, links }: Props) => {
   const ref = useRef();
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -210,6 +121,7 @@ const Drawer = ({
 
   const onCrossClick = () => {
     setDrawerOpen(drawerOpen ? false : true);
+
     setState("closed");
   };
 
@@ -257,6 +169,7 @@ const Drawer = ({
       setDrawerOpen(true);
       disableBodyScroll(ref.current);
     } else {
+      setDrawerOpen(false);
       clearAllBodyScrollLocks();
     }
   }, [state]);
@@ -287,147 +200,96 @@ const Drawer = ({
     },
   };
 
-  const item = {
-    hidden: {
-      opacity: 0,
-      transform: "translateX(40px)",
-      transition: { duration: 0.18, ease: "easeIn" },
-    },
-    show: {
-      opacity: 1,
-      transform: "translateX(0px)",
-      transition: { duration: 0.22, ease: "easeOut" },
-    },
-  };
-
-  const containerSocial = isDesktop
+  const item = isDesktop
     ? {
         hidden: {
-          transition: {
-            staggerChildren: 0.04,
-            staggerDirection: -1,
-          },
+          opacity: 0,
+          transform: "translateY(-20px)",
+          transition: { duration: 0.18, ease: "easeIn" },
         },
         show: {
-          transition: {
-            staggerChildren: 0.05,
-          },
+          opacity: 1,
+          transform: "translateY(0px)",
+          transition: { duration: 0.22, ease: "easeOut" },
         },
       }
     : {
         hidden: {
-          transition: {
-            staggerChildren: 0.04,
-            staggerDirection: -1,
-          },
+          opacity: 0,
+          transform: "translateY(40px)",
+          transition: { duration: 0.18, ease: "easeIn" },
         },
         show: {
-          transition: {
-            delayChildren: 0.24,
-            staggerChildren: 0.05,
-          },
+          opacity: 1,
+          transform: "translateY(0px)",
+          transition: { duration: 0.22, ease: "easeOut" },
         },
       };
 
-  const itemSocial = {
-    hidden: {
-      opacity: 0,
-      transform: "translateX(20px)",
-      transition: { duration: 0.18, ease: "easeIn" },
-    },
-    show: {
-      opacity: 1,
-      transform: "translateX(0px)",
-      transition: { duration: 0.22, ease: "easeOut" },
-    },
-  };
-
   return (
-    <Wrapper menuIsOpen={makeDrawerVisible} ref={ref}>
-      <Overlay menuIsOpen={drawerOpen} onClick={onCrossClick} />
-      <MenuWrapper>
-        <MenuBackdrop menuIsOpen={drawerOpen} />
-        <LinkList
-          initial="hidden"
-          variants={container}
-          animate={drawerOpen ? "show" : "hidden"}
-        >
-          <LinkListHeading variants={item}>
-            <Typography variant="h6Small" color="white" component="h2">
-              {heading}
-            </Typography>
-          </LinkListHeading>
-          <nav>
-            {linkItems &&
-              linkItems.map((link, index) => (
-                // eslint-disable-next-line react/jsx-key
-                <Link
-                  legacyBehavior={false}
-                  href={`/topic/${link.href}`}
-                  onClick={() => {
-                    onCrossClick();
-                  }}
-                  key={`key-${index}`}
-                >
-                  <motion.li variants={item}>
-                    <LinkListItem
-                      key={`key-${index}`}
-                      opacity={link.opacity}
-                      onMouseOver={() => fadeOnHover(index)}
-                      onMouseLeave={fadeInOnLeave}
-                    >
-                      <LinkListItemCounter>
-                        <Typography
-                          variant="h6Small"
-                          color="white"
-                          component="p"
-                        >
-                          {`${index < 10 ? 0 : ""}${index + 1}`}
-                        </Typography>
-                      </LinkListItemCounter>
-                      <LinkListItemContent>
-                        <Typography variant="h4" color="white">
-                          {link.name}
-                        </Typography>
-                        <Typography
-                          variant="subtitle3"
-                          color="white"
-                          component="p"
-                        >
-                          {link.desc}
-                        </Typography>
-                      </LinkListItemContent>
-                    </LinkListItem>
-                  </motion.li>
-                </Link>
-              ))}
-          </nav>
-        </LinkList>
-        <SocialLinkList
-          variants={containerSocial}
-          animate={drawerOpen ? "show" : "hidden"}
-        >
-          {socialLinks &&
-            socialLinks.map((socialLink, index) => (
+    <MenuWrapper menuIsOpen={drawerOpen}>
+      <MenuBackdrop menuIsOpen={drawerOpen} />
+      <LinkList
+        initial="hidden"
+        variants={container}
+        animate={drawerOpen ? "show" : "hidden"}
+      >
+        <LinkListHeading variants={item}>
+          <Typography variant="h6SmallAlt" color="primary" component="h2">
+            {heading}
+          </Typography>
+        </LinkListHeading>
+        <nav>
+          {linkItems &&
+            linkItems.map((link, index) => (
               // eslint-disable-next-line react/jsx-key
-              <motion.li variants={itemSocial} key={`key-${index}`}>
-                <SocialLinkListItem key={`key-${index}`}>
-                  <Link
-                    href={socialLink.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+              <Link
+                href={`/topic/${link.href}`}
+                onClick={() => {
+                  onCrossClick();
+                }}
+                key={`key-${index}`}
+                scroll={false}
+              >
+                <motion.li variants={item}>
+                  <LinkListItem
+                    key={`key-${index}`}
+                    opacity={link.opacity}
+                    onMouseOver={() => fadeOnHover(index)}
+                    onMouseLeave={fadeInOnLeave}
                   >
-                    {socialLink.icon}
-                  </Link>
-                </SocialLinkListItem>
-              </motion.li>
+                    <LinkListItemCounter>
+                      <Typography
+                        variant="h6SmallAlt"
+                        color="primary"
+                        component="p"
+                      >
+                        {`${index < 10 ? 0 : ""}${index + 1}`}
+                      </Typography>
+                    </LinkListItemCounter>
+                    <LinkListItemContent>
+                      <Typography
+                        variant="h3Alt"
+                        color="primary"
+                        component="h4"
+                      >
+                        {link.name}
+                      </Typography>
+                      <Typography
+                        variant="subtitle4"
+                        color="primary"
+                        component="p"
+                      >
+                        {link.desc}
+                      </Typography>
+                    </LinkListItemContent>
+                  </LinkListItem>
+                </motion.li>
+              </Link>
             ))}
-        </SocialLinkList>
-        <CloseButton onClick={onCrossClick} menuIsOpen={drawerOpen}>
-          <Cross />
-        </CloseButton>
-      </MenuWrapper>
-    </Wrapper>
+        </nav>
+      </LinkList>
+    </MenuWrapper>
   );
 };
 

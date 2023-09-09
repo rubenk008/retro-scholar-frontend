@@ -185,7 +185,6 @@ const ArticleMasthead = ({
                   alt: thumbnailDesktop.alt,
                 }
           }
-          withHalftone
         />
       </MastheadImage>
 

@@ -41,10 +41,7 @@ const ThreeColumnMedia = ({ media }: ThreeColumnMediaProps) => {
             key={`column-media-${index}`}
             ratio={aspectRatio(dimensions.width ?? 0, dimensions.height ?? 0)}
           >
-            <Media
-              image={{ url: item.media.url, alt: item.media.alt }}
-              withHalftone
-            />
+            <Media image={{ url: item.media.url, alt: item.media.alt }} />
           </Wrapper>
         );
       })}

@@ -78,6 +78,12 @@ const TypographyRoot = styled("span")<Props>(
         letterSpacing: [letterSpacing(38, 1.52), letterSpacing(64, 1.92)],
         lineHeight: [0.9, 0.9],
       },
+      h3Alt: {
+        fontFamily: "var(--font-rift-soft-bold)",
+        fontSize: [pxToRem(36), pxToRem(36)],
+        letterSpacing: [letterSpacing(36, 1), letterSpacing(36, 1)],
+        lineHeight: [0.9, 0.9],
+      },
       h4: {
         fontFamily: "var(--font-rift-soft-bold)",
         fontSize: [pxToRem(32), pxToRem(44)],
@@ -120,6 +126,12 @@ const TypographyRoot = styled("span")<Props>(
         letterSpacing: [letterSpacing(14, 0.18), letterSpacing(16, 0.2)],
         lineHeight: [1.625, 1.4],
       },
+      h6SmallAlt: {
+        fontFamily: "var(--font-rift-soft-bold)",
+        fontSize: [pxToRem(14), pxToRem(14)],
+        letterSpacing: [letterSpacing(14, 0.18), letterSpacing(14, 0.18)],
+        lineHeight: [1.625, 1.625],
+      },
       subtitle1: {
         fontFamily: "var(--font-nunito-sans)",
         fontWeight: 400,
@@ -140,6 +152,13 @@ const TypographyRoot = styled("span")<Props>(
         fontSize: [pxToRem(14), pxToRem(16)],
         letterSpacing: [letterSpacing(14, 0.28), letterSpacing(16, 0.32)],
         lineHeight: ["calc(22 / 14)", "calc(24 / 16)"],
+      },
+      subtitle4: {
+        fontFamily: "var(--font-nunito-sans)",
+        fontWeight: 600,
+        fontSize: [pxToRem(14), pxToRem(14)],
+        letterSpacing: [letterSpacing(14, 0.28), letterSpacing(14, 0.28)],
+        lineHeight: ["calc(22 / 14)", "calc(22 / 14)"],
       },
       intro: {
         fontFamily: "var(--font-nunito-sans)",

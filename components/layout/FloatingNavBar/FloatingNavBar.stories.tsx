@@ -1,9 +1,9 @@
 import React from "react";
-import StyledNavbar from "./index";
+import FloatingNavBar from "./index";
 
 export default {
-  title: "Layout/Navbar",
-  component: StyledNavbar,
+  title: "Layout/FloatingNavBar",
+  component: FloatingNavBar,
 };
 
 const footerTempData = {
@@ -13,4 +13,4 @@ const footerTempData = {
   ],
 };
 
-export const Navbar = () => <StyledNavbar links={footerTempData.links} />;
+export const Floating = () => <FloatingNavBar />;

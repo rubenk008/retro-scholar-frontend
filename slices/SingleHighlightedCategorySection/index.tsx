@@ -110,6 +110,7 @@ const SingleHighlightedCategorySection = ({ slice }) => {
                 ? `/topic/${slice.primary.categoryLink.slug}`
                 : ""
             }
+            scroll={false}
           >
             <ViewCategoryLink>
               <Typography variant="h6" component={"span"} color="secondary">
@@ -178,7 +179,7 @@ const SingleHighlightedCategorySection = ({ slice }) => {
         })}
       </Carousel>
       {!isLargeScreen && (
-        <Link href="/topic/retro-tech">
+        <Link href="/topic/retro-tech" scroll={false}>
           <ViewCategoryLink>
             <Typography variant="h6" component={"span"} color="secondary">
               view all in the collection

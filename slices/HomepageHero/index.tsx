@@ -13,7 +13,7 @@ import Link from "next/link";
 const Section = styled.section`
   height: 100vh;
   width: 100%;
-  background: var(--bay-of-many);
+  // background: var(--bay-of-many);
   padding: ${pxToRem(133)} ${pxToRem(32)} 0;
   position: relative;
   overflow-x: hidden;
@@ -248,6 +248,8 @@ const HomepageHero = ({ slice }) => {
                 key={`article-${index}`}
                 href={`/?article=${sliceItem.uid}`}
                 as={`/article/${sliceItem.uid}`}
+                scroll={false}
+                shallow={true}
               >
                 <span style={{ textTransform: "capitalize" }}>
                   <Typography variant="subtitle3" component={"h2"}>
@@ -297,7 +299,6 @@ const HomepageHero = ({ slice }) => {
                   alt: sliceItem.thumbnail.alt,
                   priority: index === slice.items.length - 1 ? true : false,
                 }}
-                withHalftone
               />
             </Card>
           ))}
