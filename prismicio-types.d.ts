@@ -776,6 +776,42 @@ export interface StorySlideSliceDefaultItem {
    */
   caption: prismicT.KeyTextField;
   /**
+   * Caption position desktop field in *StorySlide → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Left Top
+   * - **API ID Path**: story_slide.items[].caption_position
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  caption_position: prismicT.SelectField<
+    "Left Top" | "Right Top" | "Right Bottom" | "Left Bottom",
+    "filled"
+  >;
+  /**
+   * Caption position mobile field in *StorySlide → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Bottom
+   * - **API ID Path**: story_slide.items[].caption_position_mobile
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  caption_position_mobile: prismicT.SelectField<"Bottom" | "Top", "filled">;
+  /**
+   * Caption Color field in *StorySlide → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Blue
+   * - **API ID Path**: story_slide.items[].caption_color
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  caption_color: prismicT.SelectField<"Blue" | "Pink", "filled">;
+  /**
    * Media field in *StorySlide → Items*
    *
    * - **Field Type**: Image

@@ -14,46 +14,53 @@
       "items": {
         "heading": {
           "type": "Text",
-          "config": {
-            "label": "Heading",
-            "placeholder": ""
-          }
+          "config": { "label": "Heading", "placeholder": "" }
         },
         "caption": {
           "type": "Text",
+          "config": { "label": "Caption", "placeholder": "" }
+        },
+        "caption_position": {
+          "type": "Select",
           "config": {
-            "label": "Caption",
-            "placeholder": ""
+            "label": "Caption position desktop",
+            "placeholder": "",
+            "options": ["Left Top", "Right Top", "Right Bottom", "Left Bottom"],
+            "default_value": "Left Top"
+          }
+        },
+        "caption_position_mobile": {
+          "type": "Select",
+          "config": {
+            "label": "Caption position mobile",
+            "placeholder": "",
+            "options": ["Bottom", "Top"],
+            "default_value": "Bottom"
+          }
+        },
+        "caption_color": {
+          "type": "Select",
+          "config": {
+            "label": "Caption Color",
+            "placeholder": "",
+            "options": ["Blue", "Pink"],
+            "default_value": "Blue"
           }
         },
         "media": {
           "type": "Image",
           "config": {
             "label": "Media",
-            "constraint": {
-              "width": 1200,
-              "height": 672
-            },
+            "constraint": { "width": 1200, "height": 672 },
             "thumbnails": [
-              {
-                "name": "mobile",
-                "width": 414,
-                "height": 736
-              },
-              {
-                "name": "square",
-                "width": 495,
-                "height": 495
-              }
+              { "name": "mobile", "width": 414, "height": 736 },
+              { "name": "square", "width": 495, "height": 495 }
             ]
           }
         },
         "slideDuration": {
           "type": "Number",
-          "config": {
-            "label": "Slide Duration",
-            "placeholder": "5"
-          }
+          "config": { "label": "Slide Duration", "placeholder": "5" }
         },
         "thumbnailPrecentageFromCenter": {
           "type": "Text",
