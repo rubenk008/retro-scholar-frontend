@@ -12,6 +12,7 @@ import Cross from "../../components/icons/Cross";
 
 import { useWindowSize } from "../../hooks/useWindowSize";
 import isMobile from "../../utils/isMobile";
+import TextBalloon from "../../components/TextBalloon";
 
 const SliderWrapper = styled(motion.div)`
   position: relative;
@@ -51,76 +52,85 @@ const SlideImage = styled(motion.div)`
   height: 100%;
 `;
 
+const SlideText = styled(motion.div)`
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 0 3.2rem;
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  @media screen and (max-width: 1023px) {
+    &.content_top {
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    &.content_bottom {
+      justify-content: center;
+      align-items: flex-end;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 14rem 4.4rem 11.2rem;
+
+    &.content_left_top {
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    &.content_left_bottom {
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+
+    &.content_right_top {
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    &.content_right_bottom {
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+  }
+`;
+
 const SlideImageOverlay = styled.div`
   position: absolute;
   width: 100%;
   height: calc(414 / 414 * 100vw);
   left: 0;
   right: 0;
-  bottom: 0;
+  top: 0;
   z-index: 1;
   background: linear-gradient(
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.2) 30%,
-    rgba(0, 0, 0, 0.4) 60%,
-    rgba(0, 0, 0, 0.6) 100%
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0) 60%
   );
 
   @media screen and (min-width: 1024px) {
-    width: calc(543 / 1440 * 100vw);
-    height: 100%;
-    left: auto;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.2) 30%,
-      rgba(0, 0, 0, 0.4) 60%,
-      rgba(0, 0, 0, 0.6) 100%
-    );
-  }
-`;
-
-const SlideText = styled(motion.div)`
-  position: absolute;
-  z-index: 1;
-  bottom: calc(68 / 414 * 100vw);
-  left: 0;
-  right: 0;
-  padding: 0 calc(32 / 414 * 100vw);
-  text-align: left;
-
-  > h1 {
-    margin-bottom: 8px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    padding: 0;
-    width: 36rem;
-    max-width: 36rem;
-    left: auto;
-    right: 6rem;
-    top: 17.2rem;
-    bottom: auto;
-
-    > h1 {
-      margin-bottom: 1.2rem;
-    }
+    display: none;
   }
 `;
 
 const DurationWrapper = styled.div`
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: calc(32 / 414 * 100vw);
+  top: 5.2rem;
   display: grid;
   grid-auto-columns: 1fr;
-  grid-column-gap: 8px;
+  grid-column-gap: 0.65rem;
   z-index: 4;
-  padding: 0 calc(32 / 414 * 100vw);
+  padding: 0 3.2rem;
   pointer-events: none;
+  width: 34.2rem;
+  max-width: 34.2rem;
 
   @media screen and (min-width: 1024px) {
     width: 30rem;
@@ -181,6 +191,28 @@ const CloseButton = styled.div`
     right: 4.4rem;
   }
 `;
+
+const Spacer = styled.div`
+  width: 100%;
+  height: 0.5rem;
+`;
+
+const CaptionPostionDesktop = {
+  "Left Bottom": "left_bottom",
+  "Left Top": "left_top",
+  "Right Bottom": "right_bottom",
+  "Right Top": "right_top",
+};
+
+const CaptionPostionMobile = {
+  Bottom: "bottom",
+  Top: "top",
+};
+
+const CaptionColor = {
+  Blue: "blue",
+  Pink: "pink",
+};
 
 const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -340,7 +372,6 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
                     }
                   />
                 </motion.div>
-
                 <SlideImageOverlay />
               </SlideImage>
             )}
@@ -355,27 +386,38 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
                 ease: "easeInOut",
                 delay: index === activeSlide ? 0 : 0,
               }}
+              className={`content_${
+                CaptionPostionDesktop[
+                  sliceItem.caption_position ?? "Left Bottom"
+                ]
+              } content_${
+                CaptionPostionMobile[
+                  sliceItem.caption_position_mobile ?? "Bottom"
+                ]
+              }`}
             >
-              {sliceItem.heading ? (
-                <Typography
-                  color="white"
-                  variant="h4Alt"
-                  component={index === 0 ? "h1" : "h2"}
-                  textShadow
-                >
-                  {sliceItem.heading}
-                </Typography>
-              ) : null}
-              <Typography
-                color="white"
-                variant="body3"
-                component={"p"}
-                textShadow
+              <TextBalloon
+                variant={CaptionColor[sliceItem.caption_color ?? "Blue"]}
               >
-                {sliceItem.caption
-                  ? sliceItem.caption
-                  : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}
-              </Typography>
+                {sliceItem.heading ? (
+                  <>
+                    <Typography
+                      color="white"
+                      variant="h5"
+                      component={index === 0 ? "h1" : "h2"}
+                      textShadow
+                    >
+                      {sliceItem.heading}
+                    </Typography>
+                    <Spacer />
+                  </>
+                ) : null}
+                <Typography variant="body2" component="p" color="white">
+                  {sliceItem.caption
+                    ? sliceItem.caption
+                    : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}
+                </Typography>
+              </TextBalloon>
             </SlideText>
           </Slide>
         );
