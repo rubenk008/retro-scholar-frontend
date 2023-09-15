@@ -214,6 +214,15 @@ const CaptionColor = {
   Pink: "pink",
 };
 
+const ArrowPosition = {
+  Bottom: "top",
+  Top: "bottom",
+  "Left Bottom": "top",
+  "Left Top": "bottom",
+  "Right Bottom": "top",
+  "Right Top": "bottom",
+};
+
 const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -398,6 +407,10 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
             >
               <TextBalloon
                 variant={CaptionColor[sliceItem.caption_color ?? "Blue"]}
+                arrowPositionDesktop={ArrowPosition[sliceItem.caption_position]}
+                arrowPositionMobile={
+                  ArrowPosition[sliceItem.caption_position_mobile]
+                }
               >
                 {sliceItem.heading ? (
                   <>
