@@ -33,18 +33,38 @@ const Wrapper = styled.div`
     width: 0;
     height: 0;
     position: absolute;
-    left: 1rem;
-    top: -2rem;
     border-left: 3rem solid transparent;
     border-right: 1.5rem solid transparent;
     border-bottom: 3rem solid ${(props) => props.color};
 
     @media screen and (min-width: 768px) {
-      left: 2rem;
-      top: -2.3rem;
       border-left: 3.5rem solid transparent;
       border-right: 2.3rem solid transparent;
       border-bottom: 3.5rem solid ${(props) => props.color};
+    }
+  }
+
+  &.arrow_top_mobile:after {
+    left: 1rem;
+    top: -2rem;
+  }
+
+  &.arrow_bottom:after {
+    left: 1rem;
+    bottom: -2rem;
+    transform: rotate(180deg);
+  }
+
+  @media screen and (min-width: 768px) {
+    &.arrow_top_desktop:after {
+      left: 2rem;
+      top: -2.3rem;
+    }
+
+    &.arrow_bottom:after {
+      left: 2rem;
+      bottom: -2.3rem;
+      transform: rotate(180deg);
     }
   }
 `;
@@ -74,18 +94,34 @@ const Backdrop = styled.div`
     width: 0;
     height: 0;
     position: absolute;
-    left: 0.5rem;
-    top: -1.8rem;
     border-left: 3rem solid transparent;
     border-right: 1.5rem solid transparent;
     border-bottom: 3rem solid ${(props) => props.color};
 
     @media screen and (min-width: 768px) {
-      left: 1.5rem;
-      top: -2rem;
       border-left: 3.5rem solid transparent;
       border-right: 2.3rem solid transparent;
       border-bottom: 3.5rem solid ${(props) => props.color};
+    }
+  }
+
+  &.arrow_top_mobile:after {
+    left: 0.5rem;
+    top: -1.8rem;
+  }
+
+  &.arrow_bottom_mobile:after {
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    &.arrow_top_desktop:after {
+      left: 1.5rem;
+      top: -2rem;
+    }
+
+    &.arrow_bottom_desktop:after {
+      display: none;
     }
   }
 `;
@@ -125,8 +161,8 @@ const BackdropTopEdge = styled.div`
   right: 0px;
   background: ${(props) => props.color};
   transform-origin: 0px 100%;
-  height: 1.2rem;
-  clip-path: polygon(67% 10%, 100% 0, 100% 90%, 60% 100%, 0 100%, 0% 0%);
+  height: 1.55rem;
+  clip-path: polygon(67% 10%, 100% 0, 100% 90%, 80% 100%, 0 100%, 0% 0%);
 
   @media screen and (min-width: 768px) {
     height: 2rem;
@@ -140,7 +176,7 @@ const BackdropLeftEdge = styled.div`
   left: -1.07rem;
   width: 0px;
   height: 0px;
-  border-left: 1.1rem solid transparent;
+  border-left: 1.12rem solid transparent;
   border-right: 0rem solid transparent;
   border-bottom: 1.1rem solid ${(props) => props.color};
   transform-origin: center top;
@@ -162,12 +198,23 @@ const variants = {
   },
 };
 
-const TextBalloon = ({ children, variant }: TextBalloonProps) => {
+const TextBalloon = ({
+  children,
+  variant,
+  arrowPositionDesktop = "top",
+  arrowPositionMobile = "top",
+}: TextBalloonProps) => {
   const { primaryColor, secondaryColor } = variants[variant];
 
   return (
-    <Wrapper color={primaryColor}>
-      <Backdrop color={secondaryColor}>
+    <Wrapper
+      color={primaryColor}
+      className={`arrow_${arrowPositionDesktop}_desktop arrow_${arrowPositionMobile}_mobile`}
+    >
+      <Backdrop
+        color={secondaryColor}
+        className={`arrow_${arrowPositionDesktop}_desktop arrow_${arrowPositionMobile}_mobile`}
+      >
         <BackdropLeftEdge color={secondaryColor} />
         <BackdropTopEdge color={secondaryColor} />
         <BackdropRightEdge color={secondaryColor} />
