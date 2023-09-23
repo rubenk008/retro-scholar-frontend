@@ -6,6 +6,8 @@ export function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
+    outerHeight: undefined,
+    outerWidth: undefined,
   });
   useEffect(() => {
     // Handler to call on window resize
@@ -14,6 +16,8 @@ export function useWindowSize() {
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
+        outerHeight: window.outerHeight,
+        outerWidth: window.outerWidth,
       });
     }
     // Add event listener
