@@ -59,9 +59,11 @@ const Wrapper = styled.div`
     &.arrow_top_desktop:after {
       left: 2rem;
       top: -2.3rem;
+      bottom: auto;
     }
 
-    &.arrow_bottom:after {
+    &.arrow_bottom_desktop:after {
+      top: auto;
       left: 2rem;
       bottom: -2.3rem;
       transform: rotate(180deg);
@@ -118,6 +120,7 @@ const Backdrop = styled.div`
     &.arrow_top_desktop:after {
       left: 1.5rem;
       top: -2rem;
+      bottom: auto;
     }
 
     &.arrow_bottom_desktop:after {

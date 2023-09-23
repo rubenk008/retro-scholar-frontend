@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { motion, MotionProps } from "framer-motion";
 
@@ -55,15 +55,6 @@ const MediaContainer = styled(motion.div)<MediaContainerProps>`
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
-
-  @media screen and (min-width: 1024px) {
-    left: calc(
-      -80% + ${(props) => props.thumbnailDesktopPrecentageFromCenter}%
-    );
-    width: auto;
-    height: 100%;
-    aspect-ratio: 25 / 14;
-  }
 `;
 
 const ArticleCollapsed = ({
@@ -73,7 +64,6 @@ const ArticleCollapsed = ({
   media,
   variant = "small",
   withMargin = false,
-  thumbnailDesktopPrecentageFromCenter = "0",
   onClick,
 }: Props) => {
   return (
@@ -88,9 +78,6 @@ const ArticleCollapsed = ({
         layoutId={`card-media-${id}`}
         initial={{ x: 0, y: 0 }}
         animate={{ x: 0, y: 0 }}
-        thumbnailDesktopPrecentageFromCenter={
-          thumbnailDesktopPrecentageFromCenter
-        }
       >
         <Media type={media.type} video={media.video} image={media.image} />
       </MediaContainer>

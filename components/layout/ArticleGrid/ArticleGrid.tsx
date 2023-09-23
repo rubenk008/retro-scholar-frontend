@@ -78,18 +78,9 @@ const ArticleGrid = ({ articles, asPath }: any) => {
                 tags: tags,
                 media: {
                   type: "image",
-                  image: isMobileView
-                    ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
-                    : {
-                        url: thumbnailDesktop.url,
-                        alt: thumbnailDesktop.alt,
-                      },
+                  image: { url: thumbnailMobile.url, alt: thumbnailMobile.alt },
                   video: {},
                 },
-                thumbnailDesktopPrecentageFromCenter:
-                  item.thumbnailDeskPercentageFromCenter !== null
-                    ? item.thumbnailDeskPercentageFromCenter
-                    : "0",
               }}
               variant="small"
               withMargin={true}

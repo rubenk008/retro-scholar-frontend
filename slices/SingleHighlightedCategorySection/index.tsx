@@ -158,18 +158,12 @@ const SingleHighlightedCategorySection = ({ slice }) => {
                   tags: [...tags, ...categories],
                   media: {
                     type: "image",
-                    image: isMobileView
-                      ? { url: thumbnailMobile.url, alt: thumbnailMobile.alt }
-                      : {
-                          url: thumbnailDesktop.url,
-                          alt: thumbnailDesktop.alt,
-                        },
+                    image: {
+                      url: thumbnailMobile.url,
+                      alt: thumbnailMobile.alt,
+                    },
                     video: {},
                   },
-                  thumbnailDesktopPrecentageFromCenter:
-                    item.thumbnailDeskPercentageFromCenter !== null
-                      ? item.thumbnailDeskPercentageFromCenter
-                      : "0",
                 }}
                 variant="regular"
                 withMargin={true}
