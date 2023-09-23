@@ -65,8 +65,8 @@ const CustomTypography = styled(Typography)`
   letter-spacing: 1%;
 
   @media screen and (min-width: 768px) {
-    font-size: 2.6rem;
-    line-height: 2.4rem;
+    font-size: 2.4rem;
+    line-height: 2.3rem;
   }
 `;
 

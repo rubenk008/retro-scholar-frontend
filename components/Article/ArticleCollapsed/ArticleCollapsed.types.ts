@@ -7,6 +7,5 @@ export default interface ArticleCollapsedProps {
   media?: MediaProps;
   variant?: string;
   withMargin?: boolean;
-  thumbnailDesktopPrecentageFromCenter?: string;
   onClick?: () => void;
 }
