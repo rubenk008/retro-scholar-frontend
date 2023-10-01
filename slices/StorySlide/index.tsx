@@ -217,10 +217,10 @@ const CaptionColor = {
 const ArrowPosition = {
   Bottom: "top",
   Top: "bottom",
-  "Left Bottom": "top",
-  "Left Top": "bottom",
-  "Right Bottom": "top",
-  "Right Top": "bottom",
+  "Left Bottom": "top_right",
+  "Left Top": "bottom_right",
+  "Right Bottom": "top_left",
+  "Right Top": "bottom_left",
 };
 
 const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
