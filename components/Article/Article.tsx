@@ -18,9 +18,6 @@ const Article = ({
       media={cardData.media}
       variant={variant}
       withMargin={withMargin}
-      thumbnailDesktopPrecentageFromCenter={
-        cardData.thumbnailDesktopPrecentageFromCenter
-      }
       onClick={onClick}
     />
   );

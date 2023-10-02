@@ -56,13 +56,30 @@ const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    &.arrow_top_desktop:after {
+    &.arrow_top_left_desktop:after {
       left: 2rem;
       top: -2.3rem;
+      bottom: auto;
     }
 
-    &.arrow_bottom:after {
+    &.arrow_top_right_desktop:after {
+      top: -2.3rem;
+      left: auto;
+      right: 2rem;
+      bottom: auto;
+    }
+
+    &.arrow_bottom_left_desktop:after {
+      top: auto;
       left: 2rem;
+      bottom: -2.3rem;
+      transform: rotate(180deg);
+    }
+
+    &.arrow_bottom_right_desktop:after {
+      top: auto;
+      left: auto;
+      right: 2rem;
       bottom: -2.3rem;
       transform: rotate(180deg);
     }
@@ -115,12 +132,21 @@ const Backdrop = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    &.arrow_top_desktop:after {
+    &.arrow_top_left_desktop:after {
       left: 1.5rem;
       top: -2rem;
+      bottom: auto;
     }
 
-    &.arrow_bottom_desktop:after {
+    &.arrow_top_right_desktop:after {
+      left: auto;
+      right: 2.5rem;
+      top: -2rem;
+      bottom: auto;
+    }
+
+    &.arrow_bottom_left_desktop:after,
+    &.arrow_bottom_right_desktop:after {
       display: none;
     }
   }
@@ -201,7 +227,7 @@ const variants = {
 const TextBalloon = ({
   children,
   variant,
-  arrowPositionDesktop = "top",
+  arrowPositionDesktop = "top_left",
   arrowPositionMobile = "top",
 }: TextBalloonProps) => {
   const { primaryColor, secondaryColor } = variants[variant];
