@@ -13,37 +13,29 @@ import Cross from "../../components/icons/Cross";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import isMobile from "../../utils/isMobile";
 import TextBalloon from "../../components/TextBalloon";
+import Slider from "../../components/Slider";
+import { EmblaOptionsType } from "embla-carousel-react";
 
 const SliderWrapper = styled(motion.div)`
   position: relative;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   margin: auto;
   background: #fff;
 
   @media screen and (min-width: 1024px) {
-    width: 100vw;
+    width: 100%;
     height: 96vh;
     margin: 0 auto;
   }
 `;
 
 const Slide = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
-
-  &.isActive {
-    opacity: 1;
-  }
 `;
 
 const SlideImage = styled(motion.div)`
@@ -238,6 +230,14 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
 
   const size = useWindowSize();
 
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsActive(true);
+    }, 500);
+  }, []);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleKeyDown = (e) => {
     if (e.code === "ArrowLeft") {
@@ -331,24 +331,25 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
     }
   }, [slice]);
 
+  const sliderOptions: EmblaOptionsType = {
+    active: isActive,
+  };
+
   return (
     <SliderWrapper>
-      {slice.items.map((sliceItem, index) => {
-        const thumbnailMobile = sliceItem.media.hasOwnProperty("mobile")
-          ? sliceItem.media.mobile
-          : sliceItem.media;
+      <Slider options={sliderOptions} slideSpacing={0}>
+        {slice.items.map((sliceItem, index) => {
+          const thumbnailMobile = sliceItem.media.hasOwnProperty("mobile")
+            ? sliceItem.media.mobile
+            : sliceItem.media;
 
-        const thumbnailDesktop = sliceItem.media;
+          const thumbnailDesktop = sliceItem.media;
 
-        const isVisible =
-          index === activeSlide || index === activeSlide + 1 || index === 0;
+          const isVisible =
+            index === activeSlide || index === activeSlide + 1 || index === 0;
 
-        return (
-          <Slide
-            key={`key-${index + 1}`}
-            className={index === activeSlide ? "isActive" : ""}
-          >
-            {isVisible && (
+          return (
+            <Slide key={`key-${index + 1}`}>
               <SlideImage>
                 <motion.div
                   style={{
@@ -383,58 +384,60 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
                 </motion.div>
                 <SlideImageOverlay />
               </SlideImage>
-            )}
-            <SlideText
-              initial={{ translateY: "20px", opacity: 0 }}
-              animate={{
-                translateY: index === activeSlide ? "0px" : "20px",
-                opacity: index === activeSlide ? 1 : 0,
-              }}
-              transition={{
-                duration: 0.6,
-                ease: "easeInOut",
-                delay: index === activeSlide ? 0 : 0,
-              }}
-              className={`content_${
-                CaptionPostionDesktop[
-                  sliceItem.caption_position ?? "Left Bottom"
-                ]
-              } content_${
-                CaptionPostionMobile[
-                  sliceItem.caption_position_mobile ?? "Bottom"
-                ]
-              }`}
-            >
-              <TextBalloon
-                variant={CaptionColor[sliceItem.caption_color ?? "Blue"]}
-                arrowPositionDesktop={ArrowPosition[sliceItem.caption_position]}
-                arrowPositionMobile={
-                  ArrowPosition[sliceItem.caption_position_mobile]
-                }
+              <SlideText
+                initial={{ translateY: "20px", opacity: 0 }}
+                animate={{
+                  translateY: index === activeSlide ? "0px" : "20px",
+                  opacity: index === activeSlide ? 1 : 0,
+                }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeInOut",
+                  delay: index === activeSlide ? 0 : 0,
+                }}
+                className={`content_${
+                  CaptionPostionDesktop[
+                    sliceItem.caption_position ?? "Left Bottom"
+                  ]
+                } content_${
+                  CaptionPostionMobile[
+                    sliceItem.caption_position_mobile ?? "Bottom"
+                  ]
+                }`}
               >
-                {sliceItem.heading ? (
-                  <>
-                    <Typography
-                      color="white"
-                      variant="h5"
-                      component={index === 0 ? "h1" : "h2"}
-                      textShadow
-                    >
-                      {sliceItem.heading}
-                    </Typography>
-                    <Spacer />
-                  </>
-                ) : null}
-                <Typography variant="body2" component="p" color="white">
-                  {sliceItem.caption
-                    ? sliceItem.caption
-                    : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}
-                </Typography>
-              </TextBalloon>
-            </SlideText>
-          </Slide>
-        );
-      })}
+                <TextBalloon
+                  variant={CaptionColor[sliceItem.caption_color ?? "Blue"]}
+                  arrowPositionDesktop={
+                    ArrowPosition[sliceItem.caption_position]
+                  }
+                  arrowPositionMobile={
+                    ArrowPosition[sliceItem.caption_position_mobile]
+                  }
+                >
+                  {sliceItem.heading ? (
+                    <>
+                      <Typography
+                        color="white"
+                        variant="h5"
+                        component={index === 0 ? "h1" : "h2"}
+                        textShadow
+                      >
+                        {sliceItem.heading}
+                      </Typography>
+                      <Spacer />
+                    </>
+                  ) : null}
+                  <Typography variant="body2" component="p" color="white">
+                    {sliceItem.caption
+                      ? sliceItem.caption
+                      : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}
+                  </Typography>
+                </TextBalloon>
+              </SlideText>
+            </Slide>
+          );
+        })}
+      </Slider>
       {slidesDurationArray.length > 0 && (
         <DurationWrapper>
           {slice.items.map((sliceItem, index) => (

@@ -155,9 +155,6 @@ export const Default = () => {
             withMargin={true}
           />
         ))}
-        {/* {[...Array(10)].map((item, i) => (
-          <Element key={i} style={{ opacity: Math.random() }} />
-        ))} */}
       </Slider>
     </Wrapper>
   );
