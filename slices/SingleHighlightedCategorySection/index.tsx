@@ -14,6 +14,7 @@ import IconButton from "../../components/IconButton";
 import ArrowCircle from "../../components/icons/ArrowCircle";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import isMobile from "../../utils/isMobile";
+import Slider from "../../components/Slider";
 
 const Section = styled.section`
   width: 100%;
@@ -126,16 +127,14 @@ const SingleHighlightedCategorySection = ({ slice }) => {
           </Link>
         )}
       </HighlightedCategoryHeading>
-      <Carousel
-        insetLeft={isLargeScreen ? pxToRem(120) : pxToRem(32)}
-        insetRight={isLargeScreen ? pxToRem(120) : pxToRem(32)}
+      <Slider
+        slideSpacing={0}
+        padding={isMobileView ? "1rem 0 0 3.2rem" : "1rem 0 0 12rem"}
       >
         {slice.items.map((item, index) => {
           const thumbnailMobile = item.thumbnail.hasOwnProperty("mobile")
             ? item.thumbnail.mobile
             : item.thumbnail;
-
-          const thumbnailDesktop = item.thumbnail;
 
           const categories = item.category.map((category) => {
             return category.text;
@@ -166,12 +165,12 @@ const SingleHighlightedCategorySection = ({ slice }) => {
                   },
                 }}
                 variant="regular"
-                withMargin={true}
+                withMargin={false}
               />
             </Link>
           );
         })}
-      </Carousel>
+      </Slider>
       {!isLargeScreen && (
         <Link href="/topic/retro-tech" scroll={false}>
           <ViewCategoryLink>

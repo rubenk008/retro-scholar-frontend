@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import Slider from ".";
 import Article from "../Article";
+import { EmblaOptionsType } from "embla-carousel-react";
 
 export default {
   title: "Layout/Slider",
@@ -135,28 +136,28 @@ const GlobalStyle = createGlobalStyle`
 
 const Wrapper = styled.div``;
 
-const Element = styled.div`
-  width: 300px;
-  height: 400px;
-  background: tomato;
-`;
+const options: EmblaOptionsType = {
+  align: "start",
+  containScroll: "trimSnaps",
+  skipSnaps: true,
+};
 
 export const Default = () => {
   return (
     <Wrapper>
       <GlobalStyle />
-      <Slider>
-        {/* {tempData.map((item, index) => (
+      <Slider slideSpacing={0} options={options}>
+        {tempData.map((item, index) => (
           <Article
             key={`article-${index}`}
             cardData={item.cardData}
             variant="regular"
             withMargin={true}
           />
-        ))} */}
-        {[...Array(10)].map((item, i) => (
-          <Element key={i} style={{ opacity: Math.random() }} />
         ))}
+        {/* {[...Array(10)].map((item, i) => (
+          <Element key={i} style={{ opacity: Math.random() }} />
+        ))} */}
       </Slider>
     </Wrapper>
   );
