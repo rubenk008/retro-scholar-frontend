@@ -196,8 +196,7 @@ const CardRoot = styled(motion.div)<Props>(
           height: ["43rem", "44.8rem"],
           minWidth: ["27.6rem", "28.8rem"],
           maxWidth: ["27.6rem", "28.8rem"],
-          marginRight: (props: { withMargin: boolean }) =>
-            props.withMargin ? ["0", "0"] : ["2.4rem", "3.2rem"],
+          marginRight: ["2.4rem", "3.2rem"],
         },
         "&.small": {
           paddingBottom: [
@@ -246,8 +245,6 @@ const CardRoot = styled(motion.div)<Props>(
         background: "var(--blue-pigment)",
         height: ["calc((304/414) * 100vw)", "42.6rem"],
         width: ["calc((340/414) * 100vw)", "36rem"],
-        // maxHeight: "426px",
-        // maxWidth: "360px",
       },
     },
   })
@@ -256,7 +253,6 @@ const CardRoot = styled(motion.div)<Props>(
 const Card = ({
   variant = "elevated",
   size = "regular",
-  withMargin = false,
   cardArticleId = 0,
   className,
   children,
@@ -277,7 +273,6 @@ const Card = ({
   return (
     <CardRoot
       variant={variant}
-      // withMargin={withMargin}
       className={clsx(
         hasDropShadow ? "hasDropShadow" : "",
         hasRandomRotation ? "hasRandomRotation" : "",
