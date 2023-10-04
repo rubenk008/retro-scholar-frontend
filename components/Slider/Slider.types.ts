@@ -3,6 +3,7 @@ import { EmblaOptionsType } from "embla-carousel-react";
 export type SliderMethods = {
   nextSlide: () => void;
   prevSlide: () => void;
+  scrollToSlide: (index: number) => void;
 };
 
 export type SliderProps = {
@@ -10,6 +11,7 @@ export type SliderProps = {
   options?: EmblaOptionsType;
   slideSpacing?: number;
   padding?: string;
+  setCurrentSlide?: (slide: number) => void;
 };
 
 export type EmblaProps = {

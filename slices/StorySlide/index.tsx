@@ -218,12 +218,6 @@ const ArrowPosition = {
 const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const [direction, setDirection] = useState("");
-  const [navigationClicked, setNavigationClicked] = useState(false);
-
-  const timerRef = useRef(null);
-  const isLongPress = useRef(null);
-
   const [isMobileView, setIsMobileView] = useState(false);
 
   const [slidesDurationArray, setSlidesDurationArray] = useState([]);
@@ -231,6 +225,8 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
   const size = useWindowSize();
 
   const [isActive, setIsActive] = useState(false);
+
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -264,50 +260,12 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
     setIsMobileView(isMobile());
   }, [size]);
 
-  const startPressTimer = () => {
-    isLongPress.current = false;
-    timerRef.current = setTimeout(() => {
-      isLongPress.current = true;
-    }, 300);
-  };
-
   const nextSlide = () => {
-    if (activeSlide < slice.items.length - 1) {
-      setActiveSlide(activeSlide + 1);
-    }
-
-    setNavigationClicked(false);
-    setDirection("");
+    sliderRef.current.nextSlide();
   };
 
   const prevSlide = () => {
-    if (activeSlide > 0) {
-      setActiveSlide(activeSlide - 1);
-    } else {
-      setActiveSlide(0);
-    }
-    setNavigationClicked(false);
-    setDirection("");
-  };
-
-  const onTouchStart = (dir) => {
-    setDirection(dir);
-    startPressTimer();
-  };
-
-  const onTouchEnd = () => {
-    if (direction === "left" && !isLongPress.current) {
-      setNavigationClicked(true);
-      prevSlide();
-    }
-
-    if (direction === "right" && !isLongPress.current) {
-      setNavigationClicked(true);
-      nextSlide();
-    }
-
-    clearTimeout(timerRef.current);
-    return;
+    sliderRef.current.prevSlide();
   };
 
   useEffect(() => {
@@ -337,16 +295,18 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
 
   return (
     <SliderWrapper>
-      <Slider options={sliderOptions} slideSpacing={0}>
+      <Slider
+        options={sliderOptions}
+        slideSpacing={0}
+        setCurrentSlide={setActiveSlide}
+        ref={sliderRef}
+      >
         {slice.items.map((sliceItem, index) => {
           const thumbnailMobile = sliceItem.media.hasOwnProperty("mobile")
             ? sliceItem.media.mobile
             : sliceItem.media;
 
           const thumbnailDesktop = sliceItem.media;
-
-          const isVisible =
-            index === activeSlide || index === activeSlide + 1 || index === 0;
 
           return (
             <Slide key={`key-${index + 1}`}>
@@ -448,16 +408,6 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
           ))}
         </DurationWrapper>
       )}
-      <SlideNavigation
-        className="prev"
-        onTouchStart={() => onTouchStart("left")}
-        onTouchEnd={onTouchEnd}
-      />
-      <SlideNavigation
-        className="next"
-        onTouchStart={() => onTouchStart("right")}
-        onTouchEnd={onTouchEnd}
-      />
       <DesktopSlideNavigationWrapper>
         {activeSlide !== 0 && (
           <IconButton

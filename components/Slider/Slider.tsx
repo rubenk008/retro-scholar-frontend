@@ -4,6 +4,7 @@ import React, {
   useImperativeHandle,
   forwardRef,
   useEffect,
+  useCallback,
 } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styled from "styled-components";
@@ -50,14 +51,22 @@ const Slider = forwardRef<SliderMethods, SliderProps>(
       },
       slideSpacing = 1,
       padding = "",
+      setCurrentSlide,
     },
     ref
   ) => {
     const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
+    const onSelect = useCallback(
+      (emblaApi) => {
+        if (setCurrentSlide) setCurrentSlide(emblaApi.selectedScrollSnap());
+      },
+      [setCurrentSlide]
+    );
+
     useEffect(() => {
-      console.log(options);
-    }, [options]);
+      if (emblaApi) emblaApi.on("select", onSelect);
+    }, [emblaApi, onSelect]);
 
     useImperativeHandle(ref, () => ({
       nextSlide() {
@@ -65,6 +74,9 @@ const Slider = forwardRef<SliderMethods, SliderProps>(
       },
       prevSlide() {
         emblaApi.scrollPrev();
+      },
+      scrollToSlide(index) {
+        emblaApi.scrollTo(index);
       },
     }));
 
