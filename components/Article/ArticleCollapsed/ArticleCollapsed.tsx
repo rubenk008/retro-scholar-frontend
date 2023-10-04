@@ -70,7 +70,6 @@ const ArticleCollapsed = ({
     <Card
       variant="elevated"
       size={variant}
-      withMargin={withMargin}
       onClick={onClick}
       cardArticleId={id}
     >
