@@ -34,7 +34,8 @@ const SliderWrapper = styled(motion.div)`
 const Slide = styled.div`
   position: relative;
   width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
+  height: var(--app-height);
   overflow: hidden;
 `;
 
