@@ -10,8 +10,8 @@ const Wrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     margin: auto;
-    padding: 3rem 3rem;
-    width: 46.9rem;
+    padding: 2.8rem;
+    width: 40rem;
   }
 
   &:before {
