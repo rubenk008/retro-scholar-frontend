@@ -108,6 +108,12 @@ const TypographyRoot = styled("span")<Props>(
         letterSpacing: [letterSpacing(24, 0.24), letterSpacing(32, 0.32)],
         lineHeight: [0.9, 1],
       },
+      h5Alt2: {
+        fontFamily: "var(--font-rift-soft-bold)",
+        fontSize: [pxToRem(28), pxToRem(32)],
+        letterSpacing: [letterSpacing(28, 0.56), letterSpacing(32, 0.32)],
+        lineHeight: [1, 1],
+      },
       h6: {
         fontFamily: "var(--font-rift-soft-bold)",
         fontSize: [pxToRem(16), pxToRem(24)],

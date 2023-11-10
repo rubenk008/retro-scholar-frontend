@@ -134,30 +134,6 @@ const DurationWrapper = styled.div`
   }
 `;
 
-const SlideNavigation = styled.div`
-  background: rgba(255, 255, 255, 0);
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  z-index: 9999;
-
-  @media screen and (min-width: 1024px) {
-    display: none;
-  }
-
-  &.next {
-    right: 0;
-    left: auto;
-  }
-
-  &.prev {
-    right: auto;
-    left: 0;
-  }
-`;
-
 const DesktopSlideNavigationWrapper = styled.div`
   display: none;
   position: absolute;
@@ -379,7 +355,7 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
                     <>
                       <Typography
                         color="white"
-                        variant="h5"
+                        variant="h5Alt2"
                         component={index === 0 ? "h1" : "h2"}
                         textShadow
                       >
@@ -388,7 +364,7 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
                       <Spacer />
                     </>
                   ) : null}
-                  <Typography variant="body2" component="p" color="white">
+                  <Typography variant="body3" component="p" color="white">
                     {sliceItem.caption
                       ? sliceItem.caption
                       : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean consectetur velit dignissim enim elementum sollicitudin."}
