@@ -75,10 +75,6 @@ const TopicPage = ({
   });
 
   useEffect(() => {
-    console.log("meta", data);
-  }, [data]);
-
-  useEffect(() => {
     if (router.query.slug) {
       setCurrentTopic(router.query.slug.toString());
     }
