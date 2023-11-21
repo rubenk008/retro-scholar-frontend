@@ -41,18 +41,18 @@ const ArticlePage = ({ meta, openGraph, article }) => {
         openGraph={{
           type: "article",
           url: `${SEO.baseUrl}/article/${article.uid}`,
-          title: openGraph.social_card_title,
-          description: openGraph.social_card_description,
+          title: openGraph.socialCardTitle,
+          description: openGraph.socialCardDescription,
           siteName: SEO.siteName,
           defaultImageHeight: 630,
           defaultImageWidth: 1200,
           images: [
             {
-              url: openGraph.social_card_image?.url
-                ? openGraph.social_card_image.url
+              url: openGraph.socialCardImage?.url
+                ? openGraph.socialCardImage.url
                 : "",
-              alt: openGraph.social_card_image?.alt
-                ? openGraph.social_card_image.alt
+              alt: openGraph.socialCardImage?.alt
+                ? openGraph.socialCardImage.alt
                 : "",
               type: "image/jpeg",
             },
@@ -120,18 +120,16 @@ export async function getStaticProps({ params, previewData }) {
   return {
     props: {
       meta: {
-        title: article.data.meta_title ? article.data.meta_title : "",
-        desc: article.data.meta_description
-          ? article.data.meta_description
-          : "",
+        title: article.data.metaTitle ? article.data.metaTitle : "",
+        desc: article.data.metaDescription ? article.data.metaDescription : "",
       },
-      openGraph: article.data.social_cards
-        ? article.data.social_cards[0]
+      openGraph: article.data.socialCards
+        ? article.data.socialCards[0]
         : {
             url: "",
             alt: "",
-            social_card_title: "",
-            social_card_description: "",
+            socialCardTitle: "",
+            socialCardDescription: "",
           },
       article,
     },
