@@ -60,6 +60,7 @@ const SlideText = styled(motion.div)`
     &.content_top {
       justify-content: center;
       align-items: flex-start;
+      top: 10rem;
     }
 
     &.content_bottom {
