@@ -138,7 +138,7 @@ const TopicPage = ({
         </Typography>
       </TopicHeading>
 
-      <ArticleGrid articles={articles} asPath={router.asPath} />
+      {articles && <ArticleGrid articles={articles} asPath={router.asPath} />}
 
       <AnimatePresence initial={false} mode="sync">
         {overlayOpen && (
@@ -217,6 +217,7 @@ export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
 
   const category = await getCategoryId(client, params.slug);
+
   const data = await getArticlesByCategory(client, category.id);
 
   const articles = data.articles;
