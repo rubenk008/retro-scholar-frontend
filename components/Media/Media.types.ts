@@ -1,4 +1,4 @@
-import { ImageProps } from "./Image/Image.types";
+import { CustomImageProps } from "./Image/Image.types";
 import { VideoProps } from "./Video/Video.types";
 import { ComponentProps } from "react";
 import { motion } from "framer-motion";
@@ -8,7 +8,7 @@ export interface MediaProps extends ComponentProps<typeof motion.div> {
   type?: string;
 
   // Image
-  image?: ImageProps;
+  image?: CustomImageProps;
 
   // Video
   video?: VideoProps;

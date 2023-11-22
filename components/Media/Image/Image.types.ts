@@ -1,4 +1,4 @@
-export interface ImageProps {
+export interface CustomImageProps {
   /** The image src. */
   url?: string;
   /** The image alt. */
@@ -10,11 +10,13 @@ export interface ImageProps {
   onLoad?: () => void;
 
   priority?: boolean;
+
+  loading?: "lazy" | "eager" | undefined;
 }
 
 export interface ImageLazyProps {
   // Image
-  image: ImageProps;
+  image: CustomImageProps;
 
   // Custom image classname
   imageClassName?: string;
