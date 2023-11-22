@@ -12,9 +12,9 @@ const StyledImage = styled(Image)`
 
 const isMobileConnection = () => {
   const connection =
-    navigator.connection ||
-    navigator.mozConnection ||
-    navigator.webkitConnection;
+    (navigator as any).connection ||
+    (navigator as any).mozConnection ||
+    (navigator as any).webkitConnection;
   return (
     connection?.type === "cellular" ||
     connection?.effectiveType === "slow-2g" ||
