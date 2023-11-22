@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { ImageLazyProps } from "./Image.types";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 const StyledImage = styled(Image)`
   object-position: 20%;
