@@ -196,6 +196,5 @@ export async function getStaticProps({ previewData }) {
       prefetchedArticles,
       slices,
     },
-    revalidate: 10,
   };
 }

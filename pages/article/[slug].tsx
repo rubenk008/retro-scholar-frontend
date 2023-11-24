@@ -133,7 +133,6 @@ export async function getStaticProps({ params, previewData }) {
           },
       article,
     },
-    revalidate: 10,
   };
 }
 
