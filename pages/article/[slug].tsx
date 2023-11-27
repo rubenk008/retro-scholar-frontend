@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useEffect, useContext, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 
 import { useRouter } from "next/router";
 import { createClient } from "../../prismicio";
@@ -27,9 +27,6 @@ const ArticlePage = ({ meta, openGraph, article }) => {
     if (!!article.data.category) {
       setCategoryRoute(`/topic/${article.data.category.uid}`);
     }
-  }, []);
-
-  useEffect(() => {
     toggleTheme("light");
   }, []);
 
@@ -114,7 +111,6 @@ export default ArticlePage;
 
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
-
   const article = await getArticle(client, params.slug);
 
   return {
@@ -144,14 +140,9 @@ export async function getStaticPaths() {
 
   try {
     storyPages = await client.getAllByType("story-page");
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
     longreadPages = await client.getAllByType("page");
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching pages:", error);
   }
 
   const pages = [...storyPages, ...longreadPages];

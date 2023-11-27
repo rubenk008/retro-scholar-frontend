@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import styled from "styled-components";
 
 import { ImageLazyProps } from "./Image.types";
@@ -10,8 +8,8 @@ const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
-const CustomImage = ({ image }: ImageLazyProps) => {
-  return <StyledImage src={image.url} alt={image.alt} fill {...image} />;
+const CustomImage = ({ image: { url, alt, ...rest } }: ImageLazyProps) => {
+  return <StyledImage src={url} alt={alt} fill {...rest} />;
 };
 
 export default CustomImage;
