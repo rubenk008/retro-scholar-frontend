@@ -312,10 +312,18 @@ const StorySlide = ({ slice, handleClosePage = (e) => {} }) => {
                         ? {
                             url: thumbnailMobile.url,
                             alt: thumbnailMobile.alt,
+                            priority:
+                              index === activeSlide + 1 || index === activeSlide
+                                ? true
+                                : false,
                           }
                         : {
                             url: thumbnailDesktop.url,
                             alt: thumbnailDesktop.alt,
+                            priority:
+                              index === activeSlide + 1 || index === activeSlide
+                                ? true
+                                : false,
                           }
                     }
                   />
