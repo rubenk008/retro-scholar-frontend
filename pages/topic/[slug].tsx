@@ -255,6 +255,6 @@ export async function getStaticPaths() {
 
   return {
     paths: pages.map((topic) => `/topic/${topic.uid}`),
-    fallback: true,
+    fallback: false,
   };
 }

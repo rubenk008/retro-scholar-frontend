@@ -30,6 +30,10 @@ const ArticlePage = ({ meta, openGraph, article }) => {
     toggleTheme("light");
   }, []);
 
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <NextSeo
