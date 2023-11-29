@@ -8,7 +8,7 @@ import ThreeColumnMedia from "../../components/layout/ThreeColumnMedia";
 /**
  * Props for `MediaColumns`.
  */
-export type MediaColumnsProps = SliceComponentProps<Content.MediaColumnsSlice>;
+export type MediaColumnsProps = SliceComponentProps<any>;
 
 /**
  * Component for "MediaColumns" Slices.

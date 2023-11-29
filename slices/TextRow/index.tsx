@@ -5,7 +5,7 @@ import OneColumnText from "../../components/layout/OneColumnText";
 import { PrismicRichText } from "@prismicio/react";
 import Typography from "../../components/Typography/Typography";
 
-export type TextRowProps = SliceComponentProps<Content.TextRowSlice>;
+export type TextRowProps = SliceComponentProps<any>;
 
 const TextRow = ({ slice }: TextRowProps): JSX.Element => {
   return (
