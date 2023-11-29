@@ -30,6 +30,10 @@ const ArticlePage = ({ meta, openGraph, article }) => {
     toggleTheme("light");
   }, []);
 
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <NextSeo
@@ -149,6 +153,6 @@ export async function getStaticPaths() {
 
   return {
     paths: pages.map((article) => `/article/${article.uid}`),
-    fallback: false,
+    fallback: true,
   };
 }
