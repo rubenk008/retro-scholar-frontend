@@ -233,14 +233,6 @@ const CardRoot = styled(motion.div)<Props>(
           },
         },
       },
-      quiz: {
-        background: "var(--slight-titan-white)",
-        height: ["calc((336/414) * 100vw)", "calc((486/1440) * 100vw)"],
-        width: ["calc((520/414) * 100vw)", "calc((900/1440) * 100vw)"],
-        maxHeight: "486px",
-        maxWidth: "900px",
-        boxShadow: "0px 8px 27px 4px rgba(9,25,189,0.2)",
-      },
       highlightedCat: {
         background: "var(--blue-pigment)",
         height: ["calc((304/414) * 100vw)", "42.6rem"],

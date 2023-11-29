@@ -4,8 +4,7 @@ import Card from "./index";
 import Media from "../Media";
 
 const image = {
-  url:
-    "https://i.picsum.photos/id/823/200/300.jpg?hmac=Sv69FIuXkj79IVp4uZ1YpgRHDGP0jadf5nSiTx1xSoo",
+  url: "https://i.picsum.photos/id/823/200/300.jpg?hmac=Sv69FIuXkj79IVp4uZ1YpgRHDGP0jadf5nSiTx1xSoo",
   alt: "testing image",
 };
 
@@ -72,5 +71,3 @@ export const OutlinedCardWithImageAndShadow = () => (
     <Media type="image" image={image} />
   </Card>
 );
-
-export const QuizCard = () => <Card variant="quiz"></Card>;
