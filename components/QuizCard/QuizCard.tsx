@@ -75,6 +75,7 @@ const QuizCard = ({ className, children, ...props }: Props) => {
         {children}
       </CardFront>
       <CardBack
+        initial={{ rotateX: 180, y: "-100%" }}
         animate={{
           rotateX: isFlipped ? 0 : 180,
           y: isFlipped ? 0 : "-100%",
