@@ -6,6 +6,8 @@ import QuizCardProps from "./QuizCard.types";
 import { useState } from "react";
 import isMobile from "../../utils/isMobile";
 import Typography from "../Typography";
+import AnswerGroup from "./AnswerGroup";
+import Media from "../Media";
 
 const CardWrapper = styled(motion.div)`
   perspective: 1800px;
@@ -13,14 +15,10 @@ const CardWrapper = styled(motion.div)`
   position: relative;
   height: calc((520 / 414) * 100vw);
   width: calc((336 / 414) * 100vw);
-  max-height: 520px;
-  max-width: 336px;
 
   @media (min-width: 769px) {
     height: calc((495 / 1440) * 100vw);
     width: calc((900 / 1440) * 100vw);
-    max-height: 495px;
-    max-width: 900px;
   }
 `;
 
@@ -56,6 +54,7 @@ const CardBack = styled(motion.div)`
 
 const MediaSection = styled.div`
   padding: 0.5rem;
+  flex-grow: 1;
   height: 100%;
 `;
 
@@ -63,10 +62,14 @@ const QuestionSection = styled.div`
   padding: 2rem 2rem 2.3rem;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 
   @media (min-width: 769px) {
     padding: 5.2rem 5.2rem 4.3rem;
     width: 48rem;
+    gap: 3.2rem;
   }
 `;
 
@@ -85,14 +88,17 @@ const QuizCard = ({
 }: QuizCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+  const [selectedAnswer, setSelectedAnswer] = useState("");
+
   const mobile = isMobile();
 
-  const handleClick = () => {
-    setIsFlipped((prevState) => !prevState);
+  const handleAnswerClick = (value: string) => {
+    console.log(value);
+    // setIsFlipped((prevState) => !prevState);
   };
 
   return (
-    <CardWrapper onClick={handleClick}>
+    <CardWrapper>
       <CardFront
         animate={
           mobile
@@ -114,11 +120,18 @@ const QuizCard = ({
         transition={spring}
         style={{ zIndex: isFlipped ? 0 : 1 }}
       >
-        <MediaSection>aaa</MediaSection>
+        <MediaSection>
+          <Media {...media} />
+        </MediaSection>
         <QuestionSection>
           <Typography variant="h5Alt" component="h2" color="secondary">
             {question}
           </Typography>
+          <AnswerGroup
+            answers={answers}
+            onAnswerSelected={handleAnswerClick}
+            selectedAnswer={selectedAnswer}
+          />
         </QuestionSection>
       </CardFront>
       <CardBack

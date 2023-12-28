@@ -1,7 +1,7 @@
-import { AnswerProps } from "./Answer.types";
+import { Answer } from "./Answer.types";
 
 export type AnswerGroupProps = {
-  answers: AnswerProps[];
+  answers: Answer[];
   onAnswerSelected: (answer: string) => void;
   selectedAnswer: string;
 };

@@ -8,31 +8,49 @@ const Container = styled.button`
   align-items: center;
   height: 4.4rem;
   width: 100%;
+  background: none;
+  border: none;
+  position: relative;
+  padding: 0;
 
   @media (min-width: 768px) {
     height: 6.4rem;
   }
 
   &:before {
+    position: absolute;
     content: "";
     display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border: 1px solid;
-    margin-right: 1rem;
+    width: 100%;
+    height: 100%;
+    background: var(--white);
+  }
+`;
+
+const Content = styled.div`
+  position: relative;
+  display: flex;
+  gap: 0.6rem;
+  z-index: 2;
+  padding: 0 2rem;
+
+  @media (min-width: 768px) {
+    gap: 0.8rem;
+    padding: 0 2.4rem;
   }
 `;
 
 const Answer = ({ label, selected, value, onClick }: AnswerProps) => {
   return (
     <Container onClick={() => onClick(value)}>
-      <Typography variant="body1" component="span">
-        {value}
-      </Typography>
-      <Typography variant="body1" color={selected ? "primary" : "text"}>
-        {label}
-      </Typography>
+      <Content>
+        <Typography variant="body4Bold" component="span" color="secondary">
+          {value}.
+        </Typography>
+        <Typography variant="body4" color="secondary">
+          {label}
+        </Typography>
+      </Content>
     </Container>
   );
 };

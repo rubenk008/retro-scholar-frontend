@@ -201,6 +201,20 @@ const TypographyRoot = styled("span")<Props>(
         letterSpacing: [letterSpacing(16, 0.24), letterSpacing(20, 0.3)],
         lineHeight: ["calc(28 / 16)", "calc(32 / 20)"],
       },
+      body4: {
+        fontFamily: "var(--font-nunito-sans)",
+        fontWeight: 400,
+        fontSize: [pxToRem(14), pxToRem(16)],
+        letterSpacing: [letterSpacing(14, 0.2), letterSpacing(16, 0.2)],
+        lineHeight: ["calc(28 / 14)", "calc(32 / 16)"],
+      },
+      body4Bold: {
+        fontFamily: "var(--font-nunito-sans)",
+        fontWeight: 800,
+        fontSize: [pxToRem(14), pxToRem(16)],
+        letterSpacing: [letterSpacing(14, 0.2), letterSpacing(16, 0.2)],
+        lineHeight: ["calc(28 / 14)", "calc(32 / 16)"],
+      },
     },
   })
 );
