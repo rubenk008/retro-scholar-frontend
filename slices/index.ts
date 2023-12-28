@@ -5,8 +5,9 @@ import dynamic from "next/dynamic";
 export const components = {
   homepage_hero: dynamic(() => import("./HomepageHero")),
   media_columns: dynamic(() => import("./MediaRow")),
+  quiz_card: dynamic(() => import("./QuizCard")),
   single_highlighted_category_section: dynamic(
-    () => import("./SingleHighlightedCategorySection")
+    () => import("./SingleHighlightedCategorySection"),
   ),
   story_slide: dynamic(() => import("./StorySlide")),
   text_row: dynamic(() => import("./TextRow")),

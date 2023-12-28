@@ -1,0 +1,62 @@
+{
+  "id": "quiz_card",
+  "type": "SharedSlice",
+  "name": "QuizCard",
+  "description": "QuizCard",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "question": {
+          "type": "Text",
+          "config": {
+            "label": "question",
+            "placeholder": ""
+          }
+        },
+        "correctAnswer": {
+          "type": "Select",
+          "config": {
+            "label": "correct answer",
+            "placeholder": "",
+            "options": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        },
+        "explanation": {
+          "type": "Text",
+          "config": {
+            "label": "explanation",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "option": {
+          "type": "Text",
+          "config": {
+            "label": "option",
+            "placeholder": ""
+          }
+        }
+      }
+    }
+  ]
+}
