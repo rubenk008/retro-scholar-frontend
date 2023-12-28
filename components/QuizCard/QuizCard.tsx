@@ -2,9 +2,10 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 
 import styled from "styled-components";
-import Props from "./QuizCard.types";
+import QuizCardProps from "./QuizCard.types";
 import { useState } from "react";
 import isMobile from "../../utils/isMobile";
+import Typography from "../Typography";
 
 const CardWrapper = styled(motion.div)`
   perspective: 1800px;
@@ -25,7 +26,7 @@ const CardWrapper = styled(motion.div)`
 
 const CardFront = styled(motion.div)`
   border: none;
-  display: grid;
+  display: flex;
   box-sizing: border-box;
   position: absolute;
   padding: 0;
@@ -33,6 +34,12 @@ const CardFront = styled(motion.div)`
   height: 100%;
   width: 100%;
   backface-visibility: hidden;
+  flex-direction: column;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const CardBack = styled(motion.div)`
@@ -47,13 +54,35 @@ const CardBack = styled(motion.div)`
   width: 100%;
 `;
 
+const MediaSection = styled.div`
+  padding: 0.5rem;
+  height: 100%;
+`;
+
+const QuestionSection = styled.div`
+  padding: 2rem 2rem 2.3rem;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: 769px) {
+    padding: 5.2rem 5.2rem 4.3rem;
+    width: 48rem;
+  }
+`;
+
 const spring = {
   type: "spring",
   stiffness: 200,
   damping: 50,
 };
 
-const QuizCard = ({ className, children, ...props }: Props) => {
+const QuizCard = ({
+  media,
+  question,
+  answers,
+  correctAnswer,
+  explanation,
+}: QuizCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const mobile = isMobile();
@@ -65,7 +94,6 @@ const QuizCard = ({ className, children, ...props }: Props) => {
   return (
     <CardWrapper onClick={handleClick}>
       <CardFront
-        className={clsx(className)}
         animate={
           mobile
             ? {
@@ -85,9 +113,13 @@ const QuizCard = ({ className, children, ...props }: Props) => {
         }
         transition={spring}
         style={{ zIndex: isFlipped ? 0 : 1 }}
-        {...props}
       >
-        {children}
+        <MediaSection>aaa</MediaSection>
+        <QuestionSection>
+          <Typography variant="h5Alt" component="h2" color="secondary">
+            {question}
+          </Typography>
+        </QuestionSection>
       </CardFront>
       <CardBack
         initial={
@@ -114,10 +146,7 @@ const QuizCard = ({ className, children, ...props }: Props) => {
         style={{
           zIndex: isFlipped ? 1 : 0,
         }}
-        {...props}
-      >
-        {children}
-      </CardBack>
+      ></CardBack>
     </CardWrapper>
   );
 };

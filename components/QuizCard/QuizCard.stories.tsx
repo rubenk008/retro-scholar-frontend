@@ -17,6 +17,9 @@ export const Basic = () => (
       background: "var(--bay-of-many)",
     }}
   >
-    <QuizCard></QuizCard>
+    <QuizCard
+      question="Een giraffe heeft 2 keer zoveel
+nekwervels als een mens."
+    />
   </div>
 );

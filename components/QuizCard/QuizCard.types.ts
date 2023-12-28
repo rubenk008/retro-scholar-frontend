@@ -1,7 +1,16 @@
 import { ComponentProps } from "react";
 import { motion } from "framer-motion";
+import { MediaProps } from "../Media/Media.types";
 
-export default interface Props extends ComponentProps<typeof motion.div> {
-  /** Custom styling hook */
-  className?: string;
+type Answer = {
+  value: string;
+  label: string;
+};
+export default interface QuizCardProps {
+  media?: MediaProps;
+  question: string;
+  answers: Answer[];
+  correctAnswer: string;
+  onAnswered: () => void;
+  explanation: string;
 }
