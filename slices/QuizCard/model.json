@@ -16,8 +16,17 @@
           "type": "Image",
           "config": {
             "label": "image",
-            "constraint": {},
-            "thumbnails": []
+            "constraint": {
+              "height": 490,
+              "width": 420
+            },
+            "thumbnails": [
+              {
+                "name": "mobile",
+                "width": 325,
+                "height": 208
+              }
+            ]
           }
         },
         "question": {

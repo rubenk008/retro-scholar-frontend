@@ -180,6 +180,13 @@ const TypographyRoot = styled("span")<Props>(
         letterSpacing: [letterSpacing(20, 0.3), letterSpacing(24, 0.36)],
         lineHeight: ["calc(34 / 20)", "calc(38 / 24)"],
       },
+      body1alt: {
+        fontFamily: "var(--font-nunito-sans)",
+        fontWeight: 400,
+        fontSize: [pxToRem(16), pxToRem(24)],
+        letterSpacing: [letterSpacing(16, 0.2), letterSpacing(24, 0.15)],
+        lineHeight: ["calc(24 / 16)", "calc(38 / 24)"],
+      },
       body2: {
         fontFamily: "var(--font-nunito-sans)",
         fontWeight: 400,

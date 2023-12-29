@@ -12,18 +12,32 @@ const Container = styled.button`
   border: none;
   position: relative;
   padding: 0;
+  background: var(--white);
+  clip-path: polygon(80% 2%, 100% 0, 100% 100%, 28% 99%, 0 100%, 0% 0%);
+  transition: all 0.2s ease-in-out;
 
   @media (min-width: 768px) {
     height: 6.4rem;
+  }
+
+  &.selected {
+    background: var(--bay-of-many);
+  }
+
+  &.notSelected {
+    opacity: 0.6;
   }
 
   &:before {
     position: absolute;
     content: "";
     display: inline-block;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 0.4rem);
+    height: calc(100% - 0.4rem);
+    top: 0.2rem;
+    left: 0.2rem;
     background: var(--white);
+    clip-path: polygon(80% 2%, 100% 0, 100% 100%, 28% 99%, 0 100%, 0% 0%);
   }
 `;
 
@@ -40,9 +54,20 @@ const Content = styled.div`
   }
 `;
 
-const Answer = ({ label, selected, value, onClick }: AnswerProps) => {
+const Answer = ({
+  label,
+  selected,
+  notSelected,
+  value,
+  onClick,
+}: AnswerProps) => {
   return (
-    <Container onClick={() => onClick(value)}>
+    <Container
+      onClick={() => onClick(value)}
+      className={`${selected ? "selected" : ""} ${
+        notSelected ? "notSelected" : ""
+      }`}
+    >
       <Content>
         <Typography variant="body4Bold" component="span" color="secondary">
           {value}.

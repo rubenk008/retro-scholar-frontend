@@ -5,5 +5,6 @@ export type Answer = {
 
 export type AnswerProps = Answer & {
   selected: boolean;
+  notSelected: boolean;
   onClick: (value: string) => void;
 };

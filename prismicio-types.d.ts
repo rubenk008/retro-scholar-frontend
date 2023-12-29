@@ -448,11 +448,11 @@ export type PageDocument<Lang extends string = string> =
 type QuizDocumentDataSlicesSlice = QuizCardSlice;
 
 /**
- * Content for quiz documents
+ * Content for Quiz documents
  */
 interface QuizDocumentData {
   /**
-   * title field in *quiz*
+   * title field in *Quiz*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -463,7 +463,18 @@ interface QuizDocumentData {
   title: prismic.KeyTextField;
 
   /**
-   * Slice Zone field in *quiz*
+   * thumbnail field in *Quiz*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: quiz.thumbnail
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  thumbnail: prismic.ImageField<"mobile" | "square">;
+
+  /**
+   * Slice Zone field in *Quiz*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -472,7 +483,7 @@ interface QuizDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<QuizDocumentDataSlicesSlice> /**
-   * Meta Description field in *quiz*
+   * Meta Description field in *Quiz*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -483,7 +494,7 @@ interface QuizDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *quiz*
+   * Meta Image field in *Quiz*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -494,7 +505,7 @@ interface QuizDocumentData {
   meta_image: prismic.ImageField<never>;
 
   /**
-   * Meta Title field in *quiz*
+   * Meta Title field in *Quiz*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -506,7 +517,7 @@ interface QuizDocumentData {
 }
 
 /**
- * quiz document from Prismic
+ * Quiz document from Prismic
  *
  * - **API ID**: `quiz`
  * - **Repeatable**: `true`
@@ -751,7 +762,7 @@ export interface QuizCardSliceDefaultPrimary {
    * - **API ID Path**: quiz_card.primary.image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  image: prismic.ImageField<never>;
+  image: prismic.ImageField<"mobile">;
 
   /**
    * question field in *QuizCard → Primary*

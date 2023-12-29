@@ -108,14 +108,19 @@ const TopEdgeAnim = {
 
 const StyledButton = styled(motion.button)`
   font-family: "Rift Soft Bold";
-  font-size: 28px;
+  font-size: 2.6rem;
   cursor: pointer;
   border: none;
-  height: 56px;
+  height: 5.6rem;
+  width: 100%;
   display: grid;
   box-sizing: border-box;
   padding: 0;
   background: none;
+
+  @media (min-width: 769px) {
+    font-size: 2.8rem;
+  }
 `;
 
 const Backdrop = styled.div`

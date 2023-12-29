@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { motion } from "framer-motion";
 
 import styled from "styled-components";
@@ -8,6 +7,7 @@ import isMobile from "../../utils/isMobile";
 import Typography from "../Typography";
 import AnswerGroup from "./AnswerGroup";
 import Media from "../Media";
+import Button from "../Button";
 
 const CardWrapper = styled(motion.div)`
   perspective: 1800px;
@@ -42,7 +42,7 @@ const CardFront = styled(motion.div)`
 
 const CardBack = styled(motion.div)`
   border: none;
-  display: grid;
+  display: flex;
   box-sizing: border-box;
   position: absolute;
   padding: 0;
@@ -50,6 +50,12 @@ const CardBack = styled(motion.div)`
   backface-visibility: hidden;
   height: 100%;
   width: 100%;
+  flex-direction: column;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const MediaSection = styled.div`
@@ -73,6 +79,32 @@ const QuestionSection = styled.div`
   }
 `;
 
+const AnswerStateSection = styled.div`
+  padding: 6.8rem 4rem 2.8rem;
+
+  @media (min-width: 769px) {
+    flex-grow: 1;
+    height: 100%;
+    padding: 7rem 5.2rem 0 5.2rem;
+  }
+`;
+
+const ExplanationSection = styled.div`
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0rem 4rem 4rem;
+
+  @media (min-width: 769px) {
+    padding: 7rem 5.2rem 5.2rem 0;
+    width: 40rem;
+    gap: 3.2rem;
+  }
+`;
+
 const spring = {
   type: "spring",
   stiffness: 200,
@@ -85,6 +117,7 @@ const QuizCard = ({
   answers,
   correctAnswer,
   explanation,
+  onAnswered,
 }: QuizCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -93,8 +126,13 @@ const QuizCard = ({
   const mobile = isMobile();
 
   const handleAnswerClick = (value: string) => {
-    console.log(value);
-    // setIsFlipped((prevState) => !prevState);
+    setSelectedAnswer(value);
+
+    onAnswered(value === correctAnswer);
+
+    setTimeout(() => {
+      setIsFlipped((prevState) => !prevState);
+    }, 150);
   };
 
   return (
@@ -159,7 +197,22 @@ const QuizCard = ({
         style={{
           zIndex: isFlipped ? 1 : 0,
         }}
-      ></CardBack>
+      >
+        <AnswerStateSection>
+          <Typography variant="h0" component="h3">
+            Nice one!
+          </Typography>
+          <Typography variant="h5Alt" component="h3">
+            That’s the correct answer.
+          </Typography>
+        </AnswerStateSection>
+        <ExplanationSection>
+          <Typography variant="body1alt" component="p">
+            {explanation}
+          </Typography>
+          <Button>Next question</Button>
+        </ExplanationSection>
+      </CardBack>
     </CardWrapper>
   );
 };

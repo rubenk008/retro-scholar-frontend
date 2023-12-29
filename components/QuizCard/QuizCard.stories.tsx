@@ -34,6 +34,8 @@ nekwervels als een mens."
           alt: "testing image",
         },
       }}
+      explanation="Sed laoreet vitae neque ut blandit. Integer in nisl blandit, laoreet mi ut, porta magna. Integer ut auctor diam, quis posuere ipsum. Nam ut augue eu mauris feugiat scelerisque sit amet in velit."
+      onAnswered={(isCorrect) => console.log("answered", isCorrect)}
     />
   </div>
 );

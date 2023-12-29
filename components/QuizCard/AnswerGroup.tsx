@@ -25,6 +25,7 @@ const AnswerGroup = ({
           label={answer.label}
           value={answer.value}
           selected={selectedAnswer === answer.value}
+          notSelected={selectedAnswer !== answer.value && selectedAnswer !== ""}
           onClick={onAnswerSelected}
         />
       ))}
