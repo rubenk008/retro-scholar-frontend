@@ -118,6 +118,7 @@ const QuizCard = ({
   correctAnswer,
   explanation,
   onAnswered,
+  nextQuestion,
 }: QuizCardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -200,17 +201,19 @@ const QuizCard = ({
       >
         <AnswerStateSection>
           <Typography variant="h0" component="h3">
-            Nice one!
+            {selectedAnswer === correctAnswer ? " Nice one!" : "Too bad!"}
           </Typography>
           <Typography variant="h5Alt" component="h3">
-            That’s the correct answer.
+            {selectedAnswer === correctAnswer
+              ? "  That’s the correct answer."
+              : "That’s not correct."}
           </Typography>
         </AnswerStateSection>
         <ExplanationSection>
           <Typography variant="body1alt" component="p">
             {explanation}
           </Typography>
-          <Button>Next question</Button>
+          <Button onClick={nextQuestion}>Next question</Button>
         </ExplanationSection>
       </CardBack>
     </CardWrapper>

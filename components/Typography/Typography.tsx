@@ -222,6 +222,13 @@ const TypographyRoot = styled("span")<Props>(
         letterSpacing: [letterSpacing(14, 0.2), letterSpacing(16, 0.2)],
         lineHeight: ["calc(28 / 14)", "calc(32 / 16)"],
       },
+      label: {
+        fontFamily: "var(--font-nunito-sans)",
+        fontWeight: 400,
+        fontSize: [pxToRem(12), pxToRem(20)],
+        letterSpacing: [letterSpacing(10, 0.1), letterSpacing(20, 0.1)],
+        lineHeight: ["calc(10 / 12)", "calc(18 / 20)"],
+      },
     },
   })
 );

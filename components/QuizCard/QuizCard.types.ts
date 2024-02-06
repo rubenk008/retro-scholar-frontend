@@ -13,4 +13,5 @@ export default interface QuizCardProps {
   correctAnswer: string;
   onAnswered: (isCorrect: boolean) => void;
   explanation: string;
+  nextQuestion: () => void;
 }
