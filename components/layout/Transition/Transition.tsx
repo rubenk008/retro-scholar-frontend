@@ -12,7 +12,6 @@ const Transition = ({ children }) => {
 
     out: {
       opacity: 0,
-      // y: 0,
       transition: {
         duration: 0.2,
         ease: "easeIn",

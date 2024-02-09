@@ -7,7 +7,6 @@ import { useIsLarge } from "../../hooks/useMediaQuery";
 
 import pxToRem from "../../utils/pxToRem";
 
-import Carousel from "../../components/Carousel";
 import Article from "../../components/Article";
 import Typography from "../../components/Typography";
 import IconButton from "../../components/IconButton";
